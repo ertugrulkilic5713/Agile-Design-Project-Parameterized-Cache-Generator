@@ -92,7 +92,8 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
   val addrReg = Reg(UInt(cfg.addrWidth.W)) // latched request address
   val respData = Reg(UInt(cfg.wordBits.W)) // word returned in RESPOND
   val refillBuf = Reg(Vec(cfg.beatsPerLine, UInt(cfg.beatBits.W)))
-  val beatCnt = RegInit(0.U(log2Ceil(cfg.beatsPerLine + 1).W))
+  val beatCntWidth = math.max(1, log2Ceil(cfg.beatsPerLine))
+  val beatCnt = RegInit(0.U(beatCntWidth.W))
 
   val reqIdx = cfg.indexOf(addrReg)
   val reqTag = cfg.tagOf(addrReg)
@@ -146,14 +147,22 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
     is(sRefillWait) {
       io.memResp.ready := true.B
       when(io.memResp.fire) {
-        refillBuf(beatCnt) := io.memResp.bits.data
+        if (cfg.beatsPerLine == 1) {
+          refillBuf(0) := io.memResp.bits.data
+        } else {
+          refillBuf(beatCnt) := io.memResp.bits.data
+        }
         beatCnt := beatCnt + 1.U
 
         when(beatCnt === (cfg.beatsPerLine - 1).U) {
           // Last beat: assemble the full line (beat 0 in the LSBs),
           // using the incoming beat directly since refillBuf updates next cycle.
           val beats = WireInit(refillBuf)
-          beats(beatCnt) := io.memResp.bits.data
+          if (cfg.beatsPerLine == 1) {
+            beats(0) := io.memResp.bits.data
+          } else {
+            beats(beatCnt) := io.memResp.bits.data
+          }
           val newLine = beats.asUInt
 
           dataMem.write(reqIdx, newLine)

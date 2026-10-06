@@ -4,3 +4,4 @@
 cache-generator/.bsp
 cache-generator/project/
 target/
+test_run_dir/
