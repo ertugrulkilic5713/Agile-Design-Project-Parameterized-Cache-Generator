@@ -1,0 +1,6 @@
+.metals
+.vscode
+.scala-build
+cache-generator/.bsp
+cache-generator/project/
+target/
