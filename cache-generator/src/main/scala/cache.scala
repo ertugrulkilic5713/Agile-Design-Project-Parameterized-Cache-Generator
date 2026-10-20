@@ -105,3 +105,14 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
     }
   }
 }
+
+object GenerateCache extends App {
+  val cfg = CacheConfig(
+    capacityBytes = 1024,
+    addrWidth = 32,
+    lineBytes = 4,
+    wordBytes = 4,
+    memBeatBytes = 4
+  )
+  emitVerilog(new DirectMappedReadCache(cfg),Array("--target-dir", "generated"))
+}

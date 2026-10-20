@@ -1,7 +1,11 @@
+.DS_Store
 .metals
 .vscode
 .scala-build
 cache-generator/.bsp
 cache-generator/project/
+cache-generator/.bloop
 target/
 test_run_dir/
+cache.json
+cache.svg
