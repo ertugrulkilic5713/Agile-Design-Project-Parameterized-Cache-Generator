@@ -40,12 +40,15 @@ case class CacheConfig(
   def lineBaseOf(a: UInt): UInt = Cat(a(addrWidth - 1, offsetBits), 0.U(offsetBits.W))
 }
 
-/** CPU request: just an address, the cache is read-only. */
+/** CPU request: word-aligned, full-word read or write. */
 class CacheReq(cfg: CacheConfig) extends Bundle {
   val addr = UInt(cfg.addrWidth.W)
+  val isWrite = Bool()
+  val writeData = UInt(cfg.wordBits.W)
 }
 
 class CacheResp(cfg: CacheConfig) extends Bundle {
+  // Reads return the requested word; stores acknowledge completion with zero.
   val data = UInt(cfg.wordBits.W)
 }
 
@@ -54,9 +57,26 @@ class MemReq(cfg: CacheConfig) extends Bundle {
   val addr = UInt(cfg.addrWidth.W)
 }
 
+/** Memory write request: block-aligned evict address, accepted before its data. */
+class MemWriteReq(cfg: CacheConfig) extends Bundle {
+  val addr = UInt(cfg.addrWidth.W)
+}
+
+/** Exactly beatsPerLine beats per request, starting at the lowest line address. */
+class MemWriteData(cfg: CacheConfig) extends Bundle {
+  val data = UInt(cfg.beatBits.W)
+}
+
 /** Memory response: one beat of the line, delivered in order. */
 class MemResp(cfg: CacheConfig) extends Bundle {
   val data = UInt(cfg.beatBits.W)
+}
+
+/** Completion after all write beats have been accepted and the write is done.
+  * A valid completion carries ack = true.
+  */
+class MemWriteResp(cfg: CacheConfig) extends Bundle {
+  val ack = Bool()
 }
 
 class CacheIO(cfg: CacheConfig) extends Bundle {
@@ -64,8 +84,12 @@ class CacheIO(cfg: CacheConfig) extends Bundle {
   val resp = Decoupled(new CacheResp(cfg))
   val memReq = Decoupled(new MemReq(cfg))
   val memResp = Flipped(Decoupled(new MemResp(cfg)))
+  val memWriteReq = Decoupled(new MemWriteReq(cfg))
+  val memWriteData = Decoupled(new MemWriteData(cfg))
+  val memWriteResp = Flipped(Decoupled(new MemWriteResp(cfg)))
 }
 
 object CacheState extends ChiselEnum {
-  val sIdle, sCompare, sRefillReq, sRefillWait, sRespond = Value
+  val sIdle, sCompare, sWritebackReq, sWritebackSend, sWritebackWait,
+      sRefillReq, sRefillWait, sRespond = Value
 }
