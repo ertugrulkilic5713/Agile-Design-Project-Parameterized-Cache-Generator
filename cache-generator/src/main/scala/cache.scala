@@ -84,15 +84,20 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
     is(sCompare) {
       val hit = validBits(reqIdx) && (tagRd === reqTag)
       when(hit) {
+        val hitData = Mux(isWriteReg, 0.U, selectWord(lineRd, reqWord))
+        io.resp.valid := true.B
+        io.resp.bits.data := hitData
         when(isWriteReg) {
           dataWriteEnable := true.B
           dataWriteLine := replaceWord(lineRd, reqWord, writeDataReg)
           dirtyBits(reqIdx) := true.B
-          respData := 0.U
-        }.otherwise {
-          respData := selectWord(lineRd, reqWord)
         }
-        state := sRespond
+        when(io.resp.fire) {
+          state := sIdle
+        }.otherwise {
+          respData := hitData
+          state := sRespond
+        }
       }.otherwise {
         when(validBits(reqIdx) && dirtyBits(reqIdx)) {
           // Capture synchronous RAM outputs now; they need not remain valid.
