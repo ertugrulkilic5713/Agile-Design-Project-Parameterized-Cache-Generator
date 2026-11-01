@@ -3,7 +3,8 @@
 .vscode
 .scala-build
 cache-generator/.bsp
-cache-generator/project/
+cache-generator/project/*
+!cache-generator/project/build.properties
 cache-generator/.bloop
 target/
 test_run_dir/
