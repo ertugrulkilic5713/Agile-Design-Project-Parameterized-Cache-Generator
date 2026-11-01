@@ -195,8 +195,7 @@ class CacheHarness(
   /* 
   Counted cycle	Cache activity
     1	Accept request and initiate synchronous reads
-    2	Compare tag and capture the selected word
-    3	Present and transfer the response
+    2	Compare tag and transfer the hit response, or buffer it if the CPU stalls
   */
 
   /* 
@@ -350,10 +349,10 @@ class DirectMappedReadCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
   }
 
   // ------------------------------------------------------------------ timing / handshake
-  it should "take 3 cycles for a hit (accept, compare, respond)" in {
+  it should "take 2 counted cycles for a hit (accept, compare and respond)" in {
     withCache(cfg) { h =>
       h.read(0x100)
-      assert(h.read(0x100).cycles == 3)
+      assert(h.read(0x100).cycles == 2)
     }
   }
 
@@ -370,7 +369,67 @@ class DirectMappedReadCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
       h.read(0x100)
       val r = h.read(0x104, respStall = 5)
       assert(r.data == h.expectedWord(0x104))
-      assert(r.cycles == 3 + 5)
+      assert(r.cycles == 2 + 5)
+    }
+  }
+
+  it should "keep a stalled hit response stable while another request waits" in {
+    val c = CacheConfig(capacityBytes = 64)
+    test(new DirectMappedReadCache(c)) { dut =>
+      val h = new CacheHarness(dut, c, memLatency)
+      h.read(0x100)
+      h.read(0x110)
+
+      dut.io.resp.ready.poke(false.B)
+      dut.io.req.valid.poke(true.B)
+      dut.io.req.bits.addr.poke(0x100.U)
+      dut.io.req.ready.expect(true.B)
+      dut.clock.step() // First request accepted; the hit response is now offered.
+
+      // Offer a different request while the first response is blocked.
+      dut.io.req.bits.addr.poke(0x110.U)
+      for (_ <- 0 until 3) {
+        dut.io.req.ready.expect(false.B)
+        dut.io.resp.valid.expect(true.B)
+        dut.io.resp.bits.data.expect(h.expectedWord(0x100).U)
+        dut.clock.step()
+      }
+
+      dut.io.resp.ready.poke(true.B)
+      dut.io.req.ready.expect(false.B)
+      dut.clock.step() // Consume the first response; return to idle.
+      dut.io.resp.valid.expect(false.B)
+      dut.io.req.ready.expect(true.B)
+
+      dut.clock.step() // Accept the waiting second request.
+      dut.io.req.valid.poke(false.B)
+      dut.io.resp.valid.expect(true.B)
+      dut.io.resp.bits.data.expect(h.expectedWord(0x110).U)
+      dut.clock.step()
+      dut.io.resp.valid.expect(false.B)
+      dut.io.req.ready.expect(true.B)
+      assert(h.fetches.toSeq == Seq(0x100L, 0x110L))
+    }
+  }
+
+  it should "complete read and write hits in 2 counted cycles with four-byte lines" in {
+    val c = CacheConfig(capacityBytes = 1024, lineBytes = 4)
+    withCache(c) { h =>
+      val a = 0x100L
+      assert(h.read(a).cycles == 4 + memLatency + c.beatsPerLine)
+      for (data <- Seq(BigInt(0), BigInt("ffffffff", 16), BigInt("deadbeef", 16))) {
+        assert(h.write(a, data).cycles == 2)
+        val result = h.read(a)
+        assert(result.data == data)
+        assert(result.cycles == 2)
+      }
+      val stalled = h.read(a, respStall = 1)
+      assert(stalled.data == h.expectedWord(a))
+      assert(stalled.cycles == 3)
+      val miss = h.read(a + c.capacityBytes)
+      assert(miss.cycles == 6 + memLatency + 2 * c.beatsPerLine)
+      assert(h.backingWord(a) == h.expectedWord(a))
+      assert(h.read(a).data == h.expectedWord(a))
     }
   }
 
@@ -381,7 +440,7 @@ class DirectMappedReadCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
       val original = h.backingWord(addr)
       h.read(0x100)
       val result = h.write(addr, BigInt("deadbeef", 16))
-      assert(result.cycles == 3)
+      assert(result.cycles == 2)
       assert(h.backingWord(addr) == original)
       assert(h.writebacks.isEmpty)
       for (off <- 0 until cfg.lineBytes by cfg.wordBytes) {
@@ -459,9 +518,13 @@ class DirectMappedReadCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
   it should "hold a store acknowledgement stable while the CPU stalls" in {
     withCache(cfg) { h =>
       h.read(0x100)
-      assert(h.write(0x108, BigInt("76543210", 16), respStall = 5).cycles == 8)
+      assert(h.write(0x108, BigInt("76543210", 16), respStall = 5).cycles == 7)
       assert(h.read(0x108).data == h.expectedWord(0x108))
       assert(h.writebacks.isEmpty)
+      h.read(0x100L + cfg.capacityBytes)
+      assert(h.writebacks.map(_.addr).toSeq == Seq(0x100L))
+      assert(h.backingWord(0x108) == h.expectedWord(0x108))
+      assert(h.read(0x108).data == h.expectedWord(0x108))
     }
   }
 
