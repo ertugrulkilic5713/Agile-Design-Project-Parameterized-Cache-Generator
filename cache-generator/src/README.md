@@ -67,3 +67,5 @@ Open the generated circuit diagram on macOS:
 ```bash
 open cache.svg
 ```
+
+[github.com/agile-hw/hw5](https://github.com/agile-hw/hw5)
