@@ -1,4 +1,4 @@
-name: Cache tests
+name: Cache and CPU tests
 
 on:
   push:
@@ -44,3 +44,43 @@ jobs:
           name: test-reports
           path: cache-generator/target/test-reports/
           if-no-files-found: ignore
+
+  cpu:
+    name: CPU unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: wildcat
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: sbt
+          cache-dependency-path: |
+            cache-generator/build.sbt
+            cache-generator/project/build.properties
+            wildcat/build.sbt
+            wildcat/project/build.properties
+
+      - name: Set up sbt
+        uses: sbt/setup-sbt@v1
+
+      # Self-contained CPU suites. Assembly suites require external test programs;
+      # CacheAdapterSpec requires the pending write-back adapter integration.
+      - name: Run CPU unit tests
+        run: sbt -batch "testOnly wildcat.RegisterFileTest wildcat.DataMemoryStallTest"
+
+      - name: Upload CPU test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpu-test-reports
+          path: wildcat/target/test-reports/
+          if-no-files-found: error
