@@ -10,7 +10,7 @@ import adapter._
 
 import device._
 
-class LittleCat(frequency: Int = 100000000, baudRate: Int = 115200) extends Module {
+class LittleCat(file: String, frequency: Int = 100000000, baudRate: Int = 115200) extends Module {
   val io = IO(new Bundle {
     val out = Output(UInt(16.W))   // 16 LEDs
     val in = Input(UInt(2.W))
@@ -24,20 +24,23 @@ class LittleCat(frequency: Int = 100000000, baudRate: Int = 115200) extends Modu
   // ---- test program, baked into the ROM ----
   // t0 = 0xF0010000 (LED device); loop: t1++, write t1 to LEDs,
   // do 4 loads through the cache, busy-wait ~2M iterations, repeat.
-  val program = Array(
-    0xF00102B7, // lui  t0, 0xF0010 // loads memory-mapped address of the LED device (0xF0010000) into reg t0.
-    0x00000313, // addi t1, x0, 0 // addi t1, x0, 0: initializes t1 to 0. This will act as the SW counter.
-    0x00130313, // loop: addi t1, t1, 1 // adds 1 to the counter.
-    0x0062A023, // sw   t1, 0(t0) // stores the value of the counter t1 into the LED memory address t0. This instantly updates the physical LEDs on board.
-    0x00002383, // lw   t2, 0(x0) // following 4 lw instructions read data from MM addresses 0, 4, 16, and 32, dumping the result into reg t2. 
-    0x00402383, // lw   t2, 4(x0) // The program does not care about the data; this is designed purely to trigger mix of cache misses and cache hits to test adapter.
-    0x01002383, // lw   t2, 16(x0) 
-    0x02002383, // lw   t2, 32(x0)
-    0x00200E37, // lui  t3, 0x200 // sets up delay. 0x200 << 12 = 0x00200000 = 2.097.152 in decimal stored in reg t3.
-    0xFFFE0E13, // delay: addi t3, t3, -1 // subtracts 1 from reg t3.
-    0xFE0E1EE3, // bne  t3, x0, delay // it checks if t3 == x0 (hardcoded to 0). If t3 != 0, CPU decremants t3 again in delay.
-    0xFDDFF06F  // jal  x0, loop // jump back unconditionally to very top of program loop.
-  )
+  // val program = Array(
+  //   0xF00102B7, // lui  t0, 0xF0010 // loads memory-mapped address of the LED device (0xF0010000) into reg t0.
+  //   0x00000313, // addi t1, x0, 0 // addi t1, x0, 0: initializes t1 to 0. This will act as the SW counter.
+  //   0x00130313, // loop: addi t1, t1, 1 // adds 1 to the counter.
+  //   0x0062A023, // sw   t1, 0(t0) // stores the value of the counter t1 into the LED memory address t0. This instantly updates the physical LEDs on board.
+  //   0x00002383, // lw   t2, 0(x0) // following 4 lw instructions read data from MM addresses 0, 4, 16, and 32, dumping the result into reg t2. 
+  //   0x00402383, // lw   t2, 4(x0) // The program does not care about the data; this is designed purely to trigger mix of cache misses and cache hits to test adapter.
+  //   0x01002383, // lw   t2, 16(x0) 
+  //   0x02002383, // lw   t2, 32(x0)
+  //   0x00200E37, // lui  t3, 0x200 // sets up delay. 0x200 << 12 = 0x00200000 = 2.097.152 in decimal stored in reg t3.
+  //   0xFFFE0E13, // delay: addi t3, t3, -1 // subtracts 1 from reg t3.
+  //   0xFE0E1EE3, // bne  t3, x0, delay // it checks if t3 == x0 (hardcoded to 0). If t3 != 0, CPU decremants t3 again in delay.
+  //   0xFDDFF06F  // jal  x0, loop // jump back unconditionally to very top of program loop.
+  // )
+  //
+
+  val (program, start) = wildcat.Util.getCode(file)
 
   val cpu = Module(new ThreeCats())
 
@@ -88,13 +91,13 @@ class LittleCat(frequency: Int = 100000000, baudRate: Int = 115200) extends Modu
   val heartbeat = RegInit(0.U(27.W))
   heartbeat := heartbeat + 1.U
 
-  val hitCount = RegInit(0.U(8.W))
-  val missCount = RegInit(0.U(7.W))
+  val hitCount = RegInit(0.U(32.W))
+  val missCount = RegInit(0.U(32.W))
   when(cacheAdapter.debug_hit) { hitCount := hitCount + 1.U }
   when(cacheAdapter.debug_miss) { missCount := missCount + 1.U }
 
   // SW0 down: LED0-14 = software counter.  SW0 up: LED0-7 = hits, LED8-14 = misses.
-  val stats = Cat(missCount, hitCount)
+  val stats = Cat(missCount(6,0), hitCount(7,0))
   io.out := Cat(heartbeat(26), Mux(io.in(0), stats, ioDevice.io.out(14, 0)))
 
   val statsUART = Module(new StatsUART(frequency, baudRate, frequency / 10))
@@ -110,5 +113,6 @@ class LittleCat(frequency: Int = 100000000, baudRate: Int = 115200) extends Modu
 }
 
 object LittleCat extends App {
-  emitVerilog(new LittleCat, Array("--target-dir", "generated"))
+  val file = if (args.length > 0) args(0) else "a.out"
+  emitVerilog(new LittleCat(file), Array("--target-dir", "generated"))
 }

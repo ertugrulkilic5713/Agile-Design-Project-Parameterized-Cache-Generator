@@ -793,18 +793,16 @@ module InstructionROM(
   reg [31:0] _RAND_1;
 `endif // RANDOMIZE_REG_INIT
   reg [31:0] addrReg; // @[src/main/scala/memory/InstructionROM.scala 12:20]
-  wire [31:0] _GEN_1 = 4'h1 == addrReg[5:2] ? 32'h313 : 32'hf00102b7; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_2 = 4'h2 == addrReg[5:2] ? 32'h130313 : _GEN_1; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_3 = 4'h3 == addrReg[5:2] ? 32'h62a023 : _GEN_2; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_4 = 4'h4 == addrReg[5:2] ? 32'h2383 : _GEN_3; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_5 = 4'h5 == addrReg[5:2] ? 32'h402383 : _GEN_4; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_6 = 4'h6 == addrReg[5:2] ? 32'h1002383 : _GEN_5; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_7 = 4'h7 == addrReg[5:2] ? 32'h2002383 : _GEN_6; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_8 = 4'h8 == addrReg[5:2] ? 32'h200e37 : _GEN_7; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_9 = 4'h9 == addrReg[5:2] ? 32'hfffe0e13 : _GEN_8; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_10 = 4'ha == addrReg[5:2] ? 32'hfe0e1ee3 : _GEN_9; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_1 = 4'h1 == addrReg[5:2] ? 32'h293 : 32'hf0010237; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_2 = 4'h2 == addrReg[5:2] ? 32'h40000313 : _GEN_1; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_3 = 4'h3 == addrReg[5:2] ? 32'h393 : _GEN_2; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_4 = 4'h4 == addrReg[5:2] ? 32'h3a403 : _GEN_3; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_5 = 4'h5 == addrReg[5:2] ? 32'h438393 : _GEN_4; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_6 = 4'h6 == addrReg[5:2] ? 32'hfe639ce3 : _GEN_5; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_7 = 4'h7 == addrReg[5:2] ? 32'h128293 : _GEN_6; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_8 = 4'h8 == addrReg[5:2] ? 32'h522023 : _GEN_7; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
   reg  firstReg; // @[src/main/scala/memory/InstructionROM.scala 20:25]
-  assign cpuPort_rdData = 4'hb == addrReg[5:2] ? 32'hfddff06f : _GEN_10; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  assign cpuPort_rdData = 4'h9 == addrReg[5:2] ? 32'hfe9ff06f : _GEN_8; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
   assign cpuPort_ack = ~firstReg; // @[src/main/scala/memory/InstructionROM.scala 22:18]
   always @(posedge clock) begin
     addrReg <= cpuPort_address; // @[src/main/scala/memory/InstructionROM.scala 13:11]
@@ -6253,8 +6251,8 @@ module IODevice(
   output [31:0] cpuPort_rdData, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
   input  [31:0] cpuPort_wrData, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
   output        cpuPort_ack, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
-  output [15:0] io_out, // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:16]
-  input  [1:0]  io_in // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:16]
+  output [15:0] io_out, // @[src/main/scala/wildcat/pipeline/LittleCat.scala 64:16]
+  input  [1:0]  io_in // @[src/main/scala/wildcat/pipeline/LittleCat.scala 64:16]
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
@@ -6262,25 +6260,25 @@ module IODevice(
   reg [31:0] _RAND_2;
   reg [31:0] _RAND_3;
 `endif // RANDOMIZE_REG_INIT
-  reg [15:0] outReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 65:25]
-  reg [1:0] cpuPort_rdData_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 67:38]
-  reg [1:0] cpuPort_rdData_REG_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 67:30]
-  reg  cpuPort_ack_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:27]
-  assign cpuPort_rdData = {{30'd0}, cpuPort_rdData_REG_1}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 67:20]
-  assign cpuPort_ack = cpuPort_ack_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:17]
-  assign io_out = outReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 69:12]
+  reg [15:0] outReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:25]
+  reg [1:0] cpuPort_rdData_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 70:38]
+  reg [1:0] cpuPort_rdData_REG_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 70:30]
+  reg  cpuPort_ack_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:27]
+  assign cpuPort_rdData = {{30'd0}, cpuPort_rdData_REG_1}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 70:20]
+  assign cpuPort_ack = cpuPort_ack_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:17]
+  assign io_out = outReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 72:12]
   always @(posedge clock) begin
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 65:25]
-      outReg <= 16'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 65:25]
-    end else if (cpuPort_wr) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 66:22]
-      outReg <= cpuPort_wrData[15:0]; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 66:31]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:25]
+      outReg <= 16'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:25]
+    end else if (cpuPort_wr) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 69:22]
+      outReg <= cpuPort_wrData[15:0]; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 69:31]
     end
-    cpuPort_rdData_REG <= io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 67:38]
-    cpuPort_rdData_REG_1 <= cpuPort_rdData_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 67:30]
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:27]
-      cpuPort_ack_REG <= 1'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:27]
+    cpuPort_rdData_REG <= io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 70:38]
+    cpuPort_rdData_REG_1 <= cpuPort_rdData_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 70:30]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:27]
+      cpuPort_ack_REG <= 1'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:27]
     end else begin
-      cpuPort_ack_REG <= cpuPort_rd | cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:27]
+      cpuPort_ack_REG <= cpuPort_rd | cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:27]
     end
   end
 // Register and memory initialization
@@ -6786,79 +6784,79 @@ module LittleCat(
   reg [31:0] _RAND_2;
   reg [31:0] _RAND_3;
 `endif // RANDOMIZE_REG_INIT
-  wire  cpu_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire  cpu_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire [31:0] cpu_io_imem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire [31:0] cpu_io_imem_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire  cpu_io_imem_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire [31:0] cpu_io_dmem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire  cpu_io_dmem_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire  cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire [31:0] cpu_io_dmem_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire [31:0] cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire [3:0] cpu_io_dmem_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire  cpu_io_dmem_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
-  wire  imem_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 44:20]
-  wire  imem_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 44:20]
-  wire [31:0] imem_cpuPort_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 44:20]
-  wire [31:0] imem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 44:20]
-  wire  imem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 44:20]
-  wire  cacheAdapter_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire [31:0] cacheAdapter_cpuPort_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire [31:0] cacheAdapter_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire [31:0] cacheAdapter_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire [3:0] cacheAdapter_cpuPort_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire [31:0] cacheAdapter_mem_port_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_mem_port_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_mem_port_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire [31:0] cacheAdapter_mem_port_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire [31:0] cacheAdapter_mem_port_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire [3:0] cacheAdapter_mem_port_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_mem_port_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_debug_hit; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  cacheAdapter_debug_miss; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
-  wire  dmem_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire  dmem_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire [31:0] dmem_cpuPort_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire  dmem_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire  dmem_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire [31:0] dmem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire [31:0] dmem_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire [3:0] dmem_cpuPort_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire  dmem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
-  wire  ioDevice_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire  ioDevice_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire  ioDevice_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire  ioDevice_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire [31:0] ioDevice_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire [31:0] ioDevice_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire  ioDevice_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire [15:0] ioDevice_io_out; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire [1:0] ioDevice_io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
-  wire  statsUART_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 100:25]
-  wire  statsUART_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 100:25]
-  wire [31:0] statsUART_io_hits; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 100:25]
-  wire [31:0] statsUART_io_misses; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 100:25]
-  wire  statsUART_io_txd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 100:25]
-  wire  csMem = cpu_io_dmem_address[31:28] == 4'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 49:43]
-  reg [31:0] memAddressReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:32]
-  wire  csIO = cpu_io_dmem_address[31:28] == 4'hf; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 72:42]
-  wire  csIOReg = memAddressReg[31:28] == 4'hf; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 73:39]
-  wire  csIODev = csIO & cpu_io_dmem_address[19:16] == 4'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 74:22]
-  wire  muxIODev = csIOReg & memAddressReg[19:16] == 4'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 75:26]
-  reg [26:0] heartbeat; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 88:26]
-  wire [26:0] _heartbeat_T_1 = heartbeat + 27'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 89:26]
-  reg [7:0] hitCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 91:25]
-  reg [6:0] missCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 92:26]
-  wire [7:0] _hitCount_T_1 = hitCount + 8'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 93:55]
-  wire [6:0] _missCount_T_1 = missCount + 7'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 94:58]
-  wire [14:0] stats = {missCount,hitCount}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 97:18]
-  wire [14:0] _io_out_T_3 = io_in[0] ? stats : ioDevice_io_out[14:0]; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:35]
-  ThreeCats cpu ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:19]
+  wire  cpu_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire  cpu_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire [31:0] cpu_io_imem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire [31:0] cpu_io_imem_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire  cpu_io_imem_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire [31:0] cpu_io_dmem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire  cpu_io_dmem_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire  cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire [31:0] cpu_io_dmem_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire [31:0] cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire [3:0] cpu_io_dmem_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire  cpu_io_dmem_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
+  wire  imem_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 47:20]
+  wire  imem_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 47:20]
+  wire [31:0] imem_cpuPort_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 47:20]
+  wire [31:0] imem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 47:20]
+  wire  imem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 47:20]
+  wire  cacheAdapter_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire [31:0] cacheAdapter_cpuPort_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire [31:0] cacheAdapter_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire [31:0] cacheAdapter_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire [3:0] cacheAdapter_cpuPort_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire [31:0] cacheAdapter_mem_port_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_mem_port_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_mem_port_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire [31:0] cacheAdapter_mem_port_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire [31:0] cacheAdapter_mem_port_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire [3:0] cacheAdapter_mem_port_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_mem_port_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_debug_hit; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  cacheAdapter_debug_miss; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
+  wire  dmem_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire  dmem_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire [31:0] dmem_cpuPort_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire  dmem_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire  dmem_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire [31:0] dmem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire [31:0] dmem_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire [3:0] dmem_cpuPort_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire  dmem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
+  wire  ioDevice_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire  ioDevice_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire  ioDevice_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire  ioDevice_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire [31:0] ioDevice_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire [31:0] ioDevice_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire  ioDevice_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire [15:0] ioDevice_io_out; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire [1:0] ioDevice_io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
+  wire  statsUART_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 103:25]
+  wire  statsUART_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 103:25]
+  wire [31:0] statsUART_io_hits; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 103:25]
+  wire [31:0] statsUART_io_misses; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 103:25]
+  wire  statsUART_io_txd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 103:25]
+  wire  csMem = cpu_io_dmem_address[31:28] == 4'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:43]
+  reg [31:0] memAddressReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 74:32]
+  wire  csIO = cpu_io_dmem_address[31:28] == 4'hf; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 75:42]
+  wire  csIOReg = memAddressReg[31:28] == 4'hf; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 76:39]
+  wire  csIODev = csIO & cpu_io_dmem_address[19:16] == 4'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:22]
+  wire  muxIODev = csIOReg & memAddressReg[19:16] == 4'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 78:26]
+  reg [26:0] heartbeat; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 91:26]
+  wire [26:0] _heartbeat_T_1 = heartbeat + 27'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 92:26]
+  reg [31:0] hitCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 94:25]
+  reg [31:0] missCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 95:26]
+  wire [31:0] _hitCount_T_1 = hitCount + 32'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 96:55]
+  wire [31:0] _missCount_T_1 = missCount + 32'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 97:58]
+  wire [14:0] stats = {missCount[6:0],hitCount[7:0]}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 100:18]
+  wire [14:0] _io_out_T_3 = io_in[0] ? stats : ioDevice_io_out[14:0]; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:35]
+  ThreeCats cpu ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:19]
     .clock(cpu_clock),
     .reset(cpu_reset),
     .io_imem_address(cpu_io_imem_address),
@@ -6872,14 +6870,14 @@ module LittleCat(
     .io_dmem_wrMask(cpu_io_dmem_wrMask),
     .io_dmem_ack(cpu_io_dmem_ack)
   );
-  InstructionROM imem ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 44:20]
+  InstructionROM imem ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 47:20]
     .clock(imem_clock),
     .reset(imem_reset),
     .cpuPort_address(imem_cpuPort_address),
     .cpuPort_rdData(imem_cpuPort_rdData),
     .cpuPort_ack(imem_cpuPort_ack)
   );
-  CacheAdapter cacheAdapter ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:28]
+  CacheAdapter cacheAdapter ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:28]
     .clock(cacheAdapter_clock),
     .reset(cacheAdapter_reset),
     .cpuPort_address(cacheAdapter_cpuPort_address),
@@ -6899,7 +6897,7 @@ module LittleCat(
     .debug_hit(cacheAdapter_debug_hit),
     .debug_miss(cacheAdapter_debug_miss)
   );
-  ScratchPadMem dmem ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:20]
+  ScratchPadMem dmem ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:20]
     .clock(dmem_clock),
     .reset(dmem_reset),
     .cpuPort_address(dmem_cpuPort_address),
@@ -6910,7 +6908,7 @@ module LittleCat(
     .cpuPort_wrMask(dmem_cpuPort_wrMask),
     .cpuPort_ack(dmem_cpuPort_ack)
   );
-  IODevice ioDevice ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:24]
+  IODevice ioDevice ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:24]
     .clock(ioDevice_clock),
     .reset(ioDevice_reset),
     .cpuPort_rd(ioDevice_cpuPort_rd),
@@ -6921,71 +6919,71 @@ module LittleCat(
     .io_out(ioDevice_io_out),
     .io_in(ioDevice_io_in)
   );
-  StatsUART statsUART ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 100:25]
+  StatsUART statsUART ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 103:25]
     .clock(statsUART_clock),
     .reset(statsUART_reset),
     .io_hits(statsUART_io_hits),
     .io_misses(statsUART_io_misses),
     .io_txd(statsUART_io_txd)
   );
-  assign io_out = {heartbeat[26],_io_out_T_3}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:16]
-  assign io_tx = statsUART_io_txd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 103:9]
+  assign io_out = {heartbeat[26],_io_out_T_3}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:16]
+  assign io_tx = statsUART_io_txd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 106:9]
   assign io_txConf = 1'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 22:13]
   assign cpu_clock = clock;
   assign cpu_reset = reset;
-  assign cpu_io_imem_rdData = imem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:15]
-  assign cpu_io_imem_ack = imem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:15]
-  assign cpu_io_dmem_rdData = muxIODev ? ioDevice_cpuPort_rdData : cacheAdapter_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:18 83:22 84:39]
-  assign cpu_io_dmem_ack = cacheAdapter_cpuPort_ack | ioDevice_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 85:47]
+  assign cpu_io_imem_rdData = imem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:15]
+  assign cpu_io_imem_ack = imem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:15]
+  assign cpu_io_dmem_rdData = muxIODev ? ioDevice_cpuPort_rdData : cacheAdapter_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 87:18 86:22 87:39]
+  assign cpu_io_dmem_ack = cacheAdapter_cpuPort_ack | ioDevice_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 88:47]
   assign imem_clock = clock;
   assign imem_reset = reset;
-  assign imem_cpuPort_address = cpu_io_imem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:15]
+  assign imem_cpuPort_address = cpu_io_imem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 48:15]
   assign cacheAdapter_clock = clock;
   assign cacheAdapter_reset = reset;
-  assign cacheAdapter_cpuPort_address = cpu_io_dmem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 50:32]
-  assign cacheAdapter_cpuPort_rd = csMem & cpu_io_dmem_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 53:36]
-  assign cacheAdapter_cpuPort_wr = csMem & cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 54:36]
-  assign cacheAdapter_cpuPort_wrData = cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:31]
-  assign cacheAdapter_cpuPort_wrMask = cpu_io_dmem_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:31]
-  assign cacheAdapter_mem_port_rdData = dmem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:16]
-  assign cacheAdapter_mem_port_ack = dmem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:16]
+  assign cacheAdapter_cpuPort_address = cpu_io_dmem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 53:32]
+  assign cacheAdapter_cpuPort_rd = csMem & cpu_io_dmem_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:36]
+  assign cacheAdapter_cpuPort_wr = csMem & cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:36]
+  assign cacheAdapter_cpuPort_wrData = cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 54:31]
+  assign cacheAdapter_cpuPort_wrMask = cpu_io_dmem_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 55:31]
+  assign cacheAdapter_mem_port_rdData = dmem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 60:16]
+  assign cacheAdapter_mem_port_ack = dmem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 60:16]
   assign dmem_clock = clock;
   assign dmem_reset = reset;
-  assign dmem_cpuPort_address = cacheAdapter_mem_port_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:16]
-  assign dmem_cpuPort_rd = cacheAdapter_mem_port_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:16]
-  assign dmem_cpuPort_wr = cacheAdapter_mem_port_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:16]
-  assign dmem_cpuPort_wrData = cacheAdapter_mem_port_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:16]
-  assign dmem_cpuPort_wrMask = cacheAdapter_mem_port_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:16]
+  assign dmem_cpuPort_address = cacheAdapter_mem_port_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 60:16]
+  assign dmem_cpuPort_rd = cacheAdapter_mem_port_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 60:16]
+  assign dmem_cpuPort_wr = cacheAdapter_mem_port_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 60:16]
+  assign dmem_cpuPort_wrData = cacheAdapter_mem_port_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 60:16]
+  assign dmem_cpuPort_wrMask = cacheAdapter_mem_port_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 60:16]
   assign ioDevice_clock = clock;
   assign ioDevice_reset = reset;
-  assign ioDevice_cpuPort_rd = csIODev & cpu_io_dmem_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 80:34]
-  assign ioDevice_cpuPort_wr = csIODev & cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:34]
-  assign ioDevice_cpuPort_wrData = cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 79:20]
-  assign ioDevice_io_in = io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 78:18]
+  assign ioDevice_cpuPort_rd = csIODev & cpu_io_dmem_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 83:34]
+  assign ioDevice_cpuPort_wr = csIODev & cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:34]
+  assign ioDevice_cpuPort_wrData = cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 82:20]
+  assign ioDevice_io_in = io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:18]
   assign statsUART_clock = clock;
   assign statsUART_reset = reset;
-  assign statsUART_io_hits = {{24'd0}, hitCount}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:21]
-  assign statsUART_io_misses = {{25'd0}, missCount}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 102:23]
+  assign statsUART_io_hits = hitCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 104:21]
+  assign statsUART_io_misses = missCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 105:23]
   always @(posedge clock) begin
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:32]
-      memAddressReg <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:32]
-    end else if (cpu_io_dmem_rd) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:32]
-      memAddressReg <= cpu_io_dmem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 71:32]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 74:32]
+      memAddressReg <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 74:32]
+    end else if (cpu_io_dmem_rd) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 74:32]
+      memAddressReg <= cpu_io_dmem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 74:32]
     end
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 88:26]
-      heartbeat <= 27'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 88:26]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 91:26]
+      heartbeat <= 27'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 91:26]
     end else begin
-      heartbeat <= _heartbeat_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 89:13]
+      heartbeat <= _heartbeat_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 92:13]
     end
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 91:25]
-      hitCount <= 8'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 91:25]
-    end else if (cacheAdapter_debug_hit) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 93:32]
-      hitCount <= _hitCount_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 93:43]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 94:25]
+      hitCount <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 94:25]
+    end else if (cacheAdapter_debug_hit) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 96:32]
+      hitCount <= _hitCount_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 96:43]
     end
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 92:26]
-      missCount <= 7'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 92:26]
-    end else if (cacheAdapter_debug_miss) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 94:33]
-      missCount <= _missCount_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 94:45]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 95:26]
+      missCount <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 95:26]
+    end else if (cacheAdapter_debug_miss) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 97:33]
+      missCount <= _missCount_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 97:45]
     end
   end
 // Register and memory initialization
@@ -7029,9 +7027,9 @@ initial begin
   _RAND_1 = {1{`RANDOM}};
   heartbeat = _RAND_1[26:0];
   _RAND_2 = {1{`RANDOM}};
-  hitCount = _RAND_2[7:0];
+  hitCount = _RAND_2[31:0];
   _RAND_3 = {1{`RANDOM}};
-  missCount = _RAND_3[6:0];
+  missCount = _RAND_3[31:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
