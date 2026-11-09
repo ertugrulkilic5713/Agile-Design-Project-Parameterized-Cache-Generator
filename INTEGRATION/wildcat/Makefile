@@ -66,7 +66,7 @@ hw: app
 	$(SBT) "runMain wildcat.pipeline.WildcatTop a.out"
 
 hw-asic: app
-	$(SBT) "runMain wildcat.pipeline.LittleCat a.out"
+	$(SBT) "runMain wildcat.pipeline.LittleCat a.out $(CACHE)"
 
 hw-fmax:
 	$(SBT) "runMain wildcat.pipeline.SynthTopFmax"

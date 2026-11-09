@@ -15,6 +15,7 @@ import soc.PipeConDevice
 class CacheAdapter(cfg: CacheConfig) extends PipeConDevice(32) {
   // checking to ensure it works with Wildcat impl
   require(cfg.memBeatBytes == 4, "PipeCon is 32 bits wide")
+  require(cfg.wordBytes == 4, "Wildcat words are 32 bits wide")
   require(cfg.addrWidth == 32)
 
   val cache = Module(new DirectMappedReadCache(cfg))
@@ -24,38 +25,74 @@ class CacheAdapter(cfg: CacheConfig) extends PipeConDevice(32) {
   val debug_mem_state = IO(Output(UInt(2.W)))
 
 
+  // ----- debug / statistics --------------------------
   val debug_hit = IO(Output(Bool()))
   val debug_miss = IO(Output(Bool()))
-  val missed = RegInit(false.B)
-  when(cache.io.memReq.fire) { missed := true.B }
-  when(cache.io.resp.fire) { missed := false.B }
-  debug_miss := cache.io.memReq.fire
-  debug_hit := cache.io.resp.fire && !missed
+  val debug_writeback_wb = IO(Output(Bool()))
+  val debug_write_wt = IO(Output(Bool()))
+  debug_hit := cache.io.stat.hit
+  debug_miss := cache.io.stat.miss
+  debug_writeback_wb := cache.io.stat.writeback_wb
+  debug_write_wt := cache.io.stat.write_wt
 
-
-  // ----- CPU -----
-  val cpuIdle :: cpuWaitForResp :: cpuWriteWait :: Nil = Enum(3)
+  // ----------------- CPU SIDE -----------------
+  val cpuIdle :: cpuWaitForResp :: Nil = Enum(2) // cpuWriteWait is not used anymore.
   val cpu_state = RegInit(cpuIdle)
-  val addr_reg = Reg(UInt(32.W))
+  val req_reg = Reg(new CpuReq(cfg))
   val req_sent = RegInit(false.B) // cache accepted the request
 
-  cache.io.req.valid := false.B
-  cache.io.req.bits.addr := Mux(cpu_state === cpuIdle, cpuPort.address, addr_reg)
-  cache.io.resp.ready := false.B
+  // request as seen on bus this cycle.
+  val req_now = Wire(new CpuReq(cfg))
+  req_now.addr := cpuPort.address
+  req_now.write := cpuPort.wr
+  req_now.wdata := cpuPort.wrData
+  req_now.wmask := cpuPort.wrMask
 
-  cpuPort.rdData := cache.io.resp.bits.data
+  cache.io.cpu.req.valid := false.B
+  cache.io.cpu.req.bits := Mux(cpu_state === cpuIdle, req_now, req_reg)
+  cache.io.cpu.resp.ready := false.B
+
+  cpuPort.rdData := cache.io.cpu.resp.bits.data
   cpuPort.ack := false.B
 
-  // ----- Mem -----
-  val memIdle :: memRead :: memSend :: Nil = Enum(3)
+
+  // ----- CPU FSM -----
+  switch(cpu_state) {
+    is(cpuIdle) {
+      when(cpuPort.rd || cpuPort.wr) {
+        req_reg := req_now
+        cache.io.cpu.req.valid := true.B
+        req_sent := cache.io.cpu.req.ready
+        cpu_state := cpuWaitForResp
+      }
+    }
+    is(cpuWaitForResp) {
+      when(!req_sent) {
+        cache.io.cpu.req.valid := true.B
+        when(cache.io.cpu.req.ready) {
+          req_sent := true.B
+        }
+      }
+      cache.io.cpu.resp.ready := true.B
+      when(cache.io.cpu.resp.valid) {
+        cpuPort.ack := true.B
+        req_sent := false.B
+        cpu_state := cpuIdle
+      }
+    }
+  }
+
+  //------------------ MM SIDE -----------------
+  val memIdle :: memRead :: memSend :: memWriteWait :: Nil = Enum(4)
   val mem_state = RegInit(memIdle)
   val base_reg = Reg(UInt(32.W))
-  val hit_count = RegInit(0.U(log2Ceil(cfg.beatsPerLine).max(1).W))
+  val beat_cnt = RegInit(0.U(log2Ceil(cfg.beatsPerLine).max(1).W))
   val data_reg = Reg(UInt(32.W))
 
-  cache.io.memReq.ready := false.B
-  cache.io.memResp.valid := false.B
-  cache.io.memResp.bits.data := data_reg
+  cache.io.mm.req_refill.ready := false.B
+  cache.io.mm.data_refill.valid := false.B
+  cache.io.mm.data_refill.bits.data := data_reg
+  cache.io.mm.req_write.ready := false.B
 
   mem_port.rd := false.B
   mem_port.wr := false.B
@@ -63,61 +100,32 @@ class CacheAdapter(cfg: CacheConfig) extends PipeConDevice(32) {
   mem_port.wrData := 0.U
   mem_port.wrMask := 0.U
 
-  // ----- CPU FSM -----
-  switch(cpu_state) {
-    is(cpuIdle) {
-      when(cpuPort.rd) {
-        addr_reg := cpuPort.address
-        cache.io.req.valid := true.B
-        cpu_state := cpuWaitForResp
-        req_sent := cache.io.req.ready // retry next cycle if not accepted
-      }.elsewhen(cpuPort.wr) {
-        // write-through
-        mem_port.wr := true.B
-        mem_port.address := cpuPort.address
-        mem_port.wrData := cpuPort.wrData
-        mem_port.wrMask := cpuPort.wrMask
-        when(mem_port.ack) {
-          cpuPort.ack := true.B
-        }.otherwise {
-          cpu_state := cpuWriteWait
-        }
-      }
-    }
-    is(cpuWaitForResp) {
-      when(!req_sent) {
-        cache.io.req.valid := true.B
-        when(cache.io.req.ready) {
-          req_sent := true.B
-        }
-      }
-      cache.io.resp.ready := true.B
-      when(cache.io.resp.valid) {
-        cpuPort.ack := true.B
-        req_sent := false.B
-        cpu_state := cpuIdle
-      }
-    }
-    is(cpuWriteWait) {
-      when(mem_port.ack) {
-        cpuPort.ack := true.B
-        cpu_state := cpuIdle
-      }
-    }
-  }
+  val last_beat = beat_cnt === (cfg.beatsPerLine - 1).U
 
   // ----- Memory FSM -----
-  // refills mem
-  val last_beat = hit_count === (cfg.beatsPerLine - 1).U
   switch(mem_state) {
     is(memIdle) {
-      cache.io.memReq.ready := true.B
-      when(cache.io.memReq.valid) {
-        base_reg := cache.io.memReq.bits.addr
-        hit_count := 0.U
-        mem_port.rd := true.B
-        mem_port.address := cache.io.memReq.bits.addr
-        mem_state := memRead
+      when(cache.io.mm.req_write.valid) {
+        mem_port.wr := true.B
+        mem_port.address := cache.io.mm.req_write.bits.addr
+        mem_port.wrData := cache.io.mm.req_write.bits.data
+        mem_port.wrMask := cache.io.mm.req_write.bits.mask
+        mem_state := memWriteWait
+      }.otherwise {
+        cache.io.mm.req_refill.ready := true.B
+        when(cache.io.mm.req_refill.valid) {
+          base_reg := cache.io.mm.req_refill.bits.addr
+          beat_cnt := 0.U
+          mem_port.rd := true.B
+          mem_port.address := cache.io.mm.req_refill.bits.addr
+          mem_state := memRead
+        }
+      }
+    }
+    is(memWriteWait) {
+      when(mem_port.ack) {
+        cache.io.mm.req_write.ready := true.B // beats are done; cache moves to the next one.
+        mem_state := memIdle
       }
     }
     is(memRead) {
@@ -127,13 +135,13 @@ class CacheAdapter(cfg: CacheConfig) extends PipeConDevice(32) {
       }
     }
     is(memSend) {
-      cache.io.memResp.valid := true.B
-      when(cache.io.memResp.ready) {
+      cache.io.mm.data_refill.valid := true.B
+      when(cache.io.mm.data_refill.ready) {
         when(last_beat) {
           mem_state := memIdle
         }.otherwise {
-          val next = hit_count + 1.U
-          hit_count := next
+          val next = beat_cnt + 1.U
+          beat_cnt := next
           mem_port.rd := true.B
           mem_port.address := base_reg + (next << log2Ceil(cfg.memBeatBytes))
           mem_state := memRead
@@ -146,131 +154,3 @@ class CacheAdapter(cfg: CacheConfig) extends PipeConDevice(32) {
   debug_mem_state := mem_state
 }
 
-// class CacheAdapter(cfg: CacheConfig) extends PipeConDevice(32) {
-//   // checking to ensure it works with Wilcat impl
-//   require(cfg.memBeatByte == 4, "PipeCon is 32 bits wide")
-//   require(cfg.addrWidth == 32)
-//
-//   val cache = Module(new DirectMappedReadCache(cfg))
-//   val mem_port = IO(Flipped(new PipeCon(32)))
-//
-//   // ----- CPU -----
-//   val cpuIdle :: CPU_WAIT_FOR_RESP :: CPU_WRITE_WAIT :: Nil = Enum(3)
-//   val cpu_state = RegInit(cpuIdle)
-//   val addr_reg = Reg(UInt(32.W))
-//   val req_sent = RegInit(false.B) // cache accepts request for data
-//
-//   // inits basic cache cfg
-//   cache.io.req.valid := false.B
-//   cache.io.req.bits.addr := Mux(cpu_state === cpuIdle, io.address, addr_reg)
-//   cache.io.resp.ready := false.B
-//
-//   io.rdData := cache.io.resp.bits.data // move cache data to PipeCon
-//   io.ack := false.B
-//
-//   // ----- Mem -----
-//   val memIdle :: memRead :: memSend :: Nil = Enum(3)
-//   val mem_state = RegInit(memIdle)
-//   val base_reg = Reg(UInt(32.W))
-//   val hit_count = RegInit(0.U(log2Ceil(cfg.beatCnt)))
-//   val data_reg = Reg(UInt(32.W))
-//
-//   // init cache 
-//   cache.io.memReq.ready := false.B
-//   cache.io.memResp.valid := false.B
-//   cache.io.memResp.bits.data :=data_reg
-//
-//   // init port
-//   mem_port.rd := false.B
-//   mem_port.wr := false.B
-//   mem_port.address := 0.U
-//   mem_port.wrData := 0.U
-//   mem_port.wrMask := 0.U
-//
-//   // FSMs
-//   switch (cpu_state) {
-//     is (cpuIdle) {
-//       when(io.rd) { // wants to read
-//         addr_reg := io.address
-//         cache.io.req.valid := true.B
-//         cpu_state := CPU_WAIT_FOR_RESP
-//         // retry until cache ready to not lose pulse
-//         req_sent := cache.io.req.ready
-//       }.elsewhen(io.wr) { // wants to write
-//         // write-through
-//         mem_port.wr      := true.B
-//         mem_port.address := io.address
-//         mem_port.wrData  := io.wrData
-//         mem_port.wrMask  := io.wrMask
-//         when(mem_port.ack) { 
-//           io.ack := true.B 
-//         }.otherwise { 
-//           cpu_state := CPU_WRITE_WAIT 
-//         }
-//       }
-//     }
-//     is (CPU_WAIT_FOR_RESP) {
-//       // retry until accepted req
-//       when (!req_sent) {
-//         cache.io.req.valid := true.B
-//         when (cache.io.req.ready) {
-//           req_sent := true.B
-//         }
-//       }
-//
-//       cache.io.resp.ready := true.B
-//       when (cache.io.resp.valid) {
-//         io.ack := true.B
-//         req_sent := false.B
-//         cpu_state := cpuIdle
-//       }
-//     }
-//
-//     // mem ok -> io ok for send
-//     is (CPU_WRITE_WAIT) {
-//       when (mem_port.ack) {
-//         io.ack := true.B;
-//         cpu_state := cpuIdle
-//       }
-//     }
-//   }
-//
-//   val last_hit = hit_count === (cfg.beatsPerLine - 1).U
-//   switch (mem_state) {
-//     is (memIdle) {
-//       cache.io.memReq.ready := true.B
-//       when (cache.io.memReq.valid) {
-//         base_reg := cache.io.memReq.bits.addr
-//         hit_count := 0.U // reset for next data req
-//         mem_port.rd := true.B
-//         mem_port.addr := cache.io.memReq.bits.addr
-//         mem_state := memRead
-//       }
-//     }
-//
-//     // after aquire mem req -> read memory in data register
-//     is (memRead) {
-//       when (mem_port.ack) {
-//         data_reg := mem_port.rdData
-//         mem_state := memSend
-//       }
-//     }
-//
-//     // searches for data until found
-//     is (memSend) {
-//       cache.io.memResp.valid := true.B
-//       when (cache.io.memResp.ready) {
-//         when(last_hit) {
-//           mem_state := memIdle
-//         }.otherwise {
-//           val next = hit_count + 1.U
-//           hit_count := next
-//           mem_port.rd := true.B
-//           mem_port.address := base_reg + (next << log2Ceil(cfg.memBeatBytes))
-//           mem_state := memRead
-//         }
-//       }
-//     }
-//   }
-//
-// }

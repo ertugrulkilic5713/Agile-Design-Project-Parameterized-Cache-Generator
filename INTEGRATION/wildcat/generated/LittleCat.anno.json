@@ -35,11 +35,13 @@
     "class":"chisel3.experimental.EnumAnnotations$EnumDefAnnotation",
     "typeName":"cache.CacheState",
     "definition":{
-      "sRefillWait":3,
+      "sWriteThrough_wt":5,
+      "sRefillWait":4,
+      "sWriteback_wb":2,
       "sCompare":1,
-      "sRespond":4,
+      "sRespond":6,
       "sIdle":0,
-      "sRefillReq":2
+      "sRefillReq":3
     }
   },
   {

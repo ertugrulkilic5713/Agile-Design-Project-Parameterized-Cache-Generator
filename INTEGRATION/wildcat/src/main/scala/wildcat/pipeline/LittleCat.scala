@@ -10,7 +10,7 @@ import adapter._
 
 import device._
 
-class LittleCat(file: String, frequency: Int = 100000000, baudRate: Int = 115200) extends Module {
+class LittleCat(file: String, cfg: CacheConfig = CacheConfig(), frequency: Int = 100000000, baudRate: Int = 115200) extends Module {
   val io = IO(new Bundle {
     val out = Output(UInt(16.W))   // 16 LEDs
     val in = Input(UInt(2.W))
@@ -48,7 +48,7 @@ class LittleCat(file: String, frequency: Int = 100000000, baudRate: Int = 115200
   cpu.io.imem <> imem.cpuPort
 
   // ---- data memory behind the cache ----
-  val cacheAdapter = Module(new CacheAdapter(CacheConfig()))
+  val cacheAdapter = Module(new CacheAdapter(cfg))
   val csMem = cpu.io.dmem.address(31, 28) === 0.U
   cacheAdapter.cpuPort.address := cpu.io.dmem.address
   cacheAdapter.cpuPort.wrData := cpu.io.dmem.wrData
@@ -56,7 +56,7 @@ class LittleCat(file: String, frequency: Int = 100000000, baudRate: Int = 115200
   cacheAdapter.cpuPort.rd := csMem && cpu.io.dmem.rd
   cacheAdapter.cpuPort.wr := csMem && cpu.io.dmem.wr
 
-  val dmem = Module(new ScratchPadMem(Array.fill(16)(0), 4096))
+  val dmem = Module(new ScratchPadMem(Array.fill(16)(0), 16384))
   dmem.cpuPort <> cacheAdapter.mem_port
 
   // ---- LED device at 0xF0010000 ----
@@ -114,5 +114,12 @@ class LittleCat(file: String, frequency: Int = 100000000, baudRate: Int = 115200
 
 object LittleCat extends App {
   val file = if (args.length > 0) args(0) else "a.out"
-  emitVerilog(new LittleCat(file), Array("--target-dir", "generated"))
+  val policy = if (args.length > 1) args(1) else "wb"
+  val cfg = policy match {
+    case "wt" => CacheConfig(writePolicy = WriteThrough)
+    case "wb" => CacheConfig(writePolicy = WriteBack)
+    case other => throw new IllegalArgumentException(s"uknown cache policy '$other', use either wt or wb.")
+  }
+  println(s"LittleCat: Program=$file cache=$policy")
+  emitVerilog(new LittleCat(file, cfg), Array("--target-dir", "generated"))
 }

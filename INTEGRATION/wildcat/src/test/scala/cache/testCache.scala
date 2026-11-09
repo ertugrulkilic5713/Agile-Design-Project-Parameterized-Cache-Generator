@@ -41,12 +41,12 @@ class CacheHarness(dut: DirectMappedReadCache, val cfg: CacheConfig, memLatency:
   private var beat = 0
 
   // Idle values on all inputs.
-  dut.io.req.valid.poke(false.B)
-  dut.io.req.bits.addr.poke(0.U)
-  dut.io.resp.ready.poke(true.B)
-  dut.io.memReq.ready.poke(true.B)
-  dut.io.memResp.valid.poke(false.B)
-  dut.io.memResp.bits.data.poke(0.U)
+  dut.io.cpu.req.valid.poke(false.B)
+  dut.io.cpu.req.bits.addr.poke(0.U)
+  dut.io.cpu.resp.ready.poke(true.B)
+  dut.io.cpu.memReq.ready.poke(true.B)
+  dut.io.cpu.memResp.valid.poke(false.B)
+  dut.io.cpu.memResp.bits.data.poke(0.U)
 
   // ---------------------------------------------------------------- memory contents
   def memByte(addr: Long): Int = (((addr * 31) + 7) ^ (addr >> 8)).toInt & 0xff
