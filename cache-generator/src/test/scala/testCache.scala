@@ -41,6 +41,7 @@ class CacheHarness(
   /** Base address of every line fetch the cache issued, in order. */
   val fetches = ArrayBuffer[Long]()
   val writebacks = ArrayBuffer[MemoryWrite]()
+  val memoryWriteMasks = ArrayBuffer[Seq[BigInt]]()
   val memoryEvents = ArrayBuffer[(String, Long)]()
   private val backingBytes = Map[Long, Int]()
   private val expectedBytes = Map[Long, Int]()
@@ -53,17 +54,20 @@ class CacheHarness(
   private var writeBusy = false
   private var writeBase = 0L
   private val writeBeats = ArrayBuffer[BigInt]()
+  private val writeMasks = ArrayBuffer[BigInt]()
   private var writeReqDelay = writeReqStall
   private var writeBeatDelay = 0
   private var writeAckDelay = 0
   private var heldWriteAddr: Option[BigInt] = None
   private var heldWriteBeat: Option[BigInt] = None
+  private val beatsPerWrite = if (cfg.isWriteBack) cfg.beatsPerLine else 1
 
   // Idle values on all inputs.
   dut.io.req.valid.poke(false.B)
   dut.io.req.bits.addr.poke(0.U)
   dut.io.req.bits.isWrite.poke(false.B)
   dut.io.req.bits.writeData.poke(0.U)
+  dut.io.req.bits.writeMask.poke(0.U)
   dut.io.resp.ready.poke(true.B)
   dut.io.memReq.ready.poke(true.B)
   dut.io.memResp.valid.poke(false.B)
@@ -103,10 +107,10 @@ class CacheHarness(
     }
     dut.io.memWriteReq.ready.poke((!busy && !writeBusy && writeReqDelay == 0).B)
     dut.io.memWriteData.ready.poke(
-      (writeBusy && writeBeats.size < cfg.beatsPerLine && writeBeatDelay == 0).B
+      (writeBusy && writeBeats.size < beatsPerWrite && writeBeatDelay == 0).B
     )
     dut.io.memWriteResp.valid.poke(
-      (writeBusy && writeBeats.size == cfg.beatsPerLine && writeAckDelay == 0).B
+      (writeBusy && writeBeats.size == beatsPerWrite && writeAckDelay == 0).B
     )
     dut.io.memWriteResp.bits.ack.poke(true.B)
   }
@@ -123,6 +127,7 @@ class CacheHarness(
     val writeDataReady = dut.io.memWriteData.ready.peekBoolean()
     val writeDataFire = writeDataValid && writeDataReady
     val writeData = if (writeDataValid) dut.io.memWriteData.bits.data.peekInt() else BigInt(0)
+    val writeMask = if (writeDataValid) dut.io.memWriteData.bits.mask.peekInt() else BigInt(0)
     val writeAckFire = dut.io.memWriteResp.valid.peekBoolean() && dut.io.memWriteResp.ready.peekBoolean()
 
     require(!(readReqFire && writeReqFire), "memory accepted two requests at once")
@@ -139,7 +144,7 @@ class CacheHarness(
     heldWriteAddr = if (writeReqValid && !writeReqReady) Some(writeAddr) else None
     heldWriteBeat = if (writeDataValid && !writeDataReady) Some(writeData) else None
     if (writeDataValid) {
-      require(writeBusy && writeBeats.size < cfg.beatsPerLine, "unexpected or extra writeback beat")
+      require(writeBusy && writeBeats.size < beatsPerWrite, "unexpected or extra memory-write beat")
     }
 
     if (!busy) {
@@ -162,28 +167,35 @@ class CacheHarness(
       if (writeReqFire) {
         writeBusy = true
         writeBase = writeAddr.toLong
-        require((writeBase & (cfg.lineBytes - 1L)) == 0, "writeback address is not line-aligned")
+        if (cfg.isWriteBack)
+          require((writeBase & (cfg.lineBytes - 1L)) == 0, "writeback address is not line-aligned")
+        else
+          require((writeBase & (cfg.wordBytes - 1L)) == 0, "write-through address is not word-aligned")
         writeBeats.clear()
+        writeMasks.clear()
         writeBeatDelay = writeBeatStall
         memoryEvents += (("writeReq", writeBase))
       } else if (writeReqValid && writeReqDelay > 0) {
         writeReqDelay -= 1
       }
-    } else if (writeBeats.size < cfg.beatsPerLine) {
+    } else if (writeBeats.size < beatsPerWrite) {
       if (writeBeatDelay > 0) writeBeatDelay -= 1
       else if (writeDataFire) {
         writeBeats += writeData
+        writeMasks += writeMask
         writeBeatDelay = writeBeatStall
-        if (writeBeats.size == cfg.beatsPerLine) writeAckDelay = writeAckLatency
+        if (writeBeats.size == beatsPerWrite) writeAckDelay = writeAckLatency
       }
     } else if (writeAckDelay > 0) {
       writeAckDelay -= 1
     } else if (writeAckFire) {
-      for ((data, i) <- writeBeats.zipWithIndex; byte <- 0 until cfg.memBeatBytes) {
-        backingBytes(writeBase + i.toLong * cfg.memBeatBytes + byte) =
-          ((data >> (8 * byte)) & 0xff).toInt
+      for (((data, mask), i) <- writeBeats.zip(writeMasks).zipWithIndex; byte <- 0 until cfg.memBeatBytes) {
+        if (((mask >> byte) & 1) != 0)
+          backingBytes(writeBase + i.toLong * cfg.memBeatBytes + byte) =
+            ((data >> (8 * byte)) & 0xff).toInt
       }
       writebacks += MemoryWrite(writeBase, writeBeats.toVector)
+      memoryWriteMasks += writeMasks.toVector
       memoryEvents += (("writeDone", writeBase))
       writeBusy = false
       writeReqDelay = writeReqStall
@@ -208,24 +220,31 @@ class CacheHarness(
     10	Transfer CPU response
   */
   def read(addr: Long, respStall: Int = 0, maxCycles: Int = 500): ReadResult = {
-    access(addr, isWrite = false, writeData = BigInt(0), respStall = respStall, maxCycles = maxCycles)
+    access(addr, isWrite = false, writeData = BigInt(0), writeMask = BigInt(0),
+      respStall = respStall, maxCycles = maxCycles)
   }
 
   /** A store completes in the cache; backing memory changes only on eviction. */
-  def write(addr: Long, data: BigInt, respStall: Int = 0, maxCycles: Int = 500): ReadResult = {
+  def write(addr: Long, data: BigInt, mask: BigInt = (BigInt(1) << cfg.wordBytes) - 1,
+      respStall: Int = 0, maxCycles: Int = 500): ReadResult = {
     require((addr & (cfg.wordBytes - 1L)) == 0, "store must be word-aligned")
     require(data >= 0 && data < (BigInt(1) << cfg.wordBits), "store data exceeds word width")
-    val result = access(addr, isWrite = true, writeData = data, respStall = respStall, maxCycles = maxCycles)
+    require(mask >= 0 && mask < (BigInt(1) << cfg.wordBytes), "store mask exceeds word width")
+    val result = access(addr, isWrite = true, writeData = data, writeMask = mask,
+      respStall = respStall, maxCycles = maxCycles)
     require(result.data == 0, "store response must acknowledge completion with zero")
-    for (i <- 0 until cfg.wordBytes) expectedBytes(addr + i) = ((data >> (8 * i)) & 0xff).toInt
+    for (i <- 0 until cfg.wordBytes if ((mask >> i) & 1) != 0)
+      expectedBytes(addr + i) = ((data >> (8 * i)) & 0xff).toInt
     result
   }
 
-  private def access(addr: Long, isWrite: Boolean, writeData: BigInt, respStall: Int, maxCycles: Int): ReadResult = {
+  private def access(addr: Long, isWrite: Boolean, writeData: BigInt, writeMask: BigInt,
+      respStall: Int, maxCycles: Int): ReadResult = {
     dut.io.req.valid.poke(true.B)
     dut.io.req.bits.addr.poke(addr.U)
     dut.io.req.bits.isWrite.poke(isWrite.B)
     dut.io.req.bits.writeData.poke(writeData.U)
+    dut.io.req.bits.writeMask.poke(writeMask.U)
 
     var accepted = false
     var cycles = 0
@@ -264,6 +283,7 @@ class CacheHarness(
         dut.io.req.bits.addr.poke(0.U)
         dut.io.req.bits.isWrite.poke(false.B)
         dut.io.req.bits.writeData.poke(0.U)
+        dut.io.req.bits.writeMask.poke(0.U)
       }
     }
     dut.io.resp.ready.poke(true.B)
@@ -538,6 +558,47 @@ class DirectMappedReadCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
       assert(h.writebacks.toSeq == Seq(MemoryWrite(a, words)))
       for ((data, i) <- words.zipWithIndex) assert(h.backingWord(a + i.toLong * cfg.wordBytes) == data)
       assert(h.read(a + 12).data == words.last)
+    }
+  }
+
+  it should "merge masked bytes in write-back mode and preserve them on eviction" in {
+    withCache(cfg) { h =>
+      val a = 0x100L
+      val before = h.expectedWord(a)
+      h.read(a)
+      h.write(a, BigInt("aabbccdd", 16), mask = BigInt("0101", 2))
+      val expected = (before & BigInt("ff00ff00", 16)) | BigInt("00bb00dd", 16)
+      assert(h.read(a).data == expected)
+      h.read(a + cfg.capacityBytes)
+      assert(h.backingWord(a) == expected)
+      assert(h.memoryWriteMasks.head.forall(_ == BigInt(15)))
+    }
+  }
+
+  it should "write through masked store hits and wait for memory completion" in {
+    val c = CacheConfig(capacityBytes = 64, writePolicy = WriteThrough)
+    withCache(c, writeReqStall = 2, writeBeatStall = 2, writeAckLatency = 3) { h =>
+      val a = 0x104L
+      h.read(a)
+      val before = h.expectedWord(a)
+      h.write(a, BigInt("11223344", 16), mask = BigInt("0011", 2))
+      val expected = (before & BigInt("ffff0000", 16)) | BigInt("00003344", 16)
+      assert(h.backingWord(a) == expected)
+      assert(h.read(a).data == expected)
+      assert(h.writebacks.toSeq == Seq(MemoryWrite(a, Seq(BigInt("11223344", 16)))))
+      assert(h.memoryWriteMasks.toSeq == Seq(Seq(BigInt(3))))
+    }
+  }
+
+  it should "write through on a miss without allocating the cache line" in {
+    val c = CacheConfig(capacityBytes = 64, writePolicy = WriteThrough)
+    withCache(c) { h =>
+      val a = 0x180L
+      h.write(a, BigInt("deadbeef", 16))
+      assert(h.fetches.isEmpty)
+      assert(h.backingWord(a) == BigInt("deadbeef", 16))
+      assert(h.read(a).data == BigInt("deadbeef", 16))
+      assert(h.fetches.toSeq == Seq(a))
     }
   }
 }

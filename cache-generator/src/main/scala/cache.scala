@@ -3,8 +3,8 @@ package cache
 import chisel3._
 import chisel3.util._
 
-/** Blocking, direct-mapped cache with write-back and write allocation.
-  * CPU stores must be word-aligned and replace a full word.
+/** Blocking, direct-mapped cache with selectable write-back or write-through policy.
+  * Write-back stores allocate on a miss. Write-through stores do not.
   */
 class DirectMappedReadCache(cfg: CacheConfig) extends Module {
   import CacheState._
@@ -22,6 +22,7 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
   val addrReg = Reg(UInt(cfg.addrWidth.W)) // latched request address
   val isWriteReg = Reg(Bool())
   val writeDataReg = Reg(UInt(cfg.wordBits.W))
+  val writeMaskReg = Reg(UInt(cfg.wordBytes.W))
   val respData = Reg(UInt(cfg.wordBits.W)) // word returned in RESPOND
   val evictAddr = Reg(UInt(cfg.addrWidth.W))
   val evictLine = Reg(UInt(cfg.lineBits.W))
@@ -46,7 +47,13 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
   io.memWriteData.valid := false.B
   val evictBeats = evictLine.asTypeOf(Vec(cfg.beatsPerLine, UInt(cfg.beatBits.W)))
   io.memWriteData.bits.data := (if (cfg.beatsPerLine == 1) evictBeats(0) else evictBeats(beatCnt))
+  io.memWriteData.bits.mask := Fill(cfg.memBeatBytes, 1.U(1.W))
   io.memWriteResp.ready := false.B
+
+  io.stat.hit := false.B
+  io.stat.miss := false.B
+  io.stat.writeback := false.B
+  io.stat.writeThrough := false.B
 
   io.req.ready := state === sIdle
   val readIdx = cfg.indexOf(io.req.bits.addr)
@@ -63,10 +70,16 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
   def selectWord(line: UInt, wordIdx: UInt): UInt =
     line.asTypeOf(Vec(cfg.wordsPerLine, UInt(cfg.wordBits.W)))(wordIdx)
 
-  def replaceWord(line: UInt, wordIdx: UInt, data: UInt): UInt = {
-    val words = WireInit(line.asTypeOf(Vec(cfg.wordsPerLine, UInt(cfg.wordBits.W))))
-    if (cfg.wordsPerLine == 1) words(0) := data
-    else words(wordIdx) := data
+  def mergeWord(old: UInt, data: UInt, mask: UInt): UInt =
+    VecInit((0 until cfg.wordBytes).map { i =>
+      Mux(mask(i), data(8 * i + 7, 8 * i), old(8 * i + 7, 8 * i))
+    }).asUInt
+
+  def replaceWord(line: UInt, wordIdx: UInt, data: UInt, mask: UInt): UInt = {
+    val source = line.asTypeOf(Vec(cfg.wordsPerLine, UInt(cfg.wordBits.W)))
+    val words = WireInit(source)
+    if (cfg.wordsPerLine == 1) words(0) := mergeWord(source(0), data, mask)
+    else words(wordIdx) := mergeWord(source(wordIdx), data, mask)
     words.asUInt
   }
 
@@ -77,35 +90,52 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
         addrReg := io.req.bits.addr
         isWriteReg := io.req.bits.isWrite
         writeDataReg := io.req.bits.writeData
+        writeMaskReg := io.req.bits.writeMask
         state := sCompare
       }
     }
 
     is(sCompare) {
       val hit = validBits(reqIdx) && (tagRd === reqTag)
+      io.stat.hit := hit
+      io.stat.miss := !hit
       when(hit) {
         val hitData = Mux(isWriteReg, 0.U, selectWord(lineRd, reqWord))
-        io.resp.valid := true.B
+        io.resp.valid := (if (cfg.isWriteThrough) !isWriteReg else true.B)
         io.resp.bits.data := hitData
         when(isWriteReg) {
           dataWriteEnable := true.B
-          dataWriteLine := replaceWord(lineRd, reqWord, writeDataReg)
-          dirtyBits(reqIdx) := true.B
+          dataWriteLine := replaceWord(lineRd, reqWord, writeDataReg, writeMaskReg)
+          if (cfg.isWriteBack) dirtyBits(reqIdx) := true.B
         }
-        when(io.resp.fire) {
-          state := sIdle
-        }.otherwise {
-          respData := hitData
-          state := sRespond
+        if (cfg.isWriteThrough) {
+          when(isWriteReg) {
+            state := sWriteThroughReq
+          }.otherwise {
+            when(io.resp.fire) { state := sIdle }.otherwise {
+              respData := hitData
+              state := sRespond
+            }
+          }
+        } else {
+          when(io.resp.fire) { state := sIdle }.otherwise {
+            respData := hitData
+            state := sRespond
+          }
         }
       }.otherwise {
-        when(validBits(reqIdx) && dirtyBits(reqIdx)) {
-          // Capture synchronous RAM outputs now; they need not remain valid.
-          evictAddr := Cat(tagRd, reqIdx, 0.U(cfg.offsetBits.W))
-          evictLine := lineRd
-          state := sWritebackReq
-        }.otherwise {
-          state := sRefillReq
+        if (cfg.isWriteThrough) {
+          when(isWriteReg) { state := sWriteThroughReq }
+            .otherwise { state := sRefillReq }
+        } else {
+          when(validBits(reqIdx) && dirtyBits(reqIdx)) {
+            // Capture synchronous RAM outputs now; they need not remain valid.
+            evictAddr := Cat(tagRd, reqIdx, 0.U(cfg.offsetBits.W))
+            evictLine := lineRd
+            state := sWritebackReq
+          }.otherwise {
+            state := sRefillReq
+          }
         }
       }
     }
@@ -134,7 +164,31 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
       when(io.memWriteResp.fire) {
         assert(io.memWriteResp.bits.ack, "writeback completion must acknowledge success")
         dirtyBits(reqIdx) := false.B
+        io.stat.writeback := true.B
         state := sRefillReq
+      }
+    }
+
+    is(sWriteThroughReq) {
+      io.memWriteReq.valid := true.B
+      io.memWriteReq.bits.addr := cfg.wordBaseOf(addrReg)
+      when(io.memWriteReq.fire) { state := sWriteThroughSend }
+    }
+
+    is(sWriteThroughSend) {
+      io.memWriteData.valid := true.B
+      io.memWriteData.bits.data := writeDataReg
+      io.memWriteData.bits.mask := writeMaskReg
+      when(io.memWriteData.fire) { state := sWriteThroughWait }
+    }
+
+    is(sWriteThroughWait) {
+      io.memWriteResp.ready := true.B
+      when(io.memWriteResp.fire) {
+        assert(io.memWriteResp.bits.ack, "write-through completion must acknowledge success")
+        io.stat.writeThrough := true.B
+        respData := 0.U
+        state := sRespond
       }
     }
 
@@ -164,13 +218,14 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
             beats(beatCnt) := io.memResp.bits.data
           }
           val newLine = beats.asUInt
-          val installedLine = Mux(isWriteReg, replaceWord(newLine, reqWord, writeDataReg), newLine)
+          val installedLine = Mux(isWriteReg,
+            replaceWord(newLine, reqWord, writeDataReg, writeMaskReg), newLine)
 
           dataWriteEnable := true.B
           dataWriteLine := installedLine
           tagMem.write(reqIdx, reqTag)
           validBits(reqIdx) := true.B
-          dirtyBits(reqIdx) := isWriteReg
+          dirtyBits(reqIdx) := isWriteReg && cfg.isWriteBack.B
 
           respData := Mux(isWriteReg, 0.U, selectWord(newLine, reqWord))
           state := sRespond
