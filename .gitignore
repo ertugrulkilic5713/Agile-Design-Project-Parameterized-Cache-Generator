@@ -15,5 +15,3 @@ cache.svg
 cache-simulator/build
 cache-simulator/imgui.ini
 cache-simulator/compile_flags.txt 
-cache-simulator/vendor
-cache-simulator/Makefile

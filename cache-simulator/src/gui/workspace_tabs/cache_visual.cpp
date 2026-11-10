@@ -54,21 +54,21 @@ void CacheVisual::render() {
     ImGui::TableSetupScrollFreeze(1, 1);
     ImGui::TableHeadersRow();
 
-    // Determine lookup highlighting.
+    // determines lookup highlighting
     const bool valid_selection =
         search_index_ >= 0 &&
         search_index_ < cache_->sets_;
 
     const bool hit = current_result_.hit_;
 
-    // Cache contents.
+    // shows words
     for (int index = 0; index < cache_->sets_; ++index) {
         const bool selected_set = valid_selection &&
                                   index == search_index_;
 
         ImGui::TableNextRow();
 
-        // Index.
+        // index
         ImGui::TableSetColumnIndex(0);
 
         if (selected_set) {
@@ -80,7 +80,7 @@ void CacheVisual::render() {
 
         ImGui::Text("%d", index);
 
-        // Ways.
+        // ways
         for (int way = 0; way < cache_->ways_; ++way) {
             const auto& line = cache_->at(index, way);
 
@@ -97,11 +97,11 @@ void CacheVisual::render() {
 
             if (selected_cell) {
                 cell_color = hit
-                    ? IM_COL32(40, 160, 80, 180)   // Hit
-                    : IM_COL32(210, 120, 30, 180); // Miss
+                    ? IM_COL32(40, 160, 80, 180)   // hit
+                    : IM_COL32(210, 120, 30, 180); // miss
             }
 
-            // Valid.
+            // valid
             ImGui::TableSetColumnIndex(base);
 
             if (selected_set)
@@ -110,7 +110,7 @@ void CacheVisual::render() {
 
             ImGui::Text("%d", line.valid_);
 
-            // Dirty.
+            // dirty
             ImGui::TableSetColumnIndex(base + 1);
 
             if (selected_set)
@@ -119,7 +119,7 @@ void CacheVisual::render() {
 
             ImGui::Text("%d", line.dirty_);
 
-            // Tag.
+            // tag
             ImGui::TableSetColumnIndex(base + 2);
 
             if (selected_set)
@@ -133,7 +133,9 @@ void CacheVisual::render() {
 
             if (selected_set)
                 ImGui::TableSetBgColor(
-                    ImGuiTableBgTarget_CellBg, cell_color);
+                    ImGuiTableBgTarget_CellBg, 
+					cell_color
+				);
 
             const int word = current_result_.word_index_;
 
