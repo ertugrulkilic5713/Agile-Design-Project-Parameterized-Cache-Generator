@@ -1,0 +1,67 @@
+name: Cache and Wildcat tests
+
+on:
+  push:
+    branches: [testing]
+  pull_request:
+    branches: [testing]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cache:
+    name: Cache policies
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: cache-generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: sbt
+          cache-dependency-path: |
+            cache-generator/build.sbt
+            cache-generator/project/build.properties
+      - uses: sbt/setup-sbt@v1
+      - run: sbt -batch test
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cache-test-reports
+          path: cache-generator/target/test-reports/
+          if-no-files-found: ignore
+
+  wildcat:
+    name: Wildcat and adapter
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: wildcat
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: sbt
+          cache-dependency-path: |
+            cache-generator/build.sbt
+            cache-generator/project/build.properties
+            wildcat/build.sbt
+            wildcat/project/build.properties
+      - uses: sbt/setup-sbt@v1
+      - name: Run self-contained integration suites
+        run: sbt -batch "testOnly adapter.CacheAdapterSpec wildcat.RegisterFileTest wildcat.DataMemoryStallTest"
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wildcat-test-reports
+          path: wildcat/target/test-reports/
+          if-no-files-found: error
