@@ -23,4 +23,3 @@ build/
 cache-simulator/build
 cache-simulator/imgui.ini
 cache-simulator/compile_flags.txt 
-cache-simulator/Makefile
