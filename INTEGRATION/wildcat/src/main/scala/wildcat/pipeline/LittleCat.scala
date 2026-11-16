@@ -108,7 +108,7 @@ object LittleCat extends App {
   println(s"DATA BLOCKS PER LINE = ${cfg.beatsPerLine}")
   println(s"DATA BLOCK SIZE = 8*${linesize} = ${8*linesize} Bits")
   println(s"------------------------------ADDRESS----------------------------------------")
-  println(s"For a address width of 32 bits:\t")
+  println(s"For a address width of 32 bits: [TAG | INDEX | BYTEOFFSET | WORDIDX]")
   println(s"TAG_BIT = ${32 - log2Ceil(capacity)}")
   println(s"INDEX_BIT = ${log2Ceil(capacity) - log2Ceil(linesize)}")
   println(s"BYTEOFFSET_+_WORDIDX = ${log2Ceil(linesize)}")
