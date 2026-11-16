@@ -21,25 +21,6 @@ class LittleCat(file: String, cfg: CacheConfig = CacheConfig(), frequency: Int =
   })
   io.txConf := 0.U
 
-  // ---- test program, baked into the ROM ----
-  // t0 = 0xF0010000 (LED device); loop: t1++, write t1 to LEDs,
-  // do 4 loads through the cache, busy-wait ~2M iterations, repeat.
-  // val program = Array(
-  //   0xF00102B7, // lui  t0, 0xF0010 // loads memory-mapped address of the LED device (0xF0010000) into reg t0.
-  //   0x00000313, // addi t1, x0, 0 // addi t1, x0, 0: initializes t1 to 0. This will act as the SW counter.
-  //   0x00130313, // loop: addi t1, t1, 1 // adds 1 to the counter.
-  //   0x0062A023, // sw   t1, 0(t0) // stores the value of the counter t1 into the LED memory address t0. This instantly updates the physical LEDs on board.
-  //   0x00002383, // lw   t2, 0(x0) // following 4 lw instructions read data from MM addresses 0, 4, 16, and 32, dumping the result into reg t2. 
-  //   0x00402383, // lw   t2, 4(x0) // The program does not care about the data; this is designed purely to trigger mix of cache misses and cache hits to test adapter.
-  //   0x01002383, // lw   t2, 16(x0) 
-  //   0x02002383, // lw   t2, 32(x0)
-  //   0x00200E37, // lui  t3, 0x200 // sets up delay. 0x200 << 12 = 0x00200000 = 2.097.152 in decimal stored in reg t3.
-  //   0xFFFE0E13, // delay: addi t3, t3, -1 // subtracts 1 from reg t3.
-  //   0xFE0E1EE3, // bne  t3, x0, delay // it checks if t3 == x0 (hardcoded to 0). If t3 != 0, CPU decremants t3 again in delay.
-  //   0xFDDFF06F  // jal  x0, loop // jump back unconditionally to very top of program loop.
-  // )
-  //
-
   val (program, start) = wildcat.Util.getCode(file)
 
   val cpu = Module(new ThreeCats())
@@ -104,22 +85,38 @@ class LittleCat(file: String, cfg: CacheConfig = CacheConfig(), frequency: Int =
   statsUART.io.hits := hitCount
   statsUART.io.misses := missCount
   io.tx := statsUART.io.txd
-
-
-  // ---- LEDs: LED15 = heartbeat (proves the clock works), LED0..14 = software counter ----
-  // val heartbeat = RegInit(0.U(27.W))
-  // heartbeat := heartbeat + 1.U
-  // io.out := Cat(heartbeat(26), ioDevice.io.out(14, 0))
 }
 
 object LittleCat extends App {
   val file = if (args.length > 0) args(0) else "a.out"
   val policy = if (args.length > 1) args(1) else "wb"
-  val cfg = policy match {
-    case "wt" => CacheConfig(writePolicy = WriteThrough)
-    case "wb" => CacheConfig(writePolicy = WriteBack)
-    case other => throw new IllegalArgumentException(s"uknown cache policy '$other', use either wt or wb.")
-  }
-  println(s"LittleCat: Program=$file cache=$policy")
+  val capacity = if (args.length > 2) args(2).toInt else 4096
+  val linesize = if (args.length > 3) args(3).toInt else 16
+
+  val cfg = CacheConfig(
+    writePolicy = policy match {
+      case "wt" => WriteThrough
+      case "wb" => WriteBack
+      case other => throw new IllegalArgumentException(s"uknown cache policy '$other', use either wt or wb.")
+    },
+    capacityBytes = capacity,
+    lineBytes = linesize  
+  )
+  println(s"LittleCat: Program=$file | cache=$policy | capacity=$capacity | linesize=$linesize")
+  println(s"-------------------------------CACHE CONFIG----------------------------------")
+  println(s"# LINES = ${capacity/linesize}")
+  println(s"DATA BLOCKS PER LINE = ${cfg.beatsPerLine}")
+  println(s"DATA BLOCK SIZE = 8*${linesize} = ${8*linesize} Bits")
+  println(s"------------------------------ADDRESS----------------------------------------")
+  println(s"For a address width of 32 bits:\t")
+  println(s"TAG_BIT = ${32 - log2Ceil(capacity)}")
+  println(s"INDEX_BIT = ${log2Ceil(capacity) - log2Ceil(linesize)}")
+  println(s"BYTEOFFSET_+_WORDIDX = ${log2Ceil(linesize)}")
+  println(s"-------------------------------DATA & OVERHEAD-------------------------------")
+  println(s"TOTAL_DATA = ${8*capacity} Bits")
+  println(s"TOTAL_OVERHEAD = ${(capacity/linesize)*(34 - log2Ceil(capacity))} Bits")
+  println(s"--------------------------------DATA + OVERHEAD------------------------------")
+  println(s"TOTAL BITS = ${8*capacity + (capacity/linesize)*(34 - log2Ceil(capacity))} Bits")
+  println(s"TOTAL_BYTES = ${(8*capacity + (capacity/linesize)*(34 - log2Ceil(capacity)))/8} Bytes")
   emitVerilog(new LittleCat(file, cfg), Array("--target-dir", "generated"))
 }
