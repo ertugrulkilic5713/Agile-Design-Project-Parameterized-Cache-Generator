@@ -556,3 +556,92 @@ class DirectMappedReadCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
     }
   }
 }
+
+class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
+  behavior of "SetAssociativeCache"
+
+  it should "validate ways and derive geometry from sets" in {
+    for (ways <- Seq(0, -1, 3, 16)) {
+      intercept[IllegalArgumentException] { CacheConfig(capacityBytes = 64, numWays = ways) }
+    }
+    val cfg = CacheConfig(capacityBytes = 64, numWays = 4)
+    assert(cfg.numLines == 4 && cfg.numSets == 1 && cfg.indexBits == 0)
+    assert(cfg.tagBits == cfg.addrWidth - cfg.offsetBits)
+  }
+
+  it should "reject associative configurations through the legacy entry point" in {
+    intercept[IllegalArgumentException] {
+      test(new DirectMappedReadCache(CacheConfig(capacityBytes = 64, numWays = 2))) { _ => () }
+    }
+  }
+
+  for (ways <- Seq(2, 4)) {
+    it should s"fill all $ways ways and rotate victims independently per set without updating on hits" in {
+      val cfg = CacheConfig(capacityBytes = ways * 32, numWays = ways)
+      test(new SetAssociativeCache(cfg)) { dut =>
+        val h = new CacheHarness(dut, cfg, memLatency = 1)
+        val stride = cfg.numSets * cfg.lineBytes
+        val a = 0x100L
+        for (w <- 0 until ways; set <- 0 until cfg.numSets) h.read(a + w * stride + set * cfg.lineBytes)
+        assert(h.fetches.size == cfg.numLines)
+        for (w <- 0 until ways) {
+          assert(h.read(a + w * stride).cycles == 2)
+          assert(h.hits.last)
+        }
+        // Two complete rounds must evict ways in order, even after a hit in the next victim.
+        for (w <- 0 until 2 * ways) {
+          val victim = a + w * stride
+          h.read(victim)
+          assert(h.hits.last)
+          val incoming = a + (w + ways) * stride
+          h.read(incoming)
+          assert(!h.hits.last)
+          assert(h.fetches.last == incoming)
+        }
+        val before = h.fetches.size
+        for (w <- 0 until ways) h.read(a + w * stride + cfg.lineBytes)
+        assert(h.fetches.size == before)
+        // Advance only set zero, then verify set one still chooses its own way zero.
+        h.read(a + 3 * ways * stride)
+        h.read(a + ways * stride + cfg.lineBytes)
+        h.read(a + stride + cfg.lineBytes)
+        assert(h.hits.last)
+        h.read(a + cfg.lineBytes)
+        assert(!h.hits.last)
+        assert(h.writebacks.isEmpty)
+      }
+    }
+
+    it should s"write back every dirty way of a $ways-way set with stalls and preserve its neighbors" in {
+      val cfg = CacheConfig(capacityBytes = ways * 32, numWays = ways)
+      test(new SetAssociativeCache(cfg)) { dut =>
+        val h = new CacheHarness(dut, cfg, memLatency = 2, writeReqStall = 2,
+          writeBeatStall = 2, writeAckLatency = 3, readReqStall = 2, readBeatStall = 1)
+        val a = 0x110L // nonzero set index
+        val stride = cfg.numSets * cfg.lineBytes
+        for (w <- 0 until ways; word <- 0 until cfg.wordsPerLine) {
+          h.write(a + w * stride + word * cfg.wordBytes, BigInt(0x12340000L + w * 256 + word),
+            respStall = 2)
+        }
+        assert(h.writebacks.isEmpty)
+        for (w <- 0 until ways) {
+          val victim = a + w * stride
+          h.read(a + (ways + w) * stride, respStall = 3)
+          assert(h.writebacks.last == MemoryWrite(victim,
+            (0 until cfg.beatsPerLine).map(i => h.expectedBeat(victim + i * cfg.memBeatBytes))))
+          for (remaining <- w + 1 until ways) {
+            val addr = a + remaining * stride + 4
+            assert(h.read(addr).data == h.expectedWord(addr))
+            assert(h.hits.last)
+          }
+        }
+        assert(h.writebacks.size == ways)
+        val events = h.memoryEvents.toSeq
+        for (w <- 0 until ways) {
+          val done = events.indexOf(("writeDone", a + w * stride))
+          assert(done >= 0 && events(done + 1) == (("readReq", a + (ways + w) * stride)))
+        }
+      }
+    }
+  }
+}
