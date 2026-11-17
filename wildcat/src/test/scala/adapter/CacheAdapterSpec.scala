@@ -87,54 +87,58 @@ class PipeConMemory(dut: CacheAdapter, responseDelay: Int = 0) {
 class CacheAdapterSpec extends AnyFlatSpec with ChiselScalatestTester {
   behavior of "CacheAdapter"
 
-  it should "refill a line on a read miss and serve later hits without memory traffic" in {
-    val cfg = CacheConfig(capacityBytes = 64, writePolicy = WriteBack)
-    test(new CacheAdapter(cfg)) { dut =>
-      val mem = new PipeConMemory(dut, responseDelay = 2)
-      val a = 0x100L
-      assert(mem.access(a + 4) == mem.word(a + 4))
-      assert(mem.reads.toSeq == Seq(a, a + 4, a + 8, a + 12))
-      assert(mem.access(a + 8) == mem.word(a + 8))
-      assert(mem.reads.size == 4)
+  for (ways <- Seq(1, 2, 4)) {
+    it should s"refill a line on a read miss and serve later hits without memory traffic ($ways ways)" in {
+      val cfg = CacheConfig(capacityBytes = 128, numWays = ways, writePolicy = WriteBack)
+      test(new CacheAdapter(cfg)) { dut =>
+        val mem = new PipeConMemory(dut, responseDelay = 2)
+        val a = 0x100L
+        assert(mem.access(a + 4) == mem.word(a + 4))
+        assert(mem.reads.toSeq == Seq(a, a + 4, a + 8, a + 12))
+        assert(mem.access(a + 8) == mem.word(a + 8))
+        assert(mem.reads.size == 4)
+      }
     }
-  }
 
-  it should "write back every dirty beat before refilling a conflicting line" in {
-    val cfg = CacheConfig(capacityBytes = 64, writePolicy = WriteBack)
-    test(new CacheAdapter(cfg)) { dut =>
-      val mem = new PipeConMemory(dut, responseDelay = 1)
-      val a = 0x100L
-      val b = a + cfg.capacityBytes
-      val stored = BigInt("cafebabe", 16)
-      mem.access(a + 4, write = true, data = stored)
-      assert(mem.writes.isEmpty)
-      mem.access(b)
-      assert(mem.writes.map(_.addr).toSeq == Seq(a, a + 4, a + 8, a + 12))
-      assert(mem.writes.forall(_.mask == 15))
-      assert(mem.word(a + 4) == stored)
-      assert(mem.access(a + 4) == stored)
+    it should s"write back every dirty beat before refilling a conflicting line ($ways ways)" in {
+      val cfg = CacheConfig(capacityBytes = 128, numWays = ways, writePolicy = WriteBack)
+      test(new CacheAdapter(cfg)) { dut =>
+        val mem = new PipeConMemory(dut, responseDelay = 1)
+        val a = 0x100L
+        val b = a + ways * cfg.capacityBytes
+        val stored = BigInt("cafebabe", 16)
+        mem.access(a + 4, write = true, data = stored)
+        assert(mem.writes.isEmpty)
+        for (w <- 1 until ways) mem.access(a + w * cfg.capacityBytes)
+        assert(mem.writes.isEmpty)
+        mem.access(b)
+        assert(mem.writes.map(_.addr).toSeq == Seq(a, a + 4, a + 8, a + 12))
+        assert(mem.writes.forall(_.mask == 15))
+        assert(mem.word(a + 4) == stored)
+        assert(mem.access(a + 4) == stored)
+      }
     }
-  }
 
-  it should "write through masked hits and misses without allocating a write miss" in {
-    val cfg = CacheConfig(capacityBytes = 64, writePolicy = WriteThrough)
-    test(new CacheAdapter(cfg)) { dut =>
-      val mem = new PipeConMemory(dut, responseDelay = 2)
-      val a = 0x180L
-      val before = mem.word(a)
-      mem.access(a, write = true, data = BigInt("11223344", 16), mask = 3)
-      assert(mem.reads.isEmpty)
-      assert(mem.writes.toSeq == Seq(ObservedWrite(a, BigInt("11223344", 16), 3)))
-      val firstExpected = (before & BigInt("ffff0000", 16)) | BigInt("00003344", 16)
-      assert(mem.word(a) == firstExpected)
+    it should s"write through masked hits and misses without allocating a write miss ($ways ways)" in {
+      val cfg = CacheConfig(capacityBytes = 128, numWays = ways, writePolicy = WriteThrough)
+      test(new CacheAdapter(cfg)) { dut =>
+        val mem = new PipeConMemory(dut, responseDelay = 2)
+        val a = 0x180L
+        val before = mem.word(a)
+        mem.access(a, write = true, data = BigInt("11223344", 16), mask = 3)
+        assert(mem.reads.isEmpty)
+        assert(mem.writes.toSeq == Seq(ObservedWrite(a, BigInt("11223344", 16), 3)))
+        val firstExpected = (before & BigInt("ffff0000", 16)) | BigInt("00003344", 16)
+        assert(mem.word(a) == firstExpected)
 
-      assert(mem.access(a) == firstExpected)
-      assert(mem.reads.size == cfg.beatsPerLine)
-      mem.access(a, write = true, data = BigInt("aabbccdd", 16), mask = 12)
-      val finalExpected = BigInt("aabb3344", 16)
-      assert(mem.word(a) == finalExpected)
-      assert(mem.access(a) == finalExpected)
-      assert(mem.reads.size == cfg.beatsPerLine)
+        assert(mem.access(a) == firstExpected)
+        assert(mem.reads.size == cfg.beatsPerLine)
+        mem.access(a, write = true, data = BigInt("aabbccdd", 16), mask = 12)
+        val finalExpected = BigInt("aabb3344", 16)
+        assert(mem.word(a) == finalExpected)
+        assert(mem.access(a) == finalExpected)
+        assert(mem.reads.size == cfg.beatsPerLine)
+      }
     }
   }
 }

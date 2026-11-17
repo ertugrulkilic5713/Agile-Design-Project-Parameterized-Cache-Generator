@@ -25,10 +25,15 @@ To generate the Verilog/SystemVerilog, run:
 runMain cache.GenerateCache 4
 ```
 
+<<<<<<< HEAD
 The generator accepts `[ways] [output-directory] [rr|plru|random] [seed]`,
 defaulting to `1 generated rr 1`. For example,
 `runMain cache.GenerateCache 4 generated plru` or
 `runMain cache.GenerateCache 4 generated random 7`. One way emits `DirectMappedReadCache`; multiple ways emit
+=======
+The generator accepts `[ways] [output-directory]`, defaulting to `1` and
+`generated`. One way emits `DirectMappedReadCache`; multiple ways emit
+>>>>>>> 42cb4f8 (feat: set associative)
 `SetAssociativeCache`. The synthesis examples below use the one-way output.
 
 To exit the SBT console:

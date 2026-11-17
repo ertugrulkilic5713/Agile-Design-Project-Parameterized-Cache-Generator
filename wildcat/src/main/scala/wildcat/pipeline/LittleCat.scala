@@ -116,12 +116,13 @@ class LittleCat(file: String, cfg: CacheConfig = CacheConfig(), frequency: Int =
 object LittleCat extends App {
   val file = if (args.length > 0) args(0) else "a.out"
   val policy = if (args.length > 1) args(1) else "wb"
+  val ways = if (args.length > 2) args(2).toInt else 1
   val cfg = policy match {
-    case "wt" => CacheConfig(writePolicy = WriteThrough)
-    case "wb" => CacheConfig(writePolicy = WriteBack)
+    case "wt" => CacheConfig(writePolicy = WriteThrough, numWays = ways)
+    case "wb" => CacheConfig(writePolicy = WriteBack, numWays = ways)
     case other => throw new IllegalArgumentException(
       s"unknown cache policy '$other'; use either wt or wb")
   }
-  println(s"LittleCat: program=$file cache=$policy")
-  emitVerilog(new LittleCat(file, cfg), Array("--target-dir", "generated"))
+  println(s"LittleCat: program=$file cache=$policy ways=$ways")
+  emitVerilog(new LittleCat(file, cfg), Array("--target-dir", if (args.length > 3) args(3) else "generated"))
 }
