@@ -13,6 +13,19 @@ sealed trait WritePolicy
 case object WriteThrough extends WritePolicy
 case object WriteBack extends WritePolicy
 
+/** Replacement policy chosen at elaboration time. */
+sealed trait ReplacementPolicy
+case object RoundRobin extends ReplacementPolicy
+case object RandomReplacement extends ReplacementPolicy
+
+object ReplacementPolicy {
+  def parse(value: String): ReplacementPolicy = value match {
+    case "rr" => RoundRobin
+    case "random" => RandomReplacement
+    case other => throw new IllegalArgumentException(s"unknown replacement policy '$other'; use rr or random")
+  }
+}
+
 case class CacheConfig(
     capacityBytes: Int = 4096, // total data capacity.
     addrWidth: Int = 32, // a.k.a. address size is 32 bits.total data capacity : [tag(20) | index(8) | wordidx(2) | byteoffset(2)]
@@ -20,7 +33,8 @@ case class CacheConfig(
     wordBytes: Int = 4, // width of the CPU-side response // one word of 32 bits at a time.
     memBeatBytes: Int = 4, // width of the memory-side data bus // one word of 32 bits at a time.
     writePolicy: WritePolicy = WriteBack,
-    numWays: Int = 1
+    numWays: Int = 1,
+    replacementPolicy: ReplacementPolicy = RoundRobin
 ) {
   require(isPow2(capacityBytes), "capacityBytes must be a power of two")
   require(isPow2(lineBytes), "lineBytes must be a power of two")

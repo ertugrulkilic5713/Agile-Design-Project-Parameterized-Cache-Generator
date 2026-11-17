@@ -1,6 +1,7 @@
 package cache
 import chisel3._
 import chisel3.util._
+import chisel3.util.random.LFSR
 
 class SetAssociativeCache(cfg: CacheConfig) extends Module {
   import CacheState._
@@ -12,7 +13,8 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val dirtyBits = RegInit(VecInit(Seq.fill(cfg.numSets)(VecInit(Seq.fill(cfg.numWays)(false.B)))))
   val tagMem = Seq.fill(cfg.numWays)(SyncReadMem(cfg.numSets, UInt(cfg.tagBits.W)))
   val dataMem = Seq.fill(cfg.numWays)(SyncReadMem(cfg.numSets, UInt(cfg.lineBits.W)))
-  val nextVictim = RegInit(VecInit(Seq.fill(cfg.numSets)(0.U(cfg.wayBits.W))))
+  val nextVictim = if (cfg.numWays > 1 && cfg.replacementPolicy == RoundRobin)
+    Some(RegInit(VecInit(Seq.fill(cfg.numSets)(0.U(cfg.wayBits.W))))) else None
   val victimWay = Reg(UInt(cfg.wayBits.W))
 
   // ---------------------------------------------------------------- state
@@ -42,7 +44,6 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val linesRd = VecInit(dataMem.map(_.read(readIdx, io.cpu.req.fire)))
   val setValid = if (cfg.numSets == 1) validBits(0) else validBits(reqIdx)
   val setDirty = if (cfg.numSets == 1) dirtyBits(0) else dirtyBits(reqIdx)
-  val replacement = if (cfg.numSets == 1) nextVictim(0) else nextVictim(reqIdx)
   def wayBit(bits: Vec[Bool], way: UInt): Bool =
     if (cfg.numWays == 1) bits(0) else bits(way)
 
@@ -51,6 +52,15 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val hitWay = if (cfg.numWays == 1) 0.U else PriorityEncoder(hits)
   val invalid = VecInit(setValid.map(v => !v))
   val invalidWay = if (cfg.numWays == 1) 0.U else PriorityEncoder(invalid)
+  val replacement = if (cfg.numWays == 1) 0.U else cfg.replacementPolicy match {
+    case RoundRobin =>
+      val next = nextVictim.get
+      if (cfg.numSets == 1) next(0) else next(reqIdx)
+    case RandomReplacement =>
+      // Advance once per actual eviction, independent of memory/CPU stalls.
+      val evict = state === sCompare && !hit && !invalid.asUInt.orR && (!writeReg || cfg.isWb.B)
+      LFSR(math.max(16, cfg.wayBits + 1), increment = evict, seed = Some(BigInt(1)))(cfg.wayBits - 1, 0)
+  }
   val selectedVictim = Mux(invalid.asUInt.orR, invalidWay, replacement)
   val lookupWay = Mux(hit, hitWay, selectedVictim)
   val tagRd = if (cfg.numWays == 1) tagsRd(0) else tagsRd(lookupWay)
@@ -157,6 +167,14 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
 
       // write hit.
       when(hit) {
+        // Return hits immediately; latch the same response if the CPU stalls.
+        when(!writeReg || cfg.isWb.B) {
+          val hitData = Mux(writeReg, 0.U, selectWord(lineRd, reqWord))
+          io.cpu.resp.valid := true.B
+          io.cpu.resp.bits.data := hitData
+          respData := hitData
+          state := Mux(io.cpu.resp.ready, sIdle, sRespond)
+        }
         when(writeReg) {
           // write hit: update the line in place (both policies).
           // first enable write.
@@ -167,18 +185,11 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
           if (cfg.isWb) {
             // after replace old cache line with new data, cache line becomes dirty.
             wayBit(setDirty, hitWay) := true.B
-            // DONE: respond to CPU.
-            state := sRespond
           }
           // if WT.
           else {
             state := sWriteThrough_wt
           }
-        // if READING cache line.
-        }.otherwise {
-          // Respond to CPU with hit read data.
-          respData := selectWord(lineRd, reqWord)
-          state := sRespond
         }
         // IF MISS:
       }.otherwise {
@@ -279,8 +290,10 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
           for (w <- 0 until cfg.numWays) {
             when(victimWay === w.U) { tagMem(w).write(reqIdx, reqTag) }
           }
-          replacement := (if (cfg.numWays == 1) 0.U else
-            Mux(victimWay === (cfg.numWays - 1).U, 0.U, victimWay + 1.U))
+          nextVictim.foreach { next =>
+            val replacement = if (cfg.numSets == 1) next(0) else next(reqIdx)
+            replacement := Mux(victimWay === (cfg.numWays - 1).U, 0.U, victimWay + 1.U)
+          }
           // reset valid to 1 for the new line.
           wayBit(setValid, victimWay) := true.B
           if (cfg.isWb) {
@@ -329,7 +342,8 @@ object GenerateCache extends App {
     wordBytes = 4,
     memBeatBytes = 4,
     writePolicy = WriteBack,
-    numWays = if (args.nonEmpty) args(0).toInt else 1
+    numWays = if (args.nonEmpty) args(0).toInt else 1,
+    replacementPolicy = if (args.length > 2) ReplacementPolicy.parse(args(2)) else RoundRobin
   )
   emitVerilog(if (cfg.numWays == 1) new DirectMappedReadCache(cfg) else new SetAssociativeCache(cfg),
     Array("--target-dir", if (args.length > 1) args(1) else "generated"))

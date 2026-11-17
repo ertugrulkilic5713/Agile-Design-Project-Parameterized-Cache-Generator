@@ -103,9 +103,10 @@ object LittleCat extends App {
     },
     capacityBytes = capacity,
     lineBytes = linesize,
-    numWays = ways
+    numWays = ways,
+    replacementPolicy = if (args.length > 5) ReplacementPolicy.parse(args(5)) else RoundRobin
   )
-  println(s"LittleCat: Program=$file | cache=$policy | capacity=$capacity | linesize=$linesize | ways=$ways")
+  println(s"LittleCat: Program=$file | cache=$policy | capacity=$capacity | linesize=$linesize | ways=$ways | replacement=${cfg.replacementPolicy}")
   println(s"-------------------------------CACHE CONFIG----------------------------------")
   println(s"# LINES = ${capacity/linesize}")
   println(s"# SETS = ${cfg.numSets}, WAYS = ${cfg.numWays}")
@@ -117,7 +118,10 @@ object LittleCat extends App {
   println(s"INDEX BIT = ${cfg.indexBits}")
   println(s"BYTEOFFSET + WORDIDX = ${log2Ceil(linesize)}")
   println(s"-------------------------------DATA & OVERHEAD-------------------------------")
-  val replacementBits = cfg.numSets * log2Ceil(cfg.numWays)
+  val replacementBits = if (cfg.numWays == 1) 0 else cfg.replacementPolicy match {
+    case RoundRobin => cfg.numSets * cfg.wayBits
+    case RandomReplacement => math.max(16, cfg.wayBits + 1)
+  }
   val overheadBits = cfg.numLines * (cfg.tagBits + 2) + replacementBits
   val totalBits = cfg.capacityBytes * 8 + overheadBits
   println(s"TOTAL DATA = ${8*capacity} Bits")
