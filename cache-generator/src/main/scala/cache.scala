@@ -3,19 +3,21 @@ package cache
 import chisel3._
 import chisel3.util._
 
-/** Blocking, direct-mapped cache with selectable write-back or write-through policy.
+/** Blocking, set-associative cache with selectable write-back or write-through policy.
   * Write-back stores allocate on a miss. Write-through stores do not.
   */
-class DirectMappedReadCache(cfg: CacheConfig) extends Module {
+class SetAssociativeCache(cfg: CacheConfig) extends Module {
   import CacheState._
 
   val io = IO(new CacheIO(cfg))
 
   // ---------------------------------------------------------------- storage
-  val validBits = RegInit(VecInit(Seq.fill(cfg.numLines)(false.B)))
-  val dirtyBits = RegInit(VecInit(Seq.fill(cfg.numLines)(false.B)))
-  val tagMem = SyncReadMem(cfg.numLines, UInt(cfg.tagBits.W))
-  val dataMem = SyncReadMem(cfg.numLines, UInt(cfg.lineBits.W))
+  val validBits = RegInit(VecInit(Seq.fill(cfg.numSets)(VecInit(Seq.fill(cfg.numWays)(false.B)))))
+  val dirtyBits = RegInit(VecInit(Seq.fill(cfg.numSets)(VecInit(Seq.fill(cfg.numWays)(false.B)))))
+  val tagMem = Seq.fill(cfg.numWays)(SyncReadMem(cfg.numSets, UInt(cfg.tagBits.W)))
+  val dataMem = Seq.fill(cfg.numWays)(SyncReadMem(cfg.numSets, UInt(cfg.lineBits.W)))
+  val nextVictim = RegInit(VecInit(Seq.fill(cfg.numSets)(0.U(cfg.wayBits.W))))
+  val victimWay = Reg(UInt(cfg.wayBits.W))
 
   // ---------------------------------------------------------------- state
   val state = RegInit(sIdle)
@@ -57,14 +59,32 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
 
   io.req.ready := state === sIdle
   val readIdx = cfg.indexOf(io.req.bits.addr)
-  val tagRd = tagMem.read(readIdx, io.req.fire)
-  val lineRd = dataMem.read(readIdx, io.req.fire)
+  val tagsRd = VecInit(tagMem.map(_.read(readIdx, io.req.fire)))
+  val linesRd = VecInit(dataMem.map(_.read(readIdx, io.req.fire)))
+  val setValid = if (cfg.numSets == 1) validBits(0) else validBits(reqIdx)
+  val setDirty = if (cfg.numSets == 1) dirtyBits(0) else dirtyBits(reqIdx)
+  val replacement = if (cfg.numSets == 1) nextVictim(0) else nextVictim(reqIdx)
+  def wayBit(bits: Vec[Bool], way: UInt): Bool =
+    if (cfg.numWays == 1) bits(0) else bits(way)
 
-  // Store hits and refills share one physical memory write port.
+  val hits = VecInit((0 until cfg.numWays).map(w => setValid(w) && tagsRd(w) === reqTag))
+  val hit = hits.asUInt.orR
+  val hitWay = if (cfg.numWays == 1) 0.U else PriorityEncoder(hits)
+  val invalid = VecInit(setValid.map(v => !v))
+  val invalidWay = if (cfg.numWays == 1) 0.U else PriorityEncoder(invalid)
+  val selectedVictim = Mux(invalid.asUInt.orR, invalidWay, replacement)
+  val lookupWay = Mux(hit, hitWay, selectedVictim)
+  val tagRd = if (cfg.numWays == 1) tagsRd(0) else tagsRd(lookupWay)
+  val lineRd = if (cfg.numWays == 1) linesRd(0) else linesRd(lookupWay)
+
+  // Store hits and refills share one physical write port in each way.
   val dataWriteEnable = WireDefault(false.B)
   val dataWriteLine = WireDefault(0.U(cfg.lineBits.W))
-  when(dataWriteEnable) {
-    dataMem.write(reqIdx, dataWriteLine)
+  val dataWriteWay = WireDefault(victimWay)
+  for (w <- 0 until cfg.numWays) {
+    when(dataWriteEnable && dataWriteWay === w.U) {
+      dataMem(w).write(reqIdx, dataWriteLine)
+    }
   }
 
   def selectWord(line: UInt, wordIdx: UInt): UInt =
@@ -96,7 +116,6 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
     }
 
     is(sCompare) {
-      val hit = validBits(reqIdx) && (tagRd === reqTag)
       io.stat.hit := hit
       io.stat.miss := !hit
       when(hit) {
@@ -105,8 +124,9 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
         io.resp.bits.data := hitData
         when(isWriteReg) {
           dataWriteEnable := true.B
+          dataWriteWay := hitWay
           dataWriteLine := replaceWord(lineRd, reqWord, writeDataReg, writeMaskReg)
-          if (cfg.isWriteBack) dirtyBits(reqIdx) := true.B
+          if (cfg.isWriteBack) wayBit(setDirty, hitWay) := true.B
         }
         if (cfg.isWriteThrough) {
           when(isWriteReg) {
@@ -124,13 +144,15 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
           }
         }
       }.otherwise {
+        victimWay := selectedVictim
         if (cfg.isWriteThrough) {
           when(isWriteReg) { state := sWriteThroughReq }
             .otherwise { state := sRefillReq }
         } else {
-          when(validBits(reqIdx) && dirtyBits(reqIdx)) {
+          when(wayBit(setValid, selectedVictim) && wayBit(setDirty, selectedVictim)) {
             // Capture synchronous RAM outputs now; they need not remain valid.
-            evictAddr := Cat(tagRd, reqIdx, 0.U(cfg.offsetBits.W))
+            evictAddr := (if (cfg.indexBits == 0) Cat(tagRd, 0.U(cfg.offsetBits.W))
+              else Cat(tagRd, reqIdx, 0.U(cfg.offsetBits.W)))
             evictLine := lineRd
             state := sWritebackReq
           }.otherwise {
@@ -163,7 +185,7 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
       io.memWriteResp.ready := true.B
       when(io.memWriteResp.fire) {
         assert(io.memWriteResp.bits.ack, "writeback completion must acknowledge success")
-        dirtyBits(reqIdx) := false.B
+        wayBit(setDirty, victimWay) := false.B
         io.stat.writeback := true.B
         state := sRefillReq
       }
@@ -223,9 +245,13 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
 
           dataWriteEnable := true.B
           dataWriteLine := installedLine
-          tagMem.write(reqIdx, reqTag)
-          validBits(reqIdx) := true.B
-          dirtyBits(reqIdx) := isWriteReg && cfg.isWriteBack.B
+          for (w <- 0 until cfg.numWays) {
+            when(victimWay === w.U) { tagMem(w).write(reqIdx, reqTag) }
+          }
+          wayBit(setValid, victimWay) := true.B
+          wayBit(setDirty, victimWay) := isWriteReg && cfg.isWriteBack.B
+          replacement := (if (cfg.numWays == 1) 0.U else
+            Mux(victimWay === (cfg.numWays - 1).U, 0.U, victimWay + 1.U))
 
           respData := Mux(isWriteReg, 0.U, selectWord(newLine, reqWord))
           state := sRespond
@@ -242,13 +268,20 @@ class DirectMappedReadCache(cfg: CacheConfig) extends Module {
   }
 }
 
+class DirectMappedReadCache(cfg: CacheConfig) extends SetAssociativeCache(cfg) {
+  require(cfg.numWays == 1, "DirectMappedReadCache requires numWays == 1; use SetAssociativeCache")
+}
+
 object GenerateCache extends App {
   val cfg = CacheConfig(
     capacityBytes = 1024,
     addrWidth = 32,
     lineBytes = 4,
     wordBytes = 4,
-    memBeatBytes = 4
+    memBeatBytes = 4,
+    numWays = if (args.nonEmpty) args(0).toInt else 1
   )
-  emitVerilog(new DirectMappedReadCache(cfg),Array("--target-dir", "generated"))
+  val targetDir = if (args.length > 1) args(1) else "generated"
+  emitVerilog(if (cfg.numWays == 1) new DirectMappedReadCache(cfg) else new SetAssociativeCache(cfg),
+    Array("--target-dir", targetDir))
 }

@@ -1,10 +1,13 @@
 # Agile-Design-Project-Parameterized-Cache-Generator
 
-This project implements a parameterizable set-associative cache using generic types in Chisel, a hardware design language embedded in Scala.
+This project implements a parameterizable set-associative cache in Chisel.
+Use `CacheConfig(numWays = 4)` with `SetAssociativeCache` for a four-way cache;
+`numWays = 1` defaults to direct-mapped behavior. See the [repository README](../../README.md)
+for geometry, replacement behavior, write policies, and Wildcat integration.
 
 ## Run the Tests
 
-From the project root, start the SBT console:
+From `cache-generator/`, start the SBT console:
 
 ```bash
 sbt
@@ -19,8 +22,12 @@ test
 To generate the Verilog/SystemVerilog, run:
 
 ```scala
-run
+runMain cache.GenerateCache 4
 ```
+
+The generator accepts `[ways] [output-directory]`, defaulting to `1` and
+`generated`. One way emits `DirectMappedReadCache`; multiple ways emit
+`SetAssociativeCache`. The synthesis examples below use the one-way output.
 
 To exit the SBT console:
 

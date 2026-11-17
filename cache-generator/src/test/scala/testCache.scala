@@ -5,18 +5,22 @@ import chiseltest._
 import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.collection.mutable.{ArrayBuffer, Map}
-import scala.util.Random
 
-/** Software reference of a direct-mapped cache. It only tracks tags, so it can predict whether an access should hit or miss.*/
+/** Tag-only reference for hit prediction and per-set round-robin replacement. */
 class RefCache(cfg: CacheConfig) {
-  private val tags = Array.fill[Long](cfg.numLines)(-1L)
+  private val tags = Array.fill[Long](cfg.numSets, cfg.numWays)(-1L)
+  private val next = Array.fill(cfg.numSets)(0)
 
-  /** Returns true on a hit, and updates the tag like a refill would on a miss. */
-  def access(addr: Long): Boolean = {
-    val index = ((addr >> cfg.offsetBits) & (cfg.numLines - 1)).toInt
+  def access(addr: Long, isWrite: Boolean = false): Boolean = {
+    val index = ((addr >> cfg.offsetBits) & (cfg.numSets - 1)).toInt
     val tag = addr >> (cfg.offsetBits + cfg.indexBits)
-    val hit = tags(index) == tag
-    tags(index) = tag
+    val hit = tags(index).contains(tag)
+    if (!hit && !(isWrite && cfg.isWriteThrough)) {
+      val invalid = tags(index).indexOf(-1L)
+      val way = if (invalid >= 0) invalid else next(index)
+      tags(index)(way) = tag
+      next(index) = (way + 1) % cfg.numWays
+    }
     hit
   }
 }
@@ -30,14 +34,17 @@ case class MemoryWrite(addr: Long, beats: Seq[BigInt])
   * backing-memory bytes, which change only on completed writebacks.
   */
 class CacheHarness(
-    dut: DirectMappedReadCache,
+    dut: SetAssociativeCache,
     val cfg: CacheConfig,
     memLatency: Int,
     writeReqStall: Int = 0,
     writeBeatStall: Int = 0,
-    writeAckLatency: Int = 0
+    writeAckLatency: Int = 0,
+    readReqStall: Int = 0,
+    readBeatStall: Int = 0
 ) {
 
+  val hits = ArrayBuffer[Boolean]()
   /** Base address of every line fetch the cache issued, in order. */
   val fetches = ArrayBuffer[Long]()
   val writebacks = ArrayBuffer[MemoryWrite]()
@@ -47,6 +54,7 @@ class CacheHarness(
   private val expectedBytes = Map[Long, Int]()
 
   // Memory model state
+  private var readReqDelay = readReqStall
   private var busy = false
   private var base = 0L
   private var delay = 0
@@ -98,7 +106,7 @@ class CacheHarness(
   // ---------------------------------------------------------------- memory model
   /** Drive memory-side inputs for the current cycle. */
   private def memDrive(): Unit = {
-    dut.io.memReq.ready.poke((!busy && !writeBusy).B)
+    dut.io.memReq.ready.poke((!busy && !writeBusy && readReqDelay == 0).B)
     val respValid = busy && delay == 0
     dut.io.memResp.valid.poke(respValid.B)
     if (respValid) {
@@ -148,6 +156,7 @@ class CacheHarness(
     }
 
     if (!busy) {
+      if (dut.io.memReq.valid.peekBoolean() && readReqDelay > 0) readReqDelay -= 1
       if (readReqFire) {
         busy = true
         base = dut.io.memReq.bits.addr.peekInt().toLong
@@ -160,7 +169,10 @@ class CacheHarness(
       delay -= 1
     } else if (readRespFire) {
       beat += 1
-      if (beat == cfg.beatsPerLine) busy = false
+      if (beat == cfg.beatsPerLine) {
+        busy = false
+        readReqDelay = readReqStall
+      } else delay = readBeatStall
     }
 
     if (!writeBusy) {
@@ -246,6 +258,7 @@ class CacheHarness(
     dut.io.req.bits.writeData.poke(writeData.U)
     dut.io.req.bits.writeMask.poke(writeMask.U)
 
+    val hitEvents = ArrayBuffer[Boolean]()
     var accepted = false
     var cycles = 0
     var elapsed = 0
@@ -271,6 +284,10 @@ class CacheHarness(
         if (stall) stalled += 1 else result = Some(d)
       }
 
+      val hit = dut.io.stat.hit.peekBoolean()
+      val miss = dut.io.stat.miss.peekBoolean()
+      require(!(hit && miss), "hit and miss asserted together")
+      if (hit || miss) hitEvents += hit
       memUpdate()
       dut.clock.step()
       elapsed += 1
@@ -287,6 +304,8 @@ class CacheHarness(
       }
     }
     dut.io.resp.ready.poke(true.B)
+    require(hitEvents.size == 1, "each request must emit exactly one hit or miss")
+    hits += hitEvents.head
     ReadResult(result.get, cycles)
   }
 }
