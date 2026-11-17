@@ -19,7 +19,8 @@ case class CacheConfig(
     lineBytes: Int = 16, // one cache line (block) // a.k.a. 4 words of 32 bits per cache line.
     wordBytes: Int = 4, // width of the CPU-side response // one word of 32 bits at a time.
     memBeatBytes: Int = 4, // width of the memory-side data bus // one word of 32 bits at a time.
-    writePolicy: WritePolicy = WriteBack
+    writePolicy: WritePolicy = WriteBack,
+    numWays: Int = 1
 ) {
   require(isPow2(capacityBytes), "capacityBytes must be a power of two")
   require(isPow2(lineBytes), "lineBytes must be a power of two")
@@ -35,11 +36,15 @@ case class CacheConfig(
   require(isWb || memBeatBytes == wordBytes, "WT currently requires memBeatBytes == wordBytes")
 
   val numLines = capacityBytes / lineBytes
+  require(numWays > 0 && isPow2(numWays), "numWays must be a positive power of two")
+  require(numWays <= numLines, "numWays cannot exceed the total number of lines")
+  val numSets = numLines / numWays
+  val wayBits = math.max(1, log2Ceil(numWays))
   val wordsPerLine = lineBytes / wordBytes // 16/4 = 4.
   val beatsPerLine = lineBytes / memBeatBytes // 16/4 = 4.
 
   val offsetBits = log2Ceil(lineBytes)
-  val indexBits = log2Ceil(numLines)
+  val indexBits = log2Ceil(numSets)
   val tagBits = addrWidth - indexBits - offsetBits
   require(tagBits > 0, "address too narrow for this capacity/line size")
 
@@ -51,7 +56,8 @@ case class CacheConfig(
 
   // Address split: | tag | index | offset |
   def tagOf(a: UInt): UInt = a(addrWidth - 1, indexBits + offsetBits)
-  def indexOf(a: UInt): UInt = a(indexBits + offsetBits - 1, offsetBits)
+  def indexOf(a: UInt): UInt =
+    if (indexBits == 0) 0.U else a(indexBits + offsetBits - 1, offsetBits)
   def wordIdxOf(a: UInt): UInt = if (wordIdxBits == 0) 0.U else a(offsetBits - 1, byteOffsetBits)
   def lineBaseOf(a: UInt): UInt = Cat(a(addrWidth - 1, offsetBits), 0.U(offsetBits.W))
   

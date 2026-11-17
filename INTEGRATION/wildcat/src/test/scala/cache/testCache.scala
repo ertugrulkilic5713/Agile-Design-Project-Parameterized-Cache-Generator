@@ -7,18 +7,21 @@ import org.scalatest.flatspec.AnyFlatSpec
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
-/** Software reference of a direct-mapped cache. It only tracks tags, so it can
-  * predict whether an access should hit or miss.
-  */
+/** Tag-only reference for hit prediction and per-set round-robin replacement. */
 class RefCache(cfg: CacheConfig) {
-  private val tags = Array.fill[Long](cfg.numLines)(-1L)
+  private val tags = Array.fill[Long](cfg.numSets, cfg.numWays)(-1L)
+  private val next = Array.fill(cfg.numSets)(0)
 
-  /** Returns true on a hit, and updates the tag like a refill would on a miss. */
   def access(addr: Long): Boolean = {
-    val index = ((addr >> cfg.offsetBits) & (cfg.numLines - 1)).toInt
+    val index = ((addr >> cfg.offsetBits) & (cfg.numSets - 1)).toInt
     val tag = addr >> (cfg.offsetBits + cfg.indexBits)
-    val hit = tags(index) == tag
-    tags(index) = tag
+    val hit = tags(index).contains(tag)
+    if (!hit) {
+      val invalid = tags(index).indexOf(-1L)
+      val way = if (invalid >= 0) invalid else next(index)
+      tags(index)(way) = tag
+      next(index) = (way + 1) % cfg.numWays
+    }
     hit
   }
 }
@@ -29,8 +32,9 @@ case class ReadResult(data: BigInt, cycles: Int)
   * fetches with a configurable latency). Memory content is a deterministic
   * function of the byte address, so the expected value of any read is known.
   */
-class CacheHarness(dut: DirectMappedReadCache, val cfg: CacheConfig, memLatency: Int) {
+class CacheHarness(dut: SetAssociativeCache, val cfg: CacheConfig, memLatency: Int) {
 
+  val hits = ArrayBuffer[Boolean]()
   /** Base address of every line fetch the cache issued, in order. */
   val fetches = ArrayBuffer[Long]()
 
@@ -43,10 +47,14 @@ class CacheHarness(dut: DirectMappedReadCache, val cfg: CacheConfig, memLatency:
   // Idle values on all inputs.
   dut.io.cpu.req.valid.poke(false.B)
   dut.io.cpu.req.bits.addr.poke(0.U)
+  dut.io.cpu.req.bits.write.poke(false.B)
+  dut.io.cpu.req.bits.wdata.poke(0.U)
+  dut.io.cpu.req.bits.wmask.poke(0.U)
+  dut.io.mm.req_write.ready.poke(false.B)
   dut.io.cpu.resp.ready.poke(true.B)
-  dut.io.cpu.memReq.ready.poke(true.B)
-  dut.io.cpu.memResp.valid.poke(false.B)
-  dut.io.cpu.memResp.bits.data.poke(0.U)
+  dut.io.mm.req_refill.ready.poke(true.B)
+  dut.io.mm.data_refill.valid.poke(false.B)
+  dut.io.mm.data_refill.bits.data.poke(0.U)
 
   // ---------------------------------------------------------------- memory contents
   def memByte(addr: Long): Int = (((addr * 31) + 7) ^ (addr >> 8)).toInt & 0xff
@@ -61,28 +69,29 @@ class CacheHarness(dut: DirectMappedReadCache, val cfg: CacheConfig, memLatency:
   // ---------------------------------------------------------------- memory model
   /** Drive memory-side inputs for the current cycle. */
   private def memDrive(): Unit = {
-    dut.io.memReq.ready.poke((!busy).B)
+    dut.io.mm.req_refill.ready.poke((!busy).B)
     val respValid = busy && delay == 0
-    dut.io.memResp.valid.poke(respValid.B)
+    dut.io.mm.data_refill.valid.poke(respValid.B)
     if (respValid) {
       val data = bytesToBig(base + beat.toLong * cfg.memBeatBytes, cfg.memBeatBytes)
-      dut.io.memResp.bits.data.poke(data.U)
+      dut.io.mm.data_refill.bits.data.poke(data.U)
     }
   }
 
   /** Advance the memory model by one cycle, after inputs are driven. */
   private def memUpdate(): Unit = {
+    require(!dut.io.mm.req_write.valid.peekBoolean(), "read-only traffic must not write back clean lines")
     if (!busy) {
-      if (dut.io.memReq.valid.peekBoolean()) { // request fires: ready is high when idle
+      if (dut.io.mm.req_refill.valid.peekBoolean()) { // request fires: ready is high when idle
         busy = true
-        base = dut.io.memReq.bits.addr.peekInt().toLong
+        base = dut.io.mm.req_refill.bits.addr.peekInt().toLong
         delay = memLatency
         beat = 0
         fetches += base
       }
     } else if (delay > 0) {
       delay -= 1
-    } else if (dut.io.memResp.ready.peekBoolean()) { // beat fires
+    } else if (dut.io.mm.data_refill.ready.peekBoolean()) { // beat fires
       beat += 1
       if (beat == cfg.beatsPerLine) busy = false
     }
@@ -97,9 +106,10 @@ class CacheHarness(dut: DirectMappedReadCache, val cfg: CacheConfig, memLatency:
     *         request (accept cycle and response cycle both counted).
     */
   def read(addr: Long, respStall: Int = 0, maxCycles: Int = 500): ReadResult = {
-    dut.io.req.valid.poke(true.B)
-    dut.io.req.bits.addr.poke(addr.U)
+    dut.io.cpu.req.valid.poke(true.B)
+    dut.io.cpu.req.bits.addr.poke(addr.U)
 
+    var observedHit: Option[Boolean] = None
     var accepted = false
     var cycles = 0
     var stalled = 0
@@ -110,19 +120,26 @@ class CacheHarness(dut: DirectMappedReadCache, val cfg: CacheConfig, memLatency:
       require(cycles < maxCycles, s"timeout waiting for the response to address 0x${addr.toHexString}")
       memDrive()
 
-      val reqFire = !accepted && dut.io.req.ready.peekBoolean()
+      val reqFire = !accepted && dut.io.cpu.req.ready.peekBoolean()
 
-      val respValid = accepted && dut.io.resp.valid.peekBoolean()
+      val respValid = accepted && dut.io.cpu.resp.valid.peekBoolean()
       val stall = respValid && stalled < respStall
-      dut.io.resp.ready.poke((!stall).B)
+      dut.io.cpu.resp.ready.poke((!stall).B)
       if (respValid) {
-        val d = dut.io.resp.bits.data.peekInt()
+        val d = dut.io.cpu.resp.bits.data.peekInt()
         // Data must stay stable for as long as valid is high.
         require(seen.forall(_ == d), "resp.data changed while resp.valid was high")
         seen = Some(d)
         if (stall) stalled += 1 else result = Some(d)
       }
 
+      val hit = dut.io.stat.hit.peekBoolean()
+      val miss = dut.io.stat.miss.peekBoolean()
+      require(!(hit && miss), "hit and miss asserted together")
+      if (hit || miss) {
+        require(observedHit.isEmpty, "duplicate hit/miss event")
+        observedHit = Some(hit)
+      }
       memUpdate()
       dut.clock.step()
 
@@ -130,11 +147,12 @@ class CacheHarness(dut: DirectMappedReadCache, val cfg: CacheConfig, memLatency:
       if (reqFire) {
         accepted = true
         // The cache must have captured the address: drop it right after accept.
-        dut.io.req.valid.poke(false.B)
-        dut.io.req.bits.addr.poke(0.U)
+        dut.io.cpu.req.valid.poke(false.B)
+        dut.io.cpu.req.bits.addr.poke(0.U)
       }
     }
-    dut.io.resp.ready.poke(true.B)
+    dut.io.cpu.resp.ready.poke(true.B)
+    hits += observedHit.getOrElse(throw new IllegalStateException("missing hit/miss event"))
     ReadResult(result.get, cycles)
   }
 }

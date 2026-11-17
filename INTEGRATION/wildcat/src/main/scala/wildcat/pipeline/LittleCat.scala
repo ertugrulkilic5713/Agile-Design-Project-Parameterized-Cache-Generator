@@ -93,6 +93,8 @@ object LittleCat extends App {
   val capacity = if (args.length > 2) args(2).toInt else 4096
   val linesize = if (args.length > 3) args(3).toInt else 16
 
+  val ways = if (args.length > 4) args(4).toInt else 1
+
   val cfg = CacheConfig(
     writePolicy = policy match {
       case "wt" => WriteThrough
@@ -100,23 +102,28 @@ object LittleCat extends App {
       case other => throw new IllegalArgumentException(s"uknown cache policy '$other', use either wt or wb.")
     },
     capacityBytes = capacity,
-    lineBytes = linesize  
+    lineBytes = linesize,
+    numWays = ways
   )
-  println(s"LittleCat: Program=$file | cache=$policy | capacity=$capacity | linesize=$linesize")
+  println(s"LittleCat: Program=$file | cache=$policy | capacity=$capacity | linesize=$linesize | ways=$ways")
   println(s"-------------------------------CACHE CONFIG----------------------------------")
   println(s"# LINES = ${capacity/linesize}")
+  println(s"# SETS = ${cfg.numSets}, WAYS = ${cfg.numWays}")
   println(s"DATA BLOCKS PER LINE = ${cfg.beatsPerLine}")
   println(s"DATA BLOCKS SIZE = 8*${linesize} = ${8*linesize} Bits")
   println(s"------------------------------ADDRESS----------------------------------------")
-  println(s"For a address width of 32 bits: [TAG | INDEX | BYTEOFFSET | WORDIDX]")
-  println(s"TAG BIT = ${32 - log2Ceil(capacity)}")
-  println(s"INDEX BIT = ${log2Ceil(capacity) - log2Ceil(linesize)}")
+  println(s"For a address width of 32 bits: [TAG | INDEX | WORDIDX | BYTEOFFSET]")
+  println(s"TAG BIT = ${cfg.tagBits}")
+  println(s"INDEX BIT = ${cfg.indexBits}")
   println(s"BYTEOFFSET + WORDIDX = ${log2Ceil(linesize)}")
   println(s"-------------------------------DATA & OVERHEAD-------------------------------")
+  val replacementBits = cfg.numSets * log2Ceil(cfg.numWays)
+  val overheadBits = cfg.numLines * (cfg.tagBits + 2) + replacementBits
+  val totalBits = cfg.capacityBytes * 8 + overheadBits
   println(s"TOTAL DATA = ${8*capacity} Bits")
-  println(s"TOTAL OVERHEAD = ${(capacity/linesize)*(34 - log2Ceil(capacity))} Bits")
+  println(s"TOTAL OVERHEAD = $overheadBits Bits (includes $replacementBits replacement bits)")
   println(s"--------------------------------DATA + OVERHEAD------------------------------")
-  println(s"TOTAL BITS = ${8*capacity + (capacity/linesize)*(34 - log2Ceil(capacity))} Bits")
-  println(s"TOTAL BYTES = ${(8*capacity + (capacity/linesize)*(34 - log2Ceil(capacity)))/8} Bytes")
+  println(s"TOTAL BITS = $totalBits Bits")
+  println(s"TOTAL BYTES = ${(totalBits + 7)/8} Bytes")
   emitVerilog(new LittleCat(file, cfg), Array("--target-dir", "generated"))
 }

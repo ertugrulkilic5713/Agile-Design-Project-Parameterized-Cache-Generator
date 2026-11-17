@@ -18,7 +18,7 @@ class CacheAdapter(cfg: CacheConfig) extends PipeConDevice(32) {
   require(cfg.wordBytes == 4, "Wildcat words are 32 bits wide")
   require(cfg.addrWidth == 32)
 
-  val cache = Module(new DirectMappedReadCache(cfg))
+  val cache = Module(new SetAssociativeCache(cfg))
   val mem_port = IO(Flipped(new PipeConIO(32)))
 
   val debug_cpu_state = IO(Output(UInt(2.W)))

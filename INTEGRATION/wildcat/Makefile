@@ -13,6 +13,10 @@ else
 export CROSS=riscv64-unknown-elf-
 endif
 APP=asm/play.s
+POLICY?=wb
+CAPACITY?=4096
+LINESIZE?=16
+WAYS?=1
 #APP=asm/riscv-v1_addi.s
 # Use a different program, e.g., one from the CAE lab
 # APP=../../cae-lab/lab3/minimal.s
@@ -66,7 +70,7 @@ hw: app
 	$(SBT) "runMain wildcat.pipeline.WildcatTop a.out"
 
 hw-asic: app
-	$(SBT) "runMain wildcat.pipeline.LittleCat a.out $(POLICY) $(CAPACITY) $(LINESIZE)"
+	$(SBT) "runMain wildcat.pipeline.LittleCat a.out $(POLICY) $(CAPACITY) $(LINESIZE) $(WAYS)"
 
 hw-fmax:
 	$(SBT) "runMain wildcat.pipeline.SynthTopFmax"
