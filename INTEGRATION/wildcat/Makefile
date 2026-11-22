@@ -18,6 +18,9 @@ CAPACITY?=4096
 LINESIZE?=16
 WAYS?=1
 REPLACEMENT?=rr
+SEED?=1
+MEMLATENCY?=0
+MEMBYTES?=16384
 #APP=asm/riscv-v1_addi.s
 # Use a different program, e.g., one from the CAE lab
 # APP=../../cae-lab/lab3/minimal.s
@@ -71,7 +74,7 @@ hw: app
 	$(SBT) "runMain wildcat.pipeline.WildcatTop a.out"
 
 hw-asic: app
-	$(SBT) "runMain wildcat.pipeline.LittleCat a.out $(POLICY) $(CAPACITY) $(LINESIZE) $(WAYS) $(REPLACEMENT)"
+	$(SBT) "runMain wildcat.pipeline.LittleCat a.out $(POLICY) $(CAPACITY) $(LINESIZE) $(WAYS) $(REPLACEMENT) $(SEED) $(MEMLATENCY) $(MEMBYTES)"
 
 hw-fmax:
 	$(SBT) "runMain wildcat.pipeline.SynthTopFmax"

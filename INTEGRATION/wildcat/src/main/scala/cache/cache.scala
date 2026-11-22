@@ -59,7 +59,7 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
     case RandomReplacement =>
       // Advance once per actual eviction, independent of memory/CPU stalls.
       val evict = state === sCompare && !hit && !invalid.asUInt.orR && (!writeReg || cfg.isWb.B)
-      LFSR(math.max(16, cfg.wayBits + 1), increment = evict, seed = Some(BigInt(1)))(cfg.wayBits - 1, 0)
+      LFSR(math.max(16, cfg.wayBits + 1), increment = evict, seed = Some(cfg.lfsrSeed))(cfg.wayBits - 1, 0)
   }
   val selectedVictim = Mux(invalid.asUInt.orR, invalidWay, replacement)
   val lookupWay = Mux(hit, hitWay, selectedVictim)
@@ -98,6 +98,7 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   io.stat.miss := false.B
   io.stat.writeback_wb := false.B
   io.stat.write_wt := false.B
+  io.stat.state := state.asUInt
   
   // ---------------------------------------------------------------- helpers
   // Divides wordsPerLine (block of 4x 32 bit words) into word chunks.
@@ -343,7 +344,8 @@ object GenerateCache extends App {
     memBeatBytes = 4,
     writePolicy = WriteBack,
     numWays = if (args.nonEmpty) args(0).toInt else 1,
-    replacementPolicy = if (args.length > 2) ReplacementPolicy.parse(args(2)) else RoundRobin
+    replacementPolicy = if (args.length > 2) ReplacementPolicy.parse(args(2)) else RoundRobin,
+    lfsrSeed = if (args.length > 3) BigInt(args(3)) else 1
   )
   emitVerilog(if (cfg.numWays == 1) new DirectMappedReadCache(cfg) else new SetAssociativeCache(cfg),
     Array("--target-dir", if (args.length > 1) args(1) else "generated"))

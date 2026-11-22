@@ -793,27 +793,16 @@ module InstructionROM(
   reg [31:0] _RAND_1;
 `endif // RANDOMIZE_REG_INIT
   reg [31:0] addrReg; // @[src/main/scala/memory/InstructionROM.scala 12:20]
-  wire [31:0] _GEN_1 = 5'h1 == addrReg[6:2] ? 32'h293 : 32'hf0010237; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_2 = 5'h2 == addrReg[6:2] ? 32'h2337 : _GEN_1; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_3 = 5'h3 == addrReg[6:2] ? 32'h393 : _GEN_2; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_4 = 5'h4 == addrReg[6:2] ? 32'h538433 : _GEN_3; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_5 = 5'h5 == addrReg[6:2] ? 32'h83a023 : _GEN_4; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_6 = 5'h6 == addrReg[6:2] ? 32'h438393 : _GEN_5; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_7 = 5'h7 == addrReg[6:2] ? 32'hfe639ae3 : _GEN_6; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_8 = 5'h8 == addrReg[6:2] ? 32'h393 : _GEN_7; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_9 = 5'h9 == addrReg[6:2] ? 32'h3a403 : _GEN_8; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_10 = 5'ha == addrReg[6:2] ? 32'h5384b3 : _GEN_9; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_11 = 5'hb == addrReg[6:2] ? 32'h941c63 : _GEN_10; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_12 = 5'hc == addrReg[6:2] ? 32'h438393 : _GEN_11; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_13 = 5'hd == addrReg[6:2] ? 32'hfe6398e3 : _GEN_12; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_14 = 5'he == addrReg[6:2] ? 32'h128293 : _GEN_13; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_15 = 5'hf == addrReg[6:2] ? 32'h522023 : _GEN_14; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_16 = 5'h10 == addrReg[6:2] ? 32'hfcdff06f : _GEN_15; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_17 = 5'h11 == addrReg[6:2] ? 32'h84b7 : _GEN_16; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_18 = 5'h12 == addrReg[6:2] ? 32'hfff48493 : _GEN_17; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
-  wire [31:0] _GEN_19 = 5'h13 == addrReg[6:2] ? 32'h922023 : _GEN_18; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_1 = 4'h1 == addrReg[5:2] ? 32'h293 : 32'hf0010237; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_2 = 4'h2 == addrReg[5:2] ? 32'h40000313 : _GEN_1; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_3 = 4'h3 == addrReg[5:2] ? 32'h393 : _GEN_2; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_4 = 4'h4 == addrReg[5:2] ? 32'h3a403 : _GEN_3; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_5 = 4'h5 == addrReg[5:2] ? 32'h438393 : _GEN_4; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_6 = 4'h6 == addrReg[5:2] ? 32'hfe639ce3 : _GEN_5; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_7 = 4'h7 == addrReg[5:2] ? 32'h128293 : _GEN_6; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  wire [31:0] _GEN_8 = 4'h8 == addrReg[5:2] ? 32'h522023 : _GEN_7; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
   reg  firstReg; // @[src/main/scala/memory/InstructionROM.scala 20:25]
-  assign cpuPort_rdData = 5'h14 == addrReg[6:2] ? 32'h6f : _GEN_19; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
+  assign cpuPort_rdData = 4'h9 == addrReg[5:2] ? 32'hfe9ff06f : _GEN_8; // @[src/main/scala/memory/InstructionROM.scala 15:{18,18}]
   assign cpuPort_ack = ~firstReg; // @[src/main/scala/memory/InstructionROM.scala 22:18]
   always @(posedge clock) begin
     addrReg <= cpuPort_address; // @[src/main/scala/memory/InstructionROM.scala 13:11]
@@ -867,31 +856,33 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
-module DirectMappedReadCache(
+module SetAssociativeCache(
   input         clock,
   input         reset,
-  output        io_cpu_req_ready, // @[src/main/scala/cache/cache.scala 8:14]
-  input         io_cpu_req_valid, // @[src/main/scala/cache/cache.scala 8:14]
-  input  [31:0] io_cpu_req_bits_addr, // @[src/main/scala/cache/cache.scala 8:14]
-  input         io_cpu_req_bits_write, // @[src/main/scala/cache/cache.scala 8:14]
-  input  [31:0] io_cpu_req_bits_wdata, // @[src/main/scala/cache/cache.scala 8:14]
-  input  [3:0]  io_cpu_req_bits_wmask, // @[src/main/scala/cache/cache.scala 8:14]
-  input         io_cpu_resp_ready, // @[src/main/scala/cache/cache.scala 8:14]
-  output        io_cpu_resp_valid, // @[src/main/scala/cache/cache.scala 8:14]
-  output [31:0] io_cpu_resp_bits_data, // @[src/main/scala/cache/cache.scala 8:14]
-  input         io_mm_req_refill_ready, // @[src/main/scala/cache/cache.scala 8:14]
-  output        io_mm_req_refill_valid, // @[src/main/scala/cache/cache.scala 8:14]
-  output [31:0] io_mm_req_refill_bits_addr, // @[src/main/scala/cache/cache.scala 8:14]
-  output        io_mm_data_refill_ready, // @[src/main/scala/cache/cache.scala 8:14]
-  input         io_mm_data_refill_valid, // @[src/main/scala/cache/cache.scala 8:14]
-  input  [31:0] io_mm_data_refill_bits_data, // @[src/main/scala/cache/cache.scala 8:14]
-  input         io_mm_req_write_ready, // @[src/main/scala/cache/cache.scala 8:14]
-  output        io_mm_req_write_valid, // @[src/main/scala/cache/cache.scala 8:14]
-  output [31:0] io_mm_req_write_bits_addr, // @[src/main/scala/cache/cache.scala 8:14]
-  output [31:0] io_mm_req_write_bits_data, // @[src/main/scala/cache/cache.scala 8:14]
-  output [3:0]  io_mm_req_write_bits_mask, // @[src/main/scala/cache/cache.scala 8:14]
-  output        io_stat_hit, // @[src/main/scala/cache/cache.scala 8:14]
-  output        io_stat_miss // @[src/main/scala/cache/cache.scala 8:14]
+  output        io_cpu_req_ready, // @[src/main/scala/cache/cache.scala 9:14]
+  input         io_cpu_req_valid, // @[src/main/scala/cache/cache.scala 9:14]
+  input  [31:0] io_cpu_req_bits_addr, // @[src/main/scala/cache/cache.scala 9:14]
+  input         io_cpu_req_bits_write, // @[src/main/scala/cache/cache.scala 9:14]
+  input  [31:0] io_cpu_req_bits_wdata, // @[src/main/scala/cache/cache.scala 9:14]
+  input  [3:0]  io_cpu_req_bits_wmask, // @[src/main/scala/cache/cache.scala 9:14]
+  input         io_cpu_resp_ready, // @[src/main/scala/cache/cache.scala 9:14]
+  output        io_cpu_resp_valid, // @[src/main/scala/cache/cache.scala 9:14]
+  output [31:0] io_cpu_resp_bits_data, // @[src/main/scala/cache/cache.scala 9:14]
+  input         io_mm_req_refill_ready, // @[src/main/scala/cache/cache.scala 9:14]
+  output        io_mm_req_refill_valid, // @[src/main/scala/cache/cache.scala 9:14]
+  output [31:0] io_mm_req_refill_bits_addr, // @[src/main/scala/cache/cache.scala 9:14]
+  output        io_mm_data_refill_ready, // @[src/main/scala/cache/cache.scala 9:14]
+  input         io_mm_data_refill_valid, // @[src/main/scala/cache/cache.scala 9:14]
+  input  [31:0] io_mm_data_refill_bits_data, // @[src/main/scala/cache/cache.scala 9:14]
+  input         io_mm_req_write_ready, // @[src/main/scala/cache/cache.scala 9:14]
+  output        io_mm_req_write_valid, // @[src/main/scala/cache/cache.scala 9:14]
+  output [31:0] io_mm_req_write_bits_addr, // @[src/main/scala/cache/cache.scala 9:14]
+  output [31:0] io_mm_req_write_bits_data, // @[src/main/scala/cache/cache.scala 9:14]
+  output [3:0]  io_mm_req_write_bits_mask, // @[src/main/scala/cache/cache.scala 9:14]
+  output        io_stat_hit, // @[src/main/scala/cache/cache.scala 9:14]
+  output        io_stat_miss, // @[src/main/scala/cache/cache.scala 9:14]
+  output        io_stat_writeback_wb, // @[src/main/scala/cache/cache.scala 9:14]
+  output [2:0]  io_stat_state // @[src/main/scala/cache/cache.scala 9:14]
 );
 `ifdef RANDOMIZE_MEM_INIT
   reg [31:0] _RAND_0;
@@ -1045,2423 +1036,5924 @@ module DirectMappedReadCache(
   reg [31:0] _RAND_146;
   reg [31:0] _RAND_147;
   reg [31:0] _RAND_148;
+  reg [31:0] _RAND_149;
+  reg [31:0] _RAND_150;
+  reg [31:0] _RAND_151;
+  reg [31:0] _RAND_152;
+  reg [31:0] _RAND_153;
+  reg [31:0] _RAND_154;
+  reg [31:0] _RAND_155;
+  reg [31:0] _RAND_156;
+  reg [31:0] _RAND_157;
+  reg [31:0] _RAND_158;
+  reg [31:0] _RAND_159;
+  reg [31:0] _RAND_160;
+  reg [31:0] _RAND_161;
+  reg [31:0] _RAND_162;
+  reg [31:0] _RAND_163;
+  reg [31:0] _RAND_164;
+  reg [31:0] _RAND_165;
+  reg [31:0] _RAND_166;
+  reg [31:0] _RAND_167;
+  reg [31:0] _RAND_168;
+  reg [31:0] _RAND_169;
+  reg [31:0] _RAND_170;
+  reg [31:0] _RAND_171;
+  reg [31:0] _RAND_172;
+  reg [31:0] _RAND_173;
+  reg [31:0] _RAND_174;
+  reg [31:0] _RAND_175;
+  reg [31:0] _RAND_176;
+  reg [31:0] _RAND_177;
+  reg [31:0] _RAND_178;
+  reg [31:0] _RAND_179;
+  reg [31:0] _RAND_180;
+  reg [31:0] _RAND_181;
+  reg [31:0] _RAND_182;
+  reg [31:0] _RAND_183;
+  reg [31:0] _RAND_184;
+  reg [31:0] _RAND_185;
+  reg [31:0] _RAND_186;
+  reg [31:0] _RAND_187;
+  reg [31:0] _RAND_188;
+  reg [31:0] _RAND_189;
+  reg [31:0] _RAND_190;
+  reg [31:0] _RAND_191;
+  reg [31:0] _RAND_192;
+  reg [31:0] _RAND_193;
+  reg [31:0] _RAND_194;
+  reg [31:0] _RAND_195;
+  reg [31:0] _RAND_196;
+  reg [31:0] _RAND_197;
+  reg [31:0] _RAND_198;
+  reg [31:0] _RAND_199;
+  reg [31:0] _RAND_200;
+  reg [31:0] _RAND_201;
+  reg [31:0] _RAND_202;
+  reg [31:0] _RAND_203;
+  reg [31:0] _RAND_204;
+  reg [31:0] _RAND_205;
+  reg [31:0] _RAND_206;
+  reg [31:0] _RAND_207;
+  reg [31:0] _RAND_208;
+  reg [31:0] _RAND_209;
+  reg [31:0] _RAND_210;
+  reg [31:0] _RAND_211;
+  reg [31:0] _RAND_212;
+  reg [31:0] _RAND_213;
+  reg [31:0] _RAND_214;
+  reg [31:0] _RAND_215;
+  reg [31:0] _RAND_216;
+  reg [31:0] _RAND_217;
+  reg [31:0] _RAND_218;
+  reg [31:0] _RAND_219;
+  reg [31:0] _RAND_220;
+  reg [31:0] _RAND_221;
+  reg [31:0] _RAND_222;
+  reg [31:0] _RAND_223;
+  reg [31:0] _RAND_224;
+  reg [31:0] _RAND_225;
+  reg [31:0] _RAND_226;
+  reg [31:0] _RAND_227;
+  reg [31:0] _RAND_228;
+  reg [31:0] _RAND_229;
+  reg [31:0] _RAND_230;
+  reg [31:0] _RAND_231;
+  reg [31:0] _RAND_232;
+  reg [31:0] _RAND_233;
+  reg [31:0] _RAND_234;
+  reg [31:0] _RAND_235;
+  reg [31:0] _RAND_236;
+  reg [31:0] _RAND_237;
+  reg [31:0] _RAND_238;
+  reg [31:0] _RAND_239;
+  reg [31:0] _RAND_240;
+  reg [31:0] _RAND_241;
+  reg [31:0] _RAND_242;
+  reg [31:0] _RAND_243;
+  reg [31:0] _RAND_244;
+  reg [31:0] _RAND_245;
+  reg [31:0] _RAND_246;
+  reg [31:0] _RAND_247;
+  reg [31:0] _RAND_248;
+  reg [31:0] _RAND_249;
+  reg [31:0] _RAND_250;
+  reg [31:0] _RAND_251;
+  reg [31:0] _RAND_252;
+  reg [31:0] _RAND_253;
+  reg [31:0] _RAND_254;
+  reg [31:0] _RAND_255;
+  reg [31:0] _RAND_256;
+  reg [31:0] _RAND_257;
+  reg [31:0] _RAND_258;
+  reg [31:0] _RAND_259;
+  reg [31:0] _RAND_260;
+  reg [31:0] _RAND_261;
+  reg [31:0] _RAND_262;
+  reg [31:0] _RAND_263;
+  reg [31:0] _RAND_264;
+  reg [31:0] _RAND_265;
+  reg [31:0] _RAND_266;
+  reg [31:0] _RAND_267;
+  reg [31:0] _RAND_268;
+  reg [31:0] _RAND_269;
+  reg [31:0] _RAND_270;
+  reg [31:0] _RAND_271;
+  reg [31:0] _RAND_272;
+  reg [31:0] _RAND_273;
+  reg [31:0] _RAND_274;
+  reg [31:0] _RAND_275;
+  reg [31:0] _RAND_276;
+  reg [31:0] _RAND_277;
+  reg [255:0] _RAND_278;
 `endif // RANDOMIZE_REG_INIT
-  reg [19:0] tagMem [0:127]; // @[src/main/scala/cache/cache.scala 13:27]
-  wire  tagMem_tagRd_en; // @[src/main/scala/cache/cache.scala 13:27]
-  wire [6:0] tagMem_tagRd_addr; // @[src/main/scala/cache/cache.scala 13:27]
-  wire [19:0] tagMem_tagRd_data; // @[src/main/scala/cache/cache.scala 13:27]
-  wire [19:0] tagMem_MPORT_1_data; // @[src/main/scala/cache/cache.scala 13:27]
-  wire [6:0] tagMem_MPORT_1_addr; // @[src/main/scala/cache/cache.scala 13:27]
-  wire  tagMem_MPORT_1_mask; // @[src/main/scala/cache/cache.scala 13:27]
-  wire  tagMem_MPORT_1_en; // @[src/main/scala/cache/cache.scala 13:27]
-  reg  tagMem_tagRd_en_pipe_0;
-  reg [6:0] tagMem_tagRd_addr_pipe_0;
-  reg [255:0] dataMem [0:127]; // @[src/main/scala/cache/cache.scala 14:28]
-  wire  dataMem_lineRd_en; // @[src/main/scala/cache/cache.scala 14:28]
-  wire [6:0] dataMem_lineRd_addr; // @[src/main/scala/cache/cache.scala 14:28]
-  wire [255:0] dataMem_lineRd_data; // @[src/main/scala/cache/cache.scala 14:28]
-  wire [255:0] dataMem_MPORT_data; // @[src/main/scala/cache/cache.scala 14:28]
-  wire [6:0] dataMem_MPORT_addr; // @[src/main/scala/cache/cache.scala 14:28]
-  wire  dataMem_MPORT_mask; // @[src/main/scala/cache/cache.scala 14:28]
-  wire  dataMem_MPORT_en; // @[src/main/scala/cache/cache.scala 14:28]
-  reg  dataMem_lineRd_en_pipe_0;
-  reg [6:0] dataMem_lineRd_addr_pipe_0;
-  reg  validBits_0; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_1; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_2; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_3; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_4; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_5; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_6; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_7; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_8; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_9; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_10; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_11; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_12; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_13; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_14; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_15; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_16; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_17; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_18; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_19; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_20; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_21; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_22; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_23; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_24; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_25; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_26; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_27; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_28; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_29; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_30; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_31; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_32; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_33; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_34; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_35; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_36; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_37; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_38; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_39; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_40; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_41; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_42; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_43; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_44; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_45; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_46; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_47; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_48; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_49; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_50; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_51; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_52; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_53; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_54; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_55; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_56; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_57; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_58; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_59; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_60; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_61; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_62; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_63; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_64; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_65; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_66; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_67; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_68; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_69; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_70; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_71; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_72; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_73; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_74; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_75; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_76; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_77; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_78; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_79; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_80; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_81; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_82; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_83; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_84; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_85; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_86; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_87; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_88; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_89; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_90; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_91; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_92; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_93; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_94; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_95; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_96; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_97; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_98; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_99; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_100; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_101; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_102; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_103; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_104; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_105; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_106; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_107; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_108; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_109; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_110; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_111; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_112; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_113; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_114; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_115; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_116; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_117; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_118; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_119; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_120; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_121; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_122; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_123; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_124; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_125; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_126; // @[src/main/scala/cache/cache.scala 11:26]
-  reg  validBits_127; // @[src/main/scala/cache/cache.scala 11:26]
-  reg [2:0] state; // @[src/main/scala/cache/cache.scala 17:22]
-  reg [31:0] addrReg; // @[src/main/scala/cache/cache.scala 18:20]
-  reg [31:0] respData; // @[src/main/scala/cache/cache.scala 19:21]
-  reg [31:0] refillBuf_0; // @[src/main/scala/cache/cache.scala 20:22]
-  reg [31:0] refillBuf_1; // @[src/main/scala/cache/cache.scala 20:22]
-  reg [31:0] refillBuf_2; // @[src/main/scala/cache/cache.scala 20:22]
-  reg [31:0] refillBuf_3; // @[src/main/scala/cache/cache.scala 20:22]
-  reg [31:0] refillBuf_4; // @[src/main/scala/cache/cache.scala 20:22]
-  reg [31:0] refillBuf_5; // @[src/main/scala/cache/cache.scala 20:22]
-  reg [31:0] refillBuf_6; // @[src/main/scala/cache/cache.scala 20:22]
-  reg [31:0] refillBuf_7; // @[src/main/scala/cache/cache.scala 20:22]
-  reg [2:0] beatCnt; // @[src/main/scala/cache/cache.scala 22:24]
-  reg  writeReg; // @[src/main/scala/cache/cache.scala 24:21]
-  reg [31:0] wdataReg; // @[src/main/scala/cache/cache.scala 25:21]
-  reg [3:0] wmaskReg; // @[src/main/scala/cache/cache.scala 26:21]
-  wire [6:0] reqIdx = addrReg[11:5]; // @[src/main/scala/cache/model.scala 54:33]
-  wire [19:0] reqTag = addrReg[31:12]; // @[src/main/scala/cache/model.scala 53:31]
-  wire [2:0] reqWord = addrReg[4:2]; // @[src/main/scala/cache/model.scala 55:66]
-  wire  _tagRd_T = io_cpu_req_ready & io_cpu_req_valid; // @[src/main/scala/chisel3/util/Decoupled.scala 57:35]
-  wire  _T_2 = 3'h0 == state; // @[src/main/scala/cache/cache.scala 119:17]
-  wire  _GEN_20 = 7'h1 == reqIdx ? validBits_1 : validBits_0; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_21 = 7'h2 == reqIdx ? validBits_2 : _GEN_20; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_22 = 7'h3 == reqIdx ? validBits_3 : _GEN_21; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_23 = 7'h4 == reqIdx ? validBits_4 : _GEN_22; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_24 = 7'h5 == reqIdx ? validBits_5 : _GEN_23; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_25 = 7'h6 == reqIdx ? validBits_6 : _GEN_24; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_26 = 7'h7 == reqIdx ? validBits_7 : _GEN_25; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_27 = 7'h8 == reqIdx ? validBits_8 : _GEN_26; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_28 = 7'h9 == reqIdx ? validBits_9 : _GEN_27; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_29 = 7'ha == reqIdx ? validBits_10 : _GEN_28; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_30 = 7'hb == reqIdx ? validBits_11 : _GEN_29; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_31 = 7'hc == reqIdx ? validBits_12 : _GEN_30; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_32 = 7'hd == reqIdx ? validBits_13 : _GEN_31; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_33 = 7'he == reqIdx ? validBits_14 : _GEN_32; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_34 = 7'hf == reqIdx ? validBits_15 : _GEN_33; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_35 = 7'h10 == reqIdx ? validBits_16 : _GEN_34; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_36 = 7'h11 == reqIdx ? validBits_17 : _GEN_35; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_37 = 7'h12 == reqIdx ? validBits_18 : _GEN_36; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_38 = 7'h13 == reqIdx ? validBits_19 : _GEN_37; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_39 = 7'h14 == reqIdx ? validBits_20 : _GEN_38; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_40 = 7'h15 == reqIdx ? validBits_21 : _GEN_39; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_41 = 7'h16 == reqIdx ? validBits_22 : _GEN_40; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_42 = 7'h17 == reqIdx ? validBits_23 : _GEN_41; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_43 = 7'h18 == reqIdx ? validBits_24 : _GEN_42; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_44 = 7'h19 == reqIdx ? validBits_25 : _GEN_43; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_45 = 7'h1a == reqIdx ? validBits_26 : _GEN_44; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_46 = 7'h1b == reqIdx ? validBits_27 : _GEN_45; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_47 = 7'h1c == reqIdx ? validBits_28 : _GEN_46; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_48 = 7'h1d == reqIdx ? validBits_29 : _GEN_47; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_49 = 7'h1e == reqIdx ? validBits_30 : _GEN_48; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_50 = 7'h1f == reqIdx ? validBits_31 : _GEN_49; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_51 = 7'h20 == reqIdx ? validBits_32 : _GEN_50; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_52 = 7'h21 == reqIdx ? validBits_33 : _GEN_51; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_53 = 7'h22 == reqIdx ? validBits_34 : _GEN_52; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_54 = 7'h23 == reqIdx ? validBits_35 : _GEN_53; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_55 = 7'h24 == reqIdx ? validBits_36 : _GEN_54; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_56 = 7'h25 == reqIdx ? validBits_37 : _GEN_55; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_57 = 7'h26 == reqIdx ? validBits_38 : _GEN_56; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_58 = 7'h27 == reqIdx ? validBits_39 : _GEN_57; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_59 = 7'h28 == reqIdx ? validBits_40 : _GEN_58; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_60 = 7'h29 == reqIdx ? validBits_41 : _GEN_59; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_61 = 7'h2a == reqIdx ? validBits_42 : _GEN_60; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_62 = 7'h2b == reqIdx ? validBits_43 : _GEN_61; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_63 = 7'h2c == reqIdx ? validBits_44 : _GEN_62; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_64 = 7'h2d == reqIdx ? validBits_45 : _GEN_63; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_65 = 7'h2e == reqIdx ? validBits_46 : _GEN_64; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_66 = 7'h2f == reqIdx ? validBits_47 : _GEN_65; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_67 = 7'h30 == reqIdx ? validBits_48 : _GEN_66; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_68 = 7'h31 == reqIdx ? validBits_49 : _GEN_67; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_69 = 7'h32 == reqIdx ? validBits_50 : _GEN_68; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_70 = 7'h33 == reqIdx ? validBits_51 : _GEN_69; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_71 = 7'h34 == reqIdx ? validBits_52 : _GEN_70; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_72 = 7'h35 == reqIdx ? validBits_53 : _GEN_71; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_73 = 7'h36 == reqIdx ? validBits_54 : _GEN_72; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_74 = 7'h37 == reqIdx ? validBits_55 : _GEN_73; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_75 = 7'h38 == reqIdx ? validBits_56 : _GEN_74; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_76 = 7'h39 == reqIdx ? validBits_57 : _GEN_75; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_77 = 7'h3a == reqIdx ? validBits_58 : _GEN_76; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_78 = 7'h3b == reqIdx ? validBits_59 : _GEN_77; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_79 = 7'h3c == reqIdx ? validBits_60 : _GEN_78; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_80 = 7'h3d == reqIdx ? validBits_61 : _GEN_79; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_81 = 7'h3e == reqIdx ? validBits_62 : _GEN_80; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_82 = 7'h3f == reqIdx ? validBits_63 : _GEN_81; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_83 = 7'h40 == reqIdx ? validBits_64 : _GEN_82; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_84 = 7'h41 == reqIdx ? validBits_65 : _GEN_83; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_85 = 7'h42 == reqIdx ? validBits_66 : _GEN_84; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_86 = 7'h43 == reqIdx ? validBits_67 : _GEN_85; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_87 = 7'h44 == reqIdx ? validBits_68 : _GEN_86; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_88 = 7'h45 == reqIdx ? validBits_69 : _GEN_87; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_89 = 7'h46 == reqIdx ? validBits_70 : _GEN_88; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_90 = 7'h47 == reqIdx ? validBits_71 : _GEN_89; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_91 = 7'h48 == reqIdx ? validBits_72 : _GEN_90; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_92 = 7'h49 == reqIdx ? validBits_73 : _GEN_91; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_93 = 7'h4a == reqIdx ? validBits_74 : _GEN_92; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_94 = 7'h4b == reqIdx ? validBits_75 : _GEN_93; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_95 = 7'h4c == reqIdx ? validBits_76 : _GEN_94; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_96 = 7'h4d == reqIdx ? validBits_77 : _GEN_95; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_97 = 7'h4e == reqIdx ? validBits_78 : _GEN_96; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_98 = 7'h4f == reqIdx ? validBits_79 : _GEN_97; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_99 = 7'h50 == reqIdx ? validBits_80 : _GEN_98; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_100 = 7'h51 == reqIdx ? validBits_81 : _GEN_99; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_101 = 7'h52 == reqIdx ? validBits_82 : _GEN_100; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_102 = 7'h53 == reqIdx ? validBits_83 : _GEN_101; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_103 = 7'h54 == reqIdx ? validBits_84 : _GEN_102; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_104 = 7'h55 == reqIdx ? validBits_85 : _GEN_103; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_105 = 7'h56 == reqIdx ? validBits_86 : _GEN_104; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_106 = 7'h57 == reqIdx ? validBits_87 : _GEN_105; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_107 = 7'h58 == reqIdx ? validBits_88 : _GEN_106; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_108 = 7'h59 == reqIdx ? validBits_89 : _GEN_107; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_109 = 7'h5a == reqIdx ? validBits_90 : _GEN_108; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_110 = 7'h5b == reqIdx ? validBits_91 : _GEN_109; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_111 = 7'h5c == reqIdx ? validBits_92 : _GEN_110; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_112 = 7'h5d == reqIdx ? validBits_93 : _GEN_111; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_113 = 7'h5e == reqIdx ? validBits_94 : _GEN_112; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_114 = 7'h5f == reqIdx ? validBits_95 : _GEN_113; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_115 = 7'h60 == reqIdx ? validBits_96 : _GEN_114; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_116 = 7'h61 == reqIdx ? validBits_97 : _GEN_115; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_117 = 7'h62 == reqIdx ? validBits_98 : _GEN_116; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_118 = 7'h63 == reqIdx ? validBits_99 : _GEN_117; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_119 = 7'h64 == reqIdx ? validBits_100 : _GEN_118; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_120 = 7'h65 == reqIdx ? validBits_101 : _GEN_119; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_121 = 7'h66 == reqIdx ? validBits_102 : _GEN_120; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_122 = 7'h67 == reqIdx ? validBits_103 : _GEN_121; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_123 = 7'h68 == reqIdx ? validBits_104 : _GEN_122; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_124 = 7'h69 == reqIdx ? validBits_105 : _GEN_123; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_125 = 7'h6a == reqIdx ? validBits_106 : _GEN_124; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_126 = 7'h6b == reqIdx ? validBits_107 : _GEN_125; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_127 = 7'h6c == reqIdx ? validBits_108 : _GEN_126; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_128 = 7'h6d == reqIdx ? validBits_109 : _GEN_127; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_129 = 7'h6e == reqIdx ? validBits_110 : _GEN_128; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_130 = 7'h6f == reqIdx ? validBits_111 : _GEN_129; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_131 = 7'h70 == reqIdx ? validBits_112 : _GEN_130; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_132 = 7'h71 == reqIdx ? validBits_113 : _GEN_131; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_133 = 7'h72 == reqIdx ? validBits_114 : _GEN_132; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_134 = 7'h73 == reqIdx ? validBits_115 : _GEN_133; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_135 = 7'h74 == reqIdx ? validBits_116 : _GEN_134; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_136 = 7'h75 == reqIdx ? validBits_117 : _GEN_135; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_137 = 7'h76 == reqIdx ? validBits_118 : _GEN_136; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_138 = 7'h77 == reqIdx ? validBits_119 : _GEN_137; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_139 = 7'h78 == reqIdx ? validBits_120 : _GEN_138; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_140 = 7'h79 == reqIdx ? validBits_121 : _GEN_139; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_141 = 7'h7a == reqIdx ? validBits_122 : _GEN_140; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_142 = 7'h7b == reqIdx ? validBits_123 : _GEN_141; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_143 = 7'h7c == reqIdx ? validBits_124 : _GEN_142; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_144 = 7'h7d == reqIdx ? validBits_125 : _GEN_143; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_145 = 7'h7e == reqIdx ? validBits_126 : _GEN_144; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  _GEN_146 = 7'h7f == reqIdx ? validBits_127 : _GEN_145; // @[src/main/scala/cache/cache.scala 135:{35,35}]
-  wire  hit = _GEN_146 & tagMem_tagRd_data == reqTag; // @[src/main/scala/cache/cache.scala 135:35]
-  wire  _GEN_176 = hit & writeReg; // @[src/main/scala/cache/cache.scala 140:17 43:36]
-  wire  _T_17 = io_mm_data_refill_ready & io_mm_data_refill_valid; // @[src/main/scala/chisel3/util/Decoupled.scala 57:35]
-  wire  lastBeat = beatCnt == 3'h7; // @[src/main/scala/cache/cache.scala 116:26]
-  wire  _GEN_495 = _T_17 & lastBeat; // @[src/main/scala/cache/cache.scala 227:36 43:36]
-  wire  _GEN_807 = 3'h3 == state ? 1'h0 : 3'h4 == state & _GEN_495; // @[src/main/scala/cache/cache.scala 119:17 43:36]
-  wire  _GEN_960 = 3'h2 == state ? 1'h0 : _GEN_807; // @[src/main/scala/cache/cache.scala 119:17 43:36]
-  wire  _GEN_1103 = 3'h1 == state ? _GEN_176 : _GEN_960; // @[src/main/scala/cache/cache.scala 119:17]
-  wire [255:0] _dataWriteLine_src_WIRE = dataMem_lineRd_data; // @[src/main/scala/cache/cache.scala 75:{53,53}]
-  wire [31:0] dataWriteLine_src_7 = _dataWriteLine_src_WIRE[255:224]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] dataWriteLine_src_6 = _dataWriteLine_src_WIRE[223:192]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] dataWriteLine_src_5 = _dataWriteLine_src_WIRE[191:160]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] dataWriteLine_src_4 = _dataWriteLine_src_WIRE[159:128]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] dataWriteLine_src_3 = _dataWriteLine_src_WIRE[127:96]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] dataWriteLine_src_2 = _dataWriteLine_src_WIRE[95:64]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] dataWriteLine_src_1 = _dataWriteLine_src_WIRE[63:32]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] dataWriteLine_src_0 = _dataWriteLine_src_WIRE[31:0]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] _GEN_148 = 3'h1 == reqWord ? dataWriteLine_src_1 : dataWriteLine_src_0; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_149 = 3'h2 == reqWord ? dataWriteLine_src_2 : _GEN_148; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_150 = 3'h3 == reqWord ? dataWriteLine_src_3 : _GEN_149; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_151 = 3'h4 == reqWord ? dataWriteLine_src_4 : _GEN_150; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_152 = 3'h5 == reqWord ? dataWriteLine_src_5 : _GEN_151; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_153 = 3'h6 == reqWord ? dataWriteLine_src_6 : _GEN_152; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_154 = 3'h7 == reqWord ? dataWriteLine_src_7 : _GEN_153; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [7:0] dataWriteLine_words_bytes_3 = wmaskReg[3] ? wdataReg[31:24] : _GEN_154[31:24]; // @[src/main/scala/cache/cache.scala 88:10]
-  wire [7:0] dataWriteLine_words_bytes_2 = wmaskReg[2] ? wdataReg[23:16] : _GEN_154[23:16]; // @[src/main/scala/cache/cache.scala 88:10]
-  wire [7:0] dataWriteLine_words_bytes_1 = wmaskReg[1] ? wdataReg[15:8] : _GEN_154[15:8]; // @[src/main/scala/cache/cache.scala 88:10]
-  wire [7:0] dataWriteLine_words_bytes_0 = wmaskReg[0] ? wdataReg[7:0] : _GEN_154[7:0]; // @[src/main/scala/cache/cache.scala 88:10]
+  reg [19:0] tagMem_0 [0:127]; // @[src/main/scala/cache/cache.scala 14:49]
+  wire  tagMem_0_tagsRd_MPORT_en; // @[src/main/scala/cache/cache.scala 14:49]
+  wire [6:0] tagMem_0_tagsRd_MPORT_addr; // @[src/main/scala/cache/cache.scala 14:49]
+  wire [19:0] tagMem_0_tagsRd_MPORT_data; // @[src/main/scala/cache/cache.scala 14:49]
+  wire [19:0] tagMem_0_MPORT_1_data; // @[src/main/scala/cache/cache.scala 14:49]
+  wire [6:0] tagMem_0_MPORT_1_addr; // @[src/main/scala/cache/cache.scala 14:49]
+  wire  tagMem_0_MPORT_1_mask; // @[src/main/scala/cache/cache.scala 14:49]
+  wire  tagMem_0_MPORT_1_en; // @[src/main/scala/cache/cache.scala 14:49]
+  reg  tagMem_0_tagsRd_MPORT_en_pipe_0;
+  reg [6:0] tagMem_0_tagsRd_MPORT_addr_pipe_0;
+  reg [255:0] dataMem_0 [0:127]; // @[src/main/scala/cache/cache.scala 15:50]
+  wire  dataMem_0_linesRd_MPORT_en; // @[src/main/scala/cache/cache.scala 15:50]
+  wire [6:0] dataMem_0_linesRd_MPORT_addr; // @[src/main/scala/cache/cache.scala 15:50]
+  wire [255:0] dataMem_0_linesRd_MPORT_data; // @[src/main/scala/cache/cache.scala 15:50]
+  wire [255:0] dataMem_0_MPORT_data; // @[src/main/scala/cache/cache.scala 15:50]
+  wire [6:0] dataMem_0_MPORT_addr; // @[src/main/scala/cache/cache.scala 15:50]
+  wire  dataMem_0_MPORT_mask; // @[src/main/scala/cache/cache.scala 15:50]
+  wire  dataMem_0_MPORT_en; // @[src/main/scala/cache/cache.scala 15:50]
+  reg  dataMem_0_linesRd_MPORT_en_pipe_0;
+  reg [6:0] dataMem_0_linesRd_MPORT_addr_pipe_0;
+  reg  validBits_0_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_1_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_2_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_3_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_4_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_5_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_6_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_7_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_8_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_9_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_10_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_11_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_12_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_13_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_14_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_15_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_16_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_17_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_18_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_19_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_20_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_21_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_22_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_23_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_24_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_25_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_26_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_27_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_28_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_29_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_30_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_31_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_32_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_33_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_34_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_35_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_36_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_37_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_38_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_39_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_40_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_41_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_42_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_43_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_44_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_45_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_46_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_47_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_48_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_49_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_50_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_51_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_52_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_53_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_54_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_55_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_56_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_57_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_58_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_59_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_60_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_61_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_62_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_63_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_64_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_65_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_66_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_67_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_68_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_69_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_70_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_71_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_72_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_73_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_74_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_75_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_76_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_77_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_78_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_79_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_80_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_81_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_82_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_83_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_84_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_85_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_86_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_87_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_88_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_89_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_90_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_91_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_92_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_93_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_94_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_95_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_96_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_97_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_98_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_99_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_100_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_101_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_102_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_103_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_104_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_105_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_106_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_107_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_108_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_109_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_110_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_111_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_112_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_113_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_114_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_115_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_116_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_117_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_118_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_119_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_120_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_121_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_122_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_123_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_124_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_125_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_126_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  validBits_127_0; // @[src/main/scala/cache/cache.scala 12:26]
+  reg  dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg  dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 13:26]
+  reg [2:0] state; // @[src/main/scala/cache/cache.scala 21:22]
+  reg [31:0] addrReg; // @[src/main/scala/cache/cache.scala 22:20]
+  reg [31:0] respData; // @[src/main/scala/cache/cache.scala 23:21]
+  reg [31:0] refillBuf_0; // @[src/main/scala/cache/cache.scala 24:22]
+  reg [31:0] refillBuf_1; // @[src/main/scala/cache/cache.scala 24:22]
+  reg [31:0] refillBuf_2; // @[src/main/scala/cache/cache.scala 24:22]
+  reg [31:0] refillBuf_3; // @[src/main/scala/cache/cache.scala 24:22]
+  reg [31:0] refillBuf_4; // @[src/main/scala/cache/cache.scala 24:22]
+  reg [31:0] refillBuf_5; // @[src/main/scala/cache/cache.scala 24:22]
+  reg [31:0] refillBuf_6; // @[src/main/scala/cache/cache.scala 24:22]
+  reg [31:0] refillBuf_7; // @[src/main/scala/cache/cache.scala 24:22]
+  reg [2:0] beatCnt; // @[src/main/scala/cache/cache.scala 26:24]
+  reg  writeReg; // @[src/main/scala/cache/cache.scala 28:21]
+  reg [31:0] wdataReg; // @[src/main/scala/cache/cache.scala 29:21]
+  reg [3:0] wmaskReg; // @[src/main/scala/cache/cache.scala 30:21]
+  reg [31:0] evictAddr_wb; // @[src/main/scala/cache/cache.scala 32:25]
+  reg [255:0] evictLine_wb; // @[src/main/scala/cache/cache.scala 33:25]
+  wire [6:0] reqIdx = addrReg[11:5]; // @[src/main/scala/cache/model.scala 76:35]
+  wire [19:0] reqTag = addrReg[31:12]; // @[src/main/scala/cache/model.scala 74:31]
+  wire [2:0] reqWord = addrReg[4:2]; // @[src/main/scala/cache/model.scala 77:66]
+  wire  _tagsRd_T = io_cpu_req_ready & io_cpu_req_valid; // @[src/main/scala/chisel3/util/Decoupled.scala 57:35]
+  wire [19:0] tagsRd_0 = tagMem_0_tagsRd_MPORT_data; // @[src/main/scala/cache/cache.scala 43:{23,23}]
+  wire  _GEN_9 = 7'h1 == reqIdx ? validBits_1_0 : validBits_0_0; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_10 = 7'h2 == reqIdx ? validBits_2_0 : _GEN_9; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_11 = 7'h3 == reqIdx ? validBits_3_0 : _GEN_10; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_12 = 7'h4 == reqIdx ? validBits_4_0 : _GEN_11; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_13 = 7'h5 == reqIdx ? validBits_5_0 : _GEN_12; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_14 = 7'h6 == reqIdx ? validBits_6_0 : _GEN_13; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_15 = 7'h7 == reqIdx ? validBits_7_0 : _GEN_14; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_16 = 7'h8 == reqIdx ? validBits_8_0 : _GEN_15; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_17 = 7'h9 == reqIdx ? validBits_9_0 : _GEN_16; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_18 = 7'ha == reqIdx ? validBits_10_0 : _GEN_17; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_19 = 7'hb == reqIdx ? validBits_11_0 : _GEN_18; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_20 = 7'hc == reqIdx ? validBits_12_0 : _GEN_19; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_21 = 7'hd == reqIdx ? validBits_13_0 : _GEN_20; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_22 = 7'he == reqIdx ? validBits_14_0 : _GEN_21; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_23 = 7'hf == reqIdx ? validBits_15_0 : _GEN_22; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_24 = 7'h10 == reqIdx ? validBits_16_0 : _GEN_23; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_25 = 7'h11 == reqIdx ? validBits_17_0 : _GEN_24; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_26 = 7'h12 == reqIdx ? validBits_18_0 : _GEN_25; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_27 = 7'h13 == reqIdx ? validBits_19_0 : _GEN_26; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_28 = 7'h14 == reqIdx ? validBits_20_0 : _GEN_27; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_29 = 7'h15 == reqIdx ? validBits_21_0 : _GEN_28; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_30 = 7'h16 == reqIdx ? validBits_22_0 : _GEN_29; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_31 = 7'h17 == reqIdx ? validBits_23_0 : _GEN_30; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_32 = 7'h18 == reqIdx ? validBits_24_0 : _GEN_31; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_33 = 7'h19 == reqIdx ? validBits_25_0 : _GEN_32; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_34 = 7'h1a == reqIdx ? validBits_26_0 : _GEN_33; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_35 = 7'h1b == reqIdx ? validBits_27_0 : _GEN_34; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_36 = 7'h1c == reqIdx ? validBits_28_0 : _GEN_35; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_37 = 7'h1d == reqIdx ? validBits_29_0 : _GEN_36; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_38 = 7'h1e == reqIdx ? validBits_30_0 : _GEN_37; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_39 = 7'h1f == reqIdx ? validBits_31_0 : _GEN_38; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_40 = 7'h20 == reqIdx ? validBits_32_0 : _GEN_39; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_41 = 7'h21 == reqIdx ? validBits_33_0 : _GEN_40; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_42 = 7'h22 == reqIdx ? validBits_34_0 : _GEN_41; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_43 = 7'h23 == reqIdx ? validBits_35_0 : _GEN_42; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_44 = 7'h24 == reqIdx ? validBits_36_0 : _GEN_43; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_45 = 7'h25 == reqIdx ? validBits_37_0 : _GEN_44; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_46 = 7'h26 == reqIdx ? validBits_38_0 : _GEN_45; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_47 = 7'h27 == reqIdx ? validBits_39_0 : _GEN_46; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_48 = 7'h28 == reqIdx ? validBits_40_0 : _GEN_47; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_49 = 7'h29 == reqIdx ? validBits_41_0 : _GEN_48; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_50 = 7'h2a == reqIdx ? validBits_42_0 : _GEN_49; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_51 = 7'h2b == reqIdx ? validBits_43_0 : _GEN_50; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_52 = 7'h2c == reqIdx ? validBits_44_0 : _GEN_51; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_53 = 7'h2d == reqIdx ? validBits_45_0 : _GEN_52; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_54 = 7'h2e == reqIdx ? validBits_46_0 : _GEN_53; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_55 = 7'h2f == reqIdx ? validBits_47_0 : _GEN_54; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_56 = 7'h30 == reqIdx ? validBits_48_0 : _GEN_55; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_57 = 7'h31 == reqIdx ? validBits_49_0 : _GEN_56; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_58 = 7'h32 == reqIdx ? validBits_50_0 : _GEN_57; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_59 = 7'h33 == reqIdx ? validBits_51_0 : _GEN_58; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_60 = 7'h34 == reqIdx ? validBits_52_0 : _GEN_59; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_61 = 7'h35 == reqIdx ? validBits_53_0 : _GEN_60; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_62 = 7'h36 == reqIdx ? validBits_54_0 : _GEN_61; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_63 = 7'h37 == reqIdx ? validBits_55_0 : _GEN_62; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_64 = 7'h38 == reqIdx ? validBits_56_0 : _GEN_63; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_65 = 7'h39 == reqIdx ? validBits_57_0 : _GEN_64; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_66 = 7'h3a == reqIdx ? validBits_58_0 : _GEN_65; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_67 = 7'h3b == reqIdx ? validBits_59_0 : _GEN_66; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_68 = 7'h3c == reqIdx ? validBits_60_0 : _GEN_67; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_69 = 7'h3d == reqIdx ? validBits_61_0 : _GEN_68; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_70 = 7'h3e == reqIdx ? validBits_62_0 : _GEN_69; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_71 = 7'h3f == reqIdx ? validBits_63_0 : _GEN_70; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_72 = 7'h40 == reqIdx ? validBits_64_0 : _GEN_71; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_73 = 7'h41 == reqIdx ? validBits_65_0 : _GEN_72; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_74 = 7'h42 == reqIdx ? validBits_66_0 : _GEN_73; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_75 = 7'h43 == reqIdx ? validBits_67_0 : _GEN_74; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_76 = 7'h44 == reqIdx ? validBits_68_0 : _GEN_75; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_77 = 7'h45 == reqIdx ? validBits_69_0 : _GEN_76; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_78 = 7'h46 == reqIdx ? validBits_70_0 : _GEN_77; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_79 = 7'h47 == reqIdx ? validBits_71_0 : _GEN_78; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_80 = 7'h48 == reqIdx ? validBits_72_0 : _GEN_79; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_81 = 7'h49 == reqIdx ? validBits_73_0 : _GEN_80; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_82 = 7'h4a == reqIdx ? validBits_74_0 : _GEN_81; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_83 = 7'h4b == reqIdx ? validBits_75_0 : _GEN_82; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_84 = 7'h4c == reqIdx ? validBits_76_0 : _GEN_83; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_85 = 7'h4d == reqIdx ? validBits_77_0 : _GEN_84; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_86 = 7'h4e == reqIdx ? validBits_78_0 : _GEN_85; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_87 = 7'h4f == reqIdx ? validBits_79_0 : _GEN_86; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_88 = 7'h50 == reqIdx ? validBits_80_0 : _GEN_87; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_89 = 7'h51 == reqIdx ? validBits_81_0 : _GEN_88; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_90 = 7'h52 == reqIdx ? validBits_82_0 : _GEN_89; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_91 = 7'h53 == reqIdx ? validBits_83_0 : _GEN_90; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_92 = 7'h54 == reqIdx ? validBits_84_0 : _GEN_91; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_93 = 7'h55 == reqIdx ? validBits_85_0 : _GEN_92; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_94 = 7'h56 == reqIdx ? validBits_86_0 : _GEN_93; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_95 = 7'h57 == reqIdx ? validBits_87_0 : _GEN_94; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_96 = 7'h58 == reqIdx ? validBits_88_0 : _GEN_95; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_97 = 7'h59 == reqIdx ? validBits_89_0 : _GEN_96; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_98 = 7'h5a == reqIdx ? validBits_90_0 : _GEN_97; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_99 = 7'h5b == reqIdx ? validBits_91_0 : _GEN_98; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_100 = 7'h5c == reqIdx ? validBits_92_0 : _GEN_99; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_101 = 7'h5d == reqIdx ? validBits_93_0 : _GEN_100; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_102 = 7'h5e == reqIdx ? validBits_94_0 : _GEN_101; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_103 = 7'h5f == reqIdx ? validBits_95_0 : _GEN_102; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_104 = 7'h60 == reqIdx ? validBits_96_0 : _GEN_103; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_105 = 7'h61 == reqIdx ? validBits_97_0 : _GEN_104; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_106 = 7'h62 == reqIdx ? validBits_98_0 : _GEN_105; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_107 = 7'h63 == reqIdx ? validBits_99_0 : _GEN_106; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_108 = 7'h64 == reqIdx ? validBits_100_0 : _GEN_107; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_109 = 7'h65 == reqIdx ? validBits_101_0 : _GEN_108; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_110 = 7'h66 == reqIdx ? validBits_102_0 : _GEN_109; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_111 = 7'h67 == reqIdx ? validBits_103_0 : _GEN_110; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_112 = 7'h68 == reqIdx ? validBits_104_0 : _GEN_111; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_113 = 7'h69 == reqIdx ? validBits_105_0 : _GEN_112; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_114 = 7'h6a == reqIdx ? validBits_106_0 : _GEN_113; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_115 = 7'h6b == reqIdx ? validBits_107_0 : _GEN_114; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_116 = 7'h6c == reqIdx ? validBits_108_0 : _GEN_115; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_117 = 7'h6d == reqIdx ? validBits_109_0 : _GEN_116; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_118 = 7'h6e == reqIdx ? validBits_110_0 : _GEN_117; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_119 = 7'h6f == reqIdx ? validBits_111_0 : _GEN_118; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_120 = 7'h70 == reqIdx ? validBits_112_0 : _GEN_119; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_121 = 7'h71 == reqIdx ? validBits_113_0 : _GEN_120; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_122 = 7'h72 == reqIdx ? validBits_114_0 : _GEN_121; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_123 = 7'h73 == reqIdx ? validBits_115_0 : _GEN_122; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_124 = 7'h74 == reqIdx ? validBits_116_0 : _GEN_123; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_125 = 7'h75 == reqIdx ? validBits_117_0 : _GEN_124; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_126 = 7'h76 == reqIdx ? validBits_118_0 : _GEN_125; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_127 = 7'h77 == reqIdx ? validBits_119_0 : _GEN_126; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_128 = 7'h78 == reqIdx ? validBits_120_0 : _GEN_127; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_129 = 7'h79 == reqIdx ? validBits_121_0 : _GEN_128; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_130 = 7'h7a == reqIdx ? validBits_122_0 : _GEN_129; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_131 = 7'h7b == reqIdx ? validBits_123_0 : _GEN_130; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_132 = 7'h7c == reqIdx ? validBits_124_0 : _GEN_131; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_133 = 7'h7d == reqIdx ? validBits_125_0 : _GEN_132; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_134 = 7'h7e == reqIdx ? validBits_126_0 : _GEN_133; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  _GEN_135 = 7'h7f == reqIdx ? validBits_127_0 : _GEN_134; // @[src/main/scala/cache/cache.scala 50:{65,65}]
+  wire  hits_0 = _GEN_135 & tagsRd_0 == reqTag; // @[src/main/scala/cache/cache.scala 50:65]
+  wire  hit = |hits_0; // @[src/main/scala/cache/cache.scala 51:25]
+  wire  _T_4 = 3'h0 == state; // @[src/main/scala/cache/cache.scala 150:17]
+  wire  _GEN_567 = hit & writeReg; // @[src/main/scala/cache/cache.scala 170:17 70:36]
+  wire  _T_23 = io_mm_data_refill_ready & io_mm_data_refill_valid; // @[src/main/scala/chisel3/util/Decoupled.scala 57:35]
+  wire  lastBeat = beatCnt == 3'h7; // @[src/main/scala/cache/cache.scala 147:26]
+  wire  _GEN_1675 = _T_23 & lastBeat; // @[src/main/scala/cache/cache.scala 261:36 70:36]
+  wire  _GEN_2233 = 3'h3 == state ? 1'h0 : 3'h4 == state & _GEN_1675; // @[src/main/scala/cache/cache.scala 150:17 70:36]
+  wire  _GEN_2643 = 3'h2 == state ? 1'h0 : _GEN_2233; // @[src/main/scala/cache/cache.scala 150:17 70:36]
+  wire  _GEN_2786 = 3'h1 == state ? _GEN_567 : _GEN_2643; // @[src/main/scala/cache/cache.scala 150:17]
+  wire [255:0] linesRd_0 = dataMem_0_linesRd_MPORT_data; // @[src/main/scala/cache/cache.scala 44:{24,24}]
+  wire [31:0] dataWriteLine_src_7 = linesRd_0[255:224]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] dataWriteLine_src_6 = linesRd_0[223:192]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] dataWriteLine_src_5 = linesRd_0[191:160]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] dataWriteLine_src_4 = linesRd_0[159:128]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] dataWriteLine_src_3 = linesRd_0[127:96]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] dataWriteLine_src_2 = linesRd_0[95:64]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] dataWriteLine_src_1 = linesRd_0[63:32]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] dataWriteLine_src_0 = linesRd_0[31:0]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] _GEN_159 = 3'h1 == reqWord ? dataWriteLine_src_1 : dataWriteLine_src_0; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_160 = 3'h2 == reqWord ? dataWriteLine_src_2 : _GEN_159; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_161 = 3'h3 == reqWord ? dataWriteLine_src_3 : _GEN_160; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_162 = 3'h4 == reqWord ? dataWriteLine_src_4 : _GEN_161; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_163 = 3'h5 == reqWord ? dataWriteLine_src_5 : _GEN_162; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_164 = 3'h6 == reqWord ? dataWriteLine_src_6 : _GEN_163; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_165 = 3'h7 == reqWord ? dataWriteLine_src_7 : _GEN_164; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [7:0] dataWriteLine_words_bytes_3 = wmaskReg[3] ? wdataReg[31:24] : _GEN_165[31:24]; // @[src/main/scala/cache/cache.scala 119:10]
+  wire [7:0] dataWriteLine_words_bytes_2 = wmaskReg[2] ? wdataReg[23:16] : _GEN_165[23:16]; // @[src/main/scala/cache/cache.scala 119:10]
+  wire [7:0] dataWriteLine_words_bytes_1 = wmaskReg[1] ? wdataReg[15:8] : _GEN_165[15:8]; // @[src/main/scala/cache/cache.scala 119:10]
+  wire [7:0] dataWriteLine_words_bytes_0 = wmaskReg[0] ? wdataReg[7:0] : _GEN_165[7:0]; // @[src/main/scala/cache/cache.scala 119:10]
   wire [31:0] _dataWriteLine_words_T = {dataWriteLine_words_bytes_3,dataWriteLine_words_bytes_2,
-    dataWriteLine_words_bytes_1,dataWriteLine_words_bytes_0}; // @[src/main/scala/cache/cache.scala 90:11]
-  wire [31:0] dataWriteLine_words_7 = 3'h7 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_7; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] dataWriteLine_words_6 = 3'h6 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_6; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] dataWriteLine_words_5 = 3'h5 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_5; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] dataWriteLine_words_4 = 3'h4 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_4; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] dataWriteLine_words_3 = 3'h3 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_3; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] dataWriteLine_words_2 = 3'h2 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_2; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] dataWriteLine_words_1 = 3'h1 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_1; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] dataWriteLine_words_0 = 3'h0 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_0; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
+    dataWriteLine_words_bytes_1,dataWriteLine_words_bytes_0}; // @[src/main/scala/cache/cache.scala 121:11]
+  wire [31:0] dataWriteLine_words_7 = 3'h7 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_7; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] dataWriteLine_words_6 = 3'h6 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_6; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] dataWriteLine_words_5 = 3'h5 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_5; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] dataWriteLine_words_4 = 3'h4 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_4; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] dataWriteLine_words_3 = 3'h3 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_3; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] dataWriteLine_words_2 = 3'h2 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_2; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] dataWriteLine_words_1 = 3'h1 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_1; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] dataWriteLine_words_0 = 3'h0 == reqWord ? _dataWriteLine_words_T : dataWriteLine_src_0; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
   wire [255:0] _dataWriteLine_T = {dataWriteLine_words_7,dataWriteLine_words_6,dataWriteLine_words_5,
-    dataWriteLine_words_4,dataWriteLine_words_3,dataWriteLine_words_2,dataWriteLine_words_1,dataWriteLine_words_0}; // @[src/main/scala/cache/cache.scala 105:11]
-  wire [255:0] _GEN_172 = writeReg ? _dataWriteLine_T : 256'h0; // @[src/main/scala/cache/cache.scala 141:24 146:25 44:34]
-  wire [255:0] _GEN_177 = hit ? _GEN_172 : 256'h0; // @[src/main/scala/cache/cache.scala 140:17 44:34]
-  wire [31:0] beats_7 = 3'h7 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_7; // @[src/main/scala/cache/cache.scala 241:{28,28} 237:31]
-  wire [31:0] beats_6 = 3'h6 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_6; // @[src/main/scala/cache/cache.scala 241:{28,28} 237:31]
-  wire [31:0] beats_5 = 3'h5 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_5; // @[src/main/scala/cache/cache.scala 241:{28,28} 237:31]
-  wire [31:0] beats_4 = 3'h4 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_4; // @[src/main/scala/cache/cache.scala 241:{28,28} 237:31]
-  wire [31:0] beats_3 = 3'h3 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_3; // @[src/main/scala/cache/cache.scala 241:{28,28} 237:31]
-  wire [31:0] beats_2 = 3'h2 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_2; // @[src/main/scala/cache/cache.scala 241:{28,28} 237:31]
-  wire [31:0] beats_1 = 3'h1 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_1; // @[src/main/scala/cache/cache.scala 241:{28,28} 237:31]
-  wire [31:0] beats_0 = 3'h0 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_0; // @[src/main/scala/cache/cache.scala 241:{28,28} 237:31]
-  wire [255:0] newLine = {beats_7,beats_6,beats_5,beats_4,beats_3,beats_2,beats_1,beats_0}; // @[src/main/scala/cache/cache.scala 245:31]
-  wire [31:0] installedLine_src_7 = newLine[255:224]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] installedLine_src_6 = newLine[223:192]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] installedLine_src_5 = newLine[191:160]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] installedLine_src_4 = newLine[159:128]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] installedLine_src_3 = newLine[127:96]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] installedLine_src_2 = newLine[95:64]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] installedLine_src_1 = newLine[63:32]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] installedLine_src_0 = newLine[31:0]; // @[src/main/scala/cache/cache.scala 75:53]
-  wire [31:0] _GEN_199 = 3'h1 == reqWord ? installedLine_src_1 : installedLine_src_0; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_200 = 3'h2 == reqWord ? installedLine_src_2 : _GEN_199; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_201 = 3'h3 == reqWord ? installedLine_src_3 : _GEN_200; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_202 = 3'h4 == reqWord ? installedLine_src_4 : _GEN_201; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_203 = 3'h5 == reqWord ? installedLine_src_5 : _GEN_202; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_204 = 3'h6 == reqWord ? installedLine_src_6 : _GEN_203; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [31:0] _GEN_205 = 3'h7 == reqWord ? installedLine_src_7 : _GEN_204; // @[src/main/scala/cache/cache.scala 88:{47,47}]
-  wire [7:0] installedLine_words_bytes_3 = wmaskReg[3] ? wdataReg[31:24] : _GEN_205[31:24]; // @[src/main/scala/cache/cache.scala 88:10]
-  wire [7:0] installedLine_words_bytes_2 = wmaskReg[2] ? wdataReg[23:16] : _GEN_205[23:16]; // @[src/main/scala/cache/cache.scala 88:10]
-  wire [7:0] installedLine_words_bytes_1 = wmaskReg[1] ? wdataReg[15:8] : _GEN_205[15:8]; // @[src/main/scala/cache/cache.scala 88:10]
-  wire [7:0] installedLine_words_bytes_0 = wmaskReg[0] ? wdataReg[7:0] : _GEN_205[7:0]; // @[src/main/scala/cache/cache.scala 88:10]
+    dataWriteLine_words_4,dataWriteLine_words_3,dataWriteLine_words_2,dataWriteLine_words_1,dataWriteLine_words_0}; // @[src/main/scala/cache/cache.scala 136:11]
+  wire [255:0] _GEN_304 = writeReg ? _dataWriteLine_T : 256'h0; // @[src/main/scala/cache/cache.scala 179:24 185:25 71:34]
+  wire [255:0] _GEN_569 = hit ? _GEN_304 : 256'h0; // @[src/main/scala/cache/cache.scala 170:17 71:34]
+  wire [31:0] beats_7 = 3'h7 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_7; // @[src/main/scala/cache/cache.scala 275:{28,28} 271:31]
+  wire [31:0] beats_6 = 3'h6 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_6; // @[src/main/scala/cache/cache.scala 275:{28,28} 271:31]
+  wire [31:0] beats_5 = 3'h5 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_5; // @[src/main/scala/cache/cache.scala 275:{28,28} 271:31]
+  wire [31:0] beats_4 = 3'h4 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_4; // @[src/main/scala/cache/cache.scala 275:{28,28} 271:31]
+  wire [31:0] beats_3 = 3'h3 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_3; // @[src/main/scala/cache/cache.scala 275:{28,28} 271:31]
+  wire [31:0] beats_2 = 3'h2 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_2; // @[src/main/scala/cache/cache.scala 275:{28,28} 271:31]
+  wire [31:0] beats_1 = 3'h1 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_1; // @[src/main/scala/cache/cache.scala 275:{28,28} 271:31]
+  wire [31:0] beats_0 = 3'h0 == beatCnt ? io_mm_data_refill_bits_data : refillBuf_0; // @[src/main/scala/cache/cache.scala 275:{28,28} 271:31]
+  wire [255:0] newLine = {beats_7,beats_6,beats_5,beats_4,beats_3,beats_2,beats_1,beats_0}; // @[src/main/scala/cache/cache.scala 279:31]
+  wire [31:0] installedLine_src_7 = newLine[255:224]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] installedLine_src_6 = newLine[223:192]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] installedLine_src_5 = newLine[191:160]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] installedLine_src_4 = newLine[159:128]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] installedLine_src_3 = newLine[127:96]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] installedLine_src_2 = newLine[95:64]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] installedLine_src_1 = newLine[63:32]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] installedLine_src_0 = newLine[31:0]; // @[src/main/scala/cache/cache.scala 106:53]
+  wire [31:0] _GEN_1118 = 3'h1 == reqWord ? installedLine_src_1 : installedLine_src_0; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_1119 = 3'h2 == reqWord ? installedLine_src_2 : _GEN_1118; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_1120 = 3'h3 == reqWord ? installedLine_src_3 : _GEN_1119; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_1121 = 3'h4 == reqWord ? installedLine_src_4 : _GEN_1120; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_1122 = 3'h5 == reqWord ? installedLine_src_5 : _GEN_1121; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_1123 = 3'h6 == reqWord ? installedLine_src_6 : _GEN_1122; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [31:0] _GEN_1124 = 3'h7 == reqWord ? installedLine_src_7 : _GEN_1123; // @[src/main/scala/cache/cache.scala 119:{47,47}]
+  wire [7:0] installedLine_words_bytes_3 = wmaskReg[3] ? wdataReg[31:24] : _GEN_1124[31:24]; // @[src/main/scala/cache/cache.scala 119:10]
+  wire [7:0] installedLine_words_bytes_2 = wmaskReg[2] ? wdataReg[23:16] : _GEN_1124[23:16]; // @[src/main/scala/cache/cache.scala 119:10]
+  wire [7:0] installedLine_words_bytes_1 = wmaskReg[1] ? wdataReg[15:8] : _GEN_1124[15:8]; // @[src/main/scala/cache/cache.scala 119:10]
+  wire [7:0] installedLine_words_bytes_0 = wmaskReg[0] ? wdataReg[7:0] : _GEN_1124[7:0]; // @[src/main/scala/cache/cache.scala 119:10]
   wire [31:0] _installedLine_words_T = {installedLine_words_bytes_3,installedLine_words_bytes_2,
-    installedLine_words_bytes_1,installedLine_words_bytes_0}; // @[src/main/scala/cache/cache.scala 90:11]
-  wire [31:0] installedLine_words_7 = 3'h7 == reqWord ? _installedLine_words_T : installedLine_src_7; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] installedLine_words_6 = 3'h6 == reqWord ? _installedLine_words_T : installedLine_src_6; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] installedLine_words_5 = 3'h5 == reqWord ? _installedLine_words_T : installedLine_src_5; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] installedLine_words_4 = 3'h4 == reqWord ? _installedLine_words_T : installedLine_src_4; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] installedLine_words_3 = 3'h3 == reqWord ? _installedLine_words_T : installedLine_src_3; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] installedLine_words_2 = 3'h2 == reqWord ? _installedLine_words_T : installedLine_src_2; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] installedLine_words_1 = 3'h1 == reqWord ? _installedLine_words_T : installedLine_src_1; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
-  wire [31:0] installedLine_words_0 = 3'h0 == reqWord ? _installedLine_words_T : installedLine_src_0; // @[src/main/scala/cache/cache.scala 103:{22,22} 96:25]
+    installedLine_words_bytes_1,installedLine_words_bytes_0}; // @[src/main/scala/cache/cache.scala 121:11]
+  wire [31:0] installedLine_words_7 = 3'h7 == reqWord ? _installedLine_words_T : installedLine_src_7; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] installedLine_words_6 = 3'h6 == reqWord ? _installedLine_words_T : installedLine_src_6; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] installedLine_words_5 = 3'h5 == reqWord ? _installedLine_words_T : installedLine_src_5; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] installedLine_words_4 = 3'h4 == reqWord ? _installedLine_words_T : installedLine_src_4; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] installedLine_words_3 = 3'h3 == reqWord ? _installedLine_words_T : installedLine_src_3; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] installedLine_words_2 = 3'h2 == reqWord ? _installedLine_words_T : installedLine_src_2; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] installedLine_words_1 = 3'h1 == reqWord ? _installedLine_words_T : installedLine_src_1; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
+  wire [31:0] installedLine_words_0 = 3'h0 == reqWord ? _installedLine_words_T : installedLine_src_0; // @[src/main/scala/cache/cache.scala 134:{22,22} 127:25]
   wire [255:0] _installedLine_T = {installedLine_words_7,installedLine_words_6,installedLine_words_5,
-    installedLine_words_4,installedLine_words_3,installedLine_words_2,installedLine_words_1,installedLine_words_0}; // @[src/main/scala/cache/cache.scala 105:11]
-  wire [255:0] installedLine = writeReg ? _installedLine_T : newLine; // @[src/main/scala/cache/cache.scala 250:34]
-  wire [255:0] _GEN_351 = lastBeat ? installedLine : 256'h0; // @[src/main/scala/cache/cache.scala 236:24 255:25 44:34]
-  wire [255:0] _GEN_496 = _T_17 ? _GEN_351 : 256'h0; // @[src/main/scala/cache/cache.scala 227:36 44:34]
-  wire [255:0] _GEN_654 = 3'h4 == state ? _GEN_496 : 256'h0; // @[src/main/scala/cache/cache.scala 119:17 44:34]
-  wire [255:0] _GEN_808 = 3'h3 == state ? 256'h0 : _GEN_654; // @[src/main/scala/cache/cache.scala 119:17 44:34]
-  wire [255:0] _GEN_961 = 3'h2 == state ? 256'h0 : _GEN_808; // @[src/main/scala/cache/cache.scala 119:17 44:34]
-  wire [255:0] _GEN_1104 = 3'h1 == state ? _GEN_177 : _GEN_961; // @[src/main/scala/cache/cache.scala 119:17]
-  wire [2:0] _GEN_173 = writeReg ? 3'h5 : 3'h6; // @[src/main/scala/cache/cache.scala 141:24 155:19 161:17]
-  wire [2:0] _GEN_175 = writeReg ? 3'h5 : 3'h3; // @[src/main/scala/cache/cache.scala 166:26 168:19 171:19]
-  wire  _T_13 = io_mm_req_refill_ready & io_mm_req_refill_valid; // @[src/main/scala/chisel3/util/Decoupled.scala 57:35]
-  wire [2:0] _GEN_180 = _T_13 ? 3'h0 : beatCnt; // @[src/main/scala/cache/cache.scala 217:35 218:17 22:24]
-  wire [2:0] _GEN_181 = _T_13 ? 3'h4 : state; // @[src/main/scala/cache/cache.scala 217:35 219:15 17:22]
-  wire [2:0] _beatCnt_T_1 = beatCnt + 3'h1; // @[src/main/scala/cache/cache.scala 234:28]
-  wire  _GEN_214 = 7'h0 == reqIdx | validBits_0; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_215 = 7'h1 == reqIdx | validBits_1; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_216 = 7'h2 == reqIdx | validBits_2; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_217 = 7'h3 == reqIdx | validBits_3; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_218 = 7'h4 == reqIdx | validBits_4; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_219 = 7'h5 == reqIdx | validBits_5; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_220 = 7'h6 == reqIdx | validBits_6; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_221 = 7'h7 == reqIdx | validBits_7; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_222 = 7'h8 == reqIdx | validBits_8; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_223 = 7'h9 == reqIdx | validBits_9; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_224 = 7'ha == reqIdx | validBits_10; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_225 = 7'hb == reqIdx | validBits_11; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_226 = 7'hc == reqIdx | validBits_12; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_227 = 7'hd == reqIdx | validBits_13; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_228 = 7'he == reqIdx | validBits_14; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_229 = 7'hf == reqIdx | validBits_15; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_230 = 7'h10 == reqIdx | validBits_16; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_231 = 7'h11 == reqIdx | validBits_17; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_232 = 7'h12 == reqIdx | validBits_18; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_233 = 7'h13 == reqIdx | validBits_19; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_234 = 7'h14 == reqIdx | validBits_20; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_235 = 7'h15 == reqIdx | validBits_21; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_236 = 7'h16 == reqIdx | validBits_22; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_237 = 7'h17 == reqIdx | validBits_23; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_238 = 7'h18 == reqIdx | validBits_24; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_239 = 7'h19 == reqIdx | validBits_25; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_240 = 7'h1a == reqIdx | validBits_26; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_241 = 7'h1b == reqIdx | validBits_27; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_242 = 7'h1c == reqIdx | validBits_28; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_243 = 7'h1d == reqIdx | validBits_29; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_244 = 7'h1e == reqIdx | validBits_30; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_245 = 7'h1f == reqIdx | validBits_31; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_246 = 7'h20 == reqIdx | validBits_32; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_247 = 7'h21 == reqIdx | validBits_33; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_248 = 7'h22 == reqIdx | validBits_34; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_249 = 7'h23 == reqIdx | validBits_35; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_250 = 7'h24 == reqIdx | validBits_36; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_251 = 7'h25 == reqIdx | validBits_37; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_252 = 7'h26 == reqIdx | validBits_38; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_253 = 7'h27 == reqIdx | validBits_39; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_254 = 7'h28 == reqIdx | validBits_40; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_255 = 7'h29 == reqIdx | validBits_41; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_256 = 7'h2a == reqIdx | validBits_42; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_257 = 7'h2b == reqIdx | validBits_43; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_258 = 7'h2c == reqIdx | validBits_44; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_259 = 7'h2d == reqIdx | validBits_45; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_260 = 7'h2e == reqIdx | validBits_46; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_261 = 7'h2f == reqIdx | validBits_47; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_262 = 7'h30 == reqIdx | validBits_48; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_263 = 7'h31 == reqIdx | validBits_49; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_264 = 7'h32 == reqIdx | validBits_50; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_265 = 7'h33 == reqIdx | validBits_51; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_266 = 7'h34 == reqIdx | validBits_52; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_267 = 7'h35 == reqIdx | validBits_53; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_268 = 7'h36 == reqIdx | validBits_54; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_269 = 7'h37 == reqIdx | validBits_55; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_270 = 7'h38 == reqIdx | validBits_56; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_271 = 7'h39 == reqIdx | validBits_57; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_272 = 7'h3a == reqIdx | validBits_58; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_273 = 7'h3b == reqIdx | validBits_59; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_274 = 7'h3c == reqIdx | validBits_60; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_275 = 7'h3d == reqIdx | validBits_61; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_276 = 7'h3e == reqIdx | validBits_62; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_277 = 7'h3f == reqIdx | validBits_63; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_278 = 7'h40 == reqIdx | validBits_64; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_279 = 7'h41 == reqIdx | validBits_65; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_280 = 7'h42 == reqIdx | validBits_66; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_281 = 7'h43 == reqIdx | validBits_67; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_282 = 7'h44 == reqIdx | validBits_68; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_283 = 7'h45 == reqIdx | validBits_69; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_284 = 7'h46 == reqIdx | validBits_70; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_285 = 7'h47 == reqIdx | validBits_71; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_286 = 7'h48 == reqIdx | validBits_72; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_287 = 7'h49 == reqIdx | validBits_73; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_288 = 7'h4a == reqIdx | validBits_74; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_289 = 7'h4b == reqIdx | validBits_75; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_290 = 7'h4c == reqIdx | validBits_76; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_291 = 7'h4d == reqIdx | validBits_77; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_292 = 7'h4e == reqIdx | validBits_78; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_293 = 7'h4f == reqIdx | validBits_79; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_294 = 7'h50 == reqIdx | validBits_80; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_295 = 7'h51 == reqIdx | validBits_81; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_296 = 7'h52 == reqIdx | validBits_82; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_297 = 7'h53 == reqIdx | validBits_83; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_298 = 7'h54 == reqIdx | validBits_84; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_299 = 7'h55 == reqIdx | validBits_85; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_300 = 7'h56 == reqIdx | validBits_86; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_301 = 7'h57 == reqIdx | validBits_87; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_302 = 7'h58 == reqIdx | validBits_88; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_303 = 7'h59 == reqIdx | validBits_89; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_304 = 7'h5a == reqIdx | validBits_90; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_305 = 7'h5b == reqIdx | validBits_91; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_306 = 7'h5c == reqIdx | validBits_92; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_307 = 7'h5d == reqIdx | validBits_93; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_308 = 7'h5e == reqIdx | validBits_94; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_309 = 7'h5f == reqIdx | validBits_95; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_310 = 7'h60 == reqIdx | validBits_96; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_311 = 7'h61 == reqIdx | validBits_97; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_312 = 7'h62 == reqIdx | validBits_98; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_313 = 7'h63 == reqIdx | validBits_99; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_314 = 7'h64 == reqIdx | validBits_100; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_315 = 7'h65 == reqIdx | validBits_101; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_316 = 7'h66 == reqIdx | validBits_102; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_317 = 7'h67 == reqIdx | validBits_103; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_318 = 7'h68 == reqIdx | validBits_104; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_319 = 7'h69 == reqIdx | validBits_105; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_320 = 7'h6a == reqIdx | validBits_106; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_321 = 7'h6b == reqIdx | validBits_107; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_322 = 7'h6c == reqIdx | validBits_108; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_323 = 7'h6d == reqIdx | validBits_109; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_324 = 7'h6e == reqIdx | validBits_110; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_325 = 7'h6f == reqIdx | validBits_111; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_326 = 7'h70 == reqIdx | validBits_112; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_327 = 7'h71 == reqIdx | validBits_113; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_328 = 7'h72 == reqIdx | validBits_114; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_329 = 7'h73 == reqIdx | validBits_115; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_330 = 7'h74 == reqIdx | validBits_116; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_331 = 7'h75 == reqIdx | validBits_117; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_332 = 7'h76 == reqIdx | validBits_118; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_333 = 7'h77 == reqIdx | validBits_119; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_334 = 7'h78 == reqIdx | validBits_120; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_335 = 7'h79 == reqIdx | validBits_121; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_336 = 7'h7a == reqIdx | validBits_122; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_337 = 7'h7b == reqIdx | validBits_123; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_338 = 7'h7c == reqIdx | validBits_124; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_339 = 7'h7d == reqIdx | validBits_125; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_340 = 7'h7e == reqIdx | validBits_126; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_341 = 7'h7f == reqIdx | validBits_127; // @[src/main/scala/cache/cache.scala 11:26 259:{29,29}]
-  wire  _GEN_356 = lastBeat ? _GEN_214 : validBits_0; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_357 = lastBeat ? _GEN_215 : validBits_1; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_358 = lastBeat ? _GEN_216 : validBits_2; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_359 = lastBeat ? _GEN_217 : validBits_3; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_360 = lastBeat ? _GEN_218 : validBits_4; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_361 = lastBeat ? _GEN_219 : validBits_5; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_362 = lastBeat ? _GEN_220 : validBits_6; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_363 = lastBeat ? _GEN_221 : validBits_7; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_364 = lastBeat ? _GEN_222 : validBits_8; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_365 = lastBeat ? _GEN_223 : validBits_9; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_366 = lastBeat ? _GEN_224 : validBits_10; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_367 = lastBeat ? _GEN_225 : validBits_11; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_368 = lastBeat ? _GEN_226 : validBits_12; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_369 = lastBeat ? _GEN_227 : validBits_13; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_370 = lastBeat ? _GEN_228 : validBits_14; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_371 = lastBeat ? _GEN_229 : validBits_15; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_372 = lastBeat ? _GEN_230 : validBits_16; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_373 = lastBeat ? _GEN_231 : validBits_17; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_374 = lastBeat ? _GEN_232 : validBits_18; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_375 = lastBeat ? _GEN_233 : validBits_19; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_376 = lastBeat ? _GEN_234 : validBits_20; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_377 = lastBeat ? _GEN_235 : validBits_21; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_378 = lastBeat ? _GEN_236 : validBits_22; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_379 = lastBeat ? _GEN_237 : validBits_23; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_380 = lastBeat ? _GEN_238 : validBits_24; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_381 = lastBeat ? _GEN_239 : validBits_25; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_382 = lastBeat ? _GEN_240 : validBits_26; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_383 = lastBeat ? _GEN_241 : validBits_27; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_384 = lastBeat ? _GEN_242 : validBits_28; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_385 = lastBeat ? _GEN_243 : validBits_29; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_386 = lastBeat ? _GEN_244 : validBits_30; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_387 = lastBeat ? _GEN_245 : validBits_31; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_388 = lastBeat ? _GEN_246 : validBits_32; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_389 = lastBeat ? _GEN_247 : validBits_33; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_390 = lastBeat ? _GEN_248 : validBits_34; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_391 = lastBeat ? _GEN_249 : validBits_35; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_392 = lastBeat ? _GEN_250 : validBits_36; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_393 = lastBeat ? _GEN_251 : validBits_37; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_394 = lastBeat ? _GEN_252 : validBits_38; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_395 = lastBeat ? _GEN_253 : validBits_39; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_396 = lastBeat ? _GEN_254 : validBits_40; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_397 = lastBeat ? _GEN_255 : validBits_41; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_398 = lastBeat ? _GEN_256 : validBits_42; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_399 = lastBeat ? _GEN_257 : validBits_43; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_400 = lastBeat ? _GEN_258 : validBits_44; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_401 = lastBeat ? _GEN_259 : validBits_45; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_402 = lastBeat ? _GEN_260 : validBits_46; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_403 = lastBeat ? _GEN_261 : validBits_47; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_404 = lastBeat ? _GEN_262 : validBits_48; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_405 = lastBeat ? _GEN_263 : validBits_49; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_406 = lastBeat ? _GEN_264 : validBits_50; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_407 = lastBeat ? _GEN_265 : validBits_51; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_408 = lastBeat ? _GEN_266 : validBits_52; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_409 = lastBeat ? _GEN_267 : validBits_53; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_410 = lastBeat ? _GEN_268 : validBits_54; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_411 = lastBeat ? _GEN_269 : validBits_55; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_412 = lastBeat ? _GEN_270 : validBits_56; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_413 = lastBeat ? _GEN_271 : validBits_57; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_414 = lastBeat ? _GEN_272 : validBits_58; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_415 = lastBeat ? _GEN_273 : validBits_59; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_416 = lastBeat ? _GEN_274 : validBits_60; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_417 = lastBeat ? _GEN_275 : validBits_61; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_418 = lastBeat ? _GEN_276 : validBits_62; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_419 = lastBeat ? _GEN_277 : validBits_63; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_420 = lastBeat ? _GEN_278 : validBits_64; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_421 = lastBeat ? _GEN_279 : validBits_65; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_422 = lastBeat ? _GEN_280 : validBits_66; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_423 = lastBeat ? _GEN_281 : validBits_67; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_424 = lastBeat ? _GEN_282 : validBits_68; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_425 = lastBeat ? _GEN_283 : validBits_69; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_426 = lastBeat ? _GEN_284 : validBits_70; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_427 = lastBeat ? _GEN_285 : validBits_71; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_428 = lastBeat ? _GEN_286 : validBits_72; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_429 = lastBeat ? _GEN_287 : validBits_73; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_430 = lastBeat ? _GEN_288 : validBits_74; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_431 = lastBeat ? _GEN_289 : validBits_75; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_432 = lastBeat ? _GEN_290 : validBits_76; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_433 = lastBeat ? _GEN_291 : validBits_77; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_434 = lastBeat ? _GEN_292 : validBits_78; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_435 = lastBeat ? _GEN_293 : validBits_79; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_436 = lastBeat ? _GEN_294 : validBits_80; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_437 = lastBeat ? _GEN_295 : validBits_81; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_438 = lastBeat ? _GEN_296 : validBits_82; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_439 = lastBeat ? _GEN_297 : validBits_83; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_440 = lastBeat ? _GEN_298 : validBits_84; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_441 = lastBeat ? _GEN_299 : validBits_85; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_442 = lastBeat ? _GEN_300 : validBits_86; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_443 = lastBeat ? _GEN_301 : validBits_87; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_444 = lastBeat ? _GEN_302 : validBits_88; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_445 = lastBeat ? _GEN_303 : validBits_89; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_446 = lastBeat ? _GEN_304 : validBits_90; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_447 = lastBeat ? _GEN_305 : validBits_91; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_448 = lastBeat ? _GEN_306 : validBits_92; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_449 = lastBeat ? _GEN_307 : validBits_93; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_450 = lastBeat ? _GEN_308 : validBits_94; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_451 = lastBeat ? _GEN_309 : validBits_95; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_452 = lastBeat ? _GEN_310 : validBits_96; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_453 = lastBeat ? _GEN_311 : validBits_97; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_454 = lastBeat ? _GEN_312 : validBits_98; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_455 = lastBeat ? _GEN_313 : validBits_99; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_456 = lastBeat ? _GEN_314 : validBits_100; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_457 = lastBeat ? _GEN_315 : validBits_101; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_458 = lastBeat ? _GEN_316 : validBits_102; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_459 = lastBeat ? _GEN_317 : validBits_103; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_460 = lastBeat ? _GEN_318 : validBits_104; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_461 = lastBeat ? _GEN_319 : validBits_105; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_462 = lastBeat ? _GEN_320 : validBits_106; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_463 = lastBeat ? _GEN_321 : validBits_107; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_464 = lastBeat ? _GEN_322 : validBits_108; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_465 = lastBeat ? _GEN_323 : validBits_109; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_466 = lastBeat ? _GEN_324 : validBits_110; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_467 = lastBeat ? _GEN_325 : validBits_111; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_468 = lastBeat ? _GEN_326 : validBits_112; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_469 = lastBeat ? _GEN_327 : validBits_113; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_470 = lastBeat ? _GEN_328 : validBits_114; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_471 = lastBeat ? _GEN_329 : validBits_115; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_472 = lastBeat ? _GEN_330 : validBits_116; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_473 = lastBeat ? _GEN_331 : validBits_117; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_474 = lastBeat ? _GEN_332 : validBits_118; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_475 = lastBeat ? _GEN_333 : validBits_119; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_476 = lastBeat ? _GEN_334 : validBits_120; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_477 = lastBeat ? _GEN_335 : validBits_121; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_478 = lastBeat ? _GEN_336 : validBits_122; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_479 = lastBeat ? _GEN_337 : validBits_123; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_480 = lastBeat ? _GEN_338 : validBits_124; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_481 = lastBeat ? _GEN_339 : validBits_125; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_482 = lastBeat ? _GEN_340 : validBits_126; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire  _GEN_483 = lastBeat ? _GEN_341 : validBits_127; // @[src/main/scala/cache/cache.scala 236:24 11:26]
-  wire [31:0] _GEN_484 = lastBeat ? _GEN_205 : respData; // @[src/main/scala/cache/cache.scala 236:24 266:20 19:21]
-  wire [2:0] _GEN_485 = lastBeat ? 3'h6 : state; // @[src/main/scala/cache/cache.scala 236:24 267:17 17:22]
-  wire [31:0] _GEN_486 = _T_17 ? beats_0 : refillBuf_0; // @[src/main/scala/cache/cache.scala 20:22 227:36]
-  wire [31:0] _GEN_487 = _T_17 ? beats_1 : refillBuf_1; // @[src/main/scala/cache/cache.scala 20:22 227:36]
-  wire [31:0] _GEN_488 = _T_17 ? beats_2 : refillBuf_2; // @[src/main/scala/cache/cache.scala 20:22 227:36]
-  wire [31:0] _GEN_489 = _T_17 ? beats_3 : refillBuf_3; // @[src/main/scala/cache/cache.scala 20:22 227:36]
-  wire [31:0] _GEN_490 = _T_17 ? beats_4 : refillBuf_4; // @[src/main/scala/cache/cache.scala 20:22 227:36]
-  wire [31:0] _GEN_491 = _T_17 ? beats_5 : refillBuf_5; // @[src/main/scala/cache/cache.scala 20:22 227:36]
-  wire [31:0] _GEN_492 = _T_17 ? beats_6 : refillBuf_6; // @[src/main/scala/cache/cache.scala 20:22 227:36]
-  wire [31:0] _GEN_493 = _T_17 ? beats_7 : refillBuf_7; // @[src/main/scala/cache/cache.scala 20:22 227:36]
-  wire [2:0] _GEN_494 = _T_17 ? _beatCnt_T_1 : beatCnt; // @[src/main/scala/cache/cache.scala 227:36 234:17 22:24]
-  wire  _GEN_501 = _T_17 ? _GEN_356 : validBits_0; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_502 = _T_17 ? _GEN_357 : validBits_1; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_503 = _T_17 ? _GEN_358 : validBits_2; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_504 = _T_17 ? _GEN_359 : validBits_3; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_505 = _T_17 ? _GEN_360 : validBits_4; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_506 = _T_17 ? _GEN_361 : validBits_5; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_507 = _T_17 ? _GEN_362 : validBits_6; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_508 = _T_17 ? _GEN_363 : validBits_7; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_509 = _T_17 ? _GEN_364 : validBits_8; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_510 = _T_17 ? _GEN_365 : validBits_9; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_511 = _T_17 ? _GEN_366 : validBits_10; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_512 = _T_17 ? _GEN_367 : validBits_11; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_513 = _T_17 ? _GEN_368 : validBits_12; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_514 = _T_17 ? _GEN_369 : validBits_13; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_515 = _T_17 ? _GEN_370 : validBits_14; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_516 = _T_17 ? _GEN_371 : validBits_15; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_517 = _T_17 ? _GEN_372 : validBits_16; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_518 = _T_17 ? _GEN_373 : validBits_17; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_519 = _T_17 ? _GEN_374 : validBits_18; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_520 = _T_17 ? _GEN_375 : validBits_19; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_521 = _T_17 ? _GEN_376 : validBits_20; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_522 = _T_17 ? _GEN_377 : validBits_21; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_523 = _T_17 ? _GEN_378 : validBits_22; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_524 = _T_17 ? _GEN_379 : validBits_23; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_525 = _T_17 ? _GEN_380 : validBits_24; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_526 = _T_17 ? _GEN_381 : validBits_25; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_527 = _T_17 ? _GEN_382 : validBits_26; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_528 = _T_17 ? _GEN_383 : validBits_27; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_529 = _T_17 ? _GEN_384 : validBits_28; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_530 = _T_17 ? _GEN_385 : validBits_29; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_531 = _T_17 ? _GEN_386 : validBits_30; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_532 = _T_17 ? _GEN_387 : validBits_31; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_533 = _T_17 ? _GEN_388 : validBits_32; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_534 = _T_17 ? _GEN_389 : validBits_33; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_535 = _T_17 ? _GEN_390 : validBits_34; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_536 = _T_17 ? _GEN_391 : validBits_35; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_537 = _T_17 ? _GEN_392 : validBits_36; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_538 = _T_17 ? _GEN_393 : validBits_37; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_539 = _T_17 ? _GEN_394 : validBits_38; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_540 = _T_17 ? _GEN_395 : validBits_39; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_541 = _T_17 ? _GEN_396 : validBits_40; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_542 = _T_17 ? _GEN_397 : validBits_41; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_543 = _T_17 ? _GEN_398 : validBits_42; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_544 = _T_17 ? _GEN_399 : validBits_43; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_545 = _T_17 ? _GEN_400 : validBits_44; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_546 = _T_17 ? _GEN_401 : validBits_45; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_547 = _T_17 ? _GEN_402 : validBits_46; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_548 = _T_17 ? _GEN_403 : validBits_47; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_549 = _T_17 ? _GEN_404 : validBits_48; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_550 = _T_17 ? _GEN_405 : validBits_49; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_551 = _T_17 ? _GEN_406 : validBits_50; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_552 = _T_17 ? _GEN_407 : validBits_51; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_553 = _T_17 ? _GEN_408 : validBits_52; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_554 = _T_17 ? _GEN_409 : validBits_53; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_555 = _T_17 ? _GEN_410 : validBits_54; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_556 = _T_17 ? _GEN_411 : validBits_55; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_557 = _T_17 ? _GEN_412 : validBits_56; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_558 = _T_17 ? _GEN_413 : validBits_57; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_559 = _T_17 ? _GEN_414 : validBits_58; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_560 = _T_17 ? _GEN_415 : validBits_59; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_561 = _T_17 ? _GEN_416 : validBits_60; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_562 = _T_17 ? _GEN_417 : validBits_61; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_563 = _T_17 ? _GEN_418 : validBits_62; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_564 = _T_17 ? _GEN_419 : validBits_63; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_565 = _T_17 ? _GEN_420 : validBits_64; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_566 = _T_17 ? _GEN_421 : validBits_65; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_567 = _T_17 ? _GEN_422 : validBits_66; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_568 = _T_17 ? _GEN_423 : validBits_67; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_569 = _T_17 ? _GEN_424 : validBits_68; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_570 = _T_17 ? _GEN_425 : validBits_69; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_571 = _T_17 ? _GEN_426 : validBits_70; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_572 = _T_17 ? _GEN_427 : validBits_71; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_573 = _T_17 ? _GEN_428 : validBits_72; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_574 = _T_17 ? _GEN_429 : validBits_73; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_575 = _T_17 ? _GEN_430 : validBits_74; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_576 = _T_17 ? _GEN_431 : validBits_75; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_577 = _T_17 ? _GEN_432 : validBits_76; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_578 = _T_17 ? _GEN_433 : validBits_77; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_579 = _T_17 ? _GEN_434 : validBits_78; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_580 = _T_17 ? _GEN_435 : validBits_79; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_581 = _T_17 ? _GEN_436 : validBits_80; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_582 = _T_17 ? _GEN_437 : validBits_81; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_583 = _T_17 ? _GEN_438 : validBits_82; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_584 = _T_17 ? _GEN_439 : validBits_83; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_585 = _T_17 ? _GEN_440 : validBits_84; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_586 = _T_17 ? _GEN_441 : validBits_85; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_587 = _T_17 ? _GEN_442 : validBits_86; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_588 = _T_17 ? _GEN_443 : validBits_87; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_589 = _T_17 ? _GEN_444 : validBits_88; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_590 = _T_17 ? _GEN_445 : validBits_89; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_591 = _T_17 ? _GEN_446 : validBits_90; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_592 = _T_17 ? _GEN_447 : validBits_91; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_593 = _T_17 ? _GEN_448 : validBits_92; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_594 = _T_17 ? _GEN_449 : validBits_93; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_595 = _T_17 ? _GEN_450 : validBits_94; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_596 = _T_17 ? _GEN_451 : validBits_95; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_597 = _T_17 ? _GEN_452 : validBits_96; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_598 = _T_17 ? _GEN_453 : validBits_97; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_599 = _T_17 ? _GEN_454 : validBits_98; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_600 = _T_17 ? _GEN_455 : validBits_99; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_601 = _T_17 ? _GEN_456 : validBits_100; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_602 = _T_17 ? _GEN_457 : validBits_101; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_603 = _T_17 ? _GEN_458 : validBits_102; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_604 = _T_17 ? _GEN_459 : validBits_103; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_605 = _T_17 ? _GEN_460 : validBits_104; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_606 = _T_17 ? _GEN_461 : validBits_105; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_607 = _T_17 ? _GEN_462 : validBits_106; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_608 = _T_17 ? _GEN_463 : validBits_107; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_609 = _T_17 ? _GEN_464 : validBits_108; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_610 = _T_17 ? _GEN_465 : validBits_109; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_611 = _T_17 ? _GEN_466 : validBits_110; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_612 = _T_17 ? _GEN_467 : validBits_111; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_613 = _T_17 ? _GEN_468 : validBits_112; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_614 = _T_17 ? _GEN_469 : validBits_113; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_615 = _T_17 ? _GEN_470 : validBits_114; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_616 = _T_17 ? _GEN_471 : validBits_115; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_617 = _T_17 ? _GEN_472 : validBits_116; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_618 = _T_17 ? _GEN_473 : validBits_117; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_619 = _T_17 ? _GEN_474 : validBits_118; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_620 = _T_17 ? _GEN_475 : validBits_119; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_621 = _T_17 ? _GEN_476 : validBits_120; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_622 = _T_17 ? _GEN_477 : validBits_121; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_623 = _T_17 ? _GEN_478 : validBits_122; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_624 = _T_17 ? _GEN_479 : validBits_123; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_625 = _T_17 ? _GEN_480 : validBits_124; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_626 = _T_17 ? _GEN_481 : validBits_125; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_627 = _T_17 ? _GEN_482 : validBits_126; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire  _GEN_628 = _T_17 ? _GEN_483 : validBits_127; // @[src/main/scala/cache/cache.scala 11:26 227:36]
-  wire [31:0] _GEN_629 = _T_17 ? _GEN_484 : respData; // @[src/main/scala/cache/cache.scala 19:21 227:36]
-  wire [2:0] _GEN_630 = _T_17 ? _GEN_485 : state; // @[src/main/scala/cache/cache.scala 17:22 227:36]
-  wire [31:0] _io_mm_req_write_bits_addr_T_1 = {addrReg[31:2],2'h0}; // @[src/main/scala/cache/model.scala 59:70]
-  wire  _T_21 = io_mm_req_write_ready & io_mm_req_write_valid; // @[src/main/scala/chisel3/util/Decoupled.scala 57:35]
-  wire [2:0] _GEN_632 = _T_21 ? 3'h6 : state; // @[src/main/scala/cache/cache.scala 278:36 280:17 17:22]
-  wire [2:0] _GEN_633 = io_cpu_resp_ready ? 3'h0 : state; // @[src/main/scala/cache/cache.scala 287:31 288:15 17:22]
-  wire [2:0] _GEN_635 = 3'h6 == state ? _GEN_633 : state; // @[src/main/scala/cache/cache.scala 119:17 17:22]
-  wire [31:0] _GEN_637 = 3'h5 == state ? _io_mm_req_write_bits_addr_T_1 : 32'h0; // @[src/main/scala/cache/cache.scala 119:17 275:35 63:29]
-  wire [31:0] _GEN_638 = 3'h5 == state ? wdataReg : 32'h0; // @[src/main/scala/cache/cache.scala 119:17 276:35 62:29]
-  wire [3:0] _GEN_639 = 3'h5 == state ? wmaskReg : 4'h0; // @[src/main/scala/cache/cache.scala 119:17 277:35 64:29]
-  wire [2:0] _GEN_641 = 3'h5 == state ? _GEN_632 : _GEN_635; // @[src/main/scala/cache/cache.scala 119:17]
-  wire  _GEN_642 = 3'h5 == state ? 1'h0 : 3'h6 == state; // @[src/main/scala/cache/cache.scala 119:17 50:21]
-  wire [31:0] _GEN_644 = 3'h4 == state ? _GEN_486 : refillBuf_0; // @[src/main/scala/cache/cache.scala 119:17 20:22]
-  wire [31:0] _GEN_645 = 3'h4 == state ? _GEN_487 : refillBuf_1; // @[src/main/scala/cache/cache.scala 119:17 20:22]
-  wire [31:0] _GEN_646 = 3'h4 == state ? _GEN_488 : refillBuf_2; // @[src/main/scala/cache/cache.scala 119:17 20:22]
-  wire [31:0] _GEN_647 = 3'h4 == state ? _GEN_489 : refillBuf_3; // @[src/main/scala/cache/cache.scala 119:17 20:22]
-  wire [31:0] _GEN_648 = 3'h4 == state ? _GEN_490 : refillBuf_4; // @[src/main/scala/cache/cache.scala 119:17 20:22]
-  wire [31:0] _GEN_649 = 3'h4 == state ? _GEN_491 : refillBuf_5; // @[src/main/scala/cache/cache.scala 119:17 20:22]
-  wire [31:0] _GEN_650 = 3'h4 == state ? _GEN_492 : refillBuf_6; // @[src/main/scala/cache/cache.scala 119:17 20:22]
-  wire [31:0] _GEN_651 = 3'h4 == state ? _GEN_493 : refillBuf_7; // @[src/main/scala/cache/cache.scala 119:17 20:22]
-  wire [2:0] _GEN_652 = 3'h4 == state ? _GEN_494 : beatCnt; // @[src/main/scala/cache/cache.scala 119:17 22:24]
-  wire  _GEN_659 = 3'h4 == state ? _GEN_501 : validBits_0; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_660 = 3'h4 == state ? _GEN_502 : validBits_1; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_661 = 3'h4 == state ? _GEN_503 : validBits_2; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_662 = 3'h4 == state ? _GEN_504 : validBits_3; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_663 = 3'h4 == state ? _GEN_505 : validBits_4; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_664 = 3'h4 == state ? _GEN_506 : validBits_5; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_665 = 3'h4 == state ? _GEN_507 : validBits_6; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_666 = 3'h4 == state ? _GEN_508 : validBits_7; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_667 = 3'h4 == state ? _GEN_509 : validBits_8; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_668 = 3'h4 == state ? _GEN_510 : validBits_9; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_669 = 3'h4 == state ? _GEN_511 : validBits_10; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_670 = 3'h4 == state ? _GEN_512 : validBits_11; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_671 = 3'h4 == state ? _GEN_513 : validBits_12; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_672 = 3'h4 == state ? _GEN_514 : validBits_13; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_673 = 3'h4 == state ? _GEN_515 : validBits_14; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_674 = 3'h4 == state ? _GEN_516 : validBits_15; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_675 = 3'h4 == state ? _GEN_517 : validBits_16; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_676 = 3'h4 == state ? _GEN_518 : validBits_17; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_677 = 3'h4 == state ? _GEN_519 : validBits_18; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_678 = 3'h4 == state ? _GEN_520 : validBits_19; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_679 = 3'h4 == state ? _GEN_521 : validBits_20; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_680 = 3'h4 == state ? _GEN_522 : validBits_21; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_681 = 3'h4 == state ? _GEN_523 : validBits_22; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_682 = 3'h4 == state ? _GEN_524 : validBits_23; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_683 = 3'h4 == state ? _GEN_525 : validBits_24; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_684 = 3'h4 == state ? _GEN_526 : validBits_25; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_685 = 3'h4 == state ? _GEN_527 : validBits_26; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_686 = 3'h4 == state ? _GEN_528 : validBits_27; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_687 = 3'h4 == state ? _GEN_529 : validBits_28; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_688 = 3'h4 == state ? _GEN_530 : validBits_29; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_689 = 3'h4 == state ? _GEN_531 : validBits_30; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_690 = 3'h4 == state ? _GEN_532 : validBits_31; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_691 = 3'h4 == state ? _GEN_533 : validBits_32; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_692 = 3'h4 == state ? _GEN_534 : validBits_33; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_693 = 3'h4 == state ? _GEN_535 : validBits_34; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_694 = 3'h4 == state ? _GEN_536 : validBits_35; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_695 = 3'h4 == state ? _GEN_537 : validBits_36; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_696 = 3'h4 == state ? _GEN_538 : validBits_37; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_697 = 3'h4 == state ? _GEN_539 : validBits_38; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_698 = 3'h4 == state ? _GEN_540 : validBits_39; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_699 = 3'h4 == state ? _GEN_541 : validBits_40; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_700 = 3'h4 == state ? _GEN_542 : validBits_41; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_701 = 3'h4 == state ? _GEN_543 : validBits_42; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_702 = 3'h4 == state ? _GEN_544 : validBits_43; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_703 = 3'h4 == state ? _GEN_545 : validBits_44; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_704 = 3'h4 == state ? _GEN_546 : validBits_45; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_705 = 3'h4 == state ? _GEN_547 : validBits_46; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_706 = 3'h4 == state ? _GEN_548 : validBits_47; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_707 = 3'h4 == state ? _GEN_549 : validBits_48; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_708 = 3'h4 == state ? _GEN_550 : validBits_49; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_709 = 3'h4 == state ? _GEN_551 : validBits_50; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_710 = 3'h4 == state ? _GEN_552 : validBits_51; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_711 = 3'h4 == state ? _GEN_553 : validBits_52; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_712 = 3'h4 == state ? _GEN_554 : validBits_53; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_713 = 3'h4 == state ? _GEN_555 : validBits_54; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_714 = 3'h4 == state ? _GEN_556 : validBits_55; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_715 = 3'h4 == state ? _GEN_557 : validBits_56; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_716 = 3'h4 == state ? _GEN_558 : validBits_57; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_717 = 3'h4 == state ? _GEN_559 : validBits_58; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_718 = 3'h4 == state ? _GEN_560 : validBits_59; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_719 = 3'h4 == state ? _GEN_561 : validBits_60; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_720 = 3'h4 == state ? _GEN_562 : validBits_61; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_721 = 3'h4 == state ? _GEN_563 : validBits_62; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_722 = 3'h4 == state ? _GEN_564 : validBits_63; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_723 = 3'h4 == state ? _GEN_565 : validBits_64; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_724 = 3'h4 == state ? _GEN_566 : validBits_65; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_725 = 3'h4 == state ? _GEN_567 : validBits_66; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_726 = 3'h4 == state ? _GEN_568 : validBits_67; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_727 = 3'h4 == state ? _GEN_569 : validBits_68; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_728 = 3'h4 == state ? _GEN_570 : validBits_69; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_729 = 3'h4 == state ? _GEN_571 : validBits_70; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_730 = 3'h4 == state ? _GEN_572 : validBits_71; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_731 = 3'h4 == state ? _GEN_573 : validBits_72; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_732 = 3'h4 == state ? _GEN_574 : validBits_73; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_733 = 3'h4 == state ? _GEN_575 : validBits_74; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_734 = 3'h4 == state ? _GEN_576 : validBits_75; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_735 = 3'h4 == state ? _GEN_577 : validBits_76; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_736 = 3'h4 == state ? _GEN_578 : validBits_77; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_737 = 3'h4 == state ? _GEN_579 : validBits_78; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_738 = 3'h4 == state ? _GEN_580 : validBits_79; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_739 = 3'h4 == state ? _GEN_581 : validBits_80; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_740 = 3'h4 == state ? _GEN_582 : validBits_81; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_741 = 3'h4 == state ? _GEN_583 : validBits_82; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_742 = 3'h4 == state ? _GEN_584 : validBits_83; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_743 = 3'h4 == state ? _GEN_585 : validBits_84; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_744 = 3'h4 == state ? _GEN_586 : validBits_85; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_745 = 3'h4 == state ? _GEN_587 : validBits_86; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_746 = 3'h4 == state ? _GEN_588 : validBits_87; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_747 = 3'h4 == state ? _GEN_589 : validBits_88; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_748 = 3'h4 == state ? _GEN_590 : validBits_89; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_749 = 3'h4 == state ? _GEN_591 : validBits_90; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_750 = 3'h4 == state ? _GEN_592 : validBits_91; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_751 = 3'h4 == state ? _GEN_593 : validBits_92; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_752 = 3'h4 == state ? _GEN_594 : validBits_93; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_753 = 3'h4 == state ? _GEN_595 : validBits_94; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_754 = 3'h4 == state ? _GEN_596 : validBits_95; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_755 = 3'h4 == state ? _GEN_597 : validBits_96; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_756 = 3'h4 == state ? _GEN_598 : validBits_97; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_757 = 3'h4 == state ? _GEN_599 : validBits_98; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_758 = 3'h4 == state ? _GEN_600 : validBits_99; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_759 = 3'h4 == state ? _GEN_601 : validBits_100; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_760 = 3'h4 == state ? _GEN_602 : validBits_101; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_761 = 3'h4 == state ? _GEN_603 : validBits_102; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_762 = 3'h4 == state ? _GEN_604 : validBits_103; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_763 = 3'h4 == state ? _GEN_605 : validBits_104; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_764 = 3'h4 == state ? _GEN_606 : validBits_105; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_765 = 3'h4 == state ? _GEN_607 : validBits_106; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_766 = 3'h4 == state ? _GEN_608 : validBits_107; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_767 = 3'h4 == state ? _GEN_609 : validBits_108; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_768 = 3'h4 == state ? _GEN_610 : validBits_109; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_769 = 3'h4 == state ? _GEN_611 : validBits_110; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_770 = 3'h4 == state ? _GEN_612 : validBits_111; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_771 = 3'h4 == state ? _GEN_613 : validBits_112; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_772 = 3'h4 == state ? _GEN_614 : validBits_113; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_773 = 3'h4 == state ? _GEN_615 : validBits_114; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_774 = 3'h4 == state ? _GEN_616 : validBits_115; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_775 = 3'h4 == state ? _GEN_617 : validBits_116; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_776 = 3'h4 == state ? _GEN_618 : validBits_117; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_777 = 3'h4 == state ? _GEN_619 : validBits_118; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_778 = 3'h4 == state ? _GEN_620 : validBits_119; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_779 = 3'h4 == state ? _GEN_621 : validBits_120; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_780 = 3'h4 == state ? _GEN_622 : validBits_121; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_781 = 3'h4 == state ? _GEN_623 : validBits_122; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_782 = 3'h4 == state ? _GEN_624 : validBits_123; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_783 = 3'h4 == state ? _GEN_625 : validBits_124; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_784 = 3'h4 == state ? _GEN_626 : validBits_125; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_785 = 3'h4 == state ? _GEN_627 : validBits_126; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_786 = 3'h4 == state ? _GEN_628 : validBits_127; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire [31:0] _GEN_787 = 3'h4 == state ? _GEN_629 : respData; // @[src/main/scala/cache/cache.scala 119:17 19:21]
-  wire [2:0] _GEN_788 = 3'h4 == state ? _GEN_630 : _GEN_641; // @[src/main/scala/cache/cache.scala 119:17]
-  wire  _GEN_789 = 3'h4 == state ? 1'h0 : 3'h5 == state; // @[src/main/scala/cache/cache.scala 119:17 61:25]
-  wire [31:0] _GEN_790 = 3'h4 == state ? 32'h0 : _GEN_637; // @[src/main/scala/cache/cache.scala 119:17 63:29]
-  wire [31:0] _GEN_791 = 3'h4 == state ? 32'h0 : _GEN_638; // @[src/main/scala/cache/cache.scala 119:17 62:29]
-  wire [3:0] _GEN_792 = 3'h4 == state ? 4'h0 : _GEN_639; // @[src/main/scala/cache/cache.scala 119:17 64:29]
-  wire  _GEN_794 = 3'h4 == state ? 1'h0 : _GEN_642; // @[src/main/scala/cache/cache.scala 119:17 50:21]
-  wire [2:0] _GEN_796 = 3'h3 == state ? _GEN_180 : _GEN_652; // @[src/main/scala/cache/cache.scala 119:17]
-  wire [2:0] _GEN_797 = 3'h3 == state ? _GEN_181 : _GEN_788; // @[src/main/scala/cache/cache.scala 119:17]
-  wire  _GEN_798 = 3'h3 == state ? 1'h0 : 3'h4 == state; // @[src/main/scala/cache/cache.scala 119:17 57:27]
-  wire  _GEN_813 = 3'h3 == state ? validBits_0 : _GEN_659; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_814 = 3'h3 == state ? validBits_1 : _GEN_660; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_815 = 3'h3 == state ? validBits_2 : _GEN_661; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_816 = 3'h3 == state ? validBits_3 : _GEN_662; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_817 = 3'h3 == state ? validBits_4 : _GEN_663; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_818 = 3'h3 == state ? validBits_5 : _GEN_664; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_819 = 3'h3 == state ? validBits_6 : _GEN_665; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_820 = 3'h3 == state ? validBits_7 : _GEN_666; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_821 = 3'h3 == state ? validBits_8 : _GEN_667; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_822 = 3'h3 == state ? validBits_9 : _GEN_668; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_823 = 3'h3 == state ? validBits_10 : _GEN_669; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_824 = 3'h3 == state ? validBits_11 : _GEN_670; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_825 = 3'h3 == state ? validBits_12 : _GEN_671; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_826 = 3'h3 == state ? validBits_13 : _GEN_672; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_827 = 3'h3 == state ? validBits_14 : _GEN_673; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_828 = 3'h3 == state ? validBits_15 : _GEN_674; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_829 = 3'h3 == state ? validBits_16 : _GEN_675; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_830 = 3'h3 == state ? validBits_17 : _GEN_676; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_831 = 3'h3 == state ? validBits_18 : _GEN_677; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_832 = 3'h3 == state ? validBits_19 : _GEN_678; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_833 = 3'h3 == state ? validBits_20 : _GEN_679; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_834 = 3'h3 == state ? validBits_21 : _GEN_680; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_835 = 3'h3 == state ? validBits_22 : _GEN_681; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_836 = 3'h3 == state ? validBits_23 : _GEN_682; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_837 = 3'h3 == state ? validBits_24 : _GEN_683; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_838 = 3'h3 == state ? validBits_25 : _GEN_684; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_839 = 3'h3 == state ? validBits_26 : _GEN_685; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_840 = 3'h3 == state ? validBits_27 : _GEN_686; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_841 = 3'h3 == state ? validBits_28 : _GEN_687; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_842 = 3'h3 == state ? validBits_29 : _GEN_688; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_843 = 3'h3 == state ? validBits_30 : _GEN_689; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_844 = 3'h3 == state ? validBits_31 : _GEN_690; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_845 = 3'h3 == state ? validBits_32 : _GEN_691; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_846 = 3'h3 == state ? validBits_33 : _GEN_692; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_847 = 3'h3 == state ? validBits_34 : _GEN_693; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_848 = 3'h3 == state ? validBits_35 : _GEN_694; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_849 = 3'h3 == state ? validBits_36 : _GEN_695; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_850 = 3'h3 == state ? validBits_37 : _GEN_696; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_851 = 3'h3 == state ? validBits_38 : _GEN_697; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_852 = 3'h3 == state ? validBits_39 : _GEN_698; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_853 = 3'h3 == state ? validBits_40 : _GEN_699; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_854 = 3'h3 == state ? validBits_41 : _GEN_700; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_855 = 3'h3 == state ? validBits_42 : _GEN_701; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_856 = 3'h3 == state ? validBits_43 : _GEN_702; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_857 = 3'h3 == state ? validBits_44 : _GEN_703; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_858 = 3'h3 == state ? validBits_45 : _GEN_704; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_859 = 3'h3 == state ? validBits_46 : _GEN_705; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_860 = 3'h3 == state ? validBits_47 : _GEN_706; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_861 = 3'h3 == state ? validBits_48 : _GEN_707; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_862 = 3'h3 == state ? validBits_49 : _GEN_708; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_863 = 3'h3 == state ? validBits_50 : _GEN_709; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_864 = 3'h3 == state ? validBits_51 : _GEN_710; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_865 = 3'h3 == state ? validBits_52 : _GEN_711; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_866 = 3'h3 == state ? validBits_53 : _GEN_712; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_867 = 3'h3 == state ? validBits_54 : _GEN_713; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_868 = 3'h3 == state ? validBits_55 : _GEN_714; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_869 = 3'h3 == state ? validBits_56 : _GEN_715; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_870 = 3'h3 == state ? validBits_57 : _GEN_716; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_871 = 3'h3 == state ? validBits_58 : _GEN_717; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_872 = 3'h3 == state ? validBits_59 : _GEN_718; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_873 = 3'h3 == state ? validBits_60 : _GEN_719; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_874 = 3'h3 == state ? validBits_61 : _GEN_720; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_875 = 3'h3 == state ? validBits_62 : _GEN_721; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_876 = 3'h3 == state ? validBits_63 : _GEN_722; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_877 = 3'h3 == state ? validBits_64 : _GEN_723; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_878 = 3'h3 == state ? validBits_65 : _GEN_724; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_879 = 3'h3 == state ? validBits_66 : _GEN_725; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_880 = 3'h3 == state ? validBits_67 : _GEN_726; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_881 = 3'h3 == state ? validBits_68 : _GEN_727; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_882 = 3'h3 == state ? validBits_69 : _GEN_728; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_883 = 3'h3 == state ? validBits_70 : _GEN_729; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_884 = 3'h3 == state ? validBits_71 : _GEN_730; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_885 = 3'h3 == state ? validBits_72 : _GEN_731; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_886 = 3'h3 == state ? validBits_73 : _GEN_732; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_887 = 3'h3 == state ? validBits_74 : _GEN_733; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_888 = 3'h3 == state ? validBits_75 : _GEN_734; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_889 = 3'h3 == state ? validBits_76 : _GEN_735; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_890 = 3'h3 == state ? validBits_77 : _GEN_736; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_891 = 3'h3 == state ? validBits_78 : _GEN_737; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_892 = 3'h3 == state ? validBits_79 : _GEN_738; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_893 = 3'h3 == state ? validBits_80 : _GEN_739; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_894 = 3'h3 == state ? validBits_81 : _GEN_740; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_895 = 3'h3 == state ? validBits_82 : _GEN_741; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_896 = 3'h3 == state ? validBits_83 : _GEN_742; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_897 = 3'h3 == state ? validBits_84 : _GEN_743; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_898 = 3'h3 == state ? validBits_85 : _GEN_744; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_899 = 3'h3 == state ? validBits_86 : _GEN_745; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_900 = 3'h3 == state ? validBits_87 : _GEN_746; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_901 = 3'h3 == state ? validBits_88 : _GEN_747; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_902 = 3'h3 == state ? validBits_89 : _GEN_748; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_903 = 3'h3 == state ? validBits_90 : _GEN_749; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_904 = 3'h3 == state ? validBits_91 : _GEN_750; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_905 = 3'h3 == state ? validBits_92 : _GEN_751; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_906 = 3'h3 == state ? validBits_93 : _GEN_752; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_907 = 3'h3 == state ? validBits_94 : _GEN_753; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_908 = 3'h3 == state ? validBits_95 : _GEN_754; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_909 = 3'h3 == state ? validBits_96 : _GEN_755; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_910 = 3'h3 == state ? validBits_97 : _GEN_756; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_911 = 3'h3 == state ? validBits_98 : _GEN_757; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_912 = 3'h3 == state ? validBits_99 : _GEN_758; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_913 = 3'h3 == state ? validBits_100 : _GEN_759; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_914 = 3'h3 == state ? validBits_101 : _GEN_760; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_915 = 3'h3 == state ? validBits_102 : _GEN_761; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_916 = 3'h3 == state ? validBits_103 : _GEN_762; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_917 = 3'h3 == state ? validBits_104 : _GEN_763; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_918 = 3'h3 == state ? validBits_105 : _GEN_764; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_919 = 3'h3 == state ? validBits_106 : _GEN_765; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_920 = 3'h3 == state ? validBits_107 : _GEN_766; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_921 = 3'h3 == state ? validBits_108 : _GEN_767; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_922 = 3'h3 == state ? validBits_109 : _GEN_768; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_923 = 3'h3 == state ? validBits_110 : _GEN_769; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_924 = 3'h3 == state ? validBits_111 : _GEN_770; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_925 = 3'h3 == state ? validBits_112 : _GEN_771; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_926 = 3'h3 == state ? validBits_113 : _GEN_772; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_927 = 3'h3 == state ? validBits_114 : _GEN_773; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_928 = 3'h3 == state ? validBits_115 : _GEN_774; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_929 = 3'h3 == state ? validBits_116 : _GEN_775; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_930 = 3'h3 == state ? validBits_117 : _GEN_776; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_931 = 3'h3 == state ? validBits_118 : _GEN_777; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_932 = 3'h3 == state ? validBits_119 : _GEN_778; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_933 = 3'h3 == state ? validBits_120 : _GEN_779; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_934 = 3'h3 == state ? validBits_121 : _GEN_780; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_935 = 3'h3 == state ? validBits_122 : _GEN_781; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_936 = 3'h3 == state ? validBits_123 : _GEN_782; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_937 = 3'h3 == state ? validBits_124 : _GEN_783; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_938 = 3'h3 == state ? validBits_125 : _GEN_784; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_939 = 3'h3 == state ? validBits_126 : _GEN_785; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_940 = 3'h3 == state ? validBits_127 : _GEN_786; // @[src/main/scala/cache/cache.scala 119:17 11:26]
-  wire  _GEN_942 = 3'h3 == state ? 1'h0 : _GEN_789; // @[src/main/scala/cache/cache.scala 119:17 61:25]
-  wire [31:0] _GEN_943 = 3'h3 == state ? 32'h0 : _GEN_790; // @[src/main/scala/cache/cache.scala 119:17 63:29]
-  wire [31:0] _GEN_944 = 3'h3 == state ? 32'h0 : _GEN_791; // @[src/main/scala/cache/cache.scala 119:17 62:29]
-  wire [3:0] _GEN_945 = 3'h3 == state ? 4'h0 : _GEN_792; // @[src/main/scala/cache/cache.scala 119:17 64:29]
-  wire  _GEN_947 = 3'h3 == state ? 1'h0 : _GEN_794; // @[src/main/scala/cache/cache.scala 119:17 50:21]
-  wire  _GEN_948 = 3'h2 == state ? 1'h0 : 3'h3 == state; // @[src/main/scala/cache/cache.scala 119:17 55:26]
-  wire  _GEN_951 = 3'h2 == state ? 1'h0 : _GEN_798; // @[src/main/scala/cache/cache.scala 119:17 57:27]
-  wire  _GEN_1095 = 3'h2 == state ? 1'h0 : _GEN_942; // @[src/main/scala/cache/cache.scala 119:17 61:25]
-  wire [31:0] _GEN_1096 = 3'h2 == state ? 32'h0 : _GEN_943; // @[src/main/scala/cache/cache.scala 119:17 63:29]
-  wire [31:0] _GEN_1097 = 3'h2 == state ? 32'h0 : _GEN_944; // @[src/main/scala/cache/cache.scala 119:17 62:29]
-  wire [3:0] _GEN_1098 = 3'h2 == state ? 4'h0 : _GEN_945; // @[src/main/scala/cache/cache.scala 119:17 64:29]
-  wire  _GEN_1100 = 3'h2 == state ? 1'h0 : _GEN_947; // @[src/main/scala/cache/cache.scala 119:17 50:21]
-  wire  _GEN_1101 = 3'h1 == state & hit; // @[src/main/scala/cache/cache.scala 119:17 136:19 67:15]
-  wire  _GEN_1102 = 3'h1 == state & ~hit; // @[src/main/scala/cache/cache.scala 119:17 137:20 68:16]
-  wire  _GEN_1107 = 3'h1 == state ? 1'h0 : _GEN_948; // @[src/main/scala/cache/cache.scala 119:17 55:26]
-  wire  _GEN_1109 = 3'h1 == state ? 1'h0 : _GEN_951; // @[src/main/scala/cache/cache.scala 119:17 57:27]
-  wire  _GEN_1120 = 3'h1 == state ? 1'h0 : _GEN_960; // @[src/main/scala/cache/cache.scala 119:17 13:27]
-  wire  _GEN_1251 = 3'h1 == state ? 1'h0 : _GEN_1095; // @[src/main/scala/cache/cache.scala 119:17 61:25]
-  wire [31:0] _GEN_1252 = 3'h1 == state ? 32'h0 : _GEN_1096; // @[src/main/scala/cache/cache.scala 119:17 63:29]
-  wire [31:0] _GEN_1253 = 3'h1 == state ? 32'h0 : _GEN_1097; // @[src/main/scala/cache/cache.scala 119:17 62:29]
-  wire [3:0] _GEN_1254 = 3'h1 == state ? 4'h0 : _GEN_1098; // @[src/main/scala/cache/cache.scala 119:17 64:29]
-  wire  _GEN_1256 = 3'h1 == state ? 1'h0 : _GEN_1100; // @[src/main/scala/cache/cache.scala 119:17 50:21]
-  assign tagMem_tagRd_en = tagMem_tagRd_en_pipe_0;
-  assign tagMem_tagRd_addr = tagMem_tagRd_addr_pipe_0;
-  assign tagMem_tagRd_data = tagMem[tagMem_tagRd_addr]; // @[src/main/scala/cache/cache.scala 13:27]
-  assign tagMem_MPORT_1_data = addrReg[31:12];
-  assign tagMem_MPORT_1_addr = addrReg[11:5];
-  assign tagMem_MPORT_1_mask = 1'h1;
-  assign tagMem_MPORT_1_en = _T_2 ? 1'h0 : _GEN_1120;
-  assign dataMem_lineRd_en = dataMem_lineRd_en_pipe_0;
-  assign dataMem_lineRd_addr = dataMem_lineRd_addr_pipe_0;
-  assign dataMem_lineRd_data = dataMem[dataMem_lineRd_addr]; // @[src/main/scala/cache/cache.scala 14:28]
-  assign dataMem_MPORT_data = _T_2 ? 256'h0 : _GEN_1104;
-  assign dataMem_MPORT_addr = addrReg[11:5];
-  assign dataMem_MPORT_mask = 1'h1;
-  assign dataMem_MPORT_en = _T_2 ? 1'h0 : _GEN_1103;
-  assign io_cpu_req_ready = state == 3'h0; // @[src/main/scala/cache/cache.scala 37:29]
-  assign io_cpu_resp_valid = 3'h0 == state ? 1'h0 : _GEN_1256; // @[src/main/scala/cache/cache.scala 119:17 50:21]
-  assign io_cpu_resp_bits_data = respData; // @[src/main/scala/cache/cache.scala 51:25]
-  assign io_mm_req_refill_valid = 3'h0 == state ? 1'h0 : _GEN_1107; // @[src/main/scala/cache/cache.scala 119:17 55:26]
-  assign io_mm_req_refill_bits_addr = {addrReg[31:5],5'h0}; // @[src/main/scala/cache/model.scala 56:38]
-  assign io_mm_data_refill_ready = 3'h0 == state ? 1'h0 : _GEN_1109; // @[src/main/scala/cache/cache.scala 119:17 57:27]
-  assign io_mm_req_write_valid = 3'h0 == state ? 1'h0 : _GEN_1251; // @[src/main/scala/cache/cache.scala 119:17 61:25]
-  assign io_mm_req_write_bits_addr = 3'h0 == state ? 32'h0 : _GEN_1252; // @[src/main/scala/cache/cache.scala 119:17 63:29]
-  assign io_mm_req_write_bits_data = 3'h0 == state ? 32'h0 : _GEN_1253; // @[src/main/scala/cache/cache.scala 119:17 62:29]
-  assign io_mm_req_write_bits_mask = 3'h0 == state ? 4'h0 : _GEN_1254; // @[src/main/scala/cache/cache.scala 119:17 64:29]
-  assign io_stat_hit = 3'h0 == state ? 1'h0 : _GEN_1101; // @[src/main/scala/cache/cache.scala 119:17 67:15]
-  assign io_stat_miss = 3'h0 == state ? 1'h0 : _GEN_1102; // @[src/main/scala/cache/cache.scala 119:17 68:16]
+    installedLine_words_4,installedLine_words_3,installedLine_words_2,installedLine_words_1,installedLine_words_0}; // @[src/main/scala/cache/cache.scala 136:11]
+  wire [255:0] installedLine = writeReg ? _installedLine_T : newLine; // @[src/main/scala/cache/cache.scala 284:34]
+  wire [255:0] _GEN_1402 = lastBeat ? installedLine : 256'h0; // @[src/main/scala/cache/cache.scala 270:24 289:25 71:34]
+  wire [255:0] _GEN_1676 = _T_23 ? _GEN_1402 : 256'h0; // @[src/main/scala/cache/cache.scala 261:36 71:34]
+  wire [255:0] _GEN_1956 = 3'h4 == state ? _GEN_1676 : 256'h0; // @[src/main/scala/cache/cache.scala 150:17 71:34]
+  wire [255:0] _GEN_2234 = 3'h3 == state ? 256'h0 : _GEN_1956; // @[src/main/scala/cache/cache.scala 150:17 71:34]
+  wire [255:0] _GEN_2644 = 3'h2 == state ? 256'h0 : _GEN_2234; // @[src/main/scala/cache/cache.scala 150:17 71:34]
+  wire [255:0] _GEN_2788 = 3'h1 == state ? _GEN_569 : _GEN_2644; // @[src/main/scala/cache/cache.scala 150:17]
+  wire [31:0] evictBeats_wb_0 = evictLine_wb[31:0]; // @[src/main/scala/cache/cache.scala 141:44]
+  wire [31:0] evictBeats_wb_1 = evictLine_wb[63:32]; // @[src/main/scala/cache/cache.scala 141:44]
+  wire [31:0] evictBeats_wb_2 = evictLine_wb[95:64]; // @[src/main/scala/cache/cache.scala 141:44]
+  wire [31:0] evictBeats_wb_3 = evictLine_wb[127:96]; // @[src/main/scala/cache/cache.scala 141:44]
+  wire [31:0] evictBeats_wb_4 = evictLine_wb[159:128]; // @[src/main/scala/cache/cache.scala 141:44]
+  wire [31:0] evictBeats_wb_5 = evictLine_wb[191:160]; // @[src/main/scala/cache/cache.scala 141:44]
+  wire [31:0] evictBeats_wb_6 = evictLine_wb[223:192]; // @[src/main/scala/cache/cache.scala 141:44]
+  wire [31:0] evictBeats_wb_7 = evictLine_wb[255:224]; // @[src/main/scala/cache/cache.scala 141:44]
+  wire [31:0] hitData = writeReg ? 32'h0 : _GEN_165; // @[src/main/scala/cache/cache.scala 173:28]
+  wire [2:0] _state_T = io_cpu_resp_ready ? 3'h0 : 3'h6; // @[src/main/scala/cache/cache.scala 177:23]
+  wire  _GEN_3362 = 7'h0 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_174 = 7'h0 == reqIdx | dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3363 = 7'h1 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_175 = 7'h1 == reqIdx | dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3364 = 7'h2 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_176 = 7'h2 == reqIdx | dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3365 = 7'h3 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_177 = 7'h3 == reqIdx | dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3366 = 7'h4 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_178 = 7'h4 == reqIdx | dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3367 = 7'h5 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_179 = 7'h5 == reqIdx | dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3368 = 7'h6 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_180 = 7'h6 == reqIdx | dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3369 = 7'h7 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_181 = 7'h7 == reqIdx | dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3370 = 7'h8 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_182 = 7'h8 == reqIdx | dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3371 = 7'h9 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_183 = 7'h9 == reqIdx | dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3372 = 7'ha == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_184 = 7'ha == reqIdx | dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3373 = 7'hb == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_185 = 7'hb == reqIdx | dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3374 = 7'hc == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_186 = 7'hc == reqIdx | dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3375 = 7'hd == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_187 = 7'hd == reqIdx | dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3376 = 7'he == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_188 = 7'he == reqIdx | dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3377 = 7'hf == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_189 = 7'hf == reqIdx | dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3378 = 7'h10 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_190 = 7'h10 == reqIdx | dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3379 = 7'h11 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_191 = 7'h11 == reqIdx | dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3380 = 7'h12 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_192 = 7'h12 == reqIdx | dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3381 = 7'h13 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_193 = 7'h13 == reqIdx | dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3382 = 7'h14 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_194 = 7'h14 == reqIdx | dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3383 = 7'h15 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_195 = 7'h15 == reqIdx | dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3384 = 7'h16 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_196 = 7'h16 == reqIdx | dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3385 = 7'h17 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_197 = 7'h17 == reqIdx | dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3386 = 7'h18 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_198 = 7'h18 == reqIdx | dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3387 = 7'h19 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_199 = 7'h19 == reqIdx | dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3388 = 7'h1a == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_200 = 7'h1a == reqIdx | dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3389 = 7'h1b == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_201 = 7'h1b == reqIdx | dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3390 = 7'h1c == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_202 = 7'h1c == reqIdx | dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3391 = 7'h1d == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_203 = 7'h1d == reqIdx | dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3392 = 7'h1e == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_204 = 7'h1e == reqIdx | dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3393 = 7'h1f == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_205 = 7'h1f == reqIdx | dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3394 = 7'h20 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_206 = 7'h20 == reqIdx | dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3395 = 7'h21 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_207 = 7'h21 == reqIdx | dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3396 = 7'h22 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_208 = 7'h22 == reqIdx | dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3397 = 7'h23 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_209 = 7'h23 == reqIdx | dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3398 = 7'h24 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_210 = 7'h24 == reqIdx | dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3399 = 7'h25 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_211 = 7'h25 == reqIdx | dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3400 = 7'h26 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_212 = 7'h26 == reqIdx | dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3401 = 7'h27 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_213 = 7'h27 == reqIdx | dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3402 = 7'h28 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_214 = 7'h28 == reqIdx | dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3403 = 7'h29 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_215 = 7'h29 == reqIdx | dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3404 = 7'h2a == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_216 = 7'h2a == reqIdx | dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3405 = 7'h2b == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_217 = 7'h2b == reqIdx | dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3406 = 7'h2c == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_218 = 7'h2c == reqIdx | dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3407 = 7'h2d == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_219 = 7'h2d == reqIdx | dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3408 = 7'h2e == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_220 = 7'h2e == reqIdx | dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3409 = 7'h2f == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_221 = 7'h2f == reqIdx | dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3410 = 7'h30 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_222 = 7'h30 == reqIdx | dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3411 = 7'h31 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_223 = 7'h31 == reqIdx | dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3412 = 7'h32 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_224 = 7'h32 == reqIdx | dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3413 = 7'h33 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_225 = 7'h33 == reqIdx | dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3414 = 7'h34 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_226 = 7'h34 == reqIdx | dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3415 = 7'h35 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_227 = 7'h35 == reqIdx | dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3416 = 7'h36 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_228 = 7'h36 == reqIdx | dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3417 = 7'h37 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_229 = 7'h37 == reqIdx | dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3418 = 7'h38 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_230 = 7'h38 == reqIdx | dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3419 = 7'h39 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_231 = 7'h39 == reqIdx | dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3420 = 7'h3a == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_232 = 7'h3a == reqIdx | dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3421 = 7'h3b == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_233 = 7'h3b == reqIdx | dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3422 = 7'h3c == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_234 = 7'h3c == reqIdx | dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3423 = 7'h3d == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_235 = 7'h3d == reqIdx | dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3424 = 7'h3e == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_236 = 7'h3e == reqIdx | dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3425 = 7'h3f == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_237 = 7'h3f == reqIdx | dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3426 = 7'h40 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_238 = 7'h40 == reqIdx | dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3427 = 7'h41 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_239 = 7'h41 == reqIdx | dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3428 = 7'h42 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_240 = 7'h42 == reqIdx | dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3429 = 7'h43 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_241 = 7'h43 == reqIdx | dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3430 = 7'h44 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_242 = 7'h44 == reqIdx | dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3431 = 7'h45 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_243 = 7'h45 == reqIdx | dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3432 = 7'h46 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_244 = 7'h46 == reqIdx | dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3433 = 7'h47 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_245 = 7'h47 == reqIdx | dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3434 = 7'h48 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_246 = 7'h48 == reqIdx | dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3435 = 7'h49 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_247 = 7'h49 == reqIdx | dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3436 = 7'h4a == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_248 = 7'h4a == reqIdx | dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3437 = 7'h4b == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_249 = 7'h4b == reqIdx | dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3438 = 7'h4c == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_250 = 7'h4c == reqIdx | dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3439 = 7'h4d == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_251 = 7'h4d == reqIdx | dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3440 = 7'h4e == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_252 = 7'h4e == reqIdx | dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3441 = 7'h4f == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_253 = 7'h4f == reqIdx | dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3442 = 7'h50 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_254 = 7'h50 == reqIdx | dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3443 = 7'h51 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_255 = 7'h51 == reqIdx | dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3444 = 7'h52 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_256 = 7'h52 == reqIdx | dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3445 = 7'h53 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_257 = 7'h53 == reqIdx | dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3446 = 7'h54 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_258 = 7'h54 == reqIdx | dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3447 = 7'h55 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_259 = 7'h55 == reqIdx | dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3448 = 7'h56 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_260 = 7'h56 == reqIdx | dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3449 = 7'h57 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_261 = 7'h57 == reqIdx | dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3450 = 7'h58 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_262 = 7'h58 == reqIdx | dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3451 = 7'h59 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_263 = 7'h59 == reqIdx | dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3452 = 7'h5a == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_264 = 7'h5a == reqIdx | dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3453 = 7'h5b == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_265 = 7'h5b == reqIdx | dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3454 = 7'h5c == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_266 = 7'h5c == reqIdx | dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3455 = 7'h5d == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_267 = 7'h5d == reqIdx | dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3456 = 7'h5e == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_268 = 7'h5e == reqIdx | dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3457 = 7'h5f == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_269 = 7'h5f == reqIdx | dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3458 = 7'h60 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_270 = 7'h60 == reqIdx | dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3459 = 7'h61 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_271 = 7'h61 == reqIdx | dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3460 = 7'h62 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_272 = 7'h62 == reqIdx | dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3461 = 7'h63 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_273 = 7'h63 == reqIdx | dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3462 = 7'h64 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_274 = 7'h64 == reqIdx | dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3463 = 7'h65 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_275 = 7'h65 == reqIdx | dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3464 = 7'h66 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_276 = 7'h66 == reqIdx | dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3465 = 7'h67 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_277 = 7'h67 == reqIdx | dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3466 = 7'h68 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_278 = 7'h68 == reqIdx | dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3467 = 7'h69 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_279 = 7'h69 == reqIdx | dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3468 = 7'h6a == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_280 = 7'h6a == reqIdx | dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3469 = 7'h6b == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_281 = 7'h6b == reqIdx | dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3470 = 7'h6c == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_282 = 7'h6c == reqIdx | dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3471 = 7'h6d == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_283 = 7'h6d == reqIdx | dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3472 = 7'h6e == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_284 = 7'h6e == reqIdx | dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3473 = 7'h6f == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_285 = 7'h6f == reqIdx | dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3474 = 7'h70 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_286 = 7'h70 == reqIdx | dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3475 = 7'h71 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_287 = 7'h71 == reqIdx | dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3476 = 7'h72 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_288 = 7'h72 == reqIdx | dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3477 = 7'h73 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_289 = 7'h73 == reqIdx | dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3478 = 7'h74 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_290 = 7'h74 == reqIdx | dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3479 = 7'h75 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_291 = 7'h75 == reqIdx | dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3480 = 7'h76 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_292 = 7'h76 == reqIdx | dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3481 = 7'h77 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_293 = 7'h77 == reqIdx | dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3482 = 7'h78 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_294 = 7'h78 == reqIdx | dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3483 = 7'h79 == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_295 = 7'h79 == reqIdx | dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3484 = 7'h7a == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_296 = 7'h7a == reqIdx | dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3485 = 7'h7b == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_297 = 7'h7b == reqIdx | dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3486 = 7'h7c == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_298 = 7'h7c == reqIdx | dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3487 = 7'h7d == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_299 = 7'h7d == reqIdx | dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3488 = 7'h7e == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_300 = 7'h7e == reqIdx | dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_3489 = 7'h7f == reqIdx; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_301 = 7'h7f == reqIdx | dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 13:26 188:{38,38}]
+  wire  _GEN_305 = writeReg ? _GEN_174 : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_306 = writeReg ? _GEN_175 : dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_307 = writeReg ? _GEN_176 : dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_308 = writeReg ? _GEN_177 : dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_309 = writeReg ? _GEN_178 : dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_310 = writeReg ? _GEN_179 : dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_311 = writeReg ? _GEN_180 : dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_312 = writeReg ? _GEN_181 : dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_313 = writeReg ? _GEN_182 : dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_314 = writeReg ? _GEN_183 : dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_315 = writeReg ? _GEN_184 : dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_316 = writeReg ? _GEN_185 : dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_317 = writeReg ? _GEN_186 : dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_318 = writeReg ? _GEN_187 : dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_319 = writeReg ? _GEN_188 : dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_320 = writeReg ? _GEN_189 : dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_321 = writeReg ? _GEN_190 : dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_322 = writeReg ? _GEN_191 : dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_323 = writeReg ? _GEN_192 : dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_324 = writeReg ? _GEN_193 : dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_325 = writeReg ? _GEN_194 : dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_326 = writeReg ? _GEN_195 : dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_327 = writeReg ? _GEN_196 : dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_328 = writeReg ? _GEN_197 : dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_329 = writeReg ? _GEN_198 : dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_330 = writeReg ? _GEN_199 : dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_331 = writeReg ? _GEN_200 : dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_332 = writeReg ? _GEN_201 : dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_333 = writeReg ? _GEN_202 : dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_334 = writeReg ? _GEN_203 : dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_335 = writeReg ? _GEN_204 : dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_336 = writeReg ? _GEN_205 : dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_337 = writeReg ? _GEN_206 : dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_338 = writeReg ? _GEN_207 : dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_339 = writeReg ? _GEN_208 : dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_340 = writeReg ? _GEN_209 : dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_341 = writeReg ? _GEN_210 : dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_342 = writeReg ? _GEN_211 : dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_343 = writeReg ? _GEN_212 : dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_344 = writeReg ? _GEN_213 : dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_345 = writeReg ? _GEN_214 : dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_346 = writeReg ? _GEN_215 : dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_347 = writeReg ? _GEN_216 : dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_348 = writeReg ? _GEN_217 : dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_349 = writeReg ? _GEN_218 : dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_350 = writeReg ? _GEN_219 : dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_351 = writeReg ? _GEN_220 : dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_352 = writeReg ? _GEN_221 : dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_353 = writeReg ? _GEN_222 : dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_354 = writeReg ? _GEN_223 : dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_355 = writeReg ? _GEN_224 : dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_356 = writeReg ? _GEN_225 : dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_357 = writeReg ? _GEN_226 : dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_358 = writeReg ? _GEN_227 : dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_359 = writeReg ? _GEN_228 : dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_360 = writeReg ? _GEN_229 : dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_361 = writeReg ? _GEN_230 : dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_362 = writeReg ? _GEN_231 : dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_363 = writeReg ? _GEN_232 : dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_364 = writeReg ? _GEN_233 : dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_365 = writeReg ? _GEN_234 : dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_366 = writeReg ? _GEN_235 : dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_367 = writeReg ? _GEN_236 : dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_368 = writeReg ? _GEN_237 : dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_369 = writeReg ? _GEN_238 : dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_370 = writeReg ? _GEN_239 : dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_371 = writeReg ? _GEN_240 : dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_372 = writeReg ? _GEN_241 : dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_373 = writeReg ? _GEN_242 : dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_374 = writeReg ? _GEN_243 : dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_375 = writeReg ? _GEN_244 : dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_376 = writeReg ? _GEN_245 : dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_377 = writeReg ? _GEN_246 : dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_378 = writeReg ? _GEN_247 : dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_379 = writeReg ? _GEN_248 : dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_380 = writeReg ? _GEN_249 : dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_381 = writeReg ? _GEN_250 : dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_382 = writeReg ? _GEN_251 : dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_383 = writeReg ? _GEN_252 : dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_384 = writeReg ? _GEN_253 : dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_385 = writeReg ? _GEN_254 : dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_386 = writeReg ? _GEN_255 : dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_387 = writeReg ? _GEN_256 : dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_388 = writeReg ? _GEN_257 : dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_389 = writeReg ? _GEN_258 : dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_390 = writeReg ? _GEN_259 : dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_391 = writeReg ? _GEN_260 : dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_392 = writeReg ? _GEN_261 : dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_393 = writeReg ? _GEN_262 : dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_394 = writeReg ? _GEN_263 : dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_395 = writeReg ? _GEN_264 : dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_396 = writeReg ? _GEN_265 : dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_397 = writeReg ? _GEN_266 : dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_398 = writeReg ? _GEN_267 : dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_399 = writeReg ? _GEN_268 : dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_400 = writeReg ? _GEN_269 : dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_401 = writeReg ? _GEN_270 : dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_402 = writeReg ? _GEN_271 : dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_403 = writeReg ? _GEN_272 : dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_404 = writeReg ? _GEN_273 : dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_405 = writeReg ? _GEN_274 : dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_406 = writeReg ? _GEN_275 : dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_407 = writeReg ? _GEN_276 : dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_408 = writeReg ? _GEN_277 : dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_409 = writeReg ? _GEN_278 : dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_410 = writeReg ? _GEN_279 : dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_411 = writeReg ? _GEN_280 : dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_412 = writeReg ? _GEN_281 : dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_413 = writeReg ? _GEN_282 : dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_414 = writeReg ? _GEN_283 : dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_415 = writeReg ? _GEN_284 : dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_416 = writeReg ? _GEN_285 : dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_417 = writeReg ? _GEN_286 : dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_418 = writeReg ? _GEN_287 : dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_419 = writeReg ? _GEN_288 : dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_420 = writeReg ? _GEN_289 : dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_421 = writeReg ? _GEN_290 : dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_422 = writeReg ? _GEN_291 : dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_423 = writeReg ? _GEN_292 : dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_424 = writeReg ? _GEN_293 : dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_425 = writeReg ? _GEN_294 : dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_426 = writeReg ? _GEN_295 : dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_427 = writeReg ? _GEN_296 : dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_428 = writeReg ? _GEN_297 : dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_429 = writeReg ? _GEN_298 : dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_430 = writeReg ? _GEN_299 : dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_431 = writeReg ? _GEN_300 : dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_432 = writeReg ? _GEN_301 : dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 179:24 13:26]
+  wire  _GEN_434 = 7'h1 == reqIdx ? dirtyBits_1_0 : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_435 = 7'h2 == reqIdx ? dirtyBits_2_0 : _GEN_434; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_436 = 7'h3 == reqIdx ? dirtyBits_3_0 : _GEN_435; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_437 = 7'h4 == reqIdx ? dirtyBits_4_0 : _GEN_436; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_438 = 7'h5 == reqIdx ? dirtyBits_5_0 : _GEN_437; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_439 = 7'h6 == reqIdx ? dirtyBits_6_0 : _GEN_438; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_440 = 7'h7 == reqIdx ? dirtyBits_7_0 : _GEN_439; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_441 = 7'h8 == reqIdx ? dirtyBits_8_0 : _GEN_440; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_442 = 7'h9 == reqIdx ? dirtyBits_9_0 : _GEN_441; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_443 = 7'ha == reqIdx ? dirtyBits_10_0 : _GEN_442; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_444 = 7'hb == reqIdx ? dirtyBits_11_0 : _GEN_443; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_445 = 7'hc == reqIdx ? dirtyBits_12_0 : _GEN_444; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_446 = 7'hd == reqIdx ? dirtyBits_13_0 : _GEN_445; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_447 = 7'he == reqIdx ? dirtyBits_14_0 : _GEN_446; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_448 = 7'hf == reqIdx ? dirtyBits_15_0 : _GEN_447; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_449 = 7'h10 == reqIdx ? dirtyBits_16_0 : _GEN_448; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_450 = 7'h11 == reqIdx ? dirtyBits_17_0 : _GEN_449; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_451 = 7'h12 == reqIdx ? dirtyBits_18_0 : _GEN_450; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_452 = 7'h13 == reqIdx ? dirtyBits_19_0 : _GEN_451; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_453 = 7'h14 == reqIdx ? dirtyBits_20_0 : _GEN_452; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_454 = 7'h15 == reqIdx ? dirtyBits_21_0 : _GEN_453; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_455 = 7'h16 == reqIdx ? dirtyBits_22_0 : _GEN_454; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_456 = 7'h17 == reqIdx ? dirtyBits_23_0 : _GEN_455; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_457 = 7'h18 == reqIdx ? dirtyBits_24_0 : _GEN_456; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_458 = 7'h19 == reqIdx ? dirtyBits_25_0 : _GEN_457; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_459 = 7'h1a == reqIdx ? dirtyBits_26_0 : _GEN_458; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_460 = 7'h1b == reqIdx ? dirtyBits_27_0 : _GEN_459; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_461 = 7'h1c == reqIdx ? dirtyBits_28_0 : _GEN_460; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_462 = 7'h1d == reqIdx ? dirtyBits_29_0 : _GEN_461; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_463 = 7'h1e == reqIdx ? dirtyBits_30_0 : _GEN_462; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_464 = 7'h1f == reqIdx ? dirtyBits_31_0 : _GEN_463; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_465 = 7'h20 == reqIdx ? dirtyBits_32_0 : _GEN_464; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_466 = 7'h21 == reqIdx ? dirtyBits_33_0 : _GEN_465; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_467 = 7'h22 == reqIdx ? dirtyBits_34_0 : _GEN_466; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_468 = 7'h23 == reqIdx ? dirtyBits_35_0 : _GEN_467; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_469 = 7'h24 == reqIdx ? dirtyBits_36_0 : _GEN_468; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_470 = 7'h25 == reqIdx ? dirtyBits_37_0 : _GEN_469; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_471 = 7'h26 == reqIdx ? dirtyBits_38_0 : _GEN_470; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_472 = 7'h27 == reqIdx ? dirtyBits_39_0 : _GEN_471; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_473 = 7'h28 == reqIdx ? dirtyBits_40_0 : _GEN_472; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_474 = 7'h29 == reqIdx ? dirtyBits_41_0 : _GEN_473; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_475 = 7'h2a == reqIdx ? dirtyBits_42_0 : _GEN_474; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_476 = 7'h2b == reqIdx ? dirtyBits_43_0 : _GEN_475; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_477 = 7'h2c == reqIdx ? dirtyBits_44_0 : _GEN_476; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_478 = 7'h2d == reqIdx ? dirtyBits_45_0 : _GEN_477; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_479 = 7'h2e == reqIdx ? dirtyBits_46_0 : _GEN_478; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_480 = 7'h2f == reqIdx ? dirtyBits_47_0 : _GEN_479; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_481 = 7'h30 == reqIdx ? dirtyBits_48_0 : _GEN_480; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_482 = 7'h31 == reqIdx ? dirtyBits_49_0 : _GEN_481; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_483 = 7'h32 == reqIdx ? dirtyBits_50_0 : _GEN_482; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_484 = 7'h33 == reqIdx ? dirtyBits_51_0 : _GEN_483; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_485 = 7'h34 == reqIdx ? dirtyBits_52_0 : _GEN_484; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_486 = 7'h35 == reqIdx ? dirtyBits_53_0 : _GEN_485; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_487 = 7'h36 == reqIdx ? dirtyBits_54_0 : _GEN_486; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_488 = 7'h37 == reqIdx ? dirtyBits_55_0 : _GEN_487; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_489 = 7'h38 == reqIdx ? dirtyBits_56_0 : _GEN_488; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_490 = 7'h39 == reqIdx ? dirtyBits_57_0 : _GEN_489; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_491 = 7'h3a == reqIdx ? dirtyBits_58_0 : _GEN_490; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_492 = 7'h3b == reqIdx ? dirtyBits_59_0 : _GEN_491; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_493 = 7'h3c == reqIdx ? dirtyBits_60_0 : _GEN_492; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_494 = 7'h3d == reqIdx ? dirtyBits_61_0 : _GEN_493; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_495 = 7'h3e == reqIdx ? dirtyBits_62_0 : _GEN_494; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_496 = 7'h3f == reqIdx ? dirtyBits_63_0 : _GEN_495; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_497 = 7'h40 == reqIdx ? dirtyBits_64_0 : _GEN_496; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_498 = 7'h41 == reqIdx ? dirtyBits_65_0 : _GEN_497; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_499 = 7'h42 == reqIdx ? dirtyBits_66_0 : _GEN_498; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_500 = 7'h43 == reqIdx ? dirtyBits_67_0 : _GEN_499; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_501 = 7'h44 == reqIdx ? dirtyBits_68_0 : _GEN_500; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_502 = 7'h45 == reqIdx ? dirtyBits_69_0 : _GEN_501; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_503 = 7'h46 == reqIdx ? dirtyBits_70_0 : _GEN_502; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_504 = 7'h47 == reqIdx ? dirtyBits_71_0 : _GEN_503; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_505 = 7'h48 == reqIdx ? dirtyBits_72_0 : _GEN_504; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_506 = 7'h49 == reqIdx ? dirtyBits_73_0 : _GEN_505; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_507 = 7'h4a == reqIdx ? dirtyBits_74_0 : _GEN_506; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_508 = 7'h4b == reqIdx ? dirtyBits_75_0 : _GEN_507; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_509 = 7'h4c == reqIdx ? dirtyBits_76_0 : _GEN_508; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_510 = 7'h4d == reqIdx ? dirtyBits_77_0 : _GEN_509; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_511 = 7'h4e == reqIdx ? dirtyBits_78_0 : _GEN_510; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_512 = 7'h4f == reqIdx ? dirtyBits_79_0 : _GEN_511; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_513 = 7'h50 == reqIdx ? dirtyBits_80_0 : _GEN_512; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_514 = 7'h51 == reqIdx ? dirtyBits_81_0 : _GEN_513; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_515 = 7'h52 == reqIdx ? dirtyBits_82_0 : _GEN_514; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_516 = 7'h53 == reqIdx ? dirtyBits_83_0 : _GEN_515; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_517 = 7'h54 == reqIdx ? dirtyBits_84_0 : _GEN_516; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_518 = 7'h55 == reqIdx ? dirtyBits_85_0 : _GEN_517; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_519 = 7'h56 == reqIdx ? dirtyBits_86_0 : _GEN_518; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_520 = 7'h57 == reqIdx ? dirtyBits_87_0 : _GEN_519; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_521 = 7'h58 == reqIdx ? dirtyBits_88_0 : _GEN_520; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_522 = 7'h59 == reqIdx ? dirtyBits_89_0 : _GEN_521; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_523 = 7'h5a == reqIdx ? dirtyBits_90_0 : _GEN_522; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_524 = 7'h5b == reqIdx ? dirtyBits_91_0 : _GEN_523; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_525 = 7'h5c == reqIdx ? dirtyBits_92_0 : _GEN_524; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_526 = 7'h5d == reqIdx ? dirtyBits_93_0 : _GEN_525; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_527 = 7'h5e == reqIdx ? dirtyBits_94_0 : _GEN_526; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_528 = 7'h5f == reqIdx ? dirtyBits_95_0 : _GEN_527; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_529 = 7'h60 == reqIdx ? dirtyBits_96_0 : _GEN_528; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_530 = 7'h61 == reqIdx ? dirtyBits_97_0 : _GEN_529; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_531 = 7'h62 == reqIdx ? dirtyBits_98_0 : _GEN_530; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_532 = 7'h63 == reqIdx ? dirtyBits_99_0 : _GEN_531; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_533 = 7'h64 == reqIdx ? dirtyBits_100_0 : _GEN_532; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_534 = 7'h65 == reqIdx ? dirtyBits_101_0 : _GEN_533; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_535 = 7'h66 == reqIdx ? dirtyBits_102_0 : _GEN_534; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_536 = 7'h67 == reqIdx ? dirtyBits_103_0 : _GEN_535; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_537 = 7'h68 == reqIdx ? dirtyBits_104_0 : _GEN_536; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_538 = 7'h69 == reqIdx ? dirtyBits_105_0 : _GEN_537; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_539 = 7'h6a == reqIdx ? dirtyBits_106_0 : _GEN_538; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_540 = 7'h6b == reqIdx ? dirtyBits_107_0 : _GEN_539; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_541 = 7'h6c == reqIdx ? dirtyBits_108_0 : _GEN_540; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_542 = 7'h6d == reqIdx ? dirtyBits_109_0 : _GEN_541; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_543 = 7'h6e == reqIdx ? dirtyBits_110_0 : _GEN_542; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_544 = 7'h6f == reqIdx ? dirtyBits_111_0 : _GEN_543; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_545 = 7'h70 == reqIdx ? dirtyBits_112_0 : _GEN_544; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_546 = 7'h71 == reqIdx ? dirtyBits_113_0 : _GEN_545; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_547 = 7'h72 == reqIdx ? dirtyBits_114_0 : _GEN_546; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_548 = 7'h73 == reqIdx ? dirtyBits_115_0 : _GEN_547; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_549 = 7'h74 == reqIdx ? dirtyBits_116_0 : _GEN_548; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_550 = 7'h75 == reqIdx ? dirtyBits_117_0 : _GEN_549; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_551 = 7'h76 == reqIdx ? dirtyBits_118_0 : _GEN_550; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_552 = 7'h77 == reqIdx ? dirtyBits_119_0 : _GEN_551; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_553 = 7'h78 == reqIdx ? dirtyBits_120_0 : _GEN_552; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_554 = 7'h79 == reqIdx ? dirtyBits_121_0 : _GEN_553; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_555 = 7'h7a == reqIdx ? dirtyBits_122_0 : _GEN_554; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_556 = 7'h7b == reqIdx ? dirtyBits_123_0 : _GEN_555; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_557 = 7'h7c == reqIdx ? dirtyBits_124_0 : _GEN_556; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_558 = 7'h7d == reqIdx ? dirtyBits_125_0 : _GEN_557; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_559 = 7'h7e == reqIdx ? dirtyBits_126_0 : _GEN_558; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire  _GEN_560 = 7'h7f == reqIdx ? dirtyBits_127_0 : _GEN_559; // @[src/main/scala/cache/cache.scala 210:{49,49}]
+  wire [31:0] _evictAddr_wb_T = {tagsRd_0,reqIdx,5'h0}; // @[src/main/scala/cache/cache.scala 213:23]
+  wire [1:0] _GEN_563 = _GEN_135 & _GEN_560 ? 2'h2 : 2'h3; // @[src/main/scala/cache/cache.scala 210:86 215:19 218:19]
+  wire [31:0] _GEN_565 = hit ? hitData : respData; // @[src/main/scala/cache/cache.scala 170:17 81:25]
+  wire [4:0] _io_mm_req_write_bits_addr_T = {beatCnt, 2'h0}; // @[src/main/scala/cache/cache.scala 228:62]
+  wire [31:0] _GEN_3490 = {{27'd0}, _io_mm_req_write_bits_addr_T}; // @[src/main/scala/cache/cache.scala 228:51]
+  wire [31:0] _io_mm_req_write_bits_addr_T_2 = evictAddr_wb + _GEN_3490; // @[src/main/scala/cache/cache.scala 228:51]
+  wire [31:0] _GEN_702 = 3'h1 == beatCnt ? evictBeats_wb_1 : evictBeats_wb_0; // @[src/main/scala/cache/cache.scala 229:{35,35}]
+  wire [31:0] _GEN_703 = 3'h2 == beatCnt ? evictBeats_wb_2 : _GEN_702; // @[src/main/scala/cache/cache.scala 229:{35,35}]
+  wire [31:0] _GEN_704 = 3'h3 == beatCnt ? evictBeats_wb_3 : _GEN_703; // @[src/main/scala/cache/cache.scala 229:{35,35}]
+  wire [31:0] _GEN_705 = 3'h4 == beatCnt ? evictBeats_wb_4 : _GEN_704; // @[src/main/scala/cache/cache.scala 229:{35,35}]
+  wire [31:0] _GEN_706 = 3'h5 == beatCnt ? evictBeats_wb_5 : _GEN_705; // @[src/main/scala/cache/cache.scala 229:{35,35}]
+  wire [31:0] _GEN_707 = 3'h6 == beatCnt ? evictBeats_wb_6 : _GEN_706; // @[src/main/scala/cache/cache.scala 229:{35,35}]
+  wire [31:0] _GEN_708 = 3'h7 == beatCnt ? evictBeats_wb_7 : _GEN_707; // @[src/main/scala/cache/cache.scala 229:{35,35}]
+  wire  _T_15 = io_mm_req_write_ready & io_mm_req_write_valid; // @[src/main/scala/chisel3/util/Decoupled.scala 57:35]
+  wire  _GEN_709 = 7'h0 == reqIdx ? 1'h0 : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_710 = 7'h1 == reqIdx ? 1'h0 : dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_711 = 7'h2 == reqIdx ? 1'h0 : dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_712 = 7'h3 == reqIdx ? 1'h0 : dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_713 = 7'h4 == reqIdx ? 1'h0 : dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_714 = 7'h5 == reqIdx ? 1'h0 : dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_715 = 7'h6 == reqIdx ? 1'h0 : dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_716 = 7'h7 == reqIdx ? 1'h0 : dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_717 = 7'h8 == reqIdx ? 1'h0 : dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_718 = 7'h9 == reqIdx ? 1'h0 : dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_719 = 7'ha == reqIdx ? 1'h0 : dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_720 = 7'hb == reqIdx ? 1'h0 : dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_721 = 7'hc == reqIdx ? 1'h0 : dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_722 = 7'hd == reqIdx ? 1'h0 : dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_723 = 7'he == reqIdx ? 1'h0 : dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_724 = 7'hf == reqIdx ? 1'h0 : dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_725 = 7'h10 == reqIdx ? 1'h0 : dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_726 = 7'h11 == reqIdx ? 1'h0 : dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_727 = 7'h12 == reqIdx ? 1'h0 : dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_728 = 7'h13 == reqIdx ? 1'h0 : dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_729 = 7'h14 == reqIdx ? 1'h0 : dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_730 = 7'h15 == reqIdx ? 1'h0 : dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_731 = 7'h16 == reqIdx ? 1'h0 : dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_732 = 7'h17 == reqIdx ? 1'h0 : dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_733 = 7'h18 == reqIdx ? 1'h0 : dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_734 = 7'h19 == reqIdx ? 1'h0 : dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_735 = 7'h1a == reqIdx ? 1'h0 : dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_736 = 7'h1b == reqIdx ? 1'h0 : dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_737 = 7'h1c == reqIdx ? 1'h0 : dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_738 = 7'h1d == reqIdx ? 1'h0 : dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_739 = 7'h1e == reqIdx ? 1'h0 : dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_740 = 7'h1f == reqIdx ? 1'h0 : dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_741 = 7'h20 == reqIdx ? 1'h0 : dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_742 = 7'h21 == reqIdx ? 1'h0 : dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_743 = 7'h22 == reqIdx ? 1'h0 : dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_744 = 7'h23 == reqIdx ? 1'h0 : dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_745 = 7'h24 == reqIdx ? 1'h0 : dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_746 = 7'h25 == reqIdx ? 1'h0 : dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_747 = 7'h26 == reqIdx ? 1'h0 : dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_748 = 7'h27 == reqIdx ? 1'h0 : dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_749 = 7'h28 == reqIdx ? 1'h0 : dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_750 = 7'h29 == reqIdx ? 1'h0 : dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_751 = 7'h2a == reqIdx ? 1'h0 : dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_752 = 7'h2b == reqIdx ? 1'h0 : dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_753 = 7'h2c == reqIdx ? 1'h0 : dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_754 = 7'h2d == reqIdx ? 1'h0 : dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_755 = 7'h2e == reqIdx ? 1'h0 : dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_756 = 7'h2f == reqIdx ? 1'h0 : dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_757 = 7'h30 == reqIdx ? 1'h0 : dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_758 = 7'h31 == reqIdx ? 1'h0 : dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_759 = 7'h32 == reqIdx ? 1'h0 : dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_760 = 7'h33 == reqIdx ? 1'h0 : dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_761 = 7'h34 == reqIdx ? 1'h0 : dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_762 = 7'h35 == reqIdx ? 1'h0 : dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_763 = 7'h36 == reqIdx ? 1'h0 : dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_764 = 7'h37 == reqIdx ? 1'h0 : dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_765 = 7'h38 == reqIdx ? 1'h0 : dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_766 = 7'h39 == reqIdx ? 1'h0 : dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_767 = 7'h3a == reqIdx ? 1'h0 : dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_768 = 7'h3b == reqIdx ? 1'h0 : dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_769 = 7'h3c == reqIdx ? 1'h0 : dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_770 = 7'h3d == reqIdx ? 1'h0 : dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_771 = 7'h3e == reqIdx ? 1'h0 : dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_772 = 7'h3f == reqIdx ? 1'h0 : dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_773 = 7'h40 == reqIdx ? 1'h0 : dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_774 = 7'h41 == reqIdx ? 1'h0 : dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_775 = 7'h42 == reqIdx ? 1'h0 : dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_776 = 7'h43 == reqIdx ? 1'h0 : dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_777 = 7'h44 == reqIdx ? 1'h0 : dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_778 = 7'h45 == reqIdx ? 1'h0 : dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_779 = 7'h46 == reqIdx ? 1'h0 : dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_780 = 7'h47 == reqIdx ? 1'h0 : dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_781 = 7'h48 == reqIdx ? 1'h0 : dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_782 = 7'h49 == reqIdx ? 1'h0 : dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_783 = 7'h4a == reqIdx ? 1'h0 : dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_784 = 7'h4b == reqIdx ? 1'h0 : dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_785 = 7'h4c == reqIdx ? 1'h0 : dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_786 = 7'h4d == reqIdx ? 1'h0 : dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_787 = 7'h4e == reqIdx ? 1'h0 : dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_788 = 7'h4f == reqIdx ? 1'h0 : dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_789 = 7'h50 == reqIdx ? 1'h0 : dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_790 = 7'h51 == reqIdx ? 1'h0 : dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_791 = 7'h52 == reqIdx ? 1'h0 : dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_792 = 7'h53 == reqIdx ? 1'h0 : dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_793 = 7'h54 == reqIdx ? 1'h0 : dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_794 = 7'h55 == reqIdx ? 1'h0 : dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_795 = 7'h56 == reqIdx ? 1'h0 : dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_796 = 7'h57 == reqIdx ? 1'h0 : dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_797 = 7'h58 == reqIdx ? 1'h0 : dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_798 = 7'h59 == reqIdx ? 1'h0 : dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_799 = 7'h5a == reqIdx ? 1'h0 : dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_800 = 7'h5b == reqIdx ? 1'h0 : dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_801 = 7'h5c == reqIdx ? 1'h0 : dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_802 = 7'h5d == reqIdx ? 1'h0 : dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_803 = 7'h5e == reqIdx ? 1'h0 : dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_804 = 7'h5f == reqIdx ? 1'h0 : dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_805 = 7'h60 == reqIdx ? 1'h0 : dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_806 = 7'h61 == reqIdx ? 1'h0 : dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_807 = 7'h62 == reqIdx ? 1'h0 : dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_808 = 7'h63 == reqIdx ? 1'h0 : dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_809 = 7'h64 == reqIdx ? 1'h0 : dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_810 = 7'h65 == reqIdx ? 1'h0 : dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_811 = 7'h66 == reqIdx ? 1'h0 : dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_812 = 7'h67 == reqIdx ? 1'h0 : dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_813 = 7'h68 == reqIdx ? 1'h0 : dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_814 = 7'h69 == reqIdx ? 1'h0 : dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_815 = 7'h6a == reqIdx ? 1'h0 : dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_816 = 7'h6b == reqIdx ? 1'h0 : dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_817 = 7'h6c == reqIdx ? 1'h0 : dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_818 = 7'h6d == reqIdx ? 1'h0 : dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_819 = 7'h6e == reqIdx ? 1'h0 : dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_820 = 7'h6f == reqIdx ? 1'h0 : dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_821 = 7'h70 == reqIdx ? 1'h0 : dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_822 = 7'h71 == reqIdx ? 1'h0 : dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_823 = 7'h72 == reqIdx ? 1'h0 : dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_824 = 7'h73 == reqIdx ? 1'h0 : dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_825 = 7'h74 == reqIdx ? 1'h0 : dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_826 = 7'h75 == reqIdx ? 1'h0 : dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_827 = 7'h76 == reqIdx ? 1'h0 : dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_828 = 7'h77 == reqIdx ? 1'h0 : dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_829 = 7'h78 == reqIdx ? 1'h0 : dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_830 = 7'h79 == reqIdx ? 1'h0 : dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_831 = 7'h7a == reqIdx ? 1'h0 : dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_832 = 7'h7b == reqIdx ? 1'h0 : dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_833 = 7'h7c == reqIdx ? 1'h0 : dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_834 = 7'h7d == reqIdx ? 1'h0 : dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_835 = 7'h7e == reqIdx ? 1'h0 : dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire  _GEN_836 = 7'h7f == reqIdx ? 1'h0 : dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 13:26 238:{41,41}]
+  wire [2:0] _beatCnt_T_1 = beatCnt + 3'h1; // @[src/main/scala/cache/cache.scala 242:32]
+  wire  _GEN_838 = lastBeat ? _GEN_709 : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_839 = lastBeat ? _GEN_710 : dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_840 = lastBeat ? _GEN_711 : dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_841 = lastBeat ? _GEN_712 : dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_842 = lastBeat ? _GEN_713 : dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_843 = lastBeat ? _GEN_714 : dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_844 = lastBeat ? _GEN_715 : dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_845 = lastBeat ? _GEN_716 : dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_846 = lastBeat ? _GEN_717 : dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_847 = lastBeat ? _GEN_718 : dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_848 = lastBeat ? _GEN_719 : dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_849 = lastBeat ? _GEN_720 : dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_850 = lastBeat ? _GEN_721 : dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_851 = lastBeat ? _GEN_722 : dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_852 = lastBeat ? _GEN_723 : dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_853 = lastBeat ? _GEN_724 : dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_854 = lastBeat ? _GEN_725 : dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_855 = lastBeat ? _GEN_726 : dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_856 = lastBeat ? _GEN_727 : dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_857 = lastBeat ? _GEN_728 : dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_858 = lastBeat ? _GEN_729 : dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_859 = lastBeat ? _GEN_730 : dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_860 = lastBeat ? _GEN_731 : dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_861 = lastBeat ? _GEN_732 : dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_862 = lastBeat ? _GEN_733 : dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_863 = lastBeat ? _GEN_734 : dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_864 = lastBeat ? _GEN_735 : dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_865 = lastBeat ? _GEN_736 : dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_866 = lastBeat ? _GEN_737 : dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_867 = lastBeat ? _GEN_738 : dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_868 = lastBeat ? _GEN_739 : dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_869 = lastBeat ? _GEN_740 : dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_870 = lastBeat ? _GEN_741 : dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_871 = lastBeat ? _GEN_742 : dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_872 = lastBeat ? _GEN_743 : dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_873 = lastBeat ? _GEN_744 : dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_874 = lastBeat ? _GEN_745 : dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_875 = lastBeat ? _GEN_746 : dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_876 = lastBeat ? _GEN_747 : dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_877 = lastBeat ? _GEN_748 : dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_878 = lastBeat ? _GEN_749 : dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_879 = lastBeat ? _GEN_750 : dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_880 = lastBeat ? _GEN_751 : dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_881 = lastBeat ? _GEN_752 : dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_882 = lastBeat ? _GEN_753 : dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_883 = lastBeat ? _GEN_754 : dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_884 = lastBeat ? _GEN_755 : dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_885 = lastBeat ? _GEN_756 : dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_886 = lastBeat ? _GEN_757 : dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_887 = lastBeat ? _GEN_758 : dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_888 = lastBeat ? _GEN_759 : dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_889 = lastBeat ? _GEN_760 : dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_890 = lastBeat ? _GEN_761 : dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_891 = lastBeat ? _GEN_762 : dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_892 = lastBeat ? _GEN_763 : dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_893 = lastBeat ? _GEN_764 : dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_894 = lastBeat ? _GEN_765 : dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_895 = lastBeat ? _GEN_766 : dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_896 = lastBeat ? _GEN_767 : dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_897 = lastBeat ? _GEN_768 : dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_898 = lastBeat ? _GEN_769 : dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_899 = lastBeat ? _GEN_770 : dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_900 = lastBeat ? _GEN_771 : dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_901 = lastBeat ? _GEN_772 : dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_902 = lastBeat ? _GEN_773 : dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_903 = lastBeat ? _GEN_774 : dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_904 = lastBeat ? _GEN_775 : dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_905 = lastBeat ? _GEN_776 : dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_906 = lastBeat ? _GEN_777 : dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_907 = lastBeat ? _GEN_778 : dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_908 = lastBeat ? _GEN_779 : dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_909 = lastBeat ? _GEN_780 : dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_910 = lastBeat ? _GEN_781 : dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_911 = lastBeat ? _GEN_782 : dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_912 = lastBeat ? _GEN_783 : dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_913 = lastBeat ? _GEN_784 : dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_914 = lastBeat ? _GEN_785 : dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_915 = lastBeat ? _GEN_786 : dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_916 = lastBeat ? _GEN_787 : dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_917 = lastBeat ? _GEN_788 : dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_918 = lastBeat ? _GEN_789 : dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_919 = lastBeat ? _GEN_790 : dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_920 = lastBeat ? _GEN_791 : dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_921 = lastBeat ? _GEN_792 : dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_922 = lastBeat ? _GEN_793 : dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_923 = lastBeat ? _GEN_794 : dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_924 = lastBeat ? _GEN_795 : dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_925 = lastBeat ? _GEN_796 : dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_926 = lastBeat ? _GEN_797 : dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_927 = lastBeat ? _GEN_798 : dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_928 = lastBeat ? _GEN_799 : dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_929 = lastBeat ? _GEN_800 : dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_930 = lastBeat ? _GEN_801 : dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_931 = lastBeat ? _GEN_802 : dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_932 = lastBeat ? _GEN_803 : dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_933 = lastBeat ? _GEN_804 : dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_934 = lastBeat ? _GEN_805 : dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_935 = lastBeat ? _GEN_806 : dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_936 = lastBeat ? _GEN_807 : dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_937 = lastBeat ? _GEN_808 : dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_938 = lastBeat ? _GEN_809 : dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_939 = lastBeat ? _GEN_810 : dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_940 = lastBeat ? _GEN_811 : dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_941 = lastBeat ? _GEN_812 : dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_942 = lastBeat ? _GEN_813 : dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_943 = lastBeat ? _GEN_814 : dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_944 = lastBeat ? _GEN_815 : dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_945 = lastBeat ? _GEN_816 : dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_946 = lastBeat ? _GEN_817 : dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_947 = lastBeat ? _GEN_818 : dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_948 = lastBeat ? _GEN_819 : dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_949 = lastBeat ? _GEN_820 : dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_950 = lastBeat ? _GEN_821 : dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_951 = lastBeat ? _GEN_822 : dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_952 = lastBeat ? _GEN_823 : dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_953 = lastBeat ? _GEN_824 : dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_954 = lastBeat ? _GEN_825 : dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_955 = lastBeat ? _GEN_826 : dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_956 = lastBeat ? _GEN_827 : dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_957 = lastBeat ? _GEN_828 : dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_958 = lastBeat ? _GEN_829 : dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_959 = lastBeat ? _GEN_830 : dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_960 = lastBeat ? _GEN_831 : dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_961 = lastBeat ? _GEN_832 : dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_962 = lastBeat ? _GEN_833 : dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_963 = lastBeat ? _GEN_834 : dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_964 = lastBeat ? _GEN_835 : dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire  _GEN_965 = lastBeat ? _GEN_836 : dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 13:26 234:26]
+  wire [2:0] _GEN_966 = lastBeat ? 3'h0 : _beatCnt_T_1; // @[src/main/scala/cache/cache.scala 234:26 239:21 242:21]
+  wire [2:0] _GEN_967 = lastBeat ? 3'h3 : state; // @[src/main/scala/cache/cache.scala 234:26 240:19 21:22]
+  wire  _GEN_968 = _T_15 & lastBeat; // @[src/main/scala/cache/cache.scala 232:36 99:24]
+  wire  _GEN_969 = _T_15 ? _GEN_838 : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_970 = _T_15 ? _GEN_839 : dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_971 = _T_15 ? _GEN_840 : dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_972 = _T_15 ? _GEN_841 : dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_973 = _T_15 ? _GEN_842 : dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_974 = _T_15 ? _GEN_843 : dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_975 = _T_15 ? _GEN_844 : dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_976 = _T_15 ? _GEN_845 : dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_977 = _T_15 ? _GEN_846 : dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_978 = _T_15 ? _GEN_847 : dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_979 = _T_15 ? _GEN_848 : dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_980 = _T_15 ? _GEN_849 : dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_981 = _T_15 ? _GEN_850 : dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_982 = _T_15 ? _GEN_851 : dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_983 = _T_15 ? _GEN_852 : dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_984 = _T_15 ? _GEN_853 : dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_985 = _T_15 ? _GEN_854 : dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_986 = _T_15 ? _GEN_855 : dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_987 = _T_15 ? _GEN_856 : dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_988 = _T_15 ? _GEN_857 : dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_989 = _T_15 ? _GEN_858 : dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_990 = _T_15 ? _GEN_859 : dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_991 = _T_15 ? _GEN_860 : dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_992 = _T_15 ? _GEN_861 : dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_993 = _T_15 ? _GEN_862 : dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_994 = _T_15 ? _GEN_863 : dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_995 = _T_15 ? _GEN_864 : dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_996 = _T_15 ? _GEN_865 : dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_997 = _T_15 ? _GEN_866 : dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_998 = _T_15 ? _GEN_867 : dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_999 = _T_15 ? _GEN_868 : dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1000 = _T_15 ? _GEN_869 : dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1001 = _T_15 ? _GEN_870 : dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1002 = _T_15 ? _GEN_871 : dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1003 = _T_15 ? _GEN_872 : dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1004 = _T_15 ? _GEN_873 : dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1005 = _T_15 ? _GEN_874 : dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1006 = _T_15 ? _GEN_875 : dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1007 = _T_15 ? _GEN_876 : dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1008 = _T_15 ? _GEN_877 : dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1009 = _T_15 ? _GEN_878 : dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1010 = _T_15 ? _GEN_879 : dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1011 = _T_15 ? _GEN_880 : dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1012 = _T_15 ? _GEN_881 : dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1013 = _T_15 ? _GEN_882 : dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1014 = _T_15 ? _GEN_883 : dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1015 = _T_15 ? _GEN_884 : dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1016 = _T_15 ? _GEN_885 : dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1017 = _T_15 ? _GEN_886 : dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1018 = _T_15 ? _GEN_887 : dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1019 = _T_15 ? _GEN_888 : dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1020 = _T_15 ? _GEN_889 : dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1021 = _T_15 ? _GEN_890 : dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1022 = _T_15 ? _GEN_891 : dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1023 = _T_15 ? _GEN_892 : dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1024 = _T_15 ? _GEN_893 : dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1025 = _T_15 ? _GEN_894 : dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1026 = _T_15 ? _GEN_895 : dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1027 = _T_15 ? _GEN_896 : dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1028 = _T_15 ? _GEN_897 : dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1029 = _T_15 ? _GEN_898 : dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1030 = _T_15 ? _GEN_899 : dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1031 = _T_15 ? _GEN_900 : dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1032 = _T_15 ? _GEN_901 : dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1033 = _T_15 ? _GEN_902 : dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1034 = _T_15 ? _GEN_903 : dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1035 = _T_15 ? _GEN_904 : dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1036 = _T_15 ? _GEN_905 : dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1037 = _T_15 ? _GEN_906 : dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1038 = _T_15 ? _GEN_907 : dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1039 = _T_15 ? _GEN_908 : dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1040 = _T_15 ? _GEN_909 : dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1041 = _T_15 ? _GEN_910 : dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1042 = _T_15 ? _GEN_911 : dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1043 = _T_15 ? _GEN_912 : dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1044 = _T_15 ? _GEN_913 : dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1045 = _T_15 ? _GEN_914 : dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1046 = _T_15 ? _GEN_915 : dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1047 = _T_15 ? _GEN_916 : dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1048 = _T_15 ? _GEN_917 : dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1049 = _T_15 ? _GEN_918 : dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1050 = _T_15 ? _GEN_919 : dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1051 = _T_15 ? _GEN_920 : dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1052 = _T_15 ? _GEN_921 : dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1053 = _T_15 ? _GEN_922 : dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1054 = _T_15 ? _GEN_923 : dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1055 = _T_15 ? _GEN_924 : dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1056 = _T_15 ? _GEN_925 : dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1057 = _T_15 ? _GEN_926 : dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1058 = _T_15 ? _GEN_927 : dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1059 = _T_15 ? _GEN_928 : dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1060 = _T_15 ? _GEN_929 : dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1061 = _T_15 ? _GEN_930 : dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1062 = _T_15 ? _GEN_931 : dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1063 = _T_15 ? _GEN_932 : dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1064 = _T_15 ? _GEN_933 : dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1065 = _T_15 ? _GEN_934 : dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1066 = _T_15 ? _GEN_935 : dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1067 = _T_15 ? _GEN_936 : dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1068 = _T_15 ? _GEN_937 : dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1069 = _T_15 ? _GEN_938 : dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1070 = _T_15 ? _GEN_939 : dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1071 = _T_15 ? _GEN_940 : dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1072 = _T_15 ? _GEN_941 : dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1073 = _T_15 ? _GEN_942 : dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1074 = _T_15 ? _GEN_943 : dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1075 = _T_15 ? _GEN_944 : dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1076 = _T_15 ? _GEN_945 : dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1077 = _T_15 ? _GEN_946 : dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1078 = _T_15 ? _GEN_947 : dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1079 = _T_15 ? _GEN_948 : dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1080 = _T_15 ? _GEN_949 : dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1081 = _T_15 ? _GEN_950 : dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1082 = _T_15 ? _GEN_951 : dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1083 = _T_15 ? _GEN_952 : dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1084 = _T_15 ? _GEN_953 : dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1085 = _T_15 ? _GEN_954 : dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1086 = _T_15 ? _GEN_955 : dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1087 = _T_15 ? _GEN_956 : dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1088 = _T_15 ? _GEN_957 : dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1089 = _T_15 ? _GEN_958 : dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1090 = _T_15 ? _GEN_959 : dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1091 = _T_15 ? _GEN_960 : dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1092 = _T_15 ? _GEN_961 : dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1093 = _T_15 ? _GEN_962 : dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1094 = _T_15 ? _GEN_963 : dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1095 = _T_15 ? _GEN_964 : dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire  _GEN_1096 = _T_15 ? _GEN_965 : dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 13:26 232:36]
+  wire [2:0] _GEN_1097 = _T_15 ? _GEN_966 : beatCnt; // @[src/main/scala/cache/cache.scala 232:36 26:24]
+  wire [2:0] _GEN_1098 = _T_15 ? _GEN_967 : state; // @[src/main/scala/cache/cache.scala 21:22 232:36]
+  wire  _T_19 = io_mm_req_refill_ready & io_mm_req_refill_valid; // @[src/main/scala/chisel3/util/Decoupled.scala 57:35]
+  wire [2:0] _GEN_1099 = _T_19 ? 3'h0 : beatCnt; // @[src/main/scala/cache/cache.scala 251:35 252:17 26:24]
+  wire [2:0] _GEN_1100 = _T_19 ? 3'h4 : state; // @[src/main/scala/cache/cache.scala 251:35 253:15 21:22]
+  wire  _GEN_1138 = _GEN_3362 | validBits_0_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1139 = _GEN_3363 | validBits_1_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1140 = _GEN_3364 | validBits_2_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1141 = _GEN_3365 | validBits_3_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1142 = _GEN_3366 | validBits_4_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1143 = _GEN_3367 | validBits_5_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1144 = _GEN_3368 | validBits_6_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1145 = _GEN_3369 | validBits_7_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1146 = _GEN_3370 | validBits_8_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1147 = _GEN_3371 | validBits_9_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1148 = _GEN_3372 | validBits_10_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1149 = _GEN_3373 | validBits_11_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1150 = _GEN_3374 | validBits_12_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1151 = _GEN_3375 | validBits_13_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1152 = _GEN_3376 | validBits_14_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1153 = _GEN_3377 | validBits_15_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1154 = _GEN_3378 | validBits_16_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1155 = _GEN_3379 | validBits_17_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1156 = _GEN_3380 | validBits_18_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1157 = _GEN_3381 | validBits_19_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1158 = _GEN_3382 | validBits_20_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1159 = _GEN_3383 | validBits_21_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1160 = _GEN_3384 | validBits_22_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1161 = _GEN_3385 | validBits_23_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1162 = _GEN_3386 | validBits_24_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1163 = _GEN_3387 | validBits_25_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1164 = _GEN_3388 | validBits_26_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1165 = _GEN_3389 | validBits_27_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1166 = _GEN_3390 | validBits_28_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1167 = _GEN_3391 | validBits_29_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1168 = _GEN_3392 | validBits_30_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1169 = _GEN_3393 | validBits_31_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1170 = _GEN_3394 | validBits_32_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1171 = _GEN_3395 | validBits_33_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1172 = _GEN_3396 | validBits_34_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1173 = _GEN_3397 | validBits_35_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1174 = _GEN_3398 | validBits_36_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1175 = _GEN_3399 | validBits_37_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1176 = _GEN_3400 | validBits_38_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1177 = _GEN_3401 | validBits_39_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1178 = _GEN_3402 | validBits_40_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1179 = _GEN_3403 | validBits_41_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1180 = _GEN_3404 | validBits_42_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1181 = _GEN_3405 | validBits_43_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1182 = _GEN_3406 | validBits_44_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1183 = _GEN_3407 | validBits_45_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1184 = _GEN_3408 | validBits_46_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1185 = _GEN_3409 | validBits_47_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1186 = _GEN_3410 | validBits_48_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1187 = _GEN_3411 | validBits_49_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1188 = _GEN_3412 | validBits_50_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1189 = _GEN_3413 | validBits_51_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1190 = _GEN_3414 | validBits_52_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1191 = _GEN_3415 | validBits_53_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1192 = _GEN_3416 | validBits_54_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1193 = _GEN_3417 | validBits_55_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1194 = _GEN_3418 | validBits_56_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1195 = _GEN_3419 | validBits_57_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1196 = _GEN_3420 | validBits_58_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1197 = _GEN_3421 | validBits_59_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1198 = _GEN_3422 | validBits_60_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1199 = _GEN_3423 | validBits_61_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1200 = _GEN_3424 | validBits_62_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1201 = _GEN_3425 | validBits_63_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1202 = _GEN_3426 | validBits_64_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1203 = _GEN_3427 | validBits_65_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1204 = _GEN_3428 | validBits_66_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1205 = _GEN_3429 | validBits_67_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1206 = _GEN_3430 | validBits_68_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1207 = _GEN_3431 | validBits_69_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1208 = _GEN_3432 | validBits_70_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1209 = _GEN_3433 | validBits_71_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1210 = _GEN_3434 | validBits_72_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1211 = _GEN_3435 | validBits_73_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1212 = _GEN_3436 | validBits_74_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1213 = _GEN_3437 | validBits_75_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1214 = _GEN_3438 | validBits_76_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1215 = _GEN_3439 | validBits_77_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1216 = _GEN_3440 | validBits_78_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1217 = _GEN_3441 | validBits_79_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1218 = _GEN_3442 | validBits_80_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1219 = _GEN_3443 | validBits_81_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1220 = _GEN_3444 | validBits_82_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1221 = _GEN_3445 | validBits_83_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1222 = _GEN_3446 | validBits_84_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1223 = _GEN_3447 | validBits_85_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1224 = _GEN_3448 | validBits_86_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1225 = _GEN_3449 | validBits_87_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1226 = _GEN_3450 | validBits_88_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1227 = _GEN_3451 | validBits_89_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1228 = _GEN_3452 | validBits_90_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1229 = _GEN_3453 | validBits_91_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1230 = _GEN_3454 | validBits_92_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1231 = _GEN_3455 | validBits_93_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1232 = _GEN_3456 | validBits_94_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1233 = _GEN_3457 | validBits_95_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1234 = _GEN_3458 | validBits_96_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1235 = _GEN_3459 | validBits_97_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1236 = _GEN_3460 | validBits_98_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1237 = _GEN_3461 | validBits_99_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1238 = _GEN_3462 | validBits_100_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1239 = _GEN_3463 | validBits_101_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1240 = _GEN_3464 | validBits_102_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1241 = _GEN_3465 | validBits_103_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1242 = _GEN_3466 | validBits_104_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1243 = _GEN_3467 | validBits_105_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1244 = _GEN_3468 | validBits_106_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1245 = _GEN_3469 | validBits_107_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1246 = _GEN_3470 | validBits_108_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1247 = _GEN_3471 | validBits_109_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1248 = _GEN_3472 | validBits_110_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1249 = _GEN_3473 | validBits_111_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1250 = _GEN_3474 | validBits_112_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1251 = _GEN_3475 | validBits_113_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1252 = _GEN_3476 | validBits_114_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1253 = _GEN_3477 | validBits_115_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1254 = _GEN_3478 | validBits_116_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1255 = _GEN_3479 | validBits_117_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1256 = _GEN_3480 | validBits_118_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1257 = _GEN_3481 | validBits_119_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1258 = _GEN_3482 | validBits_120_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1259 = _GEN_3483 | validBits_121_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1260 = _GEN_3484 | validBits_122_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1261 = _GEN_3485 | validBits_123_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1262 = _GEN_3486 | validBits_124_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1263 = _GEN_3487 | validBits_125_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1264 = _GEN_3488 | validBits_126_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1265 = _GEN_3489 | validBits_127_0; // @[src/main/scala/cache/cache.scala 12:26 299:{39,39}]
+  wire  _GEN_1266 = 7'h0 == reqIdx ? writeReg : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1267 = 7'h1 == reqIdx ? writeReg : dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1268 = 7'h2 == reqIdx ? writeReg : dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1269 = 7'h3 == reqIdx ? writeReg : dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1270 = 7'h4 == reqIdx ? writeReg : dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1271 = 7'h5 == reqIdx ? writeReg : dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1272 = 7'h6 == reqIdx ? writeReg : dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1273 = 7'h7 == reqIdx ? writeReg : dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1274 = 7'h8 == reqIdx ? writeReg : dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1275 = 7'h9 == reqIdx ? writeReg : dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1276 = 7'ha == reqIdx ? writeReg : dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1277 = 7'hb == reqIdx ? writeReg : dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1278 = 7'hc == reqIdx ? writeReg : dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1279 = 7'hd == reqIdx ? writeReg : dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1280 = 7'he == reqIdx ? writeReg : dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1281 = 7'hf == reqIdx ? writeReg : dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1282 = 7'h10 == reqIdx ? writeReg : dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1283 = 7'h11 == reqIdx ? writeReg : dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1284 = 7'h12 == reqIdx ? writeReg : dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1285 = 7'h13 == reqIdx ? writeReg : dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1286 = 7'h14 == reqIdx ? writeReg : dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1287 = 7'h15 == reqIdx ? writeReg : dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1288 = 7'h16 == reqIdx ? writeReg : dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1289 = 7'h17 == reqIdx ? writeReg : dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1290 = 7'h18 == reqIdx ? writeReg : dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1291 = 7'h19 == reqIdx ? writeReg : dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1292 = 7'h1a == reqIdx ? writeReg : dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1293 = 7'h1b == reqIdx ? writeReg : dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1294 = 7'h1c == reqIdx ? writeReg : dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1295 = 7'h1d == reqIdx ? writeReg : dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1296 = 7'h1e == reqIdx ? writeReg : dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1297 = 7'h1f == reqIdx ? writeReg : dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1298 = 7'h20 == reqIdx ? writeReg : dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1299 = 7'h21 == reqIdx ? writeReg : dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1300 = 7'h22 == reqIdx ? writeReg : dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1301 = 7'h23 == reqIdx ? writeReg : dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1302 = 7'h24 == reqIdx ? writeReg : dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1303 = 7'h25 == reqIdx ? writeReg : dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1304 = 7'h26 == reqIdx ? writeReg : dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1305 = 7'h27 == reqIdx ? writeReg : dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1306 = 7'h28 == reqIdx ? writeReg : dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1307 = 7'h29 == reqIdx ? writeReg : dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1308 = 7'h2a == reqIdx ? writeReg : dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1309 = 7'h2b == reqIdx ? writeReg : dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1310 = 7'h2c == reqIdx ? writeReg : dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1311 = 7'h2d == reqIdx ? writeReg : dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1312 = 7'h2e == reqIdx ? writeReg : dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1313 = 7'h2f == reqIdx ? writeReg : dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1314 = 7'h30 == reqIdx ? writeReg : dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1315 = 7'h31 == reqIdx ? writeReg : dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1316 = 7'h32 == reqIdx ? writeReg : dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1317 = 7'h33 == reqIdx ? writeReg : dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1318 = 7'h34 == reqIdx ? writeReg : dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1319 = 7'h35 == reqIdx ? writeReg : dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1320 = 7'h36 == reqIdx ? writeReg : dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1321 = 7'h37 == reqIdx ? writeReg : dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1322 = 7'h38 == reqIdx ? writeReg : dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1323 = 7'h39 == reqIdx ? writeReg : dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1324 = 7'h3a == reqIdx ? writeReg : dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1325 = 7'h3b == reqIdx ? writeReg : dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1326 = 7'h3c == reqIdx ? writeReg : dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1327 = 7'h3d == reqIdx ? writeReg : dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1328 = 7'h3e == reqIdx ? writeReg : dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1329 = 7'h3f == reqIdx ? writeReg : dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1330 = 7'h40 == reqIdx ? writeReg : dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1331 = 7'h41 == reqIdx ? writeReg : dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1332 = 7'h42 == reqIdx ? writeReg : dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1333 = 7'h43 == reqIdx ? writeReg : dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1334 = 7'h44 == reqIdx ? writeReg : dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1335 = 7'h45 == reqIdx ? writeReg : dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1336 = 7'h46 == reqIdx ? writeReg : dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1337 = 7'h47 == reqIdx ? writeReg : dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1338 = 7'h48 == reqIdx ? writeReg : dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1339 = 7'h49 == reqIdx ? writeReg : dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1340 = 7'h4a == reqIdx ? writeReg : dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1341 = 7'h4b == reqIdx ? writeReg : dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1342 = 7'h4c == reqIdx ? writeReg : dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1343 = 7'h4d == reqIdx ? writeReg : dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1344 = 7'h4e == reqIdx ? writeReg : dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1345 = 7'h4f == reqIdx ? writeReg : dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1346 = 7'h50 == reqIdx ? writeReg : dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1347 = 7'h51 == reqIdx ? writeReg : dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1348 = 7'h52 == reqIdx ? writeReg : dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1349 = 7'h53 == reqIdx ? writeReg : dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1350 = 7'h54 == reqIdx ? writeReg : dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1351 = 7'h55 == reqIdx ? writeReg : dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1352 = 7'h56 == reqIdx ? writeReg : dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1353 = 7'h57 == reqIdx ? writeReg : dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1354 = 7'h58 == reqIdx ? writeReg : dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1355 = 7'h59 == reqIdx ? writeReg : dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1356 = 7'h5a == reqIdx ? writeReg : dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1357 = 7'h5b == reqIdx ? writeReg : dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1358 = 7'h5c == reqIdx ? writeReg : dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1359 = 7'h5d == reqIdx ? writeReg : dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1360 = 7'h5e == reqIdx ? writeReg : dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1361 = 7'h5f == reqIdx ? writeReg : dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1362 = 7'h60 == reqIdx ? writeReg : dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1363 = 7'h61 == reqIdx ? writeReg : dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1364 = 7'h62 == reqIdx ? writeReg : dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1365 = 7'h63 == reqIdx ? writeReg : dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1366 = 7'h64 == reqIdx ? writeReg : dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1367 = 7'h65 == reqIdx ? writeReg : dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1368 = 7'h66 == reqIdx ? writeReg : dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1369 = 7'h67 == reqIdx ? writeReg : dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1370 = 7'h68 == reqIdx ? writeReg : dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1371 = 7'h69 == reqIdx ? writeReg : dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1372 = 7'h6a == reqIdx ? writeReg : dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1373 = 7'h6b == reqIdx ? writeReg : dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1374 = 7'h6c == reqIdx ? writeReg : dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1375 = 7'h6d == reqIdx ? writeReg : dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1376 = 7'h6e == reqIdx ? writeReg : dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1377 = 7'h6f == reqIdx ? writeReg : dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1378 = 7'h70 == reqIdx ? writeReg : dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1379 = 7'h71 == reqIdx ? writeReg : dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1380 = 7'h72 == reqIdx ? writeReg : dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1381 = 7'h73 == reqIdx ? writeReg : dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1382 = 7'h74 == reqIdx ? writeReg : dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1383 = 7'h75 == reqIdx ? writeReg : dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1384 = 7'h76 == reqIdx ? writeReg : dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1385 = 7'h77 == reqIdx ? writeReg : dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1386 = 7'h78 == reqIdx ? writeReg : dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1387 = 7'h79 == reqIdx ? writeReg : dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1388 = 7'h7a == reqIdx ? writeReg : dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1389 = 7'h7b == reqIdx ? writeReg : dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1390 = 7'h7c == reqIdx ? writeReg : dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1391 = 7'h7d == reqIdx ? writeReg : dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1392 = 7'h7e == reqIdx ? writeReg : dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1393 = 7'h7f == reqIdx ? writeReg : dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 13:26 303:{41,41}]
+  wire  _GEN_1408 = lastBeat ? _GEN_1138 : validBits_0_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1409 = lastBeat ? _GEN_1139 : validBits_1_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1410 = lastBeat ? _GEN_1140 : validBits_2_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1411 = lastBeat ? _GEN_1141 : validBits_3_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1412 = lastBeat ? _GEN_1142 : validBits_4_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1413 = lastBeat ? _GEN_1143 : validBits_5_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1414 = lastBeat ? _GEN_1144 : validBits_6_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1415 = lastBeat ? _GEN_1145 : validBits_7_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1416 = lastBeat ? _GEN_1146 : validBits_8_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1417 = lastBeat ? _GEN_1147 : validBits_9_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1418 = lastBeat ? _GEN_1148 : validBits_10_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1419 = lastBeat ? _GEN_1149 : validBits_11_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1420 = lastBeat ? _GEN_1150 : validBits_12_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1421 = lastBeat ? _GEN_1151 : validBits_13_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1422 = lastBeat ? _GEN_1152 : validBits_14_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1423 = lastBeat ? _GEN_1153 : validBits_15_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1424 = lastBeat ? _GEN_1154 : validBits_16_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1425 = lastBeat ? _GEN_1155 : validBits_17_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1426 = lastBeat ? _GEN_1156 : validBits_18_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1427 = lastBeat ? _GEN_1157 : validBits_19_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1428 = lastBeat ? _GEN_1158 : validBits_20_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1429 = lastBeat ? _GEN_1159 : validBits_21_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1430 = lastBeat ? _GEN_1160 : validBits_22_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1431 = lastBeat ? _GEN_1161 : validBits_23_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1432 = lastBeat ? _GEN_1162 : validBits_24_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1433 = lastBeat ? _GEN_1163 : validBits_25_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1434 = lastBeat ? _GEN_1164 : validBits_26_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1435 = lastBeat ? _GEN_1165 : validBits_27_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1436 = lastBeat ? _GEN_1166 : validBits_28_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1437 = lastBeat ? _GEN_1167 : validBits_29_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1438 = lastBeat ? _GEN_1168 : validBits_30_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1439 = lastBeat ? _GEN_1169 : validBits_31_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1440 = lastBeat ? _GEN_1170 : validBits_32_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1441 = lastBeat ? _GEN_1171 : validBits_33_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1442 = lastBeat ? _GEN_1172 : validBits_34_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1443 = lastBeat ? _GEN_1173 : validBits_35_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1444 = lastBeat ? _GEN_1174 : validBits_36_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1445 = lastBeat ? _GEN_1175 : validBits_37_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1446 = lastBeat ? _GEN_1176 : validBits_38_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1447 = lastBeat ? _GEN_1177 : validBits_39_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1448 = lastBeat ? _GEN_1178 : validBits_40_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1449 = lastBeat ? _GEN_1179 : validBits_41_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1450 = lastBeat ? _GEN_1180 : validBits_42_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1451 = lastBeat ? _GEN_1181 : validBits_43_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1452 = lastBeat ? _GEN_1182 : validBits_44_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1453 = lastBeat ? _GEN_1183 : validBits_45_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1454 = lastBeat ? _GEN_1184 : validBits_46_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1455 = lastBeat ? _GEN_1185 : validBits_47_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1456 = lastBeat ? _GEN_1186 : validBits_48_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1457 = lastBeat ? _GEN_1187 : validBits_49_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1458 = lastBeat ? _GEN_1188 : validBits_50_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1459 = lastBeat ? _GEN_1189 : validBits_51_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1460 = lastBeat ? _GEN_1190 : validBits_52_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1461 = lastBeat ? _GEN_1191 : validBits_53_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1462 = lastBeat ? _GEN_1192 : validBits_54_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1463 = lastBeat ? _GEN_1193 : validBits_55_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1464 = lastBeat ? _GEN_1194 : validBits_56_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1465 = lastBeat ? _GEN_1195 : validBits_57_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1466 = lastBeat ? _GEN_1196 : validBits_58_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1467 = lastBeat ? _GEN_1197 : validBits_59_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1468 = lastBeat ? _GEN_1198 : validBits_60_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1469 = lastBeat ? _GEN_1199 : validBits_61_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1470 = lastBeat ? _GEN_1200 : validBits_62_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1471 = lastBeat ? _GEN_1201 : validBits_63_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1472 = lastBeat ? _GEN_1202 : validBits_64_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1473 = lastBeat ? _GEN_1203 : validBits_65_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1474 = lastBeat ? _GEN_1204 : validBits_66_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1475 = lastBeat ? _GEN_1205 : validBits_67_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1476 = lastBeat ? _GEN_1206 : validBits_68_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1477 = lastBeat ? _GEN_1207 : validBits_69_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1478 = lastBeat ? _GEN_1208 : validBits_70_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1479 = lastBeat ? _GEN_1209 : validBits_71_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1480 = lastBeat ? _GEN_1210 : validBits_72_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1481 = lastBeat ? _GEN_1211 : validBits_73_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1482 = lastBeat ? _GEN_1212 : validBits_74_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1483 = lastBeat ? _GEN_1213 : validBits_75_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1484 = lastBeat ? _GEN_1214 : validBits_76_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1485 = lastBeat ? _GEN_1215 : validBits_77_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1486 = lastBeat ? _GEN_1216 : validBits_78_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1487 = lastBeat ? _GEN_1217 : validBits_79_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1488 = lastBeat ? _GEN_1218 : validBits_80_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1489 = lastBeat ? _GEN_1219 : validBits_81_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1490 = lastBeat ? _GEN_1220 : validBits_82_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1491 = lastBeat ? _GEN_1221 : validBits_83_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1492 = lastBeat ? _GEN_1222 : validBits_84_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1493 = lastBeat ? _GEN_1223 : validBits_85_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1494 = lastBeat ? _GEN_1224 : validBits_86_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1495 = lastBeat ? _GEN_1225 : validBits_87_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1496 = lastBeat ? _GEN_1226 : validBits_88_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1497 = lastBeat ? _GEN_1227 : validBits_89_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1498 = lastBeat ? _GEN_1228 : validBits_90_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1499 = lastBeat ? _GEN_1229 : validBits_91_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1500 = lastBeat ? _GEN_1230 : validBits_92_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1501 = lastBeat ? _GEN_1231 : validBits_93_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1502 = lastBeat ? _GEN_1232 : validBits_94_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1503 = lastBeat ? _GEN_1233 : validBits_95_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1504 = lastBeat ? _GEN_1234 : validBits_96_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1505 = lastBeat ? _GEN_1235 : validBits_97_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1506 = lastBeat ? _GEN_1236 : validBits_98_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1507 = lastBeat ? _GEN_1237 : validBits_99_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1508 = lastBeat ? _GEN_1238 : validBits_100_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1509 = lastBeat ? _GEN_1239 : validBits_101_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1510 = lastBeat ? _GEN_1240 : validBits_102_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1511 = lastBeat ? _GEN_1241 : validBits_103_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1512 = lastBeat ? _GEN_1242 : validBits_104_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1513 = lastBeat ? _GEN_1243 : validBits_105_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1514 = lastBeat ? _GEN_1244 : validBits_106_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1515 = lastBeat ? _GEN_1245 : validBits_107_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1516 = lastBeat ? _GEN_1246 : validBits_108_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1517 = lastBeat ? _GEN_1247 : validBits_109_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1518 = lastBeat ? _GEN_1248 : validBits_110_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1519 = lastBeat ? _GEN_1249 : validBits_111_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1520 = lastBeat ? _GEN_1250 : validBits_112_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1521 = lastBeat ? _GEN_1251 : validBits_113_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1522 = lastBeat ? _GEN_1252 : validBits_114_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1523 = lastBeat ? _GEN_1253 : validBits_115_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1524 = lastBeat ? _GEN_1254 : validBits_116_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1525 = lastBeat ? _GEN_1255 : validBits_117_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1526 = lastBeat ? _GEN_1256 : validBits_118_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1527 = lastBeat ? _GEN_1257 : validBits_119_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1528 = lastBeat ? _GEN_1258 : validBits_120_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1529 = lastBeat ? _GEN_1259 : validBits_121_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1530 = lastBeat ? _GEN_1260 : validBits_122_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1531 = lastBeat ? _GEN_1261 : validBits_123_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1532 = lastBeat ? _GEN_1262 : validBits_124_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1533 = lastBeat ? _GEN_1263 : validBits_125_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1534 = lastBeat ? _GEN_1264 : validBits_126_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1535 = lastBeat ? _GEN_1265 : validBits_127_0; // @[src/main/scala/cache/cache.scala 270:24 12:26]
+  wire  _GEN_1536 = lastBeat ? _GEN_1266 : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1537 = lastBeat ? _GEN_1267 : dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1538 = lastBeat ? _GEN_1268 : dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1539 = lastBeat ? _GEN_1269 : dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1540 = lastBeat ? _GEN_1270 : dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1541 = lastBeat ? _GEN_1271 : dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1542 = lastBeat ? _GEN_1272 : dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1543 = lastBeat ? _GEN_1273 : dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1544 = lastBeat ? _GEN_1274 : dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1545 = lastBeat ? _GEN_1275 : dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1546 = lastBeat ? _GEN_1276 : dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1547 = lastBeat ? _GEN_1277 : dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1548 = lastBeat ? _GEN_1278 : dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1549 = lastBeat ? _GEN_1279 : dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1550 = lastBeat ? _GEN_1280 : dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1551 = lastBeat ? _GEN_1281 : dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1552 = lastBeat ? _GEN_1282 : dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1553 = lastBeat ? _GEN_1283 : dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1554 = lastBeat ? _GEN_1284 : dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1555 = lastBeat ? _GEN_1285 : dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1556 = lastBeat ? _GEN_1286 : dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1557 = lastBeat ? _GEN_1287 : dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1558 = lastBeat ? _GEN_1288 : dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1559 = lastBeat ? _GEN_1289 : dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1560 = lastBeat ? _GEN_1290 : dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1561 = lastBeat ? _GEN_1291 : dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1562 = lastBeat ? _GEN_1292 : dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1563 = lastBeat ? _GEN_1293 : dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1564 = lastBeat ? _GEN_1294 : dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1565 = lastBeat ? _GEN_1295 : dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1566 = lastBeat ? _GEN_1296 : dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1567 = lastBeat ? _GEN_1297 : dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1568 = lastBeat ? _GEN_1298 : dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1569 = lastBeat ? _GEN_1299 : dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1570 = lastBeat ? _GEN_1300 : dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1571 = lastBeat ? _GEN_1301 : dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1572 = lastBeat ? _GEN_1302 : dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1573 = lastBeat ? _GEN_1303 : dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1574 = lastBeat ? _GEN_1304 : dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1575 = lastBeat ? _GEN_1305 : dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1576 = lastBeat ? _GEN_1306 : dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1577 = lastBeat ? _GEN_1307 : dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1578 = lastBeat ? _GEN_1308 : dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1579 = lastBeat ? _GEN_1309 : dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1580 = lastBeat ? _GEN_1310 : dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1581 = lastBeat ? _GEN_1311 : dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1582 = lastBeat ? _GEN_1312 : dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1583 = lastBeat ? _GEN_1313 : dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1584 = lastBeat ? _GEN_1314 : dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1585 = lastBeat ? _GEN_1315 : dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1586 = lastBeat ? _GEN_1316 : dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1587 = lastBeat ? _GEN_1317 : dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1588 = lastBeat ? _GEN_1318 : dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1589 = lastBeat ? _GEN_1319 : dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1590 = lastBeat ? _GEN_1320 : dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1591 = lastBeat ? _GEN_1321 : dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1592 = lastBeat ? _GEN_1322 : dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1593 = lastBeat ? _GEN_1323 : dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1594 = lastBeat ? _GEN_1324 : dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1595 = lastBeat ? _GEN_1325 : dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1596 = lastBeat ? _GEN_1326 : dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1597 = lastBeat ? _GEN_1327 : dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1598 = lastBeat ? _GEN_1328 : dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1599 = lastBeat ? _GEN_1329 : dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1600 = lastBeat ? _GEN_1330 : dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1601 = lastBeat ? _GEN_1331 : dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1602 = lastBeat ? _GEN_1332 : dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1603 = lastBeat ? _GEN_1333 : dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1604 = lastBeat ? _GEN_1334 : dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1605 = lastBeat ? _GEN_1335 : dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1606 = lastBeat ? _GEN_1336 : dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1607 = lastBeat ? _GEN_1337 : dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1608 = lastBeat ? _GEN_1338 : dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1609 = lastBeat ? _GEN_1339 : dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1610 = lastBeat ? _GEN_1340 : dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1611 = lastBeat ? _GEN_1341 : dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1612 = lastBeat ? _GEN_1342 : dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1613 = lastBeat ? _GEN_1343 : dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1614 = lastBeat ? _GEN_1344 : dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1615 = lastBeat ? _GEN_1345 : dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1616 = lastBeat ? _GEN_1346 : dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1617 = lastBeat ? _GEN_1347 : dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1618 = lastBeat ? _GEN_1348 : dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1619 = lastBeat ? _GEN_1349 : dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1620 = lastBeat ? _GEN_1350 : dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1621 = lastBeat ? _GEN_1351 : dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1622 = lastBeat ? _GEN_1352 : dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1623 = lastBeat ? _GEN_1353 : dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1624 = lastBeat ? _GEN_1354 : dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1625 = lastBeat ? _GEN_1355 : dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1626 = lastBeat ? _GEN_1356 : dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1627 = lastBeat ? _GEN_1357 : dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1628 = lastBeat ? _GEN_1358 : dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1629 = lastBeat ? _GEN_1359 : dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1630 = lastBeat ? _GEN_1360 : dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1631 = lastBeat ? _GEN_1361 : dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1632 = lastBeat ? _GEN_1362 : dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1633 = lastBeat ? _GEN_1363 : dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1634 = lastBeat ? _GEN_1364 : dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1635 = lastBeat ? _GEN_1365 : dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1636 = lastBeat ? _GEN_1366 : dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1637 = lastBeat ? _GEN_1367 : dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1638 = lastBeat ? _GEN_1368 : dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1639 = lastBeat ? _GEN_1369 : dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1640 = lastBeat ? _GEN_1370 : dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1641 = lastBeat ? _GEN_1371 : dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1642 = lastBeat ? _GEN_1372 : dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1643 = lastBeat ? _GEN_1373 : dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1644 = lastBeat ? _GEN_1374 : dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1645 = lastBeat ? _GEN_1375 : dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1646 = lastBeat ? _GEN_1376 : dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1647 = lastBeat ? _GEN_1377 : dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1648 = lastBeat ? _GEN_1378 : dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1649 = lastBeat ? _GEN_1379 : dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1650 = lastBeat ? _GEN_1380 : dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1651 = lastBeat ? _GEN_1381 : dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1652 = lastBeat ? _GEN_1382 : dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1653 = lastBeat ? _GEN_1383 : dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1654 = lastBeat ? _GEN_1384 : dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1655 = lastBeat ? _GEN_1385 : dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1656 = lastBeat ? _GEN_1386 : dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1657 = lastBeat ? _GEN_1387 : dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1658 = lastBeat ? _GEN_1388 : dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1659 = lastBeat ? _GEN_1389 : dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1660 = lastBeat ? _GEN_1390 : dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1661 = lastBeat ? _GEN_1391 : dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1662 = lastBeat ? _GEN_1392 : dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire  _GEN_1663 = lastBeat ? _GEN_1393 : dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 270:24 13:26]
+  wire [31:0] _GEN_1664 = lastBeat ? _GEN_1124 : respData; // @[src/main/scala/cache/cache.scala 270:24 306:20 23:21]
+  wire [2:0] _GEN_1665 = lastBeat ? 3'h6 : state; // @[src/main/scala/cache/cache.scala 270:24 307:17 21:22]
+  wire [31:0] _GEN_1666 = _T_23 ? beats_0 : refillBuf_0; // @[src/main/scala/cache/cache.scala 24:22 261:36]
+  wire [31:0] _GEN_1667 = _T_23 ? beats_1 : refillBuf_1; // @[src/main/scala/cache/cache.scala 24:22 261:36]
+  wire [31:0] _GEN_1668 = _T_23 ? beats_2 : refillBuf_2; // @[src/main/scala/cache/cache.scala 24:22 261:36]
+  wire [31:0] _GEN_1669 = _T_23 ? beats_3 : refillBuf_3; // @[src/main/scala/cache/cache.scala 24:22 261:36]
+  wire [31:0] _GEN_1670 = _T_23 ? beats_4 : refillBuf_4; // @[src/main/scala/cache/cache.scala 24:22 261:36]
+  wire [31:0] _GEN_1671 = _T_23 ? beats_5 : refillBuf_5; // @[src/main/scala/cache/cache.scala 24:22 261:36]
+  wire [31:0] _GEN_1672 = _T_23 ? beats_6 : refillBuf_6; // @[src/main/scala/cache/cache.scala 24:22 261:36]
+  wire [31:0] _GEN_1673 = _T_23 ? beats_7 : refillBuf_7; // @[src/main/scala/cache/cache.scala 24:22 261:36]
+  wire [2:0] _GEN_1674 = _T_23 ? _beatCnt_T_1 : beatCnt; // @[src/main/scala/cache/cache.scala 261:36 268:17 26:24]
+  wire  _GEN_1682 = _T_23 ? _GEN_1408 : validBits_0_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1683 = _T_23 ? _GEN_1409 : validBits_1_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1684 = _T_23 ? _GEN_1410 : validBits_2_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1685 = _T_23 ? _GEN_1411 : validBits_3_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1686 = _T_23 ? _GEN_1412 : validBits_4_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1687 = _T_23 ? _GEN_1413 : validBits_5_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1688 = _T_23 ? _GEN_1414 : validBits_6_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1689 = _T_23 ? _GEN_1415 : validBits_7_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1690 = _T_23 ? _GEN_1416 : validBits_8_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1691 = _T_23 ? _GEN_1417 : validBits_9_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1692 = _T_23 ? _GEN_1418 : validBits_10_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1693 = _T_23 ? _GEN_1419 : validBits_11_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1694 = _T_23 ? _GEN_1420 : validBits_12_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1695 = _T_23 ? _GEN_1421 : validBits_13_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1696 = _T_23 ? _GEN_1422 : validBits_14_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1697 = _T_23 ? _GEN_1423 : validBits_15_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1698 = _T_23 ? _GEN_1424 : validBits_16_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1699 = _T_23 ? _GEN_1425 : validBits_17_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1700 = _T_23 ? _GEN_1426 : validBits_18_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1701 = _T_23 ? _GEN_1427 : validBits_19_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1702 = _T_23 ? _GEN_1428 : validBits_20_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1703 = _T_23 ? _GEN_1429 : validBits_21_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1704 = _T_23 ? _GEN_1430 : validBits_22_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1705 = _T_23 ? _GEN_1431 : validBits_23_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1706 = _T_23 ? _GEN_1432 : validBits_24_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1707 = _T_23 ? _GEN_1433 : validBits_25_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1708 = _T_23 ? _GEN_1434 : validBits_26_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1709 = _T_23 ? _GEN_1435 : validBits_27_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1710 = _T_23 ? _GEN_1436 : validBits_28_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1711 = _T_23 ? _GEN_1437 : validBits_29_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1712 = _T_23 ? _GEN_1438 : validBits_30_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1713 = _T_23 ? _GEN_1439 : validBits_31_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1714 = _T_23 ? _GEN_1440 : validBits_32_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1715 = _T_23 ? _GEN_1441 : validBits_33_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1716 = _T_23 ? _GEN_1442 : validBits_34_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1717 = _T_23 ? _GEN_1443 : validBits_35_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1718 = _T_23 ? _GEN_1444 : validBits_36_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1719 = _T_23 ? _GEN_1445 : validBits_37_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1720 = _T_23 ? _GEN_1446 : validBits_38_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1721 = _T_23 ? _GEN_1447 : validBits_39_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1722 = _T_23 ? _GEN_1448 : validBits_40_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1723 = _T_23 ? _GEN_1449 : validBits_41_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1724 = _T_23 ? _GEN_1450 : validBits_42_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1725 = _T_23 ? _GEN_1451 : validBits_43_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1726 = _T_23 ? _GEN_1452 : validBits_44_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1727 = _T_23 ? _GEN_1453 : validBits_45_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1728 = _T_23 ? _GEN_1454 : validBits_46_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1729 = _T_23 ? _GEN_1455 : validBits_47_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1730 = _T_23 ? _GEN_1456 : validBits_48_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1731 = _T_23 ? _GEN_1457 : validBits_49_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1732 = _T_23 ? _GEN_1458 : validBits_50_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1733 = _T_23 ? _GEN_1459 : validBits_51_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1734 = _T_23 ? _GEN_1460 : validBits_52_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1735 = _T_23 ? _GEN_1461 : validBits_53_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1736 = _T_23 ? _GEN_1462 : validBits_54_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1737 = _T_23 ? _GEN_1463 : validBits_55_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1738 = _T_23 ? _GEN_1464 : validBits_56_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1739 = _T_23 ? _GEN_1465 : validBits_57_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1740 = _T_23 ? _GEN_1466 : validBits_58_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1741 = _T_23 ? _GEN_1467 : validBits_59_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1742 = _T_23 ? _GEN_1468 : validBits_60_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1743 = _T_23 ? _GEN_1469 : validBits_61_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1744 = _T_23 ? _GEN_1470 : validBits_62_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1745 = _T_23 ? _GEN_1471 : validBits_63_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1746 = _T_23 ? _GEN_1472 : validBits_64_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1747 = _T_23 ? _GEN_1473 : validBits_65_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1748 = _T_23 ? _GEN_1474 : validBits_66_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1749 = _T_23 ? _GEN_1475 : validBits_67_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1750 = _T_23 ? _GEN_1476 : validBits_68_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1751 = _T_23 ? _GEN_1477 : validBits_69_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1752 = _T_23 ? _GEN_1478 : validBits_70_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1753 = _T_23 ? _GEN_1479 : validBits_71_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1754 = _T_23 ? _GEN_1480 : validBits_72_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1755 = _T_23 ? _GEN_1481 : validBits_73_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1756 = _T_23 ? _GEN_1482 : validBits_74_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1757 = _T_23 ? _GEN_1483 : validBits_75_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1758 = _T_23 ? _GEN_1484 : validBits_76_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1759 = _T_23 ? _GEN_1485 : validBits_77_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1760 = _T_23 ? _GEN_1486 : validBits_78_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1761 = _T_23 ? _GEN_1487 : validBits_79_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1762 = _T_23 ? _GEN_1488 : validBits_80_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1763 = _T_23 ? _GEN_1489 : validBits_81_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1764 = _T_23 ? _GEN_1490 : validBits_82_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1765 = _T_23 ? _GEN_1491 : validBits_83_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1766 = _T_23 ? _GEN_1492 : validBits_84_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1767 = _T_23 ? _GEN_1493 : validBits_85_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1768 = _T_23 ? _GEN_1494 : validBits_86_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1769 = _T_23 ? _GEN_1495 : validBits_87_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1770 = _T_23 ? _GEN_1496 : validBits_88_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1771 = _T_23 ? _GEN_1497 : validBits_89_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1772 = _T_23 ? _GEN_1498 : validBits_90_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1773 = _T_23 ? _GEN_1499 : validBits_91_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1774 = _T_23 ? _GEN_1500 : validBits_92_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1775 = _T_23 ? _GEN_1501 : validBits_93_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1776 = _T_23 ? _GEN_1502 : validBits_94_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1777 = _T_23 ? _GEN_1503 : validBits_95_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1778 = _T_23 ? _GEN_1504 : validBits_96_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1779 = _T_23 ? _GEN_1505 : validBits_97_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1780 = _T_23 ? _GEN_1506 : validBits_98_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1781 = _T_23 ? _GEN_1507 : validBits_99_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1782 = _T_23 ? _GEN_1508 : validBits_100_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1783 = _T_23 ? _GEN_1509 : validBits_101_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1784 = _T_23 ? _GEN_1510 : validBits_102_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1785 = _T_23 ? _GEN_1511 : validBits_103_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1786 = _T_23 ? _GEN_1512 : validBits_104_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1787 = _T_23 ? _GEN_1513 : validBits_105_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1788 = _T_23 ? _GEN_1514 : validBits_106_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1789 = _T_23 ? _GEN_1515 : validBits_107_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1790 = _T_23 ? _GEN_1516 : validBits_108_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1791 = _T_23 ? _GEN_1517 : validBits_109_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1792 = _T_23 ? _GEN_1518 : validBits_110_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1793 = _T_23 ? _GEN_1519 : validBits_111_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1794 = _T_23 ? _GEN_1520 : validBits_112_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1795 = _T_23 ? _GEN_1521 : validBits_113_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1796 = _T_23 ? _GEN_1522 : validBits_114_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1797 = _T_23 ? _GEN_1523 : validBits_115_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1798 = _T_23 ? _GEN_1524 : validBits_116_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1799 = _T_23 ? _GEN_1525 : validBits_117_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1800 = _T_23 ? _GEN_1526 : validBits_118_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1801 = _T_23 ? _GEN_1527 : validBits_119_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1802 = _T_23 ? _GEN_1528 : validBits_120_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1803 = _T_23 ? _GEN_1529 : validBits_121_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1804 = _T_23 ? _GEN_1530 : validBits_122_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1805 = _T_23 ? _GEN_1531 : validBits_123_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1806 = _T_23 ? _GEN_1532 : validBits_124_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1807 = _T_23 ? _GEN_1533 : validBits_125_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1808 = _T_23 ? _GEN_1534 : validBits_126_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1809 = _T_23 ? _GEN_1535 : validBits_127_0; // @[src/main/scala/cache/cache.scala 12:26 261:36]
+  wire  _GEN_1810 = _T_23 ? _GEN_1536 : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1811 = _T_23 ? _GEN_1537 : dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1812 = _T_23 ? _GEN_1538 : dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1813 = _T_23 ? _GEN_1539 : dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1814 = _T_23 ? _GEN_1540 : dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1815 = _T_23 ? _GEN_1541 : dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1816 = _T_23 ? _GEN_1542 : dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1817 = _T_23 ? _GEN_1543 : dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1818 = _T_23 ? _GEN_1544 : dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1819 = _T_23 ? _GEN_1545 : dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1820 = _T_23 ? _GEN_1546 : dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1821 = _T_23 ? _GEN_1547 : dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1822 = _T_23 ? _GEN_1548 : dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1823 = _T_23 ? _GEN_1549 : dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1824 = _T_23 ? _GEN_1550 : dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1825 = _T_23 ? _GEN_1551 : dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1826 = _T_23 ? _GEN_1552 : dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1827 = _T_23 ? _GEN_1553 : dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1828 = _T_23 ? _GEN_1554 : dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1829 = _T_23 ? _GEN_1555 : dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1830 = _T_23 ? _GEN_1556 : dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1831 = _T_23 ? _GEN_1557 : dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1832 = _T_23 ? _GEN_1558 : dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1833 = _T_23 ? _GEN_1559 : dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1834 = _T_23 ? _GEN_1560 : dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1835 = _T_23 ? _GEN_1561 : dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1836 = _T_23 ? _GEN_1562 : dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1837 = _T_23 ? _GEN_1563 : dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1838 = _T_23 ? _GEN_1564 : dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1839 = _T_23 ? _GEN_1565 : dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1840 = _T_23 ? _GEN_1566 : dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1841 = _T_23 ? _GEN_1567 : dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1842 = _T_23 ? _GEN_1568 : dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1843 = _T_23 ? _GEN_1569 : dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1844 = _T_23 ? _GEN_1570 : dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1845 = _T_23 ? _GEN_1571 : dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1846 = _T_23 ? _GEN_1572 : dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1847 = _T_23 ? _GEN_1573 : dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1848 = _T_23 ? _GEN_1574 : dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1849 = _T_23 ? _GEN_1575 : dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1850 = _T_23 ? _GEN_1576 : dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1851 = _T_23 ? _GEN_1577 : dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1852 = _T_23 ? _GEN_1578 : dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1853 = _T_23 ? _GEN_1579 : dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1854 = _T_23 ? _GEN_1580 : dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1855 = _T_23 ? _GEN_1581 : dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1856 = _T_23 ? _GEN_1582 : dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1857 = _T_23 ? _GEN_1583 : dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1858 = _T_23 ? _GEN_1584 : dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1859 = _T_23 ? _GEN_1585 : dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1860 = _T_23 ? _GEN_1586 : dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1861 = _T_23 ? _GEN_1587 : dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1862 = _T_23 ? _GEN_1588 : dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1863 = _T_23 ? _GEN_1589 : dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1864 = _T_23 ? _GEN_1590 : dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1865 = _T_23 ? _GEN_1591 : dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1866 = _T_23 ? _GEN_1592 : dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1867 = _T_23 ? _GEN_1593 : dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1868 = _T_23 ? _GEN_1594 : dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1869 = _T_23 ? _GEN_1595 : dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1870 = _T_23 ? _GEN_1596 : dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1871 = _T_23 ? _GEN_1597 : dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1872 = _T_23 ? _GEN_1598 : dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1873 = _T_23 ? _GEN_1599 : dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1874 = _T_23 ? _GEN_1600 : dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1875 = _T_23 ? _GEN_1601 : dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1876 = _T_23 ? _GEN_1602 : dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1877 = _T_23 ? _GEN_1603 : dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1878 = _T_23 ? _GEN_1604 : dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1879 = _T_23 ? _GEN_1605 : dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1880 = _T_23 ? _GEN_1606 : dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1881 = _T_23 ? _GEN_1607 : dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1882 = _T_23 ? _GEN_1608 : dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1883 = _T_23 ? _GEN_1609 : dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1884 = _T_23 ? _GEN_1610 : dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1885 = _T_23 ? _GEN_1611 : dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1886 = _T_23 ? _GEN_1612 : dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1887 = _T_23 ? _GEN_1613 : dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1888 = _T_23 ? _GEN_1614 : dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1889 = _T_23 ? _GEN_1615 : dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1890 = _T_23 ? _GEN_1616 : dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1891 = _T_23 ? _GEN_1617 : dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1892 = _T_23 ? _GEN_1618 : dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1893 = _T_23 ? _GEN_1619 : dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1894 = _T_23 ? _GEN_1620 : dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1895 = _T_23 ? _GEN_1621 : dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1896 = _T_23 ? _GEN_1622 : dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1897 = _T_23 ? _GEN_1623 : dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1898 = _T_23 ? _GEN_1624 : dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1899 = _T_23 ? _GEN_1625 : dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1900 = _T_23 ? _GEN_1626 : dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1901 = _T_23 ? _GEN_1627 : dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1902 = _T_23 ? _GEN_1628 : dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1903 = _T_23 ? _GEN_1629 : dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1904 = _T_23 ? _GEN_1630 : dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1905 = _T_23 ? _GEN_1631 : dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1906 = _T_23 ? _GEN_1632 : dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1907 = _T_23 ? _GEN_1633 : dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1908 = _T_23 ? _GEN_1634 : dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1909 = _T_23 ? _GEN_1635 : dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1910 = _T_23 ? _GEN_1636 : dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1911 = _T_23 ? _GEN_1637 : dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1912 = _T_23 ? _GEN_1638 : dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1913 = _T_23 ? _GEN_1639 : dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1914 = _T_23 ? _GEN_1640 : dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1915 = _T_23 ? _GEN_1641 : dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1916 = _T_23 ? _GEN_1642 : dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1917 = _T_23 ? _GEN_1643 : dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1918 = _T_23 ? _GEN_1644 : dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1919 = _T_23 ? _GEN_1645 : dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1920 = _T_23 ? _GEN_1646 : dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1921 = _T_23 ? _GEN_1647 : dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1922 = _T_23 ? _GEN_1648 : dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1923 = _T_23 ? _GEN_1649 : dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1924 = _T_23 ? _GEN_1650 : dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1925 = _T_23 ? _GEN_1651 : dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1926 = _T_23 ? _GEN_1652 : dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1927 = _T_23 ? _GEN_1653 : dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1928 = _T_23 ? _GEN_1654 : dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1929 = _T_23 ? _GEN_1655 : dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1930 = _T_23 ? _GEN_1656 : dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1931 = _T_23 ? _GEN_1657 : dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1932 = _T_23 ? _GEN_1658 : dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1933 = _T_23 ? _GEN_1659 : dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1934 = _T_23 ? _GEN_1660 : dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1935 = _T_23 ? _GEN_1661 : dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1936 = _T_23 ? _GEN_1662 : dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire  _GEN_1937 = _T_23 ? _GEN_1663 : dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 13:26 261:36]
+  wire [31:0] _GEN_1938 = _T_23 ? _GEN_1664 : respData; // @[src/main/scala/cache/cache.scala 23:21 261:36]
+  wire [2:0] _GEN_1939 = _T_23 ? _GEN_1665 : state; // @[src/main/scala/cache/cache.scala 21:22 261:36]
+  wire [2:0] _GEN_1940 = io_cpu_resp_ready ? 3'h0 : state; // @[src/main/scala/cache/cache.scala 327:31 328:15 21:22]
+  wire [2:0] _GEN_1942 = 3'h6 == state ? _GEN_1940 : state; // @[src/main/scala/cache/cache.scala 150:17 21:22]
+  wire  _GEN_1943 = 3'h5 == state ? 1'h0 : 3'h6 == state; // @[src/main/scala/cache/cache.scala 150:17 80:21]
+  wire [2:0] _GEN_1944 = 3'h5 == state ? state : _GEN_1942; // @[src/main/scala/cache/cache.scala 150:17 21:22]
+  wire [31:0] _GEN_1946 = 3'h4 == state ? _GEN_1666 : refillBuf_0; // @[src/main/scala/cache/cache.scala 150:17 24:22]
+  wire [31:0] _GEN_1947 = 3'h4 == state ? _GEN_1667 : refillBuf_1; // @[src/main/scala/cache/cache.scala 150:17 24:22]
+  wire [31:0] _GEN_1948 = 3'h4 == state ? _GEN_1668 : refillBuf_2; // @[src/main/scala/cache/cache.scala 150:17 24:22]
+  wire [31:0] _GEN_1949 = 3'h4 == state ? _GEN_1669 : refillBuf_3; // @[src/main/scala/cache/cache.scala 150:17 24:22]
+  wire [31:0] _GEN_1950 = 3'h4 == state ? _GEN_1670 : refillBuf_4; // @[src/main/scala/cache/cache.scala 150:17 24:22]
+  wire [31:0] _GEN_1951 = 3'h4 == state ? _GEN_1671 : refillBuf_5; // @[src/main/scala/cache/cache.scala 150:17 24:22]
+  wire [31:0] _GEN_1952 = 3'h4 == state ? _GEN_1672 : refillBuf_6; // @[src/main/scala/cache/cache.scala 150:17 24:22]
+  wire [31:0] _GEN_1953 = 3'h4 == state ? _GEN_1673 : refillBuf_7; // @[src/main/scala/cache/cache.scala 150:17 24:22]
+  wire [2:0] _GEN_1954 = 3'h4 == state ? _GEN_1674 : beatCnt; // @[src/main/scala/cache/cache.scala 150:17 26:24]
+  wire  _GEN_1962 = 3'h4 == state ? _GEN_1682 : validBits_0_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1963 = 3'h4 == state ? _GEN_1683 : validBits_1_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1964 = 3'h4 == state ? _GEN_1684 : validBits_2_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1965 = 3'h4 == state ? _GEN_1685 : validBits_3_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1966 = 3'h4 == state ? _GEN_1686 : validBits_4_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1967 = 3'h4 == state ? _GEN_1687 : validBits_5_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1968 = 3'h4 == state ? _GEN_1688 : validBits_6_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1969 = 3'h4 == state ? _GEN_1689 : validBits_7_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1970 = 3'h4 == state ? _GEN_1690 : validBits_8_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1971 = 3'h4 == state ? _GEN_1691 : validBits_9_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1972 = 3'h4 == state ? _GEN_1692 : validBits_10_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1973 = 3'h4 == state ? _GEN_1693 : validBits_11_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1974 = 3'h4 == state ? _GEN_1694 : validBits_12_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1975 = 3'h4 == state ? _GEN_1695 : validBits_13_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1976 = 3'h4 == state ? _GEN_1696 : validBits_14_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1977 = 3'h4 == state ? _GEN_1697 : validBits_15_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1978 = 3'h4 == state ? _GEN_1698 : validBits_16_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1979 = 3'h4 == state ? _GEN_1699 : validBits_17_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1980 = 3'h4 == state ? _GEN_1700 : validBits_18_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1981 = 3'h4 == state ? _GEN_1701 : validBits_19_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1982 = 3'h4 == state ? _GEN_1702 : validBits_20_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1983 = 3'h4 == state ? _GEN_1703 : validBits_21_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1984 = 3'h4 == state ? _GEN_1704 : validBits_22_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1985 = 3'h4 == state ? _GEN_1705 : validBits_23_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1986 = 3'h4 == state ? _GEN_1706 : validBits_24_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1987 = 3'h4 == state ? _GEN_1707 : validBits_25_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1988 = 3'h4 == state ? _GEN_1708 : validBits_26_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1989 = 3'h4 == state ? _GEN_1709 : validBits_27_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1990 = 3'h4 == state ? _GEN_1710 : validBits_28_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1991 = 3'h4 == state ? _GEN_1711 : validBits_29_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1992 = 3'h4 == state ? _GEN_1712 : validBits_30_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1993 = 3'h4 == state ? _GEN_1713 : validBits_31_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1994 = 3'h4 == state ? _GEN_1714 : validBits_32_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1995 = 3'h4 == state ? _GEN_1715 : validBits_33_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1996 = 3'h4 == state ? _GEN_1716 : validBits_34_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1997 = 3'h4 == state ? _GEN_1717 : validBits_35_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1998 = 3'h4 == state ? _GEN_1718 : validBits_36_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_1999 = 3'h4 == state ? _GEN_1719 : validBits_37_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2000 = 3'h4 == state ? _GEN_1720 : validBits_38_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2001 = 3'h4 == state ? _GEN_1721 : validBits_39_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2002 = 3'h4 == state ? _GEN_1722 : validBits_40_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2003 = 3'h4 == state ? _GEN_1723 : validBits_41_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2004 = 3'h4 == state ? _GEN_1724 : validBits_42_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2005 = 3'h4 == state ? _GEN_1725 : validBits_43_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2006 = 3'h4 == state ? _GEN_1726 : validBits_44_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2007 = 3'h4 == state ? _GEN_1727 : validBits_45_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2008 = 3'h4 == state ? _GEN_1728 : validBits_46_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2009 = 3'h4 == state ? _GEN_1729 : validBits_47_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2010 = 3'h4 == state ? _GEN_1730 : validBits_48_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2011 = 3'h4 == state ? _GEN_1731 : validBits_49_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2012 = 3'h4 == state ? _GEN_1732 : validBits_50_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2013 = 3'h4 == state ? _GEN_1733 : validBits_51_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2014 = 3'h4 == state ? _GEN_1734 : validBits_52_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2015 = 3'h4 == state ? _GEN_1735 : validBits_53_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2016 = 3'h4 == state ? _GEN_1736 : validBits_54_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2017 = 3'h4 == state ? _GEN_1737 : validBits_55_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2018 = 3'h4 == state ? _GEN_1738 : validBits_56_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2019 = 3'h4 == state ? _GEN_1739 : validBits_57_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2020 = 3'h4 == state ? _GEN_1740 : validBits_58_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2021 = 3'h4 == state ? _GEN_1741 : validBits_59_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2022 = 3'h4 == state ? _GEN_1742 : validBits_60_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2023 = 3'h4 == state ? _GEN_1743 : validBits_61_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2024 = 3'h4 == state ? _GEN_1744 : validBits_62_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2025 = 3'h4 == state ? _GEN_1745 : validBits_63_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2026 = 3'h4 == state ? _GEN_1746 : validBits_64_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2027 = 3'h4 == state ? _GEN_1747 : validBits_65_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2028 = 3'h4 == state ? _GEN_1748 : validBits_66_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2029 = 3'h4 == state ? _GEN_1749 : validBits_67_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2030 = 3'h4 == state ? _GEN_1750 : validBits_68_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2031 = 3'h4 == state ? _GEN_1751 : validBits_69_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2032 = 3'h4 == state ? _GEN_1752 : validBits_70_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2033 = 3'h4 == state ? _GEN_1753 : validBits_71_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2034 = 3'h4 == state ? _GEN_1754 : validBits_72_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2035 = 3'h4 == state ? _GEN_1755 : validBits_73_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2036 = 3'h4 == state ? _GEN_1756 : validBits_74_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2037 = 3'h4 == state ? _GEN_1757 : validBits_75_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2038 = 3'h4 == state ? _GEN_1758 : validBits_76_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2039 = 3'h4 == state ? _GEN_1759 : validBits_77_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2040 = 3'h4 == state ? _GEN_1760 : validBits_78_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2041 = 3'h4 == state ? _GEN_1761 : validBits_79_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2042 = 3'h4 == state ? _GEN_1762 : validBits_80_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2043 = 3'h4 == state ? _GEN_1763 : validBits_81_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2044 = 3'h4 == state ? _GEN_1764 : validBits_82_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2045 = 3'h4 == state ? _GEN_1765 : validBits_83_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2046 = 3'h4 == state ? _GEN_1766 : validBits_84_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2047 = 3'h4 == state ? _GEN_1767 : validBits_85_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2048 = 3'h4 == state ? _GEN_1768 : validBits_86_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2049 = 3'h4 == state ? _GEN_1769 : validBits_87_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2050 = 3'h4 == state ? _GEN_1770 : validBits_88_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2051 = 3'h4 == state ? _GEN_1771 : validBits_89_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2052 = 3'h4 == state ? _GEN_1772 : validBits_90_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2053 = 3'h4 == state ? _GEN_1773 : validBits_91_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2054 = 3'h4 == state ? _GEN_1774 : validBits_92_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2055 = 3'h4 == state ? _GEN_1775 : validBits_93_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2056 = 3'h4 == state ? _GEN_1776 : validBits_94_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2057 = 3'h4 == state ? _GEN_1777 : validBits_95_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2058 = 3'h4 == state ? _GEN_1778 : validBits_96_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2059 = 3'h4 == state ? _GEN_1779 : validBits_97_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2060 = 3'h4 == state ? _GEN_1780 : validBits_98_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2061 = 3'h4 == state ? _GEN_1781 : validBits_99_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2062 = 3'h4 == state ? _GEN_1782 : validBits_100_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2063 = 3'h4 == state ? _GEN_1783 : validBits_101_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2064 = 3'h4 == state ? _GEN_1784 : validBits_102_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2065 = 3'h4 == state ? _GEN_1785 : validBits_103_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2066 = 3'h4 == state ? _GEN_1786 : validBits_104_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2067 = 3'h4 == state ? _GEN_1787 : validBits_105_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2068 = 3'h4 == state ? _GEN_1788 : validBits_106_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2069 = 3'h4 == state ? _GEN_1789 : validBits_107_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2070 = 3'h4 == state ? _GEN_1790 : validBits_108_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2071 = 3'h4 == state ? _GEN_1791 : validBits_109_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2072 = 3'h4 == state ? _GEN_1792 : validBits_110_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2073 = 3'h4 == state ? _GEN_1793 : validBits_111_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2074 = 3'h4 == state ? _GEN_1794 : validBits_112_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2075 = 3'h4 == state ? _GEN_1795 : validBits_113_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2076 = 3'h4 == state ? _GEN_1796 : validBits_114_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2077 = 3'h4 == state ? _GEN_1797 : validBits_115_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2078 = 3'h4 == state ? _GEN_1798 : validBits_116_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2079 = 3'h4 == state ? _GEN_1799 : validBits_117_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2080 = 3'h4 == state ? _GEN_1800 : validBits_118_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2081 = 3'h4 == state ? _GEN_1801 : validBits_119_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2082 = 3'h4 == state ? _GEN_1802 : validBits_120_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2083 = 3'h4 == state ? _GEN_1803 : validBits_121_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2084 = 3'h4 == state ? _GEN_1804 : validBits_122_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2085 = 3'h4 == state ? _GEN_1805 : validBits_123_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2086 = 3'h4 == state ? _GEN_1806 : validBits_124_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2087 = 3'h4 == state ? _GEN_1807 : validBits_125_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2088 = 3'h4 == state ? _GEN_1808 : validBits_126_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2089 = 3'h4 == state ? _GEN_1809 : validBits_127_0; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2090 = 3'h4 == state ? _GEN_1810 : dirtyBits_0_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2091 = 3'h4 == state ? _GEN_1811 : dirtyBits_1_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2092 = 3'h4 == state ? _GEN_1812 : dirtyBits_2_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2093 = 3'h4 == state ? _GEN_1813 : dirtyBits_3_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2094 = 3'h4 == state ? _GEN_1814 : dirtyBits_4_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2095 = 3'h4 == state ? _GEN_1815 : dirtyBits_5_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2096 = 3'h4 == state ? _GEN_1816 : dirtyBits_6_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2097 = 3'h4 == state ? _GEN_1817 : dirtyBits_7_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2098 = 3'h4 == state ? _GEN_1818 : dirtyBits_8_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2099 = 3'h4 == state ? _GEN_1819 : dirtyBits_9_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2100 = 3'h4 == state ? _GEN_1820 : dirtyBits_10_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2101 = 3'h4 == state ? _GEN_1821 : dirtyBits_11_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2102 = 3'h4 == state ? _GEN_1822 : dirtyBits_12_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2103 = 3'h4 == state ? _GEN_1823 : dirtyBits_13_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2104 = 3'h4 == state ? _GEN_1824 : dirtyBits_14_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2105 = 3'h4 == state ? _GEN_1825 : dirtyBits_15_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2106 = 3'h4 == state ? _GEN_1826 : dirtyBits_16_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2107 = 3'h4 == state ? _GEN_1827 : dirtyBits_17_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2108 = 3'h4 == state ? _GEN_1828 : dirtyBits_18_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2109 = 3'h4 == state ? _GEN_1829 : dirtyBits_19_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2110 = 3'h4 == state ? _GEN_1830 : dirtyBits_20_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2111 = 3'h4 == state ? _GEN_1831 : dirtyBits_21_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2112 = 3'h4 == state ? _GEN_1832 : dirtyBits_22_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2113 = 3'h4 == state ? _GEN_1833 : dirtyBits_23_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2114 = 3'h4 == state ? _GEN_1834 : dirtyBits_24_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2115 = 3'h4 == state ? _GEN_1835 : dirtyBits_25_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2116 = 3'h4 == state ? _GEN_1836 : dirtyBits_26_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2117 = 3'h4 == state ? _GEN_1837 : dirtyBits_27_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2118 = 3'h4 == state ? _GEN_1838 : dirtyBits_28_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2119 = 3'h4 == state ? _GEN_1839 : dirtyBits_29_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2120 = 3'h4 == state ? _GEN_1840 : dirtyBits_30_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2121 = 3'h4 == state ? _GEN_1841 : dirtyBits_31_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2122 = 3'h4 == state ? _GEN_1842 : dirtyBits_32_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2123 = 3'h4 == state ? _GEN_1843 : dirtyBits_33_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2124 = 3'h4 == state ? _GEN_1844 : dirtyBits_34_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2125 = 3'h4 == state ? _GEN_1845 : dirtyBits_35_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2126 = 3'h4 == state ? _GEN_1846 : dirtyBits_36_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2127 = 3'h4 == state ? _GEN_1847 : dirtyBits_37_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2128 = 3'h4 == state ? _GEN_1848 : dirtyBits_38_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2129 = 3'h4 == state ? _GEN_1849 : dirtyBits_39_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2130 = 3'h4 == state ? _GEN_1850 : dirtyBits_40_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2131 = 3'h4 == state ? _GEN_1851 : dirtyBits_41_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2132 = 3'h4 == state ? _GEN_1852 : dirtyBits_42_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2133 = 3'h4 == state ? _GEN_1853 : dirtyBits_43_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2134 = 3'h4 == state ? _GEN_1854 : dirtyBits_44_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2135 = 3'h4 == state ? _GEN_1855 : dirtyBits_45_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2136 = 3'h4 == state ? _GEN_1856 : dirtyBits_46_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2137 = 3'h4 == state ? _GEN_1857 : dirtyBits_47_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2138 = 3'h4 == state ? _GEN_1858 : dirtyBits_48_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2139 = 3'h4 == state ? _GEN_1859 : dirtyBits_49_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2140 = 3'h4 == state ? _GEN_1860 : dirtyBits_50_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2141 = 3'h4 == state ? _GEN_1861 : dirtyBits_51_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2142 = 3'h4 == state ? _GEN_1862 : dirtyBits_52_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2143 = 3'h4 == state ? _GEN_1863 : dirtyBits_53_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2144 = 3'h4 == state ? _GEN_1864 : dirtyBits_54_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2145 = 3'h4 == state ? _GEN_1865 : dirtyBits_55_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2146 = 3'h4 == state ? _GEN_1866 : dirtyBits_56_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2147 = 3'h4 == state ? _GEN_1867 : dirtyBits_57_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2148 = 3'h4 == state ? _GEN_1868 : dirtyBits_58_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2149 = 3'h4 == state ? _GEN_1869 : dirtyBits_59_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2150 = 3'h4 == state ? _GEN_1870 : dirtyBits_60_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2151 = 3'h4 == state ? _GEN_1871 : dirtyBits_61_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2152 = 3'h4 == state ? _GEN_1872 : dirtyBits_62_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2153 = 3'h4 == state ? _GEN_1873 : dirtyBits_63_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2154 = 3'h4 == state ? _GEN_1874 : dirtyBits_64_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2155 = 3'h4 == state ? _GEN_1875 : dirtyBits_65_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2156 = 3'h4 == state ? _GEN_1876 : dirtyBits_66_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2157 = 3'h4 == state ? _GEN_1877 : dirtyBits_67_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2158 = 3'h4 == state ? _GEN_1878 : dirtyBits_68_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2159 = 3'h4 == state ? _GEN_1879 : dirtyBits_69_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2160 = 3'h4 == state ? _GEN_1880 : dirtyBits_70_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2161 = 3'h4 == state ? _GEN_1881 : dirtyBits_71_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2162 = 3'h4 == state ? _GEN_1882 : dirtyBits_72_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2163 = 3'h4 == state ? _GEN_1883 : dirtyBits_73_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2164 = 3'h4 == state ? _GEN_1884 : dirtyBits_74_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2165 = 3'h4 == state ? _GEN_1885 : dirtyBits_75_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2166 = 3'h4 == state ? _GEN_1886 : dirtyBits_76_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2167 = 3'h4 == state ? _GEN_1887 : dirtyBits_77_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2168 = 3'h4 == state ? _GEN_1888 : dirtyBits_78_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2169 = 3'h4 == state ? _GEN_1889 : dirtyBits_79_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2170 = 3'h4 == state ? _GEN_1890 : dirtyBits_80_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2171 = 3'h4 == state ? _GEN_1891 : dirtyBits_81_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2172 = 3'h4 == state ? _GEN_1892 : dirtyBits_82_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2173 = 3'h4 == state ? _GEN_1893 : dirtyBits_83_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2174 = 3'h4 == state ? _GEN_1894 : dirtyBits_84_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2175 = 3'h4 == state ? _GEN_1895 : dirtyBits_85_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2176 = 3'h4 == state ? _GEN_1896 : dirtyBits_86_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2177 = 3'h4 == state ? _GEN_1897 : dirtyBits_87_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2178 = 3'h4 == state ? _GEN_1898 : dirtyBits_88_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2179 = 3'h4 == state ? _GEN_1899 : dirtyBits_89_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2180 = 3'h4 == state ? _GEN_1900 : dirtyBits_90_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2181 = 3'h4 == state ? _GEN_1901 : dirtyBits_91_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2182 = 3'h4 == state ? _GEN_1902 : dirtyBits_92_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2183 = 3'h4 == state ? _GEN_1903 : dirtyBits_93_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2184 = 3'h4 == state ? _GEN_1904 : dirtyBits_94_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2185 = 3'h4 == state ? _GEN_1905 : dirtyBits_95_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2186 = 3'h4 == state ? _GEN_1906 : dirtyBits_96_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2187 = 3'h4 == state ? _GEN_1907 : dirtyBits_97_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2188 = 3'h4 == state ? _GEN_1908 : dirtyBits_98_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2189 = 3'h4 == state ? _GEN_1909 : dirtyBits_99_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2190 = 3'h4 == state ? _GEN_1910 : dirtyBits_100_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2191 = 3'h4 == state ? _GEN_1911 : dirtyBits_101_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2192 = 3'h4 == state ? _GEN_1912 : dirtyBits_102_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2193 = 3'h4 == state ? _GEN_1913 : dirtyBits_103_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2194 = 3'h4 == state ? _GEN_1914 : dirtyBits_104_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2195 = 3'h4 == state ? _GEN_1915 : dirtyBits_105_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2196 = 3'h4 == state ? _GEN_1916 : dirtyBits_106_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2197 = 3'h4 == state ? _GEN_1917 : dirtyBits_107_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2198 = 3'h4 == state ? _GEN_1918 : dirtyBits_108_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2199 = 3'h4 == state ? _GEN_1919 : dirtyBits_109_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2200 = 3'h4 == state ? _GEN_1920 : dirtyBits_110_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2201 = 3'h4 == state ? _GEN_1921 : dirtyBits_111_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2202 = 3'h4 == state ? _GEN_1922 : dirtyBits_112_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2203 = 3'h4 == state ? _GEN_1923 : dirtyBits_113_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2204 = 3'h4 == state ? _GEN_1924 : dirtyBits_114_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2205 = 3'h4 == state ? _GEN_1925 : dirtyBits_115_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2206 = 3'h4 == state ? _GEN_1926 : dirtyBits_116_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2207 = 3'h4 == state ? _GEN_1927 : dirtyBits_117_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2208 = 3'h4 == state ? _GEN_1928 : dirtyBits_118_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2209 = 3'h4 == state ? _GEN_1929 : dirtyBits_119_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2210 = 3'h4 == state ? _GEN_1930 : dirtyBits_120_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2211 = 3'h4 == state ? _GEN_1931 : dirtyBits_121_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2212 = 3'h4 == state ? _GEN_1932 : dirtyBits_122_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2213 = 3'h4 == state ? _GEN_1933 : dirtyBits_123_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2214 = 3'h4 == state ? _GEN_1934 : dirtyBits_124_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2215 = 3'h4 == state ? _GEN_1935 : dirtyBits_125_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2216 = 3'h4 == state ? _GEN_1936 : dirtyBits_126_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2217 = 3'h4 == state ? _GEN_1937 : dirtyBits_127_0; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire [31:0] _GEN_2218 = 3'h4 == state ? _GEN_1938 : respData; // @[src/main/scala/cache/cache.scala 150:17 23:21]
+  wire [2:0] _GEN_2219 = 3'h4 == state ? _GEN_1939 : _GEN_1944; // @[src/main/scala/cache/cache.scala 150:17]
+  wire  _GEN_2220 = 3'h4 == state ? 1'h0 : _GEN_1943; // @[src/main/scala/cache/cache.scala 150:17 80:21]
+  wire [2:0] _GEN_2222 = 3'h3 == state ? _GEN_1099 : _GEN_1954; // @[src/main/scala/cache/cache.scala 150:17]
+  wire [2:0] _GEN_2223 = 3'h3 == state ? _GEN_1100 : _GEN_2219; // @[src/main/scala/cache/cache.scala 150:17]
+  wire  _GEN_2224 = 3'h3 == state ? 1'h0 : 3'h4 == state; // @[src/main/scala/cache/cache.scala 150:17 87:27]
+  wire  _GEN_2240 = 3'h3 == state ? validBits_0_0 : _GEN_1962; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2241 = 3'h3 == state ? validBits_1_0 : _GEN_1963; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2242 = 3'h3 == state ? validBits_2_0 : _GEN_1964; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2243 = 3'h3 == state ? validBits_3_0 : _GEN_1965; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2244 = 3'h3 == state ? validBits_4_0 : _GEN_1966; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2245 = 3'h3 == state ? validBits_5_0 : _GEN_1967; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2246 = 3'h3 == state ? validBits_6_0 : _GEN_1968; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2247 = 3'h3 == state ? validBits_7_0 : _GEN_1969; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2248 = 3'h3 == state ? validBits_8_0 : _GEN_1970; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2249 = 3'h3 == state ? validBits_9_0 : _GEN_1971; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2250 = 3'h3 == state ? validBits_10_0 : _GEN_1972; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2251 = 3'h3 == state ? validBits_11_0 : _GEN_1973; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2252 = 3'h3 == state ? validBits_12_0 : _GEN_1974; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2253 = 3'h3 == state ? validBits_13_0 : _GEN_1975; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2254 = 3'h3 == state ? validBits_14_0 : _GEN_1976; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2255 = 3'h3 == state ? validBits_15_0 : _GEN_1977; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2256 = 3'h3 == state ? validBits_16_0 : _GEN_1978; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2257 = 3'h3 == state ? validBits_17_0 : _GEN_1979; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2258 = 3'h3 == state ? validBits_18_0 : _GEN_1980; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2259 = 3'h3 == state ? validBits_19_0 : _GEN_1981; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2260 = 3'h3 == state ? validBits_20_0 : _GEN_1982; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2261 = 3'h3 == state ? validBits_21_0 : _GEN_1983; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2262 = 3'h3 == state ? validBits_22_0 : _GEN_1984; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2263 = 3'h3 == state ? validBits_23_0 : _GEN_1985; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2264 = 3'h3 == state ? validBits_24_0 : _GEN_1986; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2265 = 3'h3 == state ? validBits_25_0 : _GEN_1987; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2266 = 3'h3 == state ? validBits_26_0 : _GEN_1988; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2267 = 3'h3 == state ? validBits_27_0 : _GEN_1989; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2268 = 3'h3 == state ? validBits_28_0 : _GEN_1990; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2269 = 3'h3 == state ? validBits_29_0 : _GEN_1991; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2270 = 3'h3 == state ? validBits_30_0 : _GEN_1992; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2271 = 3'h3 == state ? validBits_31_0 : _GEN_1993; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2272 = 3'h3 == state ? validBits_32_0 : _GEN_1994; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2273 = 3'h3 == state ? validBits_33_0 : _GEN_1995; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2274 = 3'h3 == state ? validBits_34_0 : _GEN_1996; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2275 = 3'h3 == state ? validBits_35_0 : _GEN_1997; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2276 = 3'h3 == state ? validBits_36_0 : _GEN_1998; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2277 = 3'h3 == state ? validBits_37_0 : _GEN_1999; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2278 = 3'h3 == state ? validBits_38_0 : _GEN_2000; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2279 = 3'h3 == state ? validBits_39_0 : _GEN_2001; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2280 = 3'h3 == state ? validBits_40_0 : _GEN_2002; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2281 = 3'h3 == state ? validBits_41_0 : _GEN_2003; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2282 = 3'h3 == state ? validBits_42_0 : _GEN_2004; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2283 = 3'h3 == state ? validBits_43_0 : _GEN_2005; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2284 = 3'h3 == state ? validBits_44_0 : _GEN_2006; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2285 = 3'h3 == state ? validBits_45_0 : _GEN_2007; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2286 = 3'h3 == state ? validBits_46_0 : _GEN_2008; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2287 = 3'h3 == state ? validBits_47_0 : _GEN_2009; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2288 = 3'h3 == state ? validBits_48_0 : _GEN_2010; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2289 = 3'h3 == state ? validBits_49_0 : _GEN_2011; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2290 = 3'h3 == state ? validBits_50_0 : _GEN_2012; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2291 = 3'h3 == state ? validBits_51_0 : _GEN_2013; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2292 = 3'h3 == state ? validBits_52_0 : _GEN_2014; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2293 = 3'h3 == state ? validBits_53_0 : _GEN_2015; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2294 = 3'h3 == state ? validBits_54_0 : _GEN_2016; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2295 = 3'h3 == state ? validBits_55_0 : _GEN_2017; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2296 = 3'h3 == state ? validBits_56_0 : _GEN_2018; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2297 = 3'h3 == state ? validBits_57_0 : _GEN_2019; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2298 = 3'h3 == state ? validBits_58_0 : _GEN_2020; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2299 = 3'h3 == state ? validBits_59_0 : _GEN_2021; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2300 = 3'h3 == state ? validBits_60_0 : _GEN_2022; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2301 = 3'h3 == state ? validBits_61_0 : _GEN_2023; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2302 = 3'h3 == state ? validBits_62_0 : _GEN_2024; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2303 = 3'h3 == state ? validBits_63_0 : _GEN_2025; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2304 = 3'h3 == state ? validBits_64_0 : _GEN_2026; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2305 = 3'h3 == state ? validBits_65_0 : _GEN_2027; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2306 = 3'h3 == state ? validBits_66_0 : _GEN_2028; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2307 = 3'h3 == state ? validBits_67_0 : _GEN_2029; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2308 = 3'h3 == state ? validBits_68_0 : _GEN_2030; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2309 = 3'h3 == state ? validBits_69_0 : _GEN_2031; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2310 = 3'h3 == state ? validBits_70_0 : _GEN_2032; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2311 = 3'h3 == state ? validBits_71_0 : _GEN_2033; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2312 = 3'h3 == state ? validBits_72_0 : _GEN_2034; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2313 = 3'h3 == state ? validBits_73_0 : _GEN_2035; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2314 = 3'h3 == state ? validBits_74_0 : _GEN_2036; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2315 = 3'h3 == state ? validBits_75_0 : _GEN_2037; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2316 = 3'h3 == state ? validBits_76_0 : _GEN_2038; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2317 = 3'h3 == state ? validBits_77_0 : _GEN_2039; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2318 = 3'h3 == state ? validBits_78_0 : _GEN_2040; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2319 = 3'h3 == state ? validBits_79_0 : _GEN_2041; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2320 = 3'h3 == state ? validBits_80_0 : _GEN_2042; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2321 = 3'h3 == state ? validBits_81_0 : _GEN_2043; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2322 = 3'h3 == state ? validBits_82_0 : _GEN_2044; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2323 = 3'h3 == state ? validBits_83_0 : _GEN_2045; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2324 = 3'h3 == state ? validBits_84_0 : _GEN_2046; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2325 = 3'h3 == state ? validBits_85_0 : _GEN_2047; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2326 = 3'h3 == state ? validBits_86_0 : _GEN_2048; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2327 = 3'h3 == state ? validBits_87_0 : _GEN_2049; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2328 = 3'h3 == state ? validBits_88_0 : _GEN_2050; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2329 = 3'h3 == state ? validBits_89_0 : _GEN_2051; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2330 = 3'h3 == state ? validBits_90_0 : _GEN_2052; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2331 = 3'h3 == state ? validBits_91_0 : _GEN_2053; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2332 = 3'h3 == state ? validBits_92_0 : _GEN_2054; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2333 = 3'h3 == state ? validBits_93_0 : _GEN_2055; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2334 = 3'h3 == state ? validBits_94_0 : _GEN_2056; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2335 = 3'h3 == state ? validBits_95_0 : _GEN_2057; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2336 = 3'h3 == state ? validBits_96_0 : _GEN_2058; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2337 = 3'h3 == state ? validBits_97_0 : _GEN_2059; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2338 = 3'h3 == state ? validBits_98_0 : _GEN_2060; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2339 = 3'h3 == state ? validBits_99_0 : _GEN_2061; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2340 = 3'h3 == state ? validBits_100_0 : _GEN_2062; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2341 = 3'h3 == state ? validBits_101_0 : _GEN_2063; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2342 = 3'h3 == state ? validBits_102_0 : _GEN_2064; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2343 = 3'h3 == state ? validBits_103_0 : _GEN_2065; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2344 = 3'h3 == state ? validBits_104_0 : _GEN_2066; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2345 = 3'h3 == state ? validBits_105_0 : _GEN_2067; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2346 = 3'h3 == state ? validBits_106_0 : _GEN_2068; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2347 = 3'h3 == state ? validBits_107_0 : _GEN_2069; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2348 = 3'h3 == state ? validBits_108_0 : _GEN_2070; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2349 = 3'h3 == state ? validBits_109_0 : _GEN_2071; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2350 = 3'h3 == state ? validBits_110_0 : _GEN_2072; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2351 = 3'h3 == state ? validBits_111_0 : _GEN_2073; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2352 = 3'h3 == state ? validBits_112_0 : _GEN_2074; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2353 = 3'h3 == state ? validBits_113_0 : _GEN_2075; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2354 = 3'h3 == state ? validBits_114_0 : _GEN_2076; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2355 = 3'h3 == state ? validBits_115_0 : _GEN_2077; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2356 = 3'h3 == state ? validBits_116_0 : _GEN_2078; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2357 = 3'h3 == state ? validBits_117_0 : _GEN_2079; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2358 = 3'h3 == state ? validBits_118_0 : _GEN_2080; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2359 = 3'h3 == state ? validBits_119_0 : _GEN_2081; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2360 = 3'h3 == state ? validBits_120_0 : _GEN_2082; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2361 = 3'h3 == state ? validBits_121_0 : _GEN_2083; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2362 = 3'h3 == state ? validBits_122_0 : _GEN_2084; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2363 = 3'h3 == state ? validBits_123_0 : _GEN_2085; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2364 = 3'h3 == state ? validBits_124_0 : _GEN_2086; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2365 = 3'h3 == state ? validBits_125_0 : _GEN_2087; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2366 = 3'h3 == state ? validBits_126_0 : _GEN_2088; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2367 = 3'h3 == state ? validBits_127_0 : _GEN_2089; // @[src/main/scala/cache/cache.scala 150:17 12:26]
+  wire  _GEN_2368 = 3'h3 == state ? dirtyBits_0_0 : _GEN_2090; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2369 = 3'h3 == state ? dirtyBits_1_0 : _GEN_2091; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2370 = 3'h3 == state ? dirtyBits_2_0 : _GEN_2092; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2371 = 3'h3 == state ? dirtyBits_3_0 : _GEN_2093; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2372 = 3'h3 == state ? dirtyBits_4_0 : _GEN_2094; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2373 = 3'h3 == state ? dirtyBits_5_0 : _GEN_2095; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2374 = 3'h3 == state ? dirtyBits_6_0 : _GEN_2096; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2375 = 3'h3 == state ? dirtyBits_7_0 : _GEN_2097; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2376 = 3'h3 == state ? dirtyBits_8_0 : _GEN_2098; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2377 = 3'h3 == state ? dirtyBits_9_0 : _GEN_2099; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2378 = 3'h3 == state ? dirtyBits_10_0 : _GEN_2100; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2379 = 3'h3 == state ? dirtyBits_11_0 : _GEN_2101; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2380 = 3'h3 == state ? dirtyBits_12_0 : _GEN_2102; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2381 = 3'h3 == state ? dirtyBits_13_0 : _GEN_2103; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2382 = 3'h3 == state ? dirtyBits_14_0 : _GEN_2104; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2383 = 3'h3 == state ? dirtyBits_15_0 : _GEN_2105; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2384 = 3'h3 == state ? dirtyBits_16_0 : _GEN_2106; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2385 = 3'h3 == state ? dirtyBits_17_0 : _GEN_2107; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2386 = 3'h3 == state ? dirtyBits_18_0 : _GEN_2108; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2387 = 3'h3 == state ? dirtyBits_19_0 : _GEN_2109; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2388 = 3'h3 == state ? dirtyBits_20_0 : _GEN_2110; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2389 = 3'h3 == state ? dirtyBits_21_0 : _GEN_2111; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2390 = 3'h3 == state ? dirtyBits_22_0 : _GEN_2112; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2391 = 3'h3 == state ? dirtyBits_23_0 : _GEN_2113; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2392 = 3'h3 == state ? dirtyBits_24_0 : _GEN_2114; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2393 = 3'h3 == state ? dirtyBits_25_0 : _GEN_2115; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2394 = 3'h3 == state ? dirtyBits_26_0 : _GEN_2116; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2395 = 3'h3 == state ? dirtyBits_27_0 : _GEN_2117; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2396 = 3'h3 == state ? dirtyBits_28_0 : _GEN_2118; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2397 = 3'h3 == state ? dirtyBits_29_0 : _GEN_2119; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2398 = 3'h3 == state ? dirtyBits_30_0 : _GEN_2120; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2399 = 3'h3 == state ? dirtyBits_31_0 : _GEN_2121; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2400 = 3'h3 == state ? dirtyBits_32_0 : _GEN_2122; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2401 = 3'h3 == state ? dirtyBits_33_0 : _GEN_2123; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2402 = 3'h3 == state ? dirtyBits_34_0 : _GEN_2124; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2403 = 3'h3 == state ? dirtyBits_35_0 : _GEN_2125; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2404 = 3'h3 == state ? dirtyBits_36_0 : _GEN_2126; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2405 = 3'h3 == state ? dirtyBits_37_0 : _GEN_2127; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2406 = 3'h3 == state ? dirtyBits_38_0 : _GEN_2128; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2407 = 3'h3 == state ? dirtyBits_39_0 : _GEN_2129; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2408 = 3'h3 == state ? dirtyBits_40_0 : _GEN_2130; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2409 = 3'h3 == state ? dirtyBits_41_0 : _GEN_2131; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2410 = 3'h3 == state ? dirtyBits_42_0 : _GEN_2132; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2411 = 3'h3 == state ? dirtyBits_43_0 : _GEN_2133; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2412 = 3'h3 == state ? dirtyBits_44_0 : _GEN_2134; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2413 = 3'h3 == state ? dirtyBits_45_0 : _GEN_2135; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2414 = 3'h3 == state ? dirtyBits_46_0 : _GEN_2136; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2415 = 3'h3 == state ? dirtyBits_47_0 : _GEN_2137; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2416 = 3'h3 == state ? dirtyBits_48_0 : _GEN_2138; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2417 = 3'h3 == state ? dirtyBits_49_0 : _GEN_2139; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2418 = 3'h3 == state ? dirtyBits_50_0 : _GEN_2140; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2419 = 3'h3 == state ? dirtyBits_51_0 : _GEN_2141; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2420 = 3'h3 == state ? dirtyBits_52_0 : _GEN_2142; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2421 = 3'h3 == state ? dirtyBits_53_0 : _GEN_2143; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2422 = 3'h3 == state ? dirtyBits_54_0 : _GEN_2144; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2423 = 3'h3 == state ? dirtyBits_55_0 : _GEN_2145; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2424 = 3'h3 == state ? dirtyBits_56_0 : _GEN_2146; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2425 = 3'h3 == state ? dirtyBits_57_0 : _GEN_2147; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2426 = 3'h3 == state ? dirtyBits_58_0 : _GEN_2148; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2427 = 3'h3 == state ? dirtyBits_59_0 : _GEN_2149; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2428 = 3'h3 == state ? dirtyBits_60_0 : _GEN_2150; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2429 = 3'h3 == state ? dirtyBits_61_0 : _GEN_2151; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2430 = 3'h3 == state ? dirtyBits_62_0 : _GEN_2152; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2431 = 3'h3 == state ? dirtyBits_63_0 : _GEN_2153; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2432 = 3'h3 == state ? dirtyBits_64_0 : _GEN_2154; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2433 = 3'h3 == state ? dirtyBits_65_0 : _GEN_2155; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2434 = 3'h3 == state ? dirtyBits_66_0 : _GEN_2156; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2435 = 3'h3 == state ? dirtyBits_67_0 : _GEN_2157; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2436 = 3'h3 == state ? dirtyBits_68_0 : _GEN_2158; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2437 = 3'h3 == state ? dirtyBits_69_0 : _GEN_2159; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2438 = 3'h3 == state ? dirtyBits_70_0 : _GEN_2160; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2439 = 3'h3 == state ? dirtyBits_71_0 : _GEN_2161; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2440 = 3'h3 == state ? dirtyBits_72_0 : _GEN_2162; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2441 = 3'h3 == state ? dirtyBits_73_0 : _GEN_2163; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2442 = 3'h3 == state ? dirtyBits_74_0 : _GEN_2164; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2443 = 3'h3 == state ? dirtyBits_75_0 : _GEN_2165; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2444 = 3'h3 == state ? dirtyBits_76_0 : _GEN_2166; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2445 = 3'h3 == state ? dirtyBits_77_0 : _GEN_2167; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2446 = 3'h3 == state ? dirtyBits_78_0 : _GEN_2168; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2447 = 3'h3 == state ? dirtyBits_79_0 : _GEN_2169; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2448 = 3'h3 == state ? dirtyBits_80_0 : _GEN_2170; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2449 = 3'h3 == state ? dirtyBits_81_0 : _GEN_2171; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2450 = 3'h3 == state ? dirtyBits_82_0 : _GEN_2172; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2451 = 3'h3 == state ? dirtyBits_83_0 : _GEN_2173; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2452 = 3'h3 == state ? dirtyBits_84_0 : _GEN_2174; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2453 = 3'h3 == state ? dirtyBits_85_0 : _GEN_2175; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2454 = 3'h3 == state ? dirtyBits_86_0 : _GEN_2176; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2455 = 3'h3 == state ? dirtyBits_87_0 : _GEN_2177; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2456 = 3'h3 == state ? dirtyBits_88_0 : _GEN_2178; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2457 = 3'h3 == state ? dirtyBits_89_0 : _GEN_2179; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2458 = 3'h3 == state ? dirtyBits_90_0 : _GEN_2180; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2459 = 3'h3 == state ? dirtyBits_91_0 : _GEN_2181; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2460 = 3'h3 == state ? dirtyBits_92_0 : _GEN_2182; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2461 = 3'h3 == state ? dirtyBits_93_0 : _GEN_2183; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2462 = 3'h3 == state ? dirtyBits_94_0 : _GEN_2184; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2463 = 3'h3 == state ? dirtyBits_95_0 : _GEN_2185; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2464 = 3'h3 == state ? dirtyBits_96_0 : _GEN_2186; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2465 = 3'h3 == state ? dirtyBits_97_0 : _GEN_2187; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2466 = 3'h3 == state ? dirtyBits_98_0 : _GEN_2188; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2467 = 3'h3 == state ? dirtyBits_99_0 : _GEN_2189; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2468 = 3'h3 == state ? dirtyBits_100_0 : _GEN_2190; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2469 = 3'h3 == state ? dirtyBits_101_0 : _GEN_2191; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2470 = 3'h3 == state ? dirtyBits_102_0 : _GEN_2192; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2471 = 3'h3 == state ? dirtyBits_103_0 : _GEN_2193; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2472 = 3'h3 == state ? dirtyBits_104_0 : _GEN_2194; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2473 = 3'h3 == state ? dirtyBits_105_0 : _GEN_2195; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2474 = 3'h3 == state ? dirtyBits_106_0 : _GEN_2196; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2475 = 3'h3 == state ? dirtyBits_107_0 : _GEN_2197; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2476 = 3'h3 == state ? dirtyBits_108_0 : _GEN_2198; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2477 = 3'h3 == state ? dirtyBits_109_0 : _GEN_2199; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2478 = 3'h3 == state ? dirtyBits_110_0 : _GEN_2200; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2479 = 3'h3 == state ? dirtyBits_111_0 : _GEN_2201; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2480 = 3'h3 == state ? dirtyBits_112_0 : _GEN_2202; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2481 = 3'h3 == state ? dirtyBits_113_0 : _GEN_2203; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2482 = 3'h3 == state ? dirtyBits_114_0 : _GEN_2204; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2483 = 3'h3 == state ? dirtyBits_115_0 : _GEN_2205; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2484 = 3'h3 == state ? dirtyBits_116_0 : _GEN_2206; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2485 = 3'h3 == state ? dirtyBits_117_0 : _GEN_2207; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2486 = 3'h3 == state ? dirtyBits_118_0 : _GEN_2208; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2487 = 3'h3 == state ? dirtyBits_119_0 : _GEN_2209; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2488 = 3'h3 == state ? dirtyBits_120_0 : _GEN_2210; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2489 = 3'h3 == state ? dirtyBits_121_0 : _GEN_2211; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2490 = 3'h3 == state ? dirtyBits_122_0 : _GEN_2212; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2491 = 3'h3 == state ? dirtyBits_123_0 : _GEN_2213; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2492 = 3'h3 == state ? dirtyBits_124_0 : _GEN_2214; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2493 = 3'h3 == state ? dirtyBits_125_0 : _GEN_2215; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2494 = 3'h3 == state ? dirtyBits_126_0 : _GEN_2216; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2495 = 3'h3 == state ? dirtyBits_127_0 : _GEN_2217; // @[src/main/scala/cache/cache.scala 150:17 13:26]
+  wire  _GEN_2497 = 3'h3 == state ? 1'h0 : _GEN_2220; // @[src/main/scala/cache/cache.scala 150:17 80:21]
+  wire [31:0] _GEN_2499 = 3'h2 == state ? _io_mm_req_write_bits_addr_T_2 : 32'h0; // @[src/main/scala/cache/cache.scala 150:17 228:35 93:29]
+  wire [31:0] _GEN_2500 = 3'h2 == state ? _GEN_708 : 32'h0; // @[src/main/scala/cache/cache.scala 150:17 229:35 92:29]
+  wire [3:0] _GEN_2501 = 3'h2 == state ? 4'hf : 4'h0; // @[src/main/scala/cache/cache.scala 150:17 230:35 94:29]
+  wire  _GEN_2633 = 3'h2 == state ? 1'h0 : 3'h3 == state; // @[src/main/scala/cache/cache.scala 150:17 85:26]
+  wire  _GEN_2634 = 3'h2 == state ? 1'h0 : _GEN_2224; // @[src/main/scala/cache/cache.scala 150:17 87:27]
+  wire  _GEN_2779 = 3'h2 == state ? 1'h0 : _GEN_2497; // @[src/main/scala/cache/cache.scala 150:17 80:21]
+  wire  _GEN_2780 = 3'h1 == state & hit; // @[src/main/scala/cache/cache.scala 150:17 166:19 97:15]
+  wire  _GEN_2781 = 3'h1 == state & ~hit; // @[src/main/scala/cache/cache.scala 150:17 167:20 98:16]
+  wire  _GEN_2782 = 3'h1 == state ? hit : _GEN_2779; // @[src/main/scala/cache/cache.scala 150:17]
+  wire [31:0] _GEN_2783 = 3'h1 == state ? _GEN_565 : respData; // @[src/main/scala/cache/cache.scala 150:17 81:25]
+  wire  _GEN_2920 = 3'h1 == state ? 1'h0 : 3'h2 == state; // @[src/main/scala/cache/cache.scala 150:17 91:25]
+  wire [31:0] _GEN_2921 = 3'h1 == state ? 32'h0 : _GEN_2499; // @[src/main/scala/cache/cache.scala 150:17 93:29]
+  wire [31:0] _GEN_2922 = 3'h1 == state ? 32'h0 : _GEN_2500; // @[src/main/scala/cache/cache.scala 150:17 92:29]
+  wire [3:0] _GEN_2923 = 3'h1 == state ? 4'h0 : _GEN_2501; // @[src/main/scala/cache/cache.scala 150:17 94:29]
+  wire  _GEN_2924 = 3'h1 == state ? 1'h0 : 3'h2 == state & _GEN_968; // @[src/main/scala/cache/cache.scala 150:17 99:24]
+  wire  _GEN_2926 = 3'h1 == state ? 1'h0 : _GEN_2633; // @[src/main/scala/cache/cache.scala 150:17 85:26]
+  wire  _GEN_2927 = 3'h1 == state ? 1'h0 : _GEN_2634; // @[src/main/scala/cache/cache.scala 150:17 87:27]
+  wire  _GEN_2938 = 3'h1 == state ? 1'h0 : _GEN_2643; // @[src/main/scala/cache/cache.scala 150:17 14:49]
+  assign tagMem_0_tagsRd_MPORT_en = tagMem_0_tagsRd_MPORT_en_pipe_0;
+  assign tagMem_0_tagsRd_MPORT_addr = tagMem_0_tagsRd_MPORT_addr_pipe_0;
+  assign tagMem_0_tagsRd_MPORT_data = tagMem_0[tagMem_0_tagsRd_MPORT_addr]; // @[src/main/scala/cache/cache.scala 14:49]
+  assign tagMem_0_MPORT_1_data = addrReg[31:12];
+  assign tagMem_0_MPORT_1_addr = addrReg[11:5];
+  assign tagMem_0_MPORT_1_mask = 1'h1;
+  assign tagMem_0_MPORT_1_en = _T_4 ? 1'h0 : _GEN_2938;
+  assign dataMem_0_linesRd_MPORT_en = dataMem_0_linesRd_MPORT_en_pipe_0;
+  assign dataMem_0_linesRd_MPORT_addr = dataMem_0_linesRd_MPORT_addr_pipe_0;
+  assign dataMem_0_linesRd_MPORT_data = dataMem_0[dataMem_0_linesRd_MPORT_addr]; // @[src/main/scala/cache/cache.scala 15:50]
+  assign dataMem_0_MPORT_data = _T_4 ? 256'h0 : _GEN_2788;
+  assign dataMem_0_MPORT_addr = addrReg[11:5];
+  assign dataMem_0_MPORT_mask = 1'h1;
+  assign dataMem_0_MPORT_en = _T_4 ? 1'h0 : _GEN_2786;
+  assign io_cpu_req_ready = state == 3'h0; // @[src/main/scala/cache/cache.scala 41:29]
+  assign io_cpu_resp_valid = 3'h0 == state ? 1'h0 : _GEN_2782; // @[src/main/scala/cache/cache.scala 150:17 80:21]
+  assign io_cpu_resp_bits_data = 3'h0 == state ? respData : _GEN_2783; // @[src/main/scala/cache/cache.scala 150:17 81:25]
+  assign io_mm_req_refill_valid = 3'h0 == state ? 1'h0 : _GEN_2926; // @[src/main/scala/cache/cache.scala 150:17 85:26]
+  assign io_mm_req_refill_bits_addr = {addrReg[31:5],5'h0}; // @[src/main/scala/cache/model.scala 78:38]
+  assign io_mm_data_refill_ready = 3'h0 == state ? 1'h0 : _GEN_2927; // @[src/main/scala/cache/cache.scala 150:17 87:27]
+  assign io_mm_req_write_valid = 3'h0 == state ? 1'h0 : _GEN_2920; // @[src/main/scala/cache/cache.scala 150:17 91:25]
+  assign io_mm_req_write_bits_addr = 3'h0 == state ? 32'h0 : _GEN_2921; // @[src/main/scala/cache/cache.scala 150:17 93:29]
+  assign io_mm_req_write_bits_data = 3'h0 == state ? 32'h0 : _GEN_2922; // @[src/main/scala/cache/cache.scala 150:17 92:29]
+  assign io_mm_req_write_bits_mask = 3'h0 == state ? 4'h0 : _GEN_2923; // @[src/main/scala/cache/cache.scala 150:17 94:29]
+  assign io_stat_hit = 3'h0 == state ? 1'h0 : _GEN_2780; // @[src/main/scala/cache/cache.scala 150:17 97:15]
+  assign io_stat_miss = 3'h0 == state ? 1'h0 : _GEN_2781; // @[src/main/scala/cache/cache.scala 150:17 98:16]
+  assign io_stat_writeback_wb = 3'h0 == state ? 1'h0 : _GEN_2924; // @[src/main/scala/cache/cache.scala 150:17 99:24]
+  assign io_stat_state = state; // @[src/main/scala/cache/cache.scala 101:26]
   always @(posedge clock) begin
-    if (tagMem_MPORT_1_en & tagMem_MPORT_1_mask) begin
-      tagMem[tagMem_MPORT_1_addr] <= tagMem_MPORT_1_data; // @[src/main/scala/cache/cache.scala 13:27]
+    if (tagMem_0_MPORT_1_en & tagMem_0_MPORT_1_mask) begin
+      tagMem_0[tagMem_0_MPORT_1_addr] <= tagMem_0_MPORT_1_data; // @[src/main/scala/cache/cache.scala 14:49]
     end
-    tagMem_tagRd_en_pipe_0 <= io_cpu_req_ready & io_cpu_req_valid;
+    tagMem_0_tagsRd_MPORT_en_pipe_0 <= io_cpu_req_ready & io_cpu_req_valid;
     if (io_cpu_req_ready & io_cpu_req_valid) begin
-      tagMem_tagRd_addr_pipe_0 <= io_cpu_req_bits_addr[11:5];
+      tagMem_0_tagsRd_MPORT_addr_pipe_0 <= io_cpu_req_bits_addr[11:5];
     end
-    if (dataMem_MPORT_en & dataMem_MPORT_mask) begin
-      dataMem[dataMem_MPORT_addr] <= dataMem_MPORT_data; // @[src/main/scala/cache/cache.scala 14:28]
+    if (dataMem_0_MPORT_en & dataMem_0_MPORT_mask) begin
+      dataMem_0[dataMem_0_MPORT_addr] <= dataMem_0_MPORT_data; // @[src/main/scala/cache/cache.scala 15:50]
     end
-    dataMem_lineRd_en_pipe_0 <= io_cpu_req_ready & io_cpu_req_valid;
+    dataMem_0_linesRd_MPORT_en_pipe_0 <= io_cpu_req_ready & io_cpu_req_valid;
     if (io_cpu_req_ready & io_cpu_req_valid) begin
-      dataMem_lineRd_addr_pipe_0 <= io_cpu_req_bits_addr[11:5];
+      dataMem_0_linesRd_MPORT_addr_pipe_0 <= io_cpu_req_bits_addr[11:5];
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_0 <= _GEN_813;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_0_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_0_0 <= _GEN_2240;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_1 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_1 <= _GEN_814;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_1_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_1_0 <= _GEN_2241;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_2 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_2 <= _GEN_815;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_2_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_2_0 <= _GEN_2242;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_3 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_3 <= _GEN_816;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_3_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_3_0 <= _GEN_2243;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_4 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_4 <= _GEN_817;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_4_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_4_0 <= _GEN_2244;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_5 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_5 <= _GEN_818;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_5_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_5_0 <= _GEN_2245;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_6 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_6 <= _GEN_819;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_6_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_6_0 <= _GEN_2246;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_7 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_7 <= _GEN_820;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_7_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_7_0 <= _GEN_2247;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_8 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_8 <= _GEN_821;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_8_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_8_0 <= _GEN_2248;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_9 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_9 <= _GEN_822;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_9_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_9_0 <= _GEN_2249;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_10 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_10 <= _GEN_823;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_10_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_10_0 <= _GEN_2250;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_11 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_11 <= _GEN_824;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_11_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_11_0 <= _GEN_2251;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_12 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_12 <= _GEN_825;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_12_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_12_0 <= _GEN_2252;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_13 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_13 <= _GEN_826;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_13_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_13_0 <= _GEN_2253;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_14 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_14 <= _GEN_827;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_14_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_14_0 <= _GEN_2254;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_15 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_15 <= _GEN_828;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_15_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_15_0 <= _GEN_2255;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_16 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_16 <= _GEN_829;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_16_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_16_0 <= _GEN_2256;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_17 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_17 <= _GEN_830;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_17_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_17_0 <= _GEN_2257;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_18 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_18 <= _GEN_831;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_18_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_18_0 <= _GEN_2258;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_19 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_19 <= _GEN_832;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_19_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_19_0 <= _GEN_2259;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_20 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_20 <= _GEN_833;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_20_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_20_0 <= _GEN_2260;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_21 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_21 <= _GEN_834;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_21_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_21_0 <= _GEN_2261;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_22 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_22 <= _GEN_835;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_22_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_22_0 <= _GEN_2262;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_23 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_23 <= _GEN_836;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_23_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_23_0 <= _GEN_2263;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_24 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_24 <= _GEN_837;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_24_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_24_0 <= _GEN_2264;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_25 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_25 <= _GEN_838;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_25_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_25_0 <= _GEN_2265;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_26 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_26 <= _GEN_839;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_26_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_26_0 <= _GEN_2266;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_27 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_27 <= _GEN_840;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_27_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_27_0 <= _GEN_2267;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_28 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_28 <= _GEN_841;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_28_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_28_0 <= _GEN_2268;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_29 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_29 <= _GEN_842;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_29_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_29_0 <= _GEN_2269;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_30 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_30 <= _GEN_843;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_30_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_30_0 <= _GEN_2270;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_31 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_31 <= _GEN_844;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_31_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_31_0 <= _GEN_2271;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_32 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_32 <= _GEN_845;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_32_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_32_0 <= _GEN_2272;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_33 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_33 <= _GEN_846;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_33_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_33_0 <= _GEN_2273;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_34 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_34 <= _GEN_847;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_34_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_34_0 <= _GEN_2274;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_35 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_35 <= _GEN_848;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_35_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_35_0 <= _GEN_2275;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_36 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_36 <= _GEN_849;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_36_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_36_0 <= _GEN_2276;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_37 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_37 <= _GEN_850;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_37_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_37_0 <= _GEN_2277;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_38 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_38 <= _GEN_851;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_38_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_38_0 <= _GEN_2278;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_39 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_39 <= _GEN_852;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_39_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_39_0 <= _GEN_2279;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_40 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_40 <= _GEN_853;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_40_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_40_0 <= _GEN_2280;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_41 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_41 <= _GEN_854;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_41_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_41_0 <= _GEN_2281;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_42 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_42 <= _GEN_855;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_42_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_42_0 <= _GEN_2282;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_43 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_43 <= _GEN_856;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_43_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_43_0 <= _GEN_2283;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_44 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_44 <= _GEN_857;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_44_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_44_0 <= _GEN_2284;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_45 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_45 <= _GEN_858;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_45_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_45_0 <= _GEN_2285;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_46 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_46 <= _GEN_859;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_46_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_46_0 <= _GEN_2286;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_47 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_47 <= _GEN_860;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_47_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_47_0 <= _GEN_2287;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_48 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_48 <= _GEN_861;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_48_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_48_0 <= _GEN_2288;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_49 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_49 <= _GEN_862;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_49_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_49_0 <= _GEN_2289;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_50 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_50 <= _GEN_863;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_50_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_50_0 <= _GEN_2290;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_51 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_51 <= _GEN_864;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_51_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_51_0 <= _GEN_2291;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_52 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_52 <= _GEN_865;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_52_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_52_0 <= _GEN_2292;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_53 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_53 <= _GEN_866;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_53_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_53_0 <= _GEN_2293;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_54 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_54 <= _GEN_867;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_54_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_54_0 <= _GEN_2294;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_55 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_55 <= _GEN_868;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_55_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_55_0 <= _GEN_2295;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_56 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_56 <= _GEN_869;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_56_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_56_0 <= _GEN_2296;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_57 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_57 <= _GEN_870;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_57_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_57_0 <= _GEN_2297;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_58 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_58 <= _GEN_871;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_58_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_58_0 <= _GEN_2298;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_59 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_59 <= _GEN_872;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_59_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_59_0 <= _GEN_2299;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_60 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_60 <= _GEN_873;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_60_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_60_0 <= _GEN_2300;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_61 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_61 <= _GEN_874;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_61_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_61_0 <= _GEN_2301;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_62 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_62 <= _GEN_875;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_62_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_62_0 <= _GEN_2302;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_63 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_63 <= _GEN_876;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_63_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_63_0 <= _GEN_2303;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_64 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_64 <= _GEN_877;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_64_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_64_0 <= _GEN_2304;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_65 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_65 <= _GEN_878;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_65_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_65_0 <= _GEN_2305;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_66 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_66 <= _GEN_879;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_66_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_66_0 <= _GEN_2306;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_67 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_67 <= _GEN_880;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_67_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_67_0 <= _GEN_2307;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_68 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_68 <= _GEN_881;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_68_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_68_0 <= _GEN_2308;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_69 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_69 <= _GEN_882;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_69_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_69_0 <= _GEN_2309;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_70 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_70 <= _GEN_883;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_70_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_70_0 <= _GEN_2310;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_71 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_71 <= _GEN_884;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_71_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_71_0 <= _GEN_2311;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_72 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_72 <= _GEN_885;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_72_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_72_0 <= _GEN_2312;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_73 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_73 <= _GEN_886;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_73_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_73_0 <= _GEN_2313;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_74 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_74 <= _GEN_887;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_74_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_74_0 <= _GEN_2314;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_75 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_75 <= _GEN_888;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_75_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_75_0 <= _GEN_2315;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_76 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_76 <= _GEN_889;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_76_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_76_0 <= _GEN_2316;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_77 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_77 <= _GEN_890;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_77_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_77_0 <= _GEN_2317;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_78 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_78 <= _GEN_891;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_78_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_78_0 <= _GEN_2318;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_79 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_79 <= _GEN_892;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_79_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_79_0 <= _GEN_2319;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_80 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_80 <= _GEN_893;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_80_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_80_0 <= _GEN_2320;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_81 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_81 <= _GEN_894;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_81_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_81_0 <= _GEN_2321;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_82 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_82 <= _GEN_895;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_82_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_82_0 <= _GEN_2322;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_83 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_83 <= _GEN_896;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_83_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_83_0 <= _GEN_2323;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_84 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_84 <= _GEN_897;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_84_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_84_0 <= _GEN_2324;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_85 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_85 <= _GEN_898;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_85_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_85_0 <= _GEN_2325;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_86 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_86 <= _GEN_899;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_86_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_86_0 <= _GEN_2326;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_87 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_87 <= _GEN_900;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_87_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_87_0 <= _GEN_2327;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_88 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_88 <= _GEN_901;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_88_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_88_0 <= _GEN_2328;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_89 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_89 <= _GEN_902;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_89_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_89_0 <= _GEN_2329;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_90 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_90 <= _GEN_903;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_90_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_90_0 <= _GEN_2330;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_91 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_91 <= _GEN_904;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_91_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_91_0 <= _GEN_2331;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_92 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_92 <= _GEN_905;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_92_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_92_0 <= _GEN_2332;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_93 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_93 <= _GEN_906;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_93_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_93_0 <= _GEN_2333;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_94 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_94 <= _GEN_907;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_94_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_94_0 <= _GEN_2334;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_95 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_95 <= _GEN_908;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_95_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_95_0 <= _GEN_2335;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_96 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_96 <= _GEN_909;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_96_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_96_0 <= _GEN_2336;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_97 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_97 <= _GEN_910;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_97_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_97_0 <= _GEN_2337;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_98 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_98 <= _GEN_911;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_98_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_98_0 <= _GEN_2338;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_99 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_99 <= _GEN_912;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_99_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_99_0 <= _GEN_2339;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_100 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_100 <= _GEN_913;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_100_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_100_0 <= _GEN_2340;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_101 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_101 <= _GEN_914;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_101_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_101_0 <= _GEN_2341;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_102 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_102 <= _GEN_915;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_102_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_102_0 <= _GEN_2342;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_103 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_103 <= _GEN_916;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_103_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_103_0 <= _GEN_2343;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_104 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_104 <= _GEN_917;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_104_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_104_0 <= _GEN_2344;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_105 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_105 <= _GEN_918;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_105_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_105_0 <= _GEN_2345;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_106 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_106 <= _GEN_919;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_106_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_106_0 <= _GEN_2346;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_107 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_107 <= _GEN_920;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_107_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_107_0 <= _GEN_2347;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_108 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_108 <= _GEN_921;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_108_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_108_0 <= _GEN_2348;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_109 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_109 <= _GEN_922;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_109_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_109_0 <= _GEN_2349;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_110 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_110 <= _GEN_923;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_110_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_110_0 <= _GEN_2350;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_111 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_111 <= _GEN_924;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_111_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_111_0 <= _GEN_2351;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_112 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_112 <= _GEN_925;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_112_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_112_0 <= _GEN_2352;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_113 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_113 <= _GEN_926;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_113_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_113_0 <= _GEN_2353;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_114 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_114 <= _GEN_927;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_114_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_114_0 <= _GEN_2354;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_115 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_115 <= _GEN_928;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_115_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_115_0 <= _GEN_2355;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_116 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_116 <= _GEN_929;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_116_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_116_0 <= _GEN_2356;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_117 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_117 <= _GEN_930;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_117_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_117_0 <= _GEN_2357;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_118 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_118 <= _GEN_931;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_118_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_118_0 <= _GEN_2358;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_119 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_119 <= _GEN_932;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_119_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_119_0 <= _GEN_2359;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_120 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_120 <= _GEN_933;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_120_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_120_0 <= _GEN_2360;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_121 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_121 <= _GEN_934;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_121_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_121_0 <= _GEN_2361;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_122 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_122 <= _GEN_935;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_122_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_122_0 <= _GEN_2362;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_123 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_123 <= _GEN_936;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_123_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_123_0 <= _GEN_2363;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_124 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_124 <= _GEN_937;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_124_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_124_0 <= _GEN_2364;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_125 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_125 <= _GEN_938;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_125_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_125_0 <= _GEN_2365;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_126 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_126 <= _GEN_939;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_126_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_126_0 <= _GEN_2366;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 11:26]
-      validBits_127 <= 1'h0; // @[src/main/scala/cache/cache.scala 11:26]
-    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          validBits_127 <= _GEN_940;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 12:26]
+      validBits_127_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 12:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          validBits_127_0 <= _GEN_2367;
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 17:22]
-      state <= 3'h0; // @[src/main/scala/cache/cache.scala 17:22]
-    end else if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (_tagRd_T) begin // @[src/main/scala/cache/cache.scala 122:29]
-        state <= 3'h1; // @[src/main/scala/cache/cache.scala 129:15]
-      end
-    end else if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (hit) begin // @[src/main/scala/cache/cache.scala 140:17]
-        state <= _GEN_173;
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_0_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_0_0 <= _GEN_305;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_0_0 <= _GEN_969;
       end else begin
-        state <= _GEN_175;
-      end
-    end else if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      state <= _GEN_797;
-    end
-    if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (_tagRd_T) begin // @[src/main/scala/cache/cache.scala 122:29]
-        addrReg <= io_cpu_req_bits_addr; // @[src/main/scala/cache/cache.scala 123:17]
+        dirtyBits_0_0 <= _GEN_2368;
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (hit) begin // @[src/main/scala/cache/cache.scala 140:17]
-          if (!(writeReg)) begin // @[src/main/scala/cache/cache.scala 141:24]
-            respData <= _GEN_154; // @[src/main/scala/cache/cache.scala 160:20]
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_1_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_1_0 <= _GEN_306;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_1_0 <= _GEN_970;
+      end else begin
+        dirtyBits_1_0 <= _GEN_2369;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_2_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_2_0 <= _GEN_307;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_2_0 <= _GEN_971;
+      end else begin
+        dirtyBits_2_0 <= _GEN_2370;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_3_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_3_0 <= _GEN_308;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_3_0 <= _GEN_972;
+      end else begin
+        dirtyBits_3_0 <= _GEN_2371;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_4_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_4_0 <= _GEN_309;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_4_0 <= _GEN_973;
+      end else begin
+        dirtyBits_4_0 <= _GEN_2372;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_5_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_5_0 <= _GEN_310;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_5_0 <= _GEN_974;
+      end else begin
+        dirtyBits_5_0 <= _GEN_2373;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_6_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_6_0 <= _GEN_311;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_6_0 <= _GEN_975;
+      end else begin
+        dirtyBits_6_0 <= _GEN_2374;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_7_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_7_0 <= _GEN_312;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_7_0 <= _GEN_976;
+      end else begin
+        dirtyBits_7_0 <= _GEN_2375;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_8_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_8_0 <= _GEN_313;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_8_0 <= _GEN_977;
+      end else begin
+        dirtyBits_8_0 <= _GEN_2376;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_9_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_9_0 <= _GEN_314;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_9_0 <= _GEN_978;
+      end else begin
+        dirtyBits_9_0 <= _GEN_2377;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_10_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_10_0 <= _GEN_315;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_10_0 <= _GEN_979;
+      end else begin
+        dirtyBits_10_0 <= _GEN_2378;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_11_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_11_0 <= _GEN_316;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_11_0 <= _GEN_980;
+      end else begin
+        dirtyBits_11_0 <= _GEN_2379;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_12_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_12_0 <= _GEN_317;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_12_0 <= _GEN_981;
+      end else begin
+        dirtyBits_12_0 <= _GEN_2380;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_13_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_13_0 <= _GEN_318;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_13_0 <= _GEN_982;
+      end else begin
+        dirtyBits_13_0 <= _GEN_2381;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_14_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_14_0 <= _GEN_319;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_14_0 <= _GEN_983;
+      end else begin
+        dirtyBits_14_0 <= _GEN_2382;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_15_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_15_0 <= _GEN_320;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_15_0 <= _GEN_984;
+      end else begin
+        dirtyBits_15_0 <= _GEN_2383;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_16_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_16_0 <= _GEN_321;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_16_0 <= _GEN_985;
+      end else begin
+        dirtyBits_16_0 <= _GEN_2384;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_17_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_17_0 <= _GEN_322;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_17_0 <= _GEN_986;
+      end else begin
+        dirtyBits_17_0 <= _GEN_2385;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_18_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_18_0 <= _GEN_323;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_18_0 <= _GEN_987;
+      end else begin
+        dirtyBits_18_0 <= _GEN_2386;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_19_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_19_0 <= _GEN_324;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_19_0 <= _GEN_988;
+      end else begin
+        dirtyBits_19_0 <= _GEN_2387;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_20_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_20_0 <= _GEN_325;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_20_0 <= _GEN_989;
+      end else begin
+        dirtyBits_20_0 <= _GEN_2388;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_21_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_21_0 <= _GEN_326;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_21_0 <= _GEN_990;
+      end else begin
+        dirtyBits_21_0 <= _GEN_2389;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_22_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_22_0 <= _GEN_327;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_22_0 <= _GEN_991;
+      end else begin
+        dirtyBits_22_0 <= _GEN_2390;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_23_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_23_0 <= _GEN_328;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_23_0 <= _GEN_992;
+      end else begin
+        dirtyBits_23_0 <= _GEN_2391;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_24_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_24_0 <= _GEN_329;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_24_0 <= _GEN_993;
+      end else begin
+        dirtyBits_24_0 <= _GEN_2392;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_25_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_25_0 <= _GEN_330;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_25_0 <= _GEN_994;
+      end else begin
+        dirtyBits_25_0 <= _GEN_2393;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_26_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_26_0 <= _GEN_331;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_26_0 <= _GEN_995;
+      end else begin
+        dirtyBits_26_0 <= _GEN_2394;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_27_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_27_0 <= _GEN_332;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_27_0 <= _GEN_996;
+      end else begin
+        dirtyBits_27_0 <= _GEN_2395;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_28_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_28_0 <= _GEN_333;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_28_0 <= _GEN_997;
+      end else begin
+        dirtyBits_28_0 <= _GEN_2396;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_29_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_29_0 <= _GEN_334;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_29_0 <= _GEN_998;
+      end else begin
+        dirtyBits_29_0 <= _GEN_2397;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_30_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_30_0 <= _GEN_335;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_30_0 <= _GEN_999;
+      end else begin
+        dirtyBits_30_0 <= _GEN_2398;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_31_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_31_0 <= _GEN_336;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_31_0 <= _GEN_1000;
+      end else begin
+        dirtyBits_31_0 <= _GEN_2399;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_32_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_32_0 <= _GEN_337;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_32_0 <= _GEN_1001;
+      end else begin
+        dirtyBits_32_0 <= _GEN_2400;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_33_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_33_0 <= _GEN_338;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_33_0 <= _GEN_1002;
+      end else begin
+        dirtyBits_33_0 <= _GEN_2401;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_34_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_34_0 <= _GEN_339;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_34_0 <= _GEN_1003;
+      end else begin
+        dirtyBits_34_0 <= _GEN_2402;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_35_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_35_0 <= _GEN_340;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_35_0 <= _GEN_1004;
+      end else begin
+        dirtyBits_35_0 <= _GEN_2403;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_36_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_36_0 <= _GEN_341;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_36_0 <= _GEN_1005;
+      end else begin
+        dirtyBits_36_0 <= _GEN_2404;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_37_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_37_0 <= _GEN_342;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_37_0 <= _GEN_1006;
+      end else begin
+        dirtyBits_37_0 <= _GEN_2405;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_38_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_38_0 <= _GEN_343;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_38_0 <= _GEN_1007;
+      end else begin
+        dirtyBits_38_0 <= _GEN_2406;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_39_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_39_0 <= _GEN_344;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_39_0 <= _GEN_1008;
+      end else begin
+        dirtyBits_39_0 <= _GEN_2407;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_40_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_40_0 <= _GEN_345;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_40_0 <= _GEN_1009;
+      end else begin
+        dirtyBits_40_0 <= _GEN_2408;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_41_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_41_0 <= _GEN_346;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_41_0 <= _GEN_1010;
+      end else begin
+        dirtyBits_41_0 <= _GEN_2409;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_42_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_42_0 <= _GEN_347;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_42_0 <= _GEN_1011;
+      end else begin
+        dirtyBits_42_0 <= _GEN_2410;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_43_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_43_0 <= _GEN_348;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_43_0 <= _GEN_1012;
+      end else begin
+        dirtyBits_43_0 <= _GEN_2411;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_44_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_44_0 <= _GEN_349;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_44_0 <= _GEN_1013;
+      end else begin
+        dirtyBits_44_0 <= _GEN_2412;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_45_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_45_0 <= _GEN_350;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_45_0 <= _GEN_1014;
+      end else begin
+        dirtyBits_45_0 <= _GEN_2413;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_46_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_46_0 <= _GEN_351;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_46_0 <= _GEN_1015;
+      end else begin
+        dirtyBits_46_0 <= _GEN_2414;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_47_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_47_0 <= _GEN_352;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_47_0 <= _GEN_1016;
+      end else begin
+        dirtyBits_47_0 <= _GEN_2415;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_48_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_48_0 <= _GEN_353;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_48_0 <= _GEN_1017;
+      end else begin
+        dirtyBits_48_0 <= _GEN_2416;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_49_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_49_0 <= _GEN_354;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_49_0 <= _GEN_1018;
+      end else begin
+        dirtyBits_49_0 <= _GEN_2417;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_50_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_50_0 <= _GEN_355;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_50_0 <= _GEN_1019;
+      end else begin
+        dirtyBits_50_0 <= _GEN_2418;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_51_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_51_0 <= _GEN_356;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_51_0 <= _GEN_1020;
+      end else begin
+        dirtyBits_51_0 <= _GEN_2419;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_52_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_52_0 <= _GEN_357;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_52_0 <= _GEN_1021;
+      end else begin
+        dirtyBits_52_0 <= _GEN_2420;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_53_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_53_0 <= _GEN_358;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_53_0 <= _GEN_1022;
+      end else begin
+        dirtyBits_53_0 <= _GEN_2421;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_54_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_54_0 <= _GEN_359;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_54_0 <= _GEN_1023;
+      end else begin
+        dirtyBits_54_0 <= _GEN_2422;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_55_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_55_0 <= _GEN_360;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_55_0 <= _GEN_1024;
+      end else begin
+        dirtyBits_55_0 <= _GEN_2423;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_56_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_56_0 <= _GEN_361;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_56_0 <= _GEN_1025;
+      end else begin
+        dirtyBits_56_0 <= _GEN_2424;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_57_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_57_0 <= _GEN_362;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_57_0 <= _GEN_1026;
+      end else begin
+        dirtyBits_57_0 <= _GEN_2425;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_58_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_58_0 <= _GEN_363;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_58_0 <= _GEN_1027;
+      end else begin
+        dirtyBits_58_0 <= _GEN_2426;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_59_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_59_0 <= _GEN_364;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_59_0 <= _GEN_1028;
+      end else begin
+        dirtyBits_59_0 <= _GEN_2427;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_60_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_60_0 <= _GEN_365;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_60_0 <= _GEN_1029;
+      end else begin
+        dirtyBits_60_0 <= _GEN_2428;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_61_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_61_0 <= _GEN_366;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_61_0 <= _GEN_1030;
+      end else begin
+        dirtyBits_61_0 <= _GEN_2429;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_62_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_62_0 <= _GEN_367;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_62_0 <= _GEN_1031;
+      end else begin
+        dirtyBits_62_0 <= _GEN_2430;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_63_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_63_0 <= _GEN_368;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_63_0 <= _GEN_1032;
+      end else begin
+        dirtyBits_63_0 <= _GEN_2431;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_64_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_64_0 <= _GEN_369;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_64_0 <= _GEN_1033;
+      end else begin
+        dirtyBits_64_0 <= _GEN_2432;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_65_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_65_0 <= _GEN_370;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_65_0 <= _GEN_1034;
+      end else begin
+        dirtyBits_65_0 <= _GEN_2433;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_66_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_66_0 <= _GEN_371;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_66_0 <= _GEN_1035;
+      end else begin
+        dirtyBits_66_0 <= _GEN_2434;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_67_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_67_0 <= _GEN_372;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_67_0 <= _GEN_1036;
+      end else begin
+        dirtyBits_67_0 <= _GEN_2435;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_68_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_68_0 <= _GEN_373;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_68_0 <= _GEN_1037;
+      end else begin
+        dirtyBits_68_0 <= _GEN_2436;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_69_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_69_0 <= _GEN_374;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_69_0 <= _GEN_1038;
+      end else begin
+        dirtyBits_69_0 <= _GEN_2437;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_70_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_70_0 <= _GEN_375;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_70_0 <= _GEN_1039;
+      end else begin
+        dirtyBits_70_0 <= _GEN_2438;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_71_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_71_0 <= _GEN_376;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_71_0 <= _GEN_1040;
+      end else begin
+        dirtyBits_71_0 <= _GEN_2439;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_72_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_72_0 <= _GEN_377;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_72_0 <= _GEN_1041;
+      end else begin
+        dirtyBits_72_0 <= _GEN_2440;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_73_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_73_0 <= _GEN_378;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_73_0 <= _GEN_1042;
+      end else begin
+        dirtyBits_73_0 <= _GEN_2441;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_74_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_74_0 <= _GEN_379;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_74_0 <= _GEN_1043;
+      end else begin
+        dirtyBits_74_0 <= _GEN_2442;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_75_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_75_0 <= _GEN_380;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_75_0 <= _GEN_1044;
+      end else begin
+        dirtyBits_75_0 <= _GEN_2443;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_76_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_76_0 <= _GEN_381;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_76_0 <= _GEN_1045;
+      end else begin
+        dirtyBits_76_0 <= _GEN_2444;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_77_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_77_0 <= _GEN_382;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_77_0 <= _GEN_1046;
+      end else begin
+        dirtyBits_77_0 <= _GEN_2445;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_78_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_78_0 <= _GEN_383;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_78_0 <= _GEN_1047;
+      end else begin
+        dirtyBits_78_0 <= _GEN_2446;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_79_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_79_0 <= _GEN_384;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_79_0 <= _GEN_1048;
+      end else begin
+        dirtyBits_79_0 <= _GEN_2447;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_80_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_80_0 <= _GEN_385;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_80_0 <= _GEN_1049;
+      end else begin
+        dirtyBits_80_0 <= _GEN_2448;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_81_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_81_0 <= _GEN_386;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_81_0 <= _GEN_1050;
+      end else begin
+        dirtyBits_81_0 <= _GEN_2449;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_82_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_82_0 <= _GEN_387;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_82_0 <= _GEN_1051;
+      end else begin
+        dirtyBits_82_0 <= _GEN_2450;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_83_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_83_0 <= _GEN_388;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_83_0 <= _GEN_1052;
+      end else begin
+        dirtyBits_83_0 <= _GEN_2451;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_84_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_84_0 <= _GEN_389;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_84_0 <= _GEN_1053;
+      end else begin
+        dirtyBits_84_0 <= _GEN_2452;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_85_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_85_0 <= _GEN_390;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_85_0 <= _GEN_1054;
+      end else begin
+        dirtyBits_85_0 <= _GEN_2453;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_86_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_86_0 <= _GEN_391;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_86_0 <= _GEN_1055;
+      end else begin
+        dirtyBits_86_0 <= _GEN_2454;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_87_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_87_0 <= _GEN_392;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_87_0 <= _GEN_1056;
+      end else begin
+        dirtyBits_87_0 <= _GEN_2455;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_88_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_88_0 <= _GEN_393;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_88_0 <= _GEN_1057;
+      end else begin
+        dirtyBits_88_0 <= _GEN_2456;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_89_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_89_0 <= _GEN_394;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_89_0 <= _GEN_1058;
+      end else begin
+        dirtyBits_89_0 <= _GEN_2457;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_90_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_90_0 <= _GEN_395;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_90_0 <= _GEN_1059;
+      end else begin
+        dirtyBits_90_0 <= _GEN_2458;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_91_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_91_0 <= _GEN_396;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_91_0 <= _GEN_1060;
+      end else begin
+        dirtyBits_91_0 <= _GEN_2459;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_92_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_92_0 <= _GEN_397;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_92_0 <= _GEN_1061;
+      end else begin
+        dirtyBits_92_0 <= _GEN_2460;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_93_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_93_0 <= _GEN_398;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_93_0 <= _GEN_1062;
+      end else begin
+        dirtyBits_93_0 <= _GEN_2461;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_94_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_94_0 <= _GEN_399;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_94_0 <= _GEN_1063;
+      end else begin
+        dirtyBits_94_0 <= _GEN_2462;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_95_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_95_0 <= _GEN_400;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_95_0 <= _GEN_1064;
+      end else begin
+        dirtyBits_95_0 <= _GEN_2463;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_96_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_96_0 <= _GEN_401;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_96_0 <= _GEN_1065;
+      end else begin
+        dirtyBits_96_0 <= _GEN_2464;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_97_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_97_0 <= _GEN_402;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_97_0 <= _GEN_1066;
+      end else begin
+        dirtyBits_97_0 <= _GEN_2465;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_98_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_98_0 <= _GEN_403;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_98_0 <= _GEN_1067;
+      end else begin
+        dirtyBits_98_0 <= _GEN_2466;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_99_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_99_0 <= _GEN_404;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_99_0 <= _GEN_1068;
+      end else begin
+        dirtyBits_99_0 <= _GEN_2467;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_100_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_100_0 <= _GEN_405;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_100_0 <= _GEN_1069;
+      end else begin
+        dirtyBits_100_0 <= _GEN_2468;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_101_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_101_0 <= _GEN_406;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_101_0 <= _GEN_1070;
+      end else begin
+        dirtyBits_101_0 <= _GEN_2469;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_102_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_102_0 <= _GEN_407;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_102_0 <= _GEN_1071;
+      end else begin
+        dirtyBits_102_0 <= _GEN_2470;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_103_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_103_0 <= _GEN_408;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_103_0 <= _GEN_1072;
+      end else begin
+        dirtyBits_103_0 <= _GEN_2471;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_104_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_104_0 <= _GEN_409;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_104_0 <= _GEN_1073;
+      end else begin
+        dirtyBits_104_0 <= _GEN_2472;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_105_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_105_0 <= _GEN_410;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_105_0 <= _GEN_1074;
+      end else begin
+        dirtyBits_105_0 <= _GEN_2473;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_106_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_106_0 <= _GEN_411;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_106_0 <= _GEN_1075;
+      end else begin
+        dirtyBits_106_0 <= _GEN_2474;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_107_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_107_0 <= _GEN_412;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_107_0 <= _GEN_1076;
+      end else begin
+        dirtyBits_107_0 <= _GEN_2475;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_108_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_108_0 <= _GEN_413;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_108_0 <= _GEN_1077;
+      end else begin
+        dirtyBits_108_0 <= _GEN_2476;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_109_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_109_0 <= _GEN_414;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_109_0 <= _GEN_1078;
+      end else begin
+        dirtyBits_109_0 <= _GEN_2477;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_110_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_110_0 <= _GEN_415;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_110_0 <= _GEN_1079;
+      end else begin
+        dirtyBits_110_0 <= _GEN_2478;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_111_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_111_0 <= _GEN_416;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_111_0 <= _GEN_1080;
+      end else begin
+        dirtyBits_111_0 <= _GEN_2479;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_112_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_112_0 <= _GEN_417;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_112_0 <= _GEN_1081;
+      end else begin
+        dirtyBits_112_0 <= _GEN_2480;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_113_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_113_0 <= _GEN_418;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_113_0 <= _GEN_1082;
+      end else begin
+        dirtyBits_113_0 <= _GEN_2481;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_114_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_114_0 <= _GEN_419;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_114_0 <= _GEN_1083;
+      end else begin
+        dirtyBits_114_0 <= _GEN_2482;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_115_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_115_0 <= _GEN_420;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_115_0 <= _GEN_1084;
+      end else begin
+        dirtyBits_115_0 <= _GEN_2483;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_116_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_116_0 <= _GEN_421;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_116_0 <= _GEN_1085;
+      end else begin
+        dirtyBits_116_0 <= _GEN_2484;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_117_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_117_0 <= _GEN_422;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_117_0 <= _GEN_1086;
+      end else begin
+        dirtyBits_117_0 <= _GEN_2485;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_118_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_118_0 <= _GEN_423;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_118_0 <= _GEN_1087;
+      end else begin
+        dirtyBits_118_0 <= _GEN_2486;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_119_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_119_0 <= _GEN_424;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_119_0 <= _GEN_1088;
+      end else begin
+        dirtyBits_119_0 <= _GEN_2487;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_120_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_120_0 <= _GEN_425;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_120_0 <= _GEN_1089;
+      end else begin
+        dirtyBits_120_0 <= _GEN_2488;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_121_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_121_0 <= _GEN_426;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_121_0 <= _GEN_1090;
+      end else begin
+        dirtyBits_121_0 <= _GEN_2489;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_122_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_122_0 <= _GEN_427;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_122_0 <= _GEN_1091;
+      end else begin
+        dirtyBits_122_0 <= _GEN_2490;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_123_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_123_0 <= _GEN_428;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_123_0 <= _GEN_1092;
+      end else begin
+        dirtyBits_123_0 <= _GEN_2491;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_124_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_124_0 <= _GEN_429;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_124_0 <= _GEN_1093;
+      end else begin
+        dirtyBits_124_0 <= _GEN_2492;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_125_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_125_0 <= _GEN_430;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_125_0 <= _GEN_1094;
+      end else begin
+        dirtyBits_125_0 <= _GEN_2493;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_126_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_126_0 <= _GEN_431;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_126_0 <= _GEN_1095;
+      end else begin
+        dirtyBits_126_0 <= _GEN_2494;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 13:26]
+      dirtyBits_127_0 <= 1'h0; // @[src/main/scala/cache/cache.scala 13:26]
+    end else if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          dirtyBits_127_0 <= _GEN_432;
+        end
+      end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        dirtyBits_127_0 <= _GEN_1096;
+      end else begin
+        dirtyBits_127_0 <= _GEN_2495;
+      end
+    end
+    if (reset) begin // @[src/main/scala/cache/cache.scala 21:22]
+      state <= 3'h0; // @[src/main/scala/cache/cache.scala 21:22]
+    end else if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (_tagsRd_T) begin // @[src/main/scala/cache/cache.scala 153:29]
+        state <= 3'h1; // @[src/main/scala/cache/cache.scala 160:15]
+      end
+    end else if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+        state <= _state_T;
+      end else begin
+        state <= {{1'd0}, _GEN_563};
+      end
+    end else if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+      state <= _GEN_1098;
+    end else begin
+      state <= _GEN_2223;
+    end
+    if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (_tagsRd_T) begin // @[src/main/scala/cache/cache.scala 153:29]
+        addrReg <= io_cpu_req_bits_addr; // @[src/main/scala/cache/cache.scala 154:17]
+      end
+    end
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (hit) begin // @[src/main/scala/cache/cache.scala 170:17]
+          if (writeReg) begin // @[src/main/scala/cache/cache.scala 173:28]
+            respData <= 32'h0;
+          end else begin
+            respData <= _GEN_165;
           end
         end
-      end else if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          respData <= _GEN_787;
+      end else if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          respData <= _GEN_2218;
         end
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-            refillBuf_0 <= _GEN_644;
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+            refillBuf_0 <= _GEN_1946;
           end
         end
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-            refillBuf_1 <= _GEN_645;
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+            refillBuf_1 <= _GEN_1947;
           end
         end
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-            refillBuf_2 <= _GEN_646;
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+            refillBuf_2 <= _GEN_1948;
           end
         end
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-            refillBuf_3 <= _GEN_647;
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+            refillBuf_3 <= _GEN_1949;
           end
         end
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-            refillBuf_4 <= _GEN_648;
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+            refillBuf_4 <= _GEN_1950;
           end
         end
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-            refillBuf_5 <= _GEN_649;
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+            refillBuf_5 <= _GEN_1951;
           end
         end
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-            refillBuf_6 <= _GEN_650;
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+            refillBuf_6 <= _GEN_1952;
           end
         end
       end
     end
-    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-            refillBuf_7 <= _GEN_651;
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+          if (!(3'h3 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+            refillBuf_7 <= _GEN_1953;
           end
         end
       end
     end
-    if (reset) begin // @[src/main/scala/cache/cache.scala 22:24]
-      beatCnt <= 3'h0; // @[src/main/scala/cache/cache.scala 22:24]
-    end else if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (_tagRd_T) begin // @[src/main/scala/cache/cache.scala 122:29]
-        beatCnt <= 3'h0; // @[src/main/scala/cache/cache.scala 128:17]
+    if (reset) begin // @[src/main/scala/cache/cache.scala 26:24]
+      beatCnt <= 3'h0; // @[src/main/scala/cache/cache.scala 26:24]
+    end else if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (_tagsRd_T) begin // @[src/main/scala/cache/cache.scala 153:29]
+        beatCnt <= 3'h0; // @[src/main/scala/cache/cache.scala 159:17]
       end
-    end else if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (!(3'h2 == state)) begin // @[src/main/scala/cache/cache.scala 119:17]
-        beatCnt <= _GEN_796;
-      end
-    end
-    if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (_tagRd_T) begin // @[src/main/scala/cache/cache.scala 122:29]
-        writeReg <= io_cpu_req_bits_write; // @[src/main/scala/cache/cache.scala 124:18]
+    end else if (!(3'h1 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h2 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        beatCnt <= _GEN_1097;
+      end else begin
+        beatCnt <= _GEN_2222;
       end
     end
-    if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (_tagRd_T) begin // @[src/main/scala/cache/cache.scala 122:29]
-        wdataReg <= io_cpu_req_bits_wdata; // @[src/main/scala/cache/cache.scala 125:18]
+    if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (_tagsRd_T) begin // @[src/main/scala/cache/cache.scala 153:29]
+        writeReg <= io_cpu_req_bits_write; // @[src/main/scala/cache/cache.scala 155:18]
       end
     end
-    if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 119:17]
-      if (_tagRd_T) begin // @[src/main/scala/cache/cache.scala 122:29]
-        wmaskReg <= io_cpu_req_bits_wmask; // @[src/main/scala/cache/cache.scala 126:18]
+    if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (_tagsRd_T) begin // @[src/main/scala/cache/cache.scala 153:29]
+        wdataReg <= io_cpu_req_bits_wdata; // @[src/main/scala/cache/cache.scala 156:18]
+      end
+    end
+    if (3'h0 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (_tagsRd_T) begin // @[src/main/scala/cache/cache.scala 153:29]
+        wmaskReg <= io_cpu_req_bits_wmask; // @[src/main/scala/cache/cache.scala 157:18]
+      end
+    end
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(hit)) begin // @[src/main/scala/cache/cache.scala 170:17]
+          if (_GEN_135 & _GEN_560) begin // @[src/main/scala/cache/cache.scala 210:86]
+            evictAddr_wb <= _evictAddr_wb_T; // @[src/main/scala/cache/cache.scala 212:26]
+          end
+        end
+      end
+    end
+    if (!(3'h0 == state)) begin // @[src/main/scala/cache/cache.scala 150:17]
+      if (3'h1 == state) begin // @[src/main/scala/cache/cache.scala 150:17]
+        if (!(hit)) begin // @[src/main/scala/cache/cache.scala 170:17]
+          if (_GEN_135 & _GEN_560) begin // @[src/main/scala/cache/cache.scala 210:86]
+            evictLine_wb <= linesRd_0; // @[src/main/scala/cache/cache.scala 214:26]
+          end
+        end
       end
     end
   end
@@ -3503,306 +6995,566 @@ initial begin
 `ifdef RANDOMIZE_MEM_INIT
   _RAND_0 = {1{`RANDOM}};
   for (initvar = 0; initvar < 128; initvar = initvar+1)
-    tagMem[initvar] = _RAND_0[19:0];
+    tagMem_0[initvar] = _RAND_0[19:0];
   _RAND_3 = {8{`RANDOM}};
   for (initvar = 0; initvar < 128; initvar = initvar+1)
-    dataMem[initvar] = _RAND_3[255:0];
+    dataMem_0[initvar] = _RAND_3[255:0];
 `endif // RANDOMIZE_MEM_INIT
 `ifdef RANDOMIZE_REG_INIT
   _RAND_1 = {1{`RANDOM}};
-  tagMem_tagRd_en_pipe_0 = _RAND_1[0:0];
+  tagMem_0_tagsRd_MPORT_en_pipe_0 = _RAND_1[0:0];
   _RAND_2 = {1{`RANDOM}};
-  tagMem_tagRd_addr_pipe_0 = _RAND_2[6:0];
+  tagMem_0_tagsRd_MPORT_addr_pipe_0 = _RAND_2[6:0];
   _RAND_4 = {1{`RANDOM}};
-  dataMem_lineRd_en_pipe_0 = _RAND_4[0:0];
+  dataMem_0_linesRd_MPORT_en_pipe_0 = _RAND_4[0:0];
   _RAND_5 = {1{`RANDOM}};
-  dataMem_lineRd_addr_pipe_0 = _RAND_5[6:0];
+  dataMem_0_linesRd_MPORT_addr_pipe_0 = _RAND_5[6:0];
   _RAND_6 = {1{`RANDOM}};
-  validBits_0 = _RAND_6[0:0];
+  validBits_0_0 = _RAND_6[0:0];
   _RAND_7 = {1{`RANDOM}};
-  validBits_1 = _RAND_7[0:0];
+  validBits_1_0 = _RAND_7[0:0];
   _RAND_8 = {1{`RANDOM}};
-  validBits_2 = _RAND_8[0:0];
+  validBits_2_0 = _RAND_8[0:0];
   _RAND_9 = {1{`RANDOM}};
-  validBits_3 = _RAND_9[0:0];
+  validBits_3_0 = _RAND_9[0:0];
   _RAND_10 = {1{`RANDOM}};
-  validBits_4 = _RAND_10[0:0];
+  validBits_4_0 = _RAND_10[0:0];
   _RAND_11 = {1{`RANDOM}};
-  validBits_5 = _RAND_11[0:0];
+  validBits_5_0 = _RAND_11[0:0];
   _RAND_12 = {1{`RANDOM}};
-  validBits_6 = _RAND_12[0:0];
+  validBits_6_0 = _RAND_12[0:0];
   _RAND_13 = {1{`RANDOM}};
-  validBits_7 = _RAND_13[0:0];
+  validBits_7_0 = _RAND_13[0:0];
   _RAND_14 = {1{`RANDOM}};
-  validBits_8 = _RAND_14[0:0];
+  validBits_8_0 = _RAND_14[0:0];
   _RAND_15 = {1{`RANDOM}};
-  validBits_9 = _RAND_15[0:0];
+  validBits_9_0 = _RAND_15[0:0];
   _RAND_16 = {1{`RANDOM}};
-  validBits_10 = _RAND_16[0:0];
+  validBits_10_0 = _RAND_16[0:0];
   _RAND_17 = {1{`RANDOM}};
-  validBits_11 = _RAND_17[0:0];
+  validBits_11_0 = _RAND_17[0:0];
   _RAND_18 = {1{`RANDOM}};
-  validBits_12 = _RAND_18[0:0];
+  validBits_12_0 = _RAND_18[0:0];
   _RAND_19 = {1{`RANDOM}};
-  validBits_13 = _RAND_19[0:0];
+  validBits_13_0 = _RAND_19[0:0];
   _RAND_20 = {1{`RANDOM}};
-  validBits_14 = _RAND_20[0:0];
+  validBits_14_0 = _RAND_20[0:0];
   _RAND_21 = {1{`RANDOM}};
-  validBits_15 = _RAND_21[0:0];
+  validBits_15_0 = _RAND_21[0:0];
   _RAND_22 = {1{`RANDOM}};
-  validBits_16 = _RAND_22[0:0];
+  validBits_16_0 = _RAND_22[0:0];
   _RAND_23 = {1{`RANDOM}};
-  validBits_17 = _RAND_23[0:0];
+  validBits_17_0 = _RAND_23[0:0];
   _RAND_24 = {1{`RANDOM}};
-  validBits_18 = _RAND_24[0:0];
+  validBits_18_0 = _RAND_24[0:0];
   _RAND_25 = {1{`RANDOM}};
-  validBits_19 = _RAND_25[0:0];
+  validBits_19_0 = _RAND_25[0:0];
   _RAND_26 = {1{`RANDOM}};
-  validBits_20 = _RAND_26[0:0];
+  validBits_20_0 = _RAND_26[0:0];
   _RAND_27 = {1{`RANDOM}};
-  validBits_21 = _RAND_27[0:0];
+  validBits_21_0 = _RAND_27[0:0];
   _RAND_28 = {1{`RANDOM}};
-  validBits_22 = _RAND_28[0:0];
+  validBits_22_0 = _RAND_28[0:0];
   _RAND_29 = {1{`RANDOM}};
-  validBits_23 = _RAND_29[0:0];
+  validBits_23_0 = _RAND_29[0:0];
   _RAND_30 = {1{`RANDOM}};
-  validBits_24 = _RAND_30[0:0];
+  validBits_24_0 = _RAND_30[0:0];
   _RAND_31 = {1{`RANDOM}};
-  validBits_25 = _RAND_31[0:0];
+  validBits_25_0 = _RAND_31[0:0];
   _RAND_32 = {1{`RANDOM}};
-  validBits_26 = _RAND_32[0:0];
+  validBits_26_0 = _RAND_32[0:0];
   _RAND_33 = {1{`RANDOM}};
-  validBits_27 = _RAND_33[0:0];
+  validBits_27_0 = _RAND_33[0:0];
   _RAND_34 = {1{`RANDOM}};
-  validBits_28 = _RAND_34[0:0];
+  validBits_28_0 = _RAND_34[0:0];
   _RAND_35 = {1{`RANDOM}};
-  validBits_29 = _RAND_35[0:0];
+  validBits_29_0 = _RAND_35[0:0];
   _RAND_36 = {1{`RANDOM}};
-  validBits_30 = _RAND_36[0:0];
+  validBits_30_0 = _RAND_36[0:0];
   _RAND_37 = {1{`RANDOM}};
-  validBits_31 = _RAND_37[0:0];
+  validBits_31_0 = _RAND_37[0:0];
   _RAND_38 = {1{`RANDOM}};
-  validBits_32 = _RAND_38[0:0];
+  validBits_32_0 = _RAND_38[0:0];
   _RAND_39 = {1{`RANDOM}};
-  validBits_33 = _RAND_39[0:0];
+  validBits_33_0 = _RAND_39[0:0];
   _RAND_40 = {1{`RANDOM}};
-  validBits_34 = _RAND_40[0:0];
+  validBits_34_0 = _RAND_40[0:0];
   _RAND_41 = {1{`RANDOM}};
-  validBits_35 = _RAND_41[0:0];
+  validBits_35_0 = _RAND_41[0:0];
   _RAND_42 = {1{`RANDOM}};
-  validBits_36 = _RAND_42[0:0];
+  validBits_36_0 = _RAND_42[0:0];
   _RAND_43 = {1{`RANDOM}};
-  validBits_37 = _RAND_43[0:0];
+  validBits_37_0 = _RAND_43[0:0];
   _RAND_44 = {1{`RANDOM}};
-  validBits_38 = _RAND_44[0:0];
+  validBits_38_0 = _RAND_44[0:0];
   _RAND_45 = {1{`RANDOM}};
-  validBits_39 = _RAND_45[0:0];
+  validBits_39_0 = _RAND_45[0:0];
   _RAND_46 = {1{`RANDOM}};
-  validBits_40 = _RAND_46[0:0];
+  validBits_40_0 = _RAND_46[0:0];
   _RAND_47 = {1{`RANDOM}};
-  validBits_41 = _RAND_47[0:0];
+  validBits_41_0 = _RAND_47[0:0];
   _RAND_48 = {1{`RANDOM}};
-  validBits_42 = _RAND_48[0:0];
+  validBits_42_0 = _RAND_48[0:0];
   _RAND_49 = {1{`RANDOM}};
-  validBits_43 = _RAND_49[0:0];
+  validBits_43_0 = _RAND_49[0:0];
   _RAND_50 = {1{`RANDOM}};
-  validBits_44 = _RAND_50[0:0];
+  validBits_44_0 = _RAND_50[0:0];
   _RAND_51 = {1{`RANDOM}};
-  validBits_45 = _RAND_51[0:0];
+  validBits_45_0 = _RAND_51[0:0];
   _RAND_52 = {1{`RANDOM}};
-  validBits_46 = _RAND_52[0:0];
+  validBits_46_0 = _RAND_52[0:0];
   _RAND_53 = {1{`RANDOM}};
-  validBits_47 = _RAND_53[0:0];
+  validBits_47_0 = _RAND_53[0:0];
   _RAND_54 = {1{`RANDOM}};
-  validBits_48 = _RAND_54[0:0];
+  validBits_48_0 = _RAND_54[0:0];
   _RAND_55 = {1{`RANDOM}};
-  validBits_49 = _RAND_55[0:0];
+  validBits_49_0 = _RAND_55[0:0];
   _RAND_56 = {1{`RANDOM}};
-  validBits_50 = _RAND_56[0:0];
+  validBits_50_0 = _RAND_56[0:0];
   _RAND_57 = {1{`RANDOM}};
-  validBits_51 = _RAND_57[0:0];
+  validBits_51_0 = _RAND_57[0:0];
   _RAND_58 = {1{`RANDOM}};
-  validBits_52 = _RAND_58[0:0];
+  validBits_52_0 = _RAND_58[0:0];
   _RAND_59 = {1{`RANDOM}};
-  validBits_53 = _RAND_59[0:0];
+  validBits_53_0 = _RAND_59[0:0];
   _RAND_60 = {1{`RANDOM}};
-  validBits_54 = _RAND_60[0:0];
+  validBits_54_0 = _RAND_60[0:0];
   _RAND_61 = {1{`RANDOM}};
-  validBits_55 = _RAND_61[0:0];
+  validBits_55_0 = _RAND_61[0:0];
   _RAND_62 = {1{`RANDOM}};
-  validBits_56 = _RAND_62[0:0];
+  validBits_56_0 = _RAND_62[0:0];
   _RAND_63 = {1{`RANDOM}};
-  validBits_57 = _RAND_63[0:0];
+  validBits_57_0 = _RAND_63[0:0];
   _RAND_64 = {1{`RANDOM}};
-  validBits_58 = _RAND_64[0:0];
+  validBits_58_0 = _RAND_64[0:0];
   _RAND_65 = {1{`RANDOM}};
-  validBits_59 = _RAND_65[0:0];
+  validBits_59_0 = _RAND_65[0:0];
   _RAND_66 = {1{`RANDOM}};
-  validBits_60 = _RAND_66[0:0];
+  validBits_60_0 = _RAND_66[0:0];
   _RAND_67 = {1{`RANDOM}};
-  validBits_61 = _RAND_67[0:0];
+  validBits_61_0 = _RAND_67[0:0];
   _RAND_68 = {1{`RANDOM}};
-  validBits_62 = _RAND_68[0:0];
+  validBits_62_0 = _RAND_68[0:0];
   _RAND_69 = {1{`RANDOM}};
-  validBits_63 = _RAND_69[0:0];
+  validBits_63_0 = _RAND_69[0:0];
   _RAND_70 = {1{`RANDOM}};
-  validBits_64 = _RAND_70[0:0];
+  validBits_64_0 = _RAND_70[0:0];
   _RAND_71 = {1{`RANDOM}};
-  validBits_65 = _RAND_71[0:0];
+  validBits_65_0 = _RAND_71[0:0];
   _RAND_72 = {1{`RANDOM}};
-  validBits_66 = _RAND_72[0:0];
+  validBits_66_0 = _RAND_72[0:0];
   _RAND_73 = {1{`RANDOM}};
-  validBits_67 = _RAND_73[0:0];
+  validBits_67_0 = _RAND_73[0:0];
   _RAND_74 = {1{`RANDOM}};
-  validBits_68 = _RAND_74[0:0];
+  validBits_68_0 = _RAND_74[0:0];
   _RAND_75 = {1{`RANDOM}};
-  validBits_69 = _RAND_75[0:0];
+  validBits_69_0 = _RAND_75[0:0];
   _RAND_76 = {1{`RANDOM}};
-  validBits_70 = _RAND_76[0:0];
+  validBits_70_0 = _RAND_76[0:0];
   _RAND_77 = {1{`RANDOM}};
-  validBits_71 = _RAND_77[0:0];
+  validBits_71_0 = _RAND_77[0:0];
   _RAND_78 = {1{`RANDOM}};
-  validBits_72 = _RAND_78[0:0];
+  validBits_72_0 = _RAND_78[0:0];
   _RAND_79 = {1{`RANDOM}};
-  validBits_73 = _RAND_79[0:0];
+  validBits_73_0 = _RAND_79[0:0];
   _RAND_80 = {1{`RANDOM}};
-  validBits_74 = _RAND_80[0:0];
+  validBits_74_0 = _RAND_80[0:0];
   _RAND_81 = {1{`RANDOM}};
-  validBits_75 = _RAND_81[0:0];
+  validBits_75_0 = _RAND_81[0:0];
   _RAND_82 = {1{`RANDOM}};
-  validBits_76 = _RAND_82[0:0];
+  validBits_76_0 = _RAND_82[0:0];
   _RAND_83 = {1{`RANDOM}};
-  validBits_77 = _RAND_83[0:0];
+  validBits_77_0 = _RAND_83[0:0];
   _RAND_84 = {1{`RANDOM}};
-  validBits_78 = _RAND_84[0:0];
+  validBits_78_0 = _RAND_84[0:0];
   _RAND_85 = {1{`RANDOM}};
-  validBits_79 = _RAND_85[0:0];
+  validBits_79_0 = _RAND_85[0:0];
   _RAND_86 = {1{`RANDOM}};
-  validBits_80 = _RAND_86[0:0];
+  validBits_80_0 = _RAND_86[0:0];
   _RAND_87 = {1{`RANDOM}};
-  validBits_81 = _RAND_87[0:0];
+  validBits_81_0 = _RAND_87[0:0];
   _RAND_88 = {1{`RANDOM}};
-  validBits_82 = _RAND_88[0:0];
+  validBits_82_0 = _RAND_88[0:0];
   _RAND_89 = {1{`RANDOM}};
-  validBits_83 = _RAND_89[0:0];
+  validBits_83_0 = _RAND_89[0:0];
   _RAND_90 = {1{`RANDOM}};
-  validBits_84 = _RAND_90[0:0];
+  validBits_84_0 = _RAND_90[0:0];
   _RAND_91 = {1{`RANDOM}};
-  validBits_85 = _RAND_91[0:0];
+  validBits_85_0 = _RAND_91[0:0];
   _RAND_92 = {1{`RANDOM}};
-  validBits_86 = _RAND_92[0:0];
+  validBits_86_0 = _RAND_92[0:0];
   _RAND_93 = {1{`RANDOM}};
-  validBits_87 = _RAND_93[0:0];
+  validBits_87_0 = _RAND_93[0:0];
   _RAND_94 = {1{`RANDOM}};
-  validBits_88 = _RAND_94[0:0];
+  validBits_88_0 = _RAND_94[0:0];
   _RAND_95 = {1{`RANDOM}};
-  validBits_89 = _RAND_95[0:0];
+  validBits_89_0 = _RAND_95[0:0];
   _RAND_96 = {1{`RANDOM}};
-  validBits_90 = _RAND_96[0:0];
+  validBits_90_0 = _RAND_96[0:0];
   _RAND_97 = {1{`RANDOM}};
-  validBits_91 = _RAND_97[0:0];
+  validBits_91_0 = _RAND_97[0:0];
   _RAND_98 = {1{`RANDOM}};
-  validBits_92 = _RAND_98[0:0];
+  validBits_92_0 = _RAND_98[0:0];
   _RAND_99 = {1{`RANDOM}};
-  validBits_93 = _RAND_99[0:0];
+  validBits_93_0 = _RAND_99[0:0];
   _RAND_100 = {1{`RANDOM}};
-  validBits_94 = _RAND_100[0:0];
+  validBits_94_0 = _RAND_100[0:0];
   _RAND_101 = {1{`RANDOM}};
-  validBits_95 = _RAND_101[0:0];
+  validBits_95_0 = _RAND_101[0:0];
   _RAND_102 = {1{`RANDOM}};
-  validBits_96 = _RAND_102[0:0];
+  validBits_96_0 = _RAND_102[0:0];
   _RAND_103 = {1{`RANDOM}};
-  validBits_97 = _RAND_103[0:0];
+  validBits_97_0 = _RAND_103[0:0];
   _RAND_104 = {1{`RANDOM}};
-  validBits_98 = _RAND_104[0:0];
+  validBits_98_0 = _RAND_104[0:0];
   _RAND_105 = {1{`RANDOM}};
-  validBits_99 = _RAND_105[0:0];
+  validBits_99_0 = _RAND_105[0:0];
   _RAND_106 = {1{`RANDOM}};
-  validBits_100 = _RAND_106[0:0];
+  validBits_100_0 = _RAND_106[0:0];
   _RAND_107 = {1{`RANDOM}};
-  validBits_101 = _RAND_107[0:0];
+  validBits_101_0 = _RAND_107[0:0];
   _RAND_108 = {1{`RANDOM}};
-  validBits_102 = _RAND_108[0:0];
+  validBits_102_0 = _RAND_108[0:0];
   _RAND_109 = {1{`RANDOM}};
-  validBits_103 = _RAND_109[0:0];
+  validBits_103_0 = _RAND_109[0:0];
   _RAND_110 = {1{`RANDOM}};
-  validBits_104 = _RAND_110[0:0];
+  validBits_104_0 = _RAND_110[0:0];
   _RAND_111 = {1{`RANDOM}};
-  validBits_105 = _RAND_111[0:0];
+  validBits_105_0 = _RAND_111[0:0];
   _RAND_112 = {1{`RANDOM}};
-  validBits_106 = _RAND_112[0:0];
+  validBits_106_0 = _RAND_112[0:0];
   _RAND_113 = {1{`RANDOM}};
-  validBits_107 = _RAND_113[0:0];
+  validBits_107_0 = _RAND_113[0:0];
   _RAND_114 = {1{`RANDOM}};
-  validBits_108 = _RAND_114[0:0];
+  validBits_108_0 = _RAND_114[0:0];
   _RAND_115 = {1{`RANDOM}};
-  validBits_109 = _RAND_115[0:0];
+  validBits_109_0 = _RAND_115[0:0];
   _RAND_116 = {1{`RANDOM}};
-  validBits_110 = _RAND_116[0:0];
+  validBits_110_0 = _RAND_116[0:0];
   _RAND_117 = {1{`RANDOM}};
-  validBits_111 = _RAND_117[0:0];
+  validBits_111_0 = _RAND_117[0:0];
   _RAND_118 = {1{`RANDOM}};
-  validBits_112 = _RAND_118[0:0];
+  validBits_112_0 = _RAND_118[0:0];
   _RAND_119 = {1{`RANDOM}};
-  validBits_113 = _RAND_119[0:0];
+  validBits_113_0 = _RAND_119[0:0];
   _RAND_120 = {1{`RANDOM}};
-  validBits_114 = _RAND_120[0:0];
+  validBits_114_0 = _RAND_120[0:0];
   _RAND_121 = {1{`RANDOM}};
-  validBits_115 = _RAND_121[0:0];
+  validBits_115_0 = _RAND_121[0:0];
   _RAND_122 = {1{`RANDOM}};
-  validBits_116 = _RAND_122[0:0];
+  validBits_116_0 = _RAND_122[0:0];
   _RAND_123 = {1{`RANDOM}};
-  validBits_117 = _RAND_123[0:0];
+  validBits_117_0 = _RAND_123[0:0];
   _RAND_124 = {1{`RANDOM}};
-  validBits_118 = _RAND_124[0:0];
+  validBits_118_0 = _RAND_124[0:0];
   _RAND_125 = {1{`RANDOM}};
-  validBits_119 = _RAND_125[0:0];
+  validBits_119_0 = _RAND_125[0:0];
   _RAND_126 = {1{`RANDOM}};
-  validBits_120 = _RAND_126[0:0];
+  validBits_120_0 = _RAND_126[0:0];
   _RAND_127 = {1{`RANDOM}};
-  validBits_121 = _RAND_127[0:0];
+  validBits_121_0 = _RAND_127[0:0];
   _RAND_128 = {1{`RANDOM}};
-  validBits_122 = _RAND_128[0:0];
+  validBits_122_0 = _RAND_128[0:0];
   _RAND_129 = {1{`RANDOM}};
-  validBits_123 = _RAND_129[0:0];
+  validBits_123_0 = _RAND_129[0:0];
   _RAND_130 = {1{`RANDOM}};
-  validBits_124 = _RAND_130[0:0];
+  validBits_124_0 = _RAND_130[0:0];
   _RAND_131 = {1{`RANDOM}};
-  validBits_125 = _RAND_131[0:0];
+  validBits_125_0 = _RAND_131[0:0];
   _RAND_132 = {1{`RANDOM}};
-  validBits_126 = _RAND_132[0:0];
+  validBits_126_0 = _RAND_132[0:0];
   _RAND_133 = {1{`RANDOM}};
-  validBits_127 = _RAND_133[0:0];
+  validBits_127_0 = _RAND_133[0:0];
   _RAND_134 = {1{`RANDOM}};
-  state = _RAND_134[2:0];
+  dirtyBits_0_0 = _RAND_134[0:0];
   _RAND_135 = {1{`RANDOM}};
-  addrReg = _RAND_135[31:0];
+  dirtyBits_1_0 = _RAND_135[0:0];
   _RAND_136 = {1{`RANDOM}};
-  respData = _RAND_136[31:0];
+  dirtyBits_2_0 = _RAND_136[0:0];
   _RAND_137 = {1{`RANDOM}};
-  refillBuf_0 = _RAND_137[31:0];
+  dirtyBits_3_0 = _RAND_137[0:0];
   _RAND_138 = {1{`RANDOM}};
-  refillBuf_1 = _RAND_138[31:0];
+  dirtyBits_4_0 = _RAND_138[0:0];
   _RAND_139 = {1{`RANDOM}};
-  refillBuf_2 = _RAND_139[31:0];
+  dirtyBits_5_0 = _RAND_139[0:0];
   _RAND_140 = {1{`RANDOM}};
-  refillBuf_3 = _RAND_140[31:0];
+  dirtyBits_6_0 = _RAND_140[0:0];
   _RAND_141 = {1{`RANDOM}};
-  refillBuf_4 = _RAND_141[31:0];
+  dirtyBits_7_0 = _RAND_141[0:0];
   _RAND_142 = {1{`RANDOM}};
-  refillBuf_5 = _RAND_142[31:0];
+  dirtyBits_8_0 = _RAND_142[0:0];
   _RAND_143 = {1{`RANDOM}};
-  refillBuf_6 = _RAND_143[31:0];
+  dirtyBits_9_0 = _RAND_143[0:0];
   _RAND_144 = {1{`RANDOM}};
-  refillBuf_7 = _RAND_144[31:0];
+  dirtyBits_10_0 = _RAND_144[0:0];
   _RAND_145 = {1{`RANDOM}};
-  beatCnt = _RAND_145[2:0];
+  dirtyBits_11_0 = _RAND_145[0:0];
   _RAND_146 = {1{`RANDOM}};
-  writeReg = _RAND_146[0:0];
+  dirtyBits_12_0 = _RAND_146[0:0];
   _RAND_147 = {1{`RANDOM}};
-  wdataReg = _RAND_147[31:0];
+  dirtyBits_13_0 = _RAND_147[0:0];
   _RAND_148 = {1{`RANDOM}};
-  wmaskReg = _RAND_148[3:0];
+  dirtyBits_14_0 = _RAND_148[0:0];
+  _RAND_149 = {1{`RANDOM}};
+  dirtyBits_15_0 = _RAND_149[0:0];
+  _RAND_150 = {1{`RANDOM}};
+  dirtyBits_16_0 = _RAND_150[0:0];
+  _RAND_151 = {1{`RANDOM}};
+  dirtyBits_17_0 = _RAND_151[0:0];
+  _RAND_152 = {1{`RANDOM}};
+  dirtyBits_18_0 = _RAND_152[0:0];
+  _RAND_153 = {1{`RANDOM}};
+  dirtyBits_19_0 = _RAND_153[0:0];
+  _RAND_154 = {1{`RANDOM}};
+  dirtyBits_20_0 = _RAND_154[0:0];
+  _RAND_155 = {1{`RANDOM}};
+  dirtyBits_21_0 = _RAND_155[0:0];
+  _RAND_156 = {1{`RANDOM}};
+  dirtyBits_22_0 = _RAND_156[0:0];
+  _RAND_157 = {1{`RANDOM}};
+  dirtyBits_23_0 = _RAND_157[0:0];
+  _RAND_158 = {1{`RANDOM}};
+  dirtyBits_24_0 = _RAND_158[0:0];
+  _RAND_159 = {1{`RANDOM}};
+  dirtyBits_25_0 = _RAND_159[0:0];
+  _RAND_160 = {1{`RANDOM}};
+  dirtyBits_26_0 = _RAND_160[0:0];
+  _RAND_161 = {1{`RANDOM}};
+  dirtyBits_27_0 = _RAND_161[0:0];
+  _RAND_162 = {1{`RANDOM}};
+  dirtyBits_28_0 = _RAND_162[0:0];
+  _RAND_163 = {1{`RANDOM}};
+  dirtyBits_29_0 = _RAND_163[0:0];
+  _RAND_164 = {1{`RANDOM}};
+  dirtyBits_30_0 = _RAND_164[0:0];
+  _RAND_165 = {1{`RANDOM}};
+  dirtyBits_31_0 = _RAND_165[0:0];
+  _RAND_166 = {1{`RANDOM}};
+  dirtyBits_32_0 = _RAND_166[0:0];
+  _RAND_167 = {1{`RANDOM}};
+  dirtyBits_33_0 = _RAND_167[0:0];
+  _RAND_168 = {1{`RANDOM}};
+  dirtyBits_34_0 = _RAND_168[0:0];
+  _RAND_169 = {1{`RANDOM}};
+  dirtyBits_35_0 = _RAND_169[0:0];
+  _RAND_170 = {1{`RANDOM}};
+  dirtyBits_36_0 = _RAND_170[0:0];
+  _RAND_171 = {1{`RANDOM}};
+  dirtyBits_37_0 = _RAND_171[0:0];
+  _RAND_172 = {1{`RANDOM}};
+  dirtyBits_38_0 = _RAND_172[0:0];
+  _RAND_173 = {1{`RANDOM}};
+  dirtyBits_39_0 = _RAND_173[0:0];
+  _RAND_174 = {1{`RANDOM}};
+  dirtyBits_40_0 = _RAND_174[0:0];
+  _RAND_175 = {1{`RANDOM}};
+  dirtyBits_41_0 = _RAND_175[0:0];
+  _RAND_176 = {1{`RANDOM}};
+  dirtyBits_42_0 = _RAND_176[0:0];
+  _RAND_177 = {1{`RANDOM}};
+  dirtyBits_43_0 = _RAND_177[0:0];
+  _RAND_178 = {1{`RANDOM}};
+  dirtyBits_44_0 = _RAND_178[0:0];
+  _RAND_179 = {1{`RANDOM}};
+  dirtyBits_45_0 = _RAND_179[0:0];
+  _RAND_180 = {1{`RANDOM}};
+  dirtyBits_46_0 = _RAND_180[0:0];
+  _RAND_181 = {1{`RANDOM}};
+  dirtyBits_47_0 = _RAND_181[0:0];
+  _RAND_182 = {1{`RANDOM}};
+  dirtyBits_48_0 = _RAND_182[0:0];
+  _RAND_183 = {1{`RANDOM}};
+  dirtyBits_49_0 = _RAND_183[0:0];
+  _RAND_184 = {1{`RANDOM}};
+  dirtyBits_50_0 = _RAND_184[0:0];
+  _RAND_185 = {1{`RANDOM}};
+  dirtyBits_51_0 = _RAND_185[0:0];
+  _RAND_186 = {1{`RANDOM}};
+  dirtyBits_52_0 = _RAND_186[0:0];
+  _RAND_187 = {1{`RANDOM}};
+  dirtyBits_53_0 = _RAND_187[0:0];
+  _RAND_188 = {1{`RANDOM}};
+  dirtyBits_54_0 = _RAND_188[0:0];
+  _RAND_189 = {1{`RANDOM}};
+  dirtyBits_55_0 = _RAND_189[0:0];
+  _RAND_190 = {1{`RANDOM}};
+  dirtyBits_56_0 = _RAND_190[0:0];
+  _RAND_191 = {1{`RANDOM}};
+  dirtyBits_57_0 = _RAND_191[0:0];
+  _RAND_192 = {1{`RANDOM}};
+  dirtyBits_58_0 = _RAND_192[0:0];
+  _RAND_193 = {1{`RANDOM}};
+  dirtyBits_59_0 = _RAND_193[0:0];
+  _RAND_194 = {1{`RANDOM}};
+  dirtyBits_60_0 = _RAND_194[0:0];
+  _RAND_195 = {1{`RANDOM}};
+  dirtyBits_61_0 = _RAND_195[0:0];
+  _RAND_196 = {1{`RANDOM}};
+  dirtyBits_62_0 = _RAND_196[0:0];
+  _RAND_197 = {1{`RANDOM}};
+  dirtyBits_63_0 = _RAND_197[0:0];
+  _RAND_198 = {1{`RANDOM}};
+  dirtyBits_64_0 = _RAND_198[0:0];
+  _RAND_199 = {1{`RANDOM}};
+  dirtyBits_65_0 = _RAND_199[0:0];
+  _RAND_200 = {1{`RANDOM}};
+  dirtyBits_66_0 = _RAND_200[0:0];
+  _RAND_201 = {1{`RANDOM}};
+  dirtyBits_67_0 = _RAND_201[0:0];
+  _RAND_202 = {1{`RANDOM}};
+  dirtyBits_68_0 = _RAND_202[0:0];
+  _RAND_203 = {1{`RANDOM}};
+  dirtyBits_69_0 = _RAND_203[0:0];
+  _RAND_204 = {1{`RANDOM}};
+  dirtyBits_70_0 = _RAND_204[0:0];
+  _RAND_205 = {1{`RANDOM}};
+  dirtyBits_71_0 = _RAND_205[0:0];
+  _RAND_206 = {1{`RANDOM}};
+  dirtyBits_72_0 = _RAND_206[0:0];
+  _RAND_207 = {1{`RANDOM}};
+  dirtyBits_73_0 = _RAND_207[0:0];
+  _RAND_208 = {1{`RANDOM}};
+  dirtyBits_74_0 = _RAND_208[0:0];
+  _RAND_209 = {1{`RANDOM}};
+  dirtyBits_75_0 = _RAND_209[0:0];
+  _RAND_210 = {1{`RANDOM}};
+  dirtyBits_76_0 = _RAND_210[0:0];
+  _RAND_211 = {1{`RANDOM}};
+  dirtyBits_77_0 = _RAND_211[0:0];
+  _RAND_212 = {1{`RANDOM}};
+  dirtyBits_78_0 = _RAND_212[0:0];
+  _RAND_213 = {1{`RANDOM}};
+  dirtyBits_79_0 = _RAND_213[0:0];
+  _RAND_214 = {1{`RANDOM}};
+  dirtyBits_80_0 = _RAND_214[0:0];
+  _RAND_215 = {1{`RANDOM}};
+  dirtyBits_81_0 = _RAND_215[0:0];
+  _RAND_216 = {1{`RANDOM}};
+  dirtyBits_82_0 = _RAND_216[0:0];
+  _RAND_217 = {1{`RANDOM}};
+  dirtyBits_83_0 = _RAND_217[0:0];
+  _RAND_218 = {1{`RANDOM}};
+  dirtyBits_84_0 = _RAND_218[0:0];
+  _RAND_219 = {1{`RANDOM}};
+  dirtyBits_85_0 = _RAND_219[0:0];
+  _RAND_220 = {1{`RANDOM}};
+  dirtyBits_86_0 = _RAND_220[0:0];
+  _RAND_221 = {1{`RANDOM}};
+  dirtyBits_87_0 = _RAND_221[0:0];
+  _RAND_222 = {1{`RANDOM}};
+  dirtyBits_88_0 = _RAND_222[0:0];
+  _RAND_223 = {1{`RANDOM}};
+  dirtyBits_89_0 = _RAND_223[0:0];
+  _RAND_224 = {1{`RANDOM}};
+  dirtyBits_90_0 = _RAND_224[0:0];
+  _RAND_225 = {1{`RANDOM}};
+  dirtyBits_91_0 = _RAND_225[0:0];
+  _RAND_226 = {1{`RANDOM}};
+  dirtyBits_92_0 = _RAND_226[0:0];
+  _RAND_227 = {1{`RANDOM}};
+  dirtyBits_93_0 = _RAND_227[0:0];
+  _RAND_228 = {1{`RANDOM}};
+  dirtyBits_94_0 = _RAND_228[0:0];
+  _RAND_229 = {1{`RANDOM}};
+  dirtyBits_95_0 = _RAND_229[0:0];
+  _RAND_230 = {1{`RANDOM}};
+  dirtyBits_96_0 = _RAND_230[0:0];
+  _RAND_231 = {1{`RANDOM}};
+  dirtyBits_97_0 = _RAND_231[0:0];
+  _RAND_232 = {1{`RANDOM}};
+  dirtyBits_98_0 = _RAND_232[0:0];
+  _RAND_233 = {1{`RANDOM}};
+  dirtyBits_99_0 = _RAND_233[0:0];
+  _RAND_234 = {1{`RANDOM}};
+  dirtyBits_100_0 = _RAND_234[0:0];
+  _RAND_235 = {1{`RANDOM}};
+  dirtyBits_101_0 = _RAND_235[0:0];
+  _RAND_236 = {1{`RANDOM}};
+  dirtyBits_102_0 = _RAND_236[0:0];
+  _RAND_237 = {1{`RANDOM}};
+  dirtyBits_103_0 = _RAND_237[0:0];
+  _RAND_238 = {1{`RANDOM}};
+  dirtyBits_104_0 = _RAND_238[0:0];
+  _RAND_239 = {1{`RANDOM}};
+  dirtyBits_105_0 = _RAND_239[0:0];
+  _RAND_240 = {1{`RANDOM}};
+  dirtyBits_106_0 = _RAND_240[0:0];
+  _RAND_241 = {1{`RANDOM}};
+  dirtyBits_107_0 = _RAND_241[0:0];
+  _RAND_242 = {1{`RANDOM}};
+  dirtyBits_108_0 = _RAND_242[0:0];
+  _RAND_243 = {1{`RANDOM}};
+  dirtyBits_109_0 = _RAND_243[0:0];
+  _RAND_244 = {1{`RANDOM}};
+  dirtyBits_110_0 = _RAND_244[0:0];
+  _RAND_245 = {1{`RANDOM}};
+  dirtyBits_111_0 = _RAND_245[0:0];
+  _RAND_246 = {1{`RANDOM}};
+  dirtyBits_112_0 = _RAND_246[0:0];
+  _RAND_247 = {1{`RANDOM}};
+  dirtyBits_113_0 = _RAND_247[0:0];
+  _RAND_248 = {1{`RANDOM}};
+  dirtyBits_114_0 = _RAND_248[0:0];
+  _RAND_249 = {1{`RANDOM}};
+  dirtyBits_115_0 = _RAND_249[0:0];
+  _RAND_250 = {1{`RANDOM}};
+  dirtyBits_116_0 = _RAND_250[0:0];
+  _RAND_251 = {1{`RANDOM}};
+  dirtyBits_117_0 = _RAND_251[0:0];
+  _RAND_252 = {1{`RANDOM}};
+  dirtyBits_118_0 = _RAND_252[0:0];
+  _RAND_253 = {1{`RANDOM}};
+  dirtyBits_119_0 = _RAND_253[0:0];
+  _RAND_254 = {1{`RANDOM}};
+  dirtyBits_120_0 = _RAND_254[0:0];
+  _RAND_255 = {1{`RANDOM}};
+  dirtyBits_121_0 = _RAND_255[0:0];
+  _RAND_256 = {1{`RANDOM}};
+  dirtyBits_122_0 = _RAND_256[0:0];
+  _RAND_257 = {1{`RANDOM}};
+  dirtyBits_123_0 = _RAND_257[0:0];
+  _RAND_258 = {1{`RANDOM}};
+  dirtyBits_124_0 = _RAND_258[0:0];
+  _RAND_259 = {1{`RANDOM}};
+  dirtyBits_125_0 = _RAND_259[0:0];
+  _RAND_260 = {1{`RANDOM}};
+  dirtyBits_126_0 = _RAND_260[0:0];
+  _RAND_261 = {1{`RANDOM}};
+  dirtyBits_127_0 = _RAND_261[0:0];
+  _RAND_262 = {1{`RANDOM}};
+  state = _RAND_262[2:0];
+  _RAND_263 = {1{`RANDOM}};
+  addrReg = _RAND_263[31:0];
+  _RAND_264 = {1{`RANDOM}};
+  respData = _RAND_264[31:0];
+  _RAND_265 = {1{`RANDOM}};
+  refillBuf_0 = _RAND_265[31:0];
+  _RAND_266 = {1{`RANDOM}};
+  refillBuf_1 = _RAND_266[31:0];
+  _RAND_267 = {1{`RANDOM}};
+  refillBuf_2 = _RAND_267[31:0];
+  _RAND_268 = {1{`RANDOM}};
+  refillBuf_3 = _RAND_268[31:0];
+  _RAND_269 = {1{`RANDOM}};
+  refillBuf_4 = _RAND_269[31:0];
+  _RAND_270 = {1{`RANDOM}};
+  refillBuf_5 = _RAND_270[31:0];
+  _RAND_271 = {1{`RANDOM}};
+  refillBuf_6 = _RAND_271[31:0];
+  _RAND_272 = {1{`RANDOM}};
+  refillBuf_7 = _RAND_272[31:0];
+  _RAND_273 = {1{`RANDOM}};
+  beatCnt = _RAND_273[2:0];
+  _RAND_274 = {1{`RANDOM}};
+  writeReg = _RAND_274[0:0];
+  _RAND_275 = {1{`RANDOM}};
+  wdataReg = _RAND_275[31:0];
+  _RAND_276 = {1{`RANDOM}};
+  wmaskReg = _RAND_276[3:0];
+  _RAND_277 = {1{`RANDOM}};
+  evictAddr_wb = _RAND_277[31:0];
+  _RAND_278 = {8{`RANDOM}};
+  evictLine_wb = _RAND_278[255:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -3828,8 +7580,10 @@ module CacheAdapter(
   output [31:0] mem_port_wrData, // @[src/main/scala/adapter/cache_adapter.scala 22:20]
   output [3:0]  mem_port_wrMask, // @[src/main/scala/adapter/cache_adapter.scala 22:20]
   input         mem_port_ack, // @[src/main/scala/adapter/cache_adapter.scala 22:20]
-  output        debug_hit, // @[src/main/scala/adapter/cache_adapter.scala 29:21]
-  output        debug_miss // @[src/main/scala/adapter/cache_adapter.scala 30:22]
+  output [2:0]  debug_state, // @[src/main/scala/adapter/cache_adapter.scala 26:23]
+  output        debug_hit, // @[src/main/scala/adapter/cache_adapter.scala 30:21]
+  output        debug_miss, // @[src/main/scala/adapter/cache_adapter.scala 31:22]
+  output        debug_writeback_wb // @[src/main/scala/adapter/cache_adapter.scala 32:30]
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
@@ -3867,56 +7621,58 @@ module CacheAdapter(
   wire [3:0] cache_io_mm_req_write_bits_mask; // @[src/main/scala/adapter/cache_adapter.scala 21:21]
   wire  cache_io_stat_hit; // @[src/main/scala/adapter/cache_adapter.scala 21:21]
   wire  cache_io_stat_miss; // @[src/main/scala/adapter/cache_adapter.scala 21:21]
-  reg  cpu_state; // @[src/main/scala/adapter/cache_adapter.scala 40:26]
-  reg [31:0] req_reg_addr; // @[src/main/scala/adapter/cache_adapter.scala 41:20]
-  reg  req_reg_write; // @[src/main/scala/adapter/cache_adapter.scala 41:20]
-  reg [31:0] req_reg_wdata; // @[src/main/scala/adapter/cache_adapter.scala 41:20]
-  reg [3:0] req_reg_wmask; // @[src/main/scala/adapter/cache_adapter.scala 41:20]
-  reg  req_sent; // @[src/main/scala/adapter/cache_adapter.scala 42:25]
-  wire  _cache_io_cpu_req_bits_T = ~cpu_state; // @[src/main/scala/adapter/cache_adapter.scala 52:42]
-  wire  _T_1 = cpuPort_rd | cpuPort_wr; // @[src/main/scala/adapter/cache_adapter.scala 62:23]
-  wire  _GEN_6 = cpuPort_rd | cpuPort_wr | cpu_state; // @[src/main/scala/adapter/cache_adapter.scala 62:38 66:19 40:26]
-  wire  _T_3 = ~req_sent; // @[src/main/scala/adapter/cache_adapter.scala 70:12]
-  wire  _GEN_7 = cache_io_cpu_req_ready | req_sent; // @[src/main/scala/adapter/cache_adapter.scala 72:38 73:20 42:25]
-  wire  _GEN_9 = ~req_sent ? _GEN_7 : req_sent; // @[src/main/scala/adapter/cache_adapter.scala 70:23 42:25]
-  wire  _GEN_10 = cache_io_cpu_resp_valid; // @[src/main/scala/adapter/cache_adapter.scala 56:15 77:37 78:21]
-  wire  _GEN_13 = cpu_state & _T_3; // @[src/main/scala/adapter/cache_adapter.scala 60:21 51:26]
-  reg [1:0] mem_state; // @[src/main/scala/adapter/cache_adapter.scala 87:26]
-  reg [31:0] base_reg; // @[src/main/scala/adapter/cache_adapter.scala 88:21]
-  reg [2:0] beat_cnt; // @[src/main/scala/adapter/cache_adapter.scala 89:25]
-  reg [31:0] data_reg; // @[src/main/scala/adapter/cache_adapter.scala 90:21]
-  wire  last_beat = beat_cnt == 3'h7; // @[src/main/scala/adapter/cache_adapter.scala 103:28]
-  wire  _GEN_29 = cache_io_mm_req_refill_valid; // @[src/main/scala/adapter/cache_adapter.scala 116:44 119:23 97:15]
-  wire [31:0] _GEN_30 = cache_io_mm_req_refill_valid ? cache_io_mm_req_refill_bits_addr : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 116:44 120:28 99:20]
-  wire  _GEN_32 = cache_io_mm_req_write_valid; // @[src/main/scala/adapter/cache_adapter.scala 108:41 109:21 98:15]
-  wire [31:0] _GEN_33 = cache_io_mm_req_write_valid ? cache_io_mm_req_write_bits_addr : _GEN_30; // @[src/main/scala/adapter/cache_adapter.scala 108:41 110:26]
-  wire [31:0] _GEN_34 = cache_io_mm_req_write_valid ? cache_io_mm_req_write_bits_data : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 100:19 108:41 111:25]
-  wire [3:0] _GEN_35 = cache_io_mm_req_write_valid ? cache_io_mm_req_write_bits_mask : 4'h0; // @[src/main/scala/adapter/cache_adapter.scala 101:19 108:41 112:25]
-  wire  _GEN_37 = cache_io_mm_req_write_valid ? 1'h0 : 1'h1; // @[src/main/scala/adapter/cache_adapter.scala 108:41 92:32 115:38]
-  wire  _GEN_40 = cache_io_mm_req_write_valid ? 1'h0 : _GEN_29; // @[src/main/scala/adapter/cache_adapter.scala 108:41 97:15]
-  wire [1:0] _GEN_44 = mem_port_ack ? 2'h2 : mem_state; // @[src/main/scala/adapter/cache_adapter.scala 132:26 134:19 87:26]
-  wire [2:0] next = beat_cnt + 3'h1; // @[src/main/scala/adapter/cache_adapter.scala 143:31]
-  wire [4:0] _mem_port_address_T = {next, 2'h0}; // @[src/main/scala/adapter/cache_adapter.scala 146:48]
-  wire [31:0] _GEN_83 = {{27'd0}, _mem_port_address_T}; // @[src/main/scala/adapter/cache_adapter.scala 146:40]
-  wire [31:0] _mem_port_address_T_2 = base_reg + _GEN_83; // @[src/main/scala/adapter/cache_adapter.scala 146:40]
-  wire [1:0] _GEN_45 = last_beat ? 2'h0 : 2'h1; // @[src/main/scala/adapter/cache_adapter.scala 140:25 141:21 147:21]
-  wire [2:0] _GEN_46 = last_beat ? beat_cnt : next; // @[src/main/scala/adapter/cache_adapter.scala 140:25 144:20 89:25]
-  wire  _GEN_47 = last_beat ? 1'h0 : 1'h1; // @[src/main/scala/adapter/cache_adapter.scala 140:25 97:15 145:23]
-  wire [31:0] _GEN_48 = last_beat ? 32'h0 : _mem_port_address_T_2; // @[src/main/scala/adapter/cache_adapter.scala 140:25 99:20 146:28]
-  wire [1:0] _GEN_49 = cache_io_mm_data_refill_ready ? _GEN_45 : mem_state; // @[src/main/scala/adapter/cache_adapter.scala 139:43 87:26]
-  wire [2:0] _GEN_50 = cache_io_mm_data_refill_ready ? _GEN_46 : beat_cnt; // @[src/main/scala/adapter/cache_adapter.scala 139:43 89:25]
-  wire  _GEN_51 = cache_io_mm_data_refill_ready & _GEN_47; // @[src/main/scala/adapter/cache_adapter.scala 139:43 97:15]
-  wire [31:0] _GEN_52 = cache_io_mm_data_refill_ready ? _GEN_48 : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 139:43 99:20]
-  wire [1:0] _GEN_54 = 2'h2 == mem_state ? _GEN_49 : mem_state; // @[src/main/scala/adapter/cache_adapter.scala 106:21 87:26]
-  wire [2:0] _GEN_55 = 2'h2 == mem_state ? _GEN_50 : beat_cnt; // @[src/main/scala/adapter/cache_adapter.scala 106:21 89:25]
-  wire [31:0] _GEN_57 = 2'h2 == mem_state ? _GEN_52 : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 106:21 99:20]
-  wire  _GEN_60 = 2'h1 == mem_state ? 1'h0 : 2'h2 == mem_state; // @[src/main/scala/adapter/cache_adapter.scala 106:21 93:33]
-  wire  _GEN_62 = 2'h1 == mem_state ? 1'h0 : 2'h2 == mem_state & _GEN_51; // @[src/main/scala/adapter/cache_adapter.scala 106:21 97:15]
-  wire [31:0] _GEN_63 = 2'h1 == mem_state ? 32'h0 : _GEN_57; // @[src/main/scala/adapter/cache_adapter.scala 106:21 99:20]
-  wire  _GEN_67 = 2'h3 == mem_state ? 1'h0 : _GEN_60; // @[src/main/scala/adapter/cache_adapter.scala 106:21 93:33]
-  wire  _GEN_69 = 2'h3 == mem_state ? 1'h0 : _GEN_62; // @[src/main/scala/adapter/cache_adapter.scala 106:21 97:15]
-  wire [31:0] _GEN_70 = 2'h3 == mem_state ? 32'h0 : _GEN_63; // @[src/main/scala/adapter/cache_adapter.scala 106:21 99:20]
-  DirectMappedReadCache cache ( // @[src/main/scala/adapter/cache_adapter.scala 21:21]
+  wire  cache_io_stat_writeback_wb; // @[src/main/scala/adapter/cache_adapter.scala 21:21]
+  wire [2:0] cache_io_stat_state; // @[src/main/scala/adapter/cache_adapter.scala 21:21]
+  reg  cpu_state; // @[src/main/scala/adapter/cache_adapter.scala 41:26]
+  reg [31:0] req_reg_addr; // @[src/main/scala/adapter/cache_adapter.scala 42:20]
+  reg  req_reg_write; // @[src/main/scala/adapter/cache_adapter.scala 42:20]
+  reg [31:0] req_reg_wdata; // @[src/main/scala/adapter/cache_adapter.scala 42:20]
+  reg [3:0] req_reg_wmask; // @[src/main/scala/adapter/cache_adapter.scala 42:20]
+  reg  req_sent; // @[src/main/scala/adapter/cache_adapter.scala 43:25]
+  wire  _cache_io_cpu_req_bits_T = ~cpu_state; // @[src/main/scala/adapter/cache_adapter.scala 53:42]
+  wire  _T_1 = cpuPort_rd | cpuPort_wr; // @[src/main/scala/adapter/cache_adapter.scala 63:23]
+  wire  _GEN_6 = cpuPort_rd | cpuPort_wr | cpu_state; // @[src/main/scala/adapter/cache_adapter.scala 63:38 67:19 41:26]
+  wire  _T_3 = ~req_sent; // @[src/main/scala/adapter/cache_adapter.scala 71:12]
+  wire  _GEN_7 = cache_io_cpu_req_ready | req_sent; // @[src/main/scala/adapter/cache_adapter.scala 73:38 74:20 43:25]
+  wire  _GEN_9 = ~req_sent ? _GEN_7 : req_sent; // @[src/main/scala/adapter/cache_adapter.scala 71:23 43:25]
+  wire  _GEN_10 = cache_io_cpu_resp_valid; // @[src/main/scala/adapter/cache_adapter.scala 57:15 78:37 79:21]
+  wire  _GEN_13 = cpu_state & _T_3; // @[src/main/scala/adapter/cache_adapter.scala 61:21 52:26]
+  reg [1:0] mem_state; // @[src/main/scala/adapter/cache_adapter.scala 88:26]
+  reg [31:0] base_reg; // @[src/main/scala/adapter/cache_adapter.scala 89:21]
+  reg [2:0] beat_cnt; // @[src/main/scala/adapter/cache_adapter.scala 90:25]
+  reg [31:0] data_reg; // @[src/main/scala/adapter/cache_adapter.scala 91:21]
+  wire  last_beat = beat_cnt == 3'h7; // @[src/main/scala/adapter/cache_adapter.scala 104:28]
+  wire  _GEN_29 = cache_io_mm_req_refill_valid; // @[src/main/scala/adapter/cache_adapter.scala 117:44 120:23 98:15]
+  wire [31:0] _GEN_30 = cache_io_mm_req_refill_valid ? cache_io_mm_req_refill_bits_addr : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 100:20 117:44 121:28]
+  wire  _GEN_32 = cache_io_mm_req_write_valid; // @[src/main/scala/adapter/cache_adapter.scala 109:41 110:21 99:15]
+  wire [31:0] _GEN_33 = cache_io_mm_req_write_valid ? cache_io_mm_req_write_bits_addr : _GEN_30; // @[src/main/scala/adapter/cache_adapter.scala 109:41 111:26]
+  wire [31:0] _GEN_34 = cache_io_mm_req_write_valid ? cache_io_mm_req_write_bits_data : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 101:19 109:41 112:25]
+  wire [3:0] _GEN_35 = cache_io_mm_req_write_valid ? cache_io_mm_req_write_bits_mask : 4'h0; // @[src/main/scala/adapter/cache_adapter.scala 102:19 109:41 113:25]
+  wire  _GEN_37 = cache_io_mm_req_write_valid ? 1'h0 : 1'h1; // @[src/main/scala/adapter/cache_adapter.scala 109:41 93:32 116:38]
+  wire  _GEN_40 = cache_io_mm_req_write_valid ? 1'h0 : _GEN_29; // @[src/main/scala/adapter/cache_adapter.scala 109:41 98:15]
+  wire [1:0] _GEN_44 = mem_port_ack ? 2'h2 : mem_state; // @[src/main/scala/adapter/cache_adapter.scala 133:26 135:19 88:26]
+  wire [2:0] next = beat_cnt + 3'h1; // @[src/main/scala/adapter/cache_adapter.scala 144:31]
+  wire [4:0] _mem_port_address_T = {next, 2'h0}; // @[src/main/scala/adapter/cache_adapter.scala 147:48]
+  wire [31:0] _GEN_83 = {{27'd0}, _mem_port_address_T}; // @[src/main/scala/adapter/cache_adapter.scala 147:40]
+  wire [31:0] _mem_port_address_T_2 = base_reg + _GEN_83; // @[src/main/scala/adapter/cache_adapter.scala 147:40]
+  wire [1:0] _GEN_45 = last_beat ? 2'h0 : 2'h1; // @[src/main/scala/adapter/cache_adapter.scala 141:25 142:21 148:21]
+  wire [2:0] _GEN_46 = last_beat ? beat_cnt : next; // @[src/main/scala/adapter/cache_adapter.scala 141:25 145:20 90:25]
+  wire  _GEN_47 = last_beat ? 1'h0 : 1'h1; // @[src/main/scala/adapter/cache_adapter.scala 141:25 98:15 146:23]
+  wire [31:0] _GEN_48 = last_beat ? 32'h0 : _mem_port_address_T_2; // @[src/main/scala/adapter/cache_adapter.scala 100:20 141:25 147:28]
+  wire [1:0] _GEN_49 = cache_io_mm_data_refill_ready ? _GEN_45 : mem_state; // @[src/main/scala/adapter/cache_adapter.scala 140:43 88:26]
+  wire [2:0] _GEN_50 = cache_io_mm_data_refill_ready ? _GEN_46 : beat_cnt; // @[src/main/scala/adapter/cache_adapter.scala 140:43 90:25]
+  wire  _GEN_51 = cache_io_mm_data_refill_ready & _GEN_47; // @[src/main/scala/adapter/cache_adapter.scala 140:43 98:15]
+  wire [31:0] _GEN_52 = cache_io_mm_data_refill_ready ? _GEN_48 : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 100:20 140:43]
+  wire [1:0] _GEN_54 = 2'h2 == mem_state ? _GEN_49 : mem_state; // @[src/main/scala/adapter/cache_adapter.scala 107:21 88:26]
+  wire [2:0] _GEN_55 = 2'h2 == mem_state ? _GEN_50 : beat_cnt; // @[src/main/scala/adapter/cache_adapter.scala 107:21 90:25]
+  wire [31:0] _GEN_57 = 2'h2 == mem_state ? _GEN_52 : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 100:20 107:21]
+  wire  _GEN_60 = 2'h1 == mem_state ? 1'h0 : 2'h2 == mem_state; // @[src/main/scala/adapter/cache_adapter.scala 107:21 94:33]
+  wire  _GEN_62 = 2'h1 == mem_state ? 1'h0 : 2'h2 == mem_state & _GEN_51; // @[src/main/scala/adapter/cache_adapter.scala 107:21 98:15]
+  wire [31:0] _GEN_63 = 2'h1 == mem_state ? 32'h0 : _GEN_57; // @[src/main/scala/adapter/cache_adapter.scala 100:20 107:21]
+  wire  _GEN_67 = 2'h3 == mem_state ? 1'h0 : _GEN_60; // @[src/main/scala/adapter/cache_adapter.scala 107:21 94:33]
+  wire  _GEN_69 = 2'h3 == mem_state ? 1'h0 : _GEN_62; // @[src/main/scala/adapter/cache_adapter.scala 107:21 98:15]
+  wire [31:0] _GEN_70 = 2'h3 == mem_state ? 32'h0 : _GEN_63; // @[src/main/scala/adapter/cache_adapter.scala 100:20 107:21]
+  SetAssociativeCache cache ( // @[src/main/scala/adapter/cache_adapter.scala 21:21]
     .clock(cache_clock),
     .reset(cache_reset),
     .io_cpu_req_ready(cache_io_cpu_req_ready),
@@ -3940,114 +7696,118 @@ module CacheAdapter(
     .io_mm_req_write_bits_data(cache_io_mm_req_write_bits_data),
     .io_mm_req_write_bits_mask(cache_io_mm_req_write_bits_mask),
     .io_stat_hit(cache_io_stat_hit),
-    .io_stat_miss(cache_io_stat_miss)
+    .io_stat_miss(cache_io_stat_miss),
+    .io_stat_writeback_wb(cache_io_stat_writeback_wb),
+    .io_stat_state(cache_io_stat_state)
   );
-  assign cpuPort_rdData = cache_io_cpu_resp_bits_data; // @[src/main/scala/adapter/cache_adapter.scala 55:18]
-  assign cpuPort_ack = _cache_io_cpu_req_bits_T ? 1'h0 : cpu_state & _GEN_10; // @[src/main/scala/adapter/cache_adapter.scala 56:15 60:21]
-  assign mem_port_address = 2'h0 == mem_state ? _GEN_33 : _GEN_70; // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-  assign mem_port_rd = 2'h0 == mem_state ? _GEN_40 : _GEN_69; // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-  assign mem_port_wr = 2'h0 == mem_state & _GEN_32; // @[src/main/scala/adapter/cache_adapter.scala 106:21 98:15]
-  assign mem_port_wrData = 2'h0 == mem_state ? _GEN_34 : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 100:19 106:21]
-  assign mem_port_wrMask = 2'h0 == mem_state ? _GEN_35 : 4'h0; // @[src/main/scala/adapter/cache_adapter.scala 101:19 106:21]
-  assign debug_hit = cache_io_stat_hit; // @[src/main/scala/adapter/cache_adapter.scala 33:13]
-  assign debug_miss = cache_io_stat_miss; // @[src/main/scala/adapter/cache_adapter.scala 34:14]
+  assign cpuPort_rdData = cache_io_cpu_resp_bits_data; // @[src/main/scala/adapter/cache_adapter.scala 56:18]
+  assign cpuPort_ack = _cache_io_cpu_req_bits_T ? 1'h0 : cpu_state & _GEN_10; // @[src/main/scala/adapter/cache_adapter.scala 57:15 61:21]
+  assign mem_port_address = 2'h0 == mem_state ? _GEN_33 : _GEN_70; // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+  assign mem_port_rd = 2'h0 == mem_state ? _GEN_40 : _GEN_69; // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+  assign mem_port_wr = 2'h0 == mem_state & _GEN_32; // @[src/main/scala/adapter/cache_adapter.scala 107:21 99:15]
+  assign mem_port_wrData = 2'h0 == mem_state ? _GEN_34 : 32'h0; // @[src/main/scala/adapter/cache_adapter.scala 101:19 107:21]
+  assign mem_port_wrMask = 2'h0 == mem_state ? _GEN_35 : 4'h0; // @[src/main/scala/adapter/cache_adapter.scala 102:19 107:21]
+  assign debug_state = cache_io_stat_state; // @[src/main/scala/adapter/cache_adapter.scala 27:15]
+  assign debug_hit = cache_io_stat_hit; // @[src/main/scala/adapter/cache_adapter.scala 34:13]
+  assign debug_miss = cache_io_stat_miss; // @[src/main/scala/adapter/cache_adapter.scala 35:14]
+  assign debug_writeback_wb = cache_io_stat_writeback_wb; // @[src/main/scala/adapter/cache_adapter.scala 36:22]
   assign cache_clock = clock;
   assign cache_reset = reset;
-  assign cache_io_cpu_req_valid = _cache_io_cpu_req_bits_T ? _T_1 : _GEN_13; // @[src/main/scala/adapter/cache_adapter.scala 60:21]
-  assign cache_io_cpu_req_bits_addr = ~cpu_state ? cpuPort_address : req_reg_addr; // @[src/main/scala/adapter/cache_adapter.scala 52:31]
-  assign cache_io_cpu_req_bits_write = ~cpu_state ? cpuPort_wr : req_reg_write; // @[src/main/scala/adapter/cache_adapter.scala 52:31]
-  assign cache_io_cpu_req_bits_wdata = ~cpu_state ? cpuPort_wrData : req_reg_wdata; // @[src/main/scala/adapter/cache_adapter.scala 52:31]
-  assign cache_io_cpu_req_bits_wmask = ~cpu_state ? cpuPort_wrMask : req_reg_wmask; // @[src/main/scala/adapter/cache_adapter.scala 52:31]
-  assign cache_io_cpu_resp_ready = _cache_io_cpu_req_bits_T ? 1'h0 : cpu_state; // @[src/main/scala/adapter/cache_adapter.scala 60:21 53:27]
-  assign cache_io_mm_req_refill_ready = 2'h0 == mem_state & _GEN_37; // @[src/main/scala/adapter/cache_adapter.scala 106:21 92:32]
-  assign cache_io_mm_data_refill_valid = 2'h0 == mem_state ? 1'h0 : _GEN_67; // @[src/main/scala/adapter/cache_adapter.scala 106:21 93:33]
-  assign cache_io_mm_data_refill_bits_data = data_reg; // @[src/main/scala/adapter/cache_adapter.scala 94:37]
-  assign cache_io_mm_req_write_ready = 2'h0 == mem_state ? 1'h0 : 2'h3 == mem_state & mem_port_ack; // @[src/main/scala/adapter/cache_adapter.scala 106:21 95:31]
+  assign cache_io_cpu_req_valid = _cache_io_cpu_req_bits_T ? _T_1 : _GEN_13; // @[src/main/scala/adapter/cache_adapter.scala 61:21]
+  assign cache_io_cpu_req_bits_addr = ~cpu_state ? cpuPort_address : req_reg_addr; // @[src/main/scala/adapter/cache_adapter.scala 53:31]
+  assign cache_io_cpu_req_bits_write = ~cpu_state ? cpuPort_wr : req_reg_write; // @[src/main/scala/adapter/cache_adapter.scala 53:31]
+  assign cache_io_cpu_req_bits_wdata = ~cpu_state ? cpuPort_wrData : req_reg_wdata; // @[src/main/scala/adapter/cache_adapter.scala 53:31]
+  assign cache_io_cpu_req_bits_wmask = ~cpu_state ? cpuPort_wrMask : req_reg_wmask; // @[src/main/scala/adapter/cache_adapter.scala 53:31]
+  assign cache_io_cpu_resp_ready = _cache_io_cpu_req_bits_T ? 1'h0 : cpu_state; // @[src/main/scala/adapter/cache_adapter.scala 61:21 54:27]
+  assign cache_io_mm_req_refill_ready = 2'h0 == mem_state & _GEN_37; // @[src/main/scala/adapter/cache_adapter.scala 107:21 93:32]
+  assign cache_io_mm_data_refill_valid = 2'h0 == mem_state ? 1'h0 : _GEN_67; // @[src/main/scala/adapter/cache_adapter.scala 107:21 94:33]
+  assign cache_io_mm_data_refill_bits_data = data_reg; // @[src/main/scala/adapter/cache_adapter.scala 95:37]
+  assign cache_io_mm_req_write_ready = 2'h0 == mem_state ? 1'h0 : 2'h3 == mem_state & mem_port_ack; // @[src/main/scala/adapter/cache_adapter.scala 107:21 96:31]
   always @(posedge clock) begin
-    if (reset) begin // @[src/main/scala/adapter/cache_adapter.scala 40:26]
-      cpu_state <= 1'h0; // @[src/main/scala/adapter/cache_adapter.scala 40:26]
-    end else if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 60:21]
+    if (reset) begin // @[src/main/scala/adapter/cache_adapter.scala 41:26]
+      cpu_state <= 1'h0; // @[src/main/scala/adapter/cache_adapter.scala 41:26]
+    end else if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 61:21]
       cpu_state <= _GEN_6;
-    end else if (cpu_state) begin // @[src/main/scala/adapter/cache_adapter.scala 60:21]
-      if (cache_io_cpu_resp_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 77:37]
-        cpu_state <= 1'h0; // @[src/main/scala/adapter/cache_adapter.scala 80:19]
+    end else if (cpu_state) begin // @[src/main/scala/adapter/cache_adapter.scala 61:21]
+      if (cache_io_cpu_resp_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 78:37]
+        cpu_state <= 1'h0; // @[src/main/scala/adapter/cache_adapter.scala 81:19]
       end
     end
-    if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 60:21]
-      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 62:38]
-        req_reg_addr <= cpuPort_address; // @[src/main/scala/adapter/cache_adapter.scala 63:17]
+    if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 61:21]
+      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 63:38]
+        req_reg_addr <= cpuPort_address; // @[src/main/scala/adapter/cache_adapter.scala 64:17]
       end
     end
-    if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 60:21]
-      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 62:38]
-        req_reg_write <= cpuPort_wr; // @[src/main/scala/adapter/cache_adapter.scala 63:17]
+    if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 61:21]
+      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 63:38]
+        req_reg_write <= cpuPort_wr; // @[src/main/scala/adapter/cache_adapter.scala 64:17]
       end
     end
-    if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 60:21]
-      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 62:38]
-        req_reg_wdata <= cpuPort_wrData; // @[src/main/scala/adapter/cache_adapter.scala 63:17]
+    if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 61:21]
+      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 63:38]
+        req_reg_wdata <= cpuPort_wrData; // @[src/main/scala/adapter/cache_adapter.scala 64:17]
       end
     end
-    if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 60:21]
-      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 62:38]
-        req_reg_wmask <= cpuPort_wrMask; // @[src/main/scala/adapter/cache_adapter.scala 63:17]
+    if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 61:21]
+      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 63:38]
+        req_reg_wmask <= cpuPort_wrMask; // @[src/main/scala/adapter/cache_adapter.scala 64:17]
       end
     end
-    if (reset) begin // @[src/main/scala/adapter/cache_adapter.scala 42:25]
-      req_sent <= 1'h0; // @[src/main/scala/adapter/cache_adapter.scala 42:25]
-    end else if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 60:21]
-      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 62:38]
-        req_sent <= cache_io_cpu_req_ready; // @[src/main/scala/adapter/cache_adapter.scala 65:18]
+    if (reset) begin // @[src/main/scala/adapter/cache_adapter.scala 43:25]
+      req_sent <= 1'h0; // @[src/main/scala/adapter/cache_adapter.scala 43:25]
+    end else if (_cache_io_cpu_req_bits_T) begin // @[src/main/scala/adapter/cache_adapter.scala 61:21]
+      if (cpuPort_rd | cpuPort_wr) begin // @[src/main/scala/adapter/cache_adapter.scala 63:38]
+        req_sent <= cache_io_cpu_req_ready; // @[src/main/scala/adapter/cache_adapter.scala 66:18]
       end
-    end else if (cpu_state) begin // @[src/main/scala/adapter/cache_adapter.scala 60:21]
-      if (cache_io_cpu_resp_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 77:37]
-        req_sent <= 1'h0; // @[src/main/scala/adapter/cache_adapter.scala 79:18]
+    end else if (cpu_state) begin // @[src/main/scala/adapter/cache_adapter.scala 61:21]
+      if (cache_io_cpu_resp_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 78:37]
+        req_sent <= 1'h0; // @[src/main/scala/adapter/cache_adapter.scala 80:18]
       end else begin
         req_sent <= _GEN_9;
       end
     end
-    if (reset) begin // @[src/main/scala/adapter/cache_adapter.scala 87:26]
-      mem_state <= 2'h0; // @[src/main/scala/adapter/cache_adapter.scala 87:26]
-    end else if (2'h0 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-      if (cache_io_mm_req_write_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 108:41]
-        mem_state <= 2'h3; // @[src/main/scala/adapter/cache_adapter.scala 113:19]
-      end else if (cache_io_mm_req_refill_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 116:44]
-        mem_state <= 2'h1; // @[src/main/scala/adapter/cache_adapter.scala 121:21]
+    if (reset) begin // @[src/main/scala/adapter/cache_adapter.scala 88:26]
+      mem_state <= 2'h0; // @[src/main/scala/adapter/cache_adapter.scala 88:26]
+    end else if (2'h0 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+      if (cache_io_mm_req_write_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 109:41]
+        mem_state <= 2'h3; // @[src/main/scala/adapter/cache_adapter.scala 114:19]
+      end else if (cache_io_mm_req_refill_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 117:44]
+        mem_state <= 2'h1; // @[src/main/scala/adapter/cache_adapter.scala 122:21]
       end
-    end else if (2'h3 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-      if (mem_port_ack) begin // @[src/main/scala/adapter/cache_adapter.scala 126:26]
-        mem_state <= 2'h0; // @[src/main/scala/adapter/cache_adapter.scala 128:19]
+    end else if (2'h3 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+      if (mem_port_ack) begin // @[src/main/scala/adapter/cache_adapter.scala 127:26]
+        mem_state <= 2'h0; // @[src/main/scala/adapter/cache_adapter.scala 129:19]
       end
-    end else if (2'h1 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
+    end else if (2'h1 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
       mem_state <= _GEN_44;
     end else begin
       mem_state <= _GEN_54;
     end
-    if (2'h0 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-      if (!(cache_io_mm_req_write_valid)) begin // @[src/main/scala/adapter/cache_adapter.scala 108:41]
-        if (cache_io_mm_req_refill_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 116:44]
-          base_reg <= cache_io_mm_req_refill_bits_addr; // @[src/main/scala/adapter/cache_adapter.scala 117:20]
+    if (2'h0 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+      if (!(cache_io_mm_req_write_valid)) begin // @[src/main/scala/adapter/cache_adapter.scala 109:41]
+        if (cache_io_mm_req_refill_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 117:44]
+          base_reg <= cache_io_mm_req_refill_bits_addr; // @[src/main/scala/adapter/cache_adapter.scala 118:20]
         end
       end
     end
-    if (reset) begin // @[src/main/scala/adapter/cache_adapter.scala 89:25]
-      beat_cnt <= 3'h0; // @[src/main/scala/adapter/cache_adapter.scala 89:25]
-    end else if (2'h0 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-      if (!(cache_io_mm_req_write_valid)) begin // @[src/main/scala/adapter/cache_adapter.scala 108:41]
-        if (cache_io_mm_req_refill_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 116:44]
-          beat_cnt <= 3'h0; // @[src/main/scala/adapter/cache_adapter.scala 118:20]
+    if (reset) begin // @[src/main/scala/adapter/cache_adapter.scala 90:25]
+      beat_cnt <= 3'h0; // @[src/main/scala/adapter/cache_adapter.scala 90:25]
+    end else if (2'h0 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+      if (!(cache_io_mm_req_write_valid)) begin // @[src/main/scala/adapter/cache_adapter.scala 109:41]
+        if (cache_io_mm_req_refill_valid) begin // @[src/main/scala/adapter/cache_adapter.scala 117:44]
+          beat_cnt <= 3'h0; // @[src/main/scala/adapter/cache_adapter.scala 119:20]
         end
       end
-    end else if (!(2'h3 == mem_state)) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-      if (!(2'h1 == mem_state)) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
+    end else if (!(2'h3 == mem_state)) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+      if (!(2'h1 == mem_state)) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
         beat_cnt <= _GEN_55;
       end
     end
-    if (!(2'h0 == mem_state)) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-      if (!(2'h3 == mem_state)) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-        if (2'h1 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 106:21]
-          if (mem_port_ack) begin // @[src/main/scala/adapter/cache_adapter.scala 132:26]
-            data_reg <= mem_port_rdData; // @[src/main/scala/adapter/cache_adapter.scala 133:18]
+    if (!(2'h0 == mem_state)) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+      if (!(2'h3 == mem_state)) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+        if (2'h1 == mem_state) begin // @[src/main/scala/adapter/cache_adapter.scala 107:21]
+          if (mem_port_ack) begin // @[src/main/scala/adapter/cache_adapter.scala 133:26]
+            data_reg <= mem_port_rdData; // @[src/main/scala/adapter/cache_adapter.scala 134:18]
           end
         end
       end
@@ -4329,6 +8089,128 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
+module DelayedMem(
+  input         clock,
+  input         reset,
+  input  [31:0] cpuPort_address, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
+  input         cpuPort_rd, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
+  input         cpuPort_wr, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
+  output [31:0] cpuPort_rdData, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
+  input  [31:0] cpuPort_wrData, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
+  input  [3:0]  cpuPort_wrMask, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
+  output        cpuPort_ack // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
+);
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
+`endif // RANDOMIZE_REG_INIT
+  wire  dmem_clock; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  wire  dmem_reset; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  wire [31:0] dmem_cpuPort_address; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  wire  dmem_cpuPort_rd; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  wire  dmem_cpuPort_wr; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  wire [31:0] dmem_cpuPort_rdData; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  wire [31:0] dmem_cpuPort_wrData; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  wire [3:0] dmem_cpuPort_wrMask; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  wire  dmem_cpuPort_ack; // @[src/main/scala/memory/DelayedMem.scala 16:22]
+  reg  busy; // @[src/main/scala/memory/DelayedMem.scala 18:23]
+  reg  counter; // @[src/main/scala/memory/DelayedMem.scala 19:26]
+  reg [31:0] dataReg; // @[src/main/scala/memory/DelayedMem.scala 20:22]
+  wire  accept = ~busy & (cpuPort_rd | cpuPort_wr); // @[src/main/scala/memory/DelayedMem.scala 23:24]
+  wire  _T = ~counter; // @[src/main/scala/memory/DelayedMem.scala 35:22]
+  wire  _GEN_1 = ~counter ? 1'h0 : busy; // @[src/main/scala/memory/DelayedMem.scala 35:31 36:18 18:23]
+  wire  _GEN_3 = busy ? _GEN_1 : busy; // @[src/main/scala/memory/DelayedMem.scala 34:22 18:23]
+  wire  _GEN_5 = accept | _GEN_3; // @[src/main/scala/memory/DelayedMem.scala 31:18 32:14]
+  ScratchPadMem dmem ( // @[src/main/scala/memory/DelayedMem.scala 16:22]
+    .clock(dmem_clock),
+    .reset(dmem_reset),
+    .cpuPort_address(dmem_cpuPort_address),
+    .cpuPort_rd(dmem_cpuPort_rd),
+    .cpuPort_wr(dmem_cpuPort_wr),
+    .cpuPort_rdData(dmem_cpuPort_rdData),
+    .cpuPort_wrData(dmem_cpuPort_wrData),
+    .cpuPort_wrMask(dmem_cpuPort_wrMask),
+    .cpuPort_ack(dmem_cpuPort_ack)
+  );
+  assign cpuPort_rdData = dataReg; // @[src/main/scala/memory/DelayedMem.scala 43:20]
+  assign cpuPort_ack = busy & _T; // @[src/main/scala/memory/DelayedMem.scala 42:25]
+  assign dmem_clock = clock;
+  assign dmem_reset = reset;
+  assign dmem_cpuPort_address = cpuPort_address; // @[src/main/scala/memory/DelayedMem.scala 24:26]
+  assign dmem_cpuPort_rd = cpuPort_rd & accept; // @[src/main/scala/memory/DelayedMem.scala 27:35]
+  assign dmem_cpuPort_wr = cpuPort_wr & accept; // @[src/main/scala/memory/DelayedMem.scala 28:35]
+  assign dmem_cpuPort_wrData = cpuPort_wrData; // @[src/main/scala/memory/DelayedMem.scala 25:25]
+  assign dmem_cpuPort_wrMask = cpuPort_wrMask; // @[src/main/scala/memory/DelayedMem.scala 26:25]
+  always @(posedge clock) begin
+    if (reset) begin // @[src/main/scala/memory/DelayedMem.scala 18:23]
+      busy <= 1'h0; // @[src/main/scala/memory/DelayedMem.scala 18:23]
+    end else begin
+      busy <= _GEN_5;
+    end
+    if (reset) begin // @[src/main/scala/memory/DelayedMem.scala 19:26]
+      counter <= 1'h0; // @[src/main/scala/memory/DelayedMem.scala 19:26]
+    end else if (accept) begin // @[src/main/scala/memory/DelayedMem.scala 31:18]
+      counter <= 1'h0; // @[src/main/scala/memory/DelayedMem.scala 33:17]
+    end else if (busy) begin // @[src/main/scala/memory/DelayedMem.scala 34:22]
+      if (!(~counter)) begin // @[src/main/scala/memory/DelayedMem.scala 35:31]
+        counter <= counter - 1'h1; // @[src/main/scala/memory/DelayedMem.scala 38:21]
+      end
+    end
+    if (dmem_cpuPort_ack) begin // @[src/main/scala/memory/DelayedMem.scala 29:28]
+      dataReg <= dmem_cpuPort_rdData; // @[src/main/scala/memory/DelayedMem.scala 29:38]
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  busy = _RAND_0[0:0];
+  _RAND_1 = {1{`RANDOM}};
+  counter = _RAND_1[0:0];
+  _RAND_2 = {1{`RANDOM}};
+  dataReg = _RAND_2[31:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
+endmodule
 module IODevice(
   input         clock,
   input         reset,
@@ -4337,8 +8219,8 @@ module IODevice(
   output [31:0] cpuPort_rdData, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
   input  [31:0] cpuPort_wrData, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
   output        cpuPort_ack, // @[soc-comm/src/main/scala/soc/PipeConDevice.scala 11:19]
-  output [15:0] io_out, // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:16]
-  input  [1:0]  io_in // @[src/main/scala/wildcat/pipeline/LittleCat.scala 45:16]
+  output [15:0] io_out, // @[src/main/scala/wildcat/pipeline/LittleCat.scala 46:16]
+  input  [1:0]  io_in // @[src/main/scala/wildcat/pipeline/LittleCat.scala 46:16]
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
@@ -4346,25 +8228,25 @@ module IODevice(
   reg [31:0] _RAND_2;
   reg [31:0] _RAND_3;
 `endif // RANDOMIZE_REG_INIT
-  reg [15:0] outReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 49:25]
-  reg [1:0] cpuPort_rdData_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:38]
-  reg [1:0] cpuPort_rdData_REG_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:30]
-  reg  cpuPort_ack_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:27]
-  assign cpuPort_rdData = {{30'd0}, cpuPort_rdData_REG_1}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:20]
-  assign cpuPort_ack = cpuPort_ack_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:17]
-  assign io_out = outReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 53:12]
+  reg [15:0] outReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 50:25]
+  reg [1:0] cpuPort_rdData_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:38]
+  reg [1:0] cpuPort_rdData_REG_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:30]
+  reg  cpuPort_ack_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 53:27]
+  assign cpuPort_rdData = {{30'd0}, cpuPort_rdData_REG_1}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:20]
+  assign cpuPort_ack = cpuPort_ack_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 53:17]
+  assign io_out = outReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 54:12]
   always @(posedge clock) begin
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 49:25]
-      outReg <= 16'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 49:25]
-    end else if (cpuPort_wr) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 50:22]
-      outReg <= cpuPort_wrData[15:0]; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 50:31]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 50:25]
+      outReg <= 16'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 50:25]
+    end else if (cpuPort_wr) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:22]
+      outReg <= cpuPort_wrData[15:0]; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:31]
     end
-    cpuPort_rdData_REG <= io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:38]
-    cpuPort_rdData_REG_1 <= cpuPort_rdData_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 51:30]
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:27]
-      cpuPort_ack_REG <= 1'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:27]
+    cpuPort_rdData_REG <= io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:38]
+    cpuPort_rdData_REG_1 <= cpuPort_rdData_REG; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:30]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 53:27]
+      cpuPort_ack_REG <= 1'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 53:27]
     end else begin
-      cpuPort_ack_REG <= cpuPort_rd | cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 52:27]
+      cpuPort_ack_REG <= cpuPort_rd | cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 53:27]
     end
   end
 // Register and memory initialization
@@ -4411,6 +8293,279 @@ initial begin
   cpuPort_rdData_REG_1 = _RAND_2[1:0];
   _RAND_3 = {1{`RANDOM}};
   cpuPort_ack_REG = _RAND_3[0:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
+endmodule
+module PerfCounters(
+  input         clock,
+  input         reset,
+  input         io_hit, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  input         io_miss, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  input         io_writeback_wb, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  input  [2:0]  io_state, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  input         io_reqStart, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  input         io_reqIsWrite, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  input         io_ack, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_0, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_1, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_2, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_4, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_5, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_6, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_7, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_8, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_9, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_10, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_11, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_12, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_13, // @[src/main/scala/device/PerfCounters.scala 8:14]
+  output [31:0] io_words_14 // @[src/main/scala/device/PerfCounters.scala 8:14]
+);
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
+  reg [31:0] _RAND_3;
+  reg [31:0] _RAND_4;
+  reg [31:0] _RAND_5;
+  reg [31:0] _RAND_6;
+  reg [31:0] _RAND_7;
+  reg [31:0] _RAND_8;
+  reg [31:0] _RAND_9;
+  reg [31:0] _RAND_10;
+  reg [31:0] _RAND_11;
+  reg [31:0] _RAND_12;
+  reg [31:0] _RAND_13;
+  reg [31:0] _RAND_14;
+  reg [31:0] _RAND_15;
+  reg [31:0] _RAND_16;
+`endif // RANDOMIZE_REG_INIT
+  reg [31:0] hits; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _hits_r_T_1 = hits + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  reg [31:0] misses; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _misses_r_T_1 = misses + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  reg [31:0] wbs; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _wbs_r_T_1 = wbs + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _stores_T = io_reqStart & io_reqIsWrite; // @[src/main/scala/device/PerfCounters.scala 22:36]
+  reg [31:0] stores; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _stores_r_T_1 = stores + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  reg  busy; // @[src/main/scala/device/PerfCounters.scala 25:21]
+  reg [15:0] lat; // @[src/main/scala/device/PerfCounters.scala 26:20]
+  reg  missed; // @[src/main/scala/device/PerfCounters.scala 27:23]
+  wire [15:0] _lat_T_1 = lat + 16'h1; // @[src/main/scala/device/PerfCounters.scala 29:34]
+  wire  _GEN_6 = io_reqStart | busy; // @[src/main/scala/device/PerfCounters.scala 25:21 28:{21,28}]
+  wire  _GEN_8 = io_reqStart ? 1'h0 : missed; // @[src/main/scala/device/PerfCounters.scala 28:21 27:23 28:58]
+  wire  _GEN_9 = io_miss | _GEN_8; // @[src/main/scala/device/PerfCounters.scala 30:{17,26}]
+  wire  _hitCycles_T_1 = io_ack & ~missed; // @[src/main/scala/device/PerfCounters.scala 32:34]
+  reg [31:0] hitCycles; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _GEN_21 = {{16'd0}, lat}; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire [31:0] _hitCycles_r_T_1 = hitCycles + _GEN_21; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _missCycles_T = io_ack & missed; // @[src/main/scala/device/PerfCounters.scala 33:35]
+  reg [31:0] missCycles; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _missCycles_r_T_1 = missCycles + _GEN_21; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  reg [31:0] cycles; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _cycles_r_T_1 = cycles + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _stateCycles_T = io_state == 3'h0; // @[src/main/scala/device/PerfCounters.scala 37:73]
+  reg [31:0] stateCycles_r; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _stateCycles_r_T_1 = stateCycles_r + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _stateCycles_T_1 = io_state == 3'h1; // @[src/main/scala/device/PerfCounters.scala 37:73]
+  reg [31:0] stateCycles_r_1; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _stateCycles_r_T_3 = stateCycles_r_1 + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _stateCycles_T_2 = io_state == 3'h2; // @[src/main/scala/device/PerfCounters.scala 37:73]
+  reg [31:0] stateCycles_r_2; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _stateCycles_r_T_5 = stateCycles_r_2 + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _stateCycles_T_3 = io_state == 3'h3; // @[src/main/scala/device/PerfCounters.scala 37:73]
+  reg [31:0] stateCycles_r_3; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _stateCycles_r_T_7 = stateCycles_r_3 + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _stateCycles_T_4 = io_state == 3'h4; // @[src/main/scala/device/PerfCounters.scala 37:73]
+  reg [31:0] stateCycles_r_4; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _stateCycles_r_T_9 = stateCycles_r_4 + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _stateCycles_T_5 = io_state == 3'h5; // @[src/main/scala/device/PerfCounters.scala 37:73]
+  reg [31:0] stateCycles_r_5; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _stateCycles_r_T_11 = stateCycles_r_5 + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  wire  _stateCycles_T_6 = io_state == 3'h6; // @[src/main/scala/device/PerfCounters.scala 37:73]
+  reg [31:0] stateCycles_r_6; // @[src/main/scala/device/PerfCounters.scala 16:20]
+  wire [31:0] _stateCycles_r_T_13 = stateCycles_r_6 + 32'h1; // @[src/main/scala/device/PerfCounters.scala 16:52]
+  assign io_words_0 = hits; // @[src/main/scala/device/PerfCounters.scala 39:{22,22}]
+  assign io_words_1 = misses; // @[src/main/scala/device/PerfCounters.scala 39:{22,22}]
+  assign io_words_2 = wbs; // @[src/main/scala/device/PerfCounters.scala 39:{22,22}]
+  assign io_words_4 = stores; // @[src/main/scala/device/PerfCounters.scala 39:{22,22}]
+  assign io_words_5 = hitCycles; // @[src/main/scala/device/PerfCounters.scala 39:{22,22}]
+  assign io_words_6 = missCycles; // @[src/main/scala/device/PerfCounters.scala 39:{22,22}]
+  assign io_words_7 = cycles; // @[src/main/scala/device/PerfCounters.scala 39:{22,22}]
+  assign io_words_8 = stateCycles_r; // @[src/main/scala/device/PerfCounters.scala 37:{28,28}]
+  assign io_words_9 = stateCycles_r_1; // @[src/main/scala/device/PerfCounters.scala 37:{28,28}]
+  assign io_words_10 = stateCycles_r_2; // @[src/main/scala/device/PerfCounters.scala 37:{28,28}]
+  assign io_words_11 = stateCycles_r_3; // @[src/main/scala/device/PerfCounters.scala 37:{28,28}]
+  assign io_words_12 = stateCycles_r_4; // @[src/main/scala/device/PerfCounters.scala 37:{28,28}]
+  assign io_words_13 = stateCycles_r_5; // @[src/main/scala/device/PerfCounters.scala 37:{28,28}]
+  assign io_words_14 = stateCycles_r_6; // @[src/main/scala/device/PerfCounters.scala 37:{28,28}]
+  always @(posedge clock) begin
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      hits <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (io_hit) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      hits <= _hits_r_T_1; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      misses <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (io_miss) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      misses <= _misses_r_T_1; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      wbs <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (io_writeback_wb) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      wbs <= _wbs_r_T_1; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      stores <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_stores_T) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      stores <= _stores_r_T_1; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 25:21]
+      busy <= 1'h0; // @[src/main/scala/device/PerfCounters.scala 25:21]
+    end else if (io_ack) begin // @[src/main/scala/device/PerfCounters.scala 31:16]
+      busy <= 1'h0; // @[src/main/scala/device/PerfCounters.scala 31:23]
+    end else begin
+      busy <= _GEN_6;
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 26:20]
+      lat <= 16'h0; // @[src/main/scala/device/PerfCounters.scala 26:20]
+    end else if (io_reqStart) begin // @[src/main/scala/device/PerfCounters.scala 28:21]
+      lat <= 16'h1; // @[src/main/scala/device/PerfCounters.scala 28:43]
+    end else if (busy) begin // @[src/main/scala/device/PerfCounters.scala 29:21]
+      lat <= _lat_T_1; // @[src/main/scala/device/PerfCounters.scala 29:27]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 27:23]
+      missed <= 1'h0; // @[src/main/scala/device/PerfCounters.scala 27:23]
+    end else begin
+      missed <= _GEN_9;
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      hitCycles <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_hitCycles_T_1) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      hitCycles <= _hitCycles_r_T_1; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      missCycles <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_missCycles_T) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      missCycles <= _missCycles_r_T_1; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      cycles <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else begin
+      cycles <= _cycles_r_T_1;
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      stateCycles_r <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_stateCycles_T) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      stateCycles_r <= _stateCycles_r_T_1; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      stateCycles_r_1 <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_stateCycles_T_1) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      stateCycles_r_1 <= _stateCycles_r_T_3; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      stateCycles_r_2 <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_stateCycles_T_2) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      stateCycles_r_2 <= _stateCycles_r_T_5; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      stateCycles_r_3 <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_stateCycles_T_3) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      stateCycles_r_3 <= _stateCycles_r_T_7; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      stateCycles_r_4 <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_stateCycles_T_4) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      stateCycles_r_4 <= _stateCycles_r_T_9; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      stateCycles_r_5 <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_stateCycles_T_5) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      stateCycles_r_5 <= _stateCycles_r_T_11; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+    if (reset) begin // @[src/main/scala/device/PerfCounters.scala 16:20]
+      stateCycles_r_6 <= 32'h0; // @[src/main/scala/device/PerfCounters.scala 16:20]
+    end else if (_stateCycles_T_6) begin // @[src/main/scala/device/PerfCounters.scala 16:43]
+      stateCycles_r_6 <= _stateCycles_r_T_13; // @[src/main/scala/device/PerfCounters.scala 16:47]
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  hits = _RAND_0[31:0];
+  _RAND_1 = {1{`RANDOM}};
+  misses = _RAND_1[31:0];
+  _RAND_2 = {1{`RANDOM}};
+  wbs = _RAND_2[31:0];
+  _RAND_3 = {1{`RANDOM}};
+  stores = _RAND_3[31:0];
+  _RAND_4 = {1{`RANDOM}};
+  busy = _RAND_4[0:0];
+  _RAND_5 = {1{`RANDOM}};
+  lat = _RAND_5[15:0];
+  _RAND_6 = {1{`RANDOM}};
+  missed = _RAND_6[0:0];
+  _RAND_7 = {1{`RANDOM}};
+  hitCycles = _RAND_7[31:0];
+  _RAND_8 = {1{`RANDOM}};
+  missCycles = _RAND_8[31:0];
+  _RAND_9 = {1{`RANDOM}};
+  cycles = _RAND_9[31:0];
+  _RAND_10 = {1{`RANDOM}};
+  stateCycles_r = _RAND_10[31:0];
+  _RAND_11 = {1{`RANDOM}};
+  stateCycles_r_1 = _RAND_11[31:0];
+  _RAND_12 = {1{`RANDOM}};
+  stateCycles_r_2 = _RAND_12[31:0];
+  _RAND_13 = {1{`RANDOM}};
+  stateCycles_r_3 = _RAND_13[31:0];
+  _RAND_14 = {1{`RANDOM}};
+  stateCycles_r_4 = _RAND_14[31:0];
+  _RAND_15 = {1{`RANDOM}};
+  stateCycles_r_5 = _RAND_15[31:0];
+  _RAND_16 = {1{`RANDOM}};
+  stateCycles_r_6 = _RAND_16[31:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -4662,8 +8817,20 @@ endmodule
 module StatsUART(
   input         clock,
   input         reset,
-  input  [31:0] io_hits, // @[src/main/scala/device/StatsUart.scala 13:14]
-  input  [31:0] io_misses, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_0, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_1, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_2, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_4, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_5, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_6, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_7, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_8, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_9, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_10, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_11, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_12, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_13, // @[src/main/scala/device/StatsUart.scala 13:14]
+  input  [31:0] io_words_14, // @[src/main/scala/device/StatsUart.scala 13:14]
   output        io_txd // @[src/main/scala/device/StatsUart.scala 13:14]
 );
 `ifdef RANDOMIZE_REG_INIT
@@ -4678,6 +8845,54 @@ module StatsUART(
   reg [31:0] _RAND_8;
   reg [31:0] _RAND_9;
   reg [31:0] _RAND_10;
+  reg [31:0] _RAND_11;
+  reg [31:0] _RAND_12;
+  reg [31:0] _RAND_13;
+  reg [31:0] _RAND_14;
+  reg [31:0] _RAND_15;
+  reg [31:0] _RAND_16;
+  reg [31:0] _RAND_17;
+  reg [31:0] _RAND_18;
+  reg [31:0] _RAND_19;
+  reg [31:0] _RAND_20;
+  reg [31:0] _RAND_21;
+  reg [31:0] _RAND_22;
+  reg [31:0] _RAND_23;
+  reg [31:0] _RAND_24;
+  reg [31:0] _RAND_25;
+  reg [31:0] _RAND_26;
+  reg [31:0] _RAND_27;
+  reg [31:0] _RAND_28;
+  reg [31:0] _RAND_29;
+  reg [31:0] _RAND_30;
+  reg [31:0] _RAND_31;
+  reg [31:0] _RAND_32;
+  reg [31:0] _RAND_33;
+  reg [31:0] _RAND_34;
+  reg [31:0] _RAND_35;
+  reg [31:0] _RAND_36;
+  reg [31:0] _RAND_37;
+  reg [31:0] _RAND_38;
+  reg [31:0] _RAND_39;
+  reg [31:0] _RAND_40;
+  reg [31:0] _RAND_41;
+  reg [31:0] _RAND_42;
+  reg [31:0] _RAND_43;
+  reg [31:0] _RAND_44;
+  reg [31:0] _RAND_45;
+  reg [31:0] _RAND_46;
+  reg [31:0] _RAND_47;
+  reg [31:0] _RAND_48;
+  reg [31:0] _RAND_49;
+  reg [31:0] _RAND_50;
+  reg [31:0] _RAND_51;
+  reg [31:0] _RAND_52;
+  reg [31:0] _RAND_53;
+  reg [31:0] _RAND_54;
+  reg [31:0] _RAND_55;
+  reg [31:0] _RAND_56;
+  reg [31:0] _RAND_57;
+  reg [31:0] _RAND_58;
 `endif // RANDOMIZE_REG_INIT
   wire  tx_clock; // @[src/main/scala/device/StatsUart.scala 20:18]
   wire  tx_reset; // @[src/main/scala/device/StatsUart.scala 20:18]
@@ -4694,18 +8909,118 @@ module StatsUART(
   reg [7:0] frame_6; // @[src/main/scala/device/StatsUart.scala 24:18]
   reg [7:0] frame_7; // @[src/main/scala/device/StatsUart.scala 24:18]
   reg [7:0] frame_8; // @[src/main/scala/device/StatsUart.scala 24:18]
-  reg [3:0] idx; // @[src/main/scala/device/StatsUart.scala 25:20]
+  reg [7:0] frame_9; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_10; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_11; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_12; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_17; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_18; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_19; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_20; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_21; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_22; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_23; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_24; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_25; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_26; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_27; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_28; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_29; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_30; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_31; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_32; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_33; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_34; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_35; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_36; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_37; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_38; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_39; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_40; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_41; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_42; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_43; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_44; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_45; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_46; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_47; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_48; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_49; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_50; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_51; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_52; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_53; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_54; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_55; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_56; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_57; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_58; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_59; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [7:0] frame_60; // @[src/main/scala/device/StatsUart.scala 24:18]
+  reg [5:0] idx; // @[src/main/scala/device/StatsUart.scala 25:20]
   reg  sending; // @[src/main/scala/device/StatsUart.scala 26:24]
-  wire [7:0] _GEN_1 = 4'h1 == idx ? frame_1 : 8'haa; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
-  wire [7:0] _GEN_2 = 4'h2 == idx ? frame_2 : _GEN_1; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
-  wire [7:0] _GEN_3 = 4'h3 == idx ? frame_3 : _GEN_2; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
-  wire [7:0] _GEN_4 = 4'h4 == idx ? frame_4 : _GEN_3; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
-  wire [7:0] _GEN_5 = 4'h5 == idx ? frame_5 : _GEN_4; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
-  wire [7:0] _GEN_6 = 4'h6 == idx ? frame_6 : _GEN_5; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
-  wire [7:0] _GEN_7 = 4'h7 == idx ? frame_7 : _GEN_6; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_1 = 6'h1 == idx ? frame_1 : 8'haa; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_2 = 6'h2 == idx ? frame_2 : _GEN_1; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_3 = 6'h3 == idx ? frame_3 : _GEN_2; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_4 = 6'h4 == idx ? frame_4 : _GEN_3; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_5 = 6'h5 == idx ? frame_5 : _GEN_4; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_6 = 6'h6 == idx ? frame_6 : _GEN_5; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_7 = 6'h7 == idx ? frame_7 : _GEN_6; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_8 = 6'h8 == idx ? frame_8 : _GEN_7; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_9 = 6'h9 == idx ? frame_9 : _GEN_8; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_10 = 6'ha == idx ? frame_10 : _GEN_9; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_11 = 6'hb == idx ? frame_11 : _GEN_10; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_12 = 6'hc == idx ? frame_12 : _GEN_11; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_13 = 6'hd == idx ? 8'h0 : _GEN_12; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_14 = 6'he == idx ? 8'h0 : _GEN_13; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_15 = 6'hf == idx ? 8'h0 : _GEN_14; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_16 = 6'h10 == idx ? 8'h0 : _GEN_15; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_17 = 6'h11 == idx ? frame_17 : _GEN_16; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_18 = 6'h12 == idx ? frame_18 : _GEN_17; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_19 = 6'h13 == idx ? frame_19 : _GEN_18; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_20 = 6'h14 == idx ? frame_20 : _GEN_19; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_21 = 6'h15 == idx ? frame_21 : _GEN_20; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_22 = 6'h16 == idx ? frame_22 : _GEN_21; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_23 = 6'h17 == idx ? frame_23 : _GEN_22; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_24 = 6'h18 == idx ? frame_24 : _GEN_23; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_25 = 6'h19 == idx ? frame_25 : _GEN_24; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_26 = 6'h1a == idx ? frame_26 : _GEN_25; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_27 = 6'h1b == idx ? frame_27 : _GEN_26; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_28 = 6'h1c == idx ? frame_28 : _GEN_27; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_29 = 6'h1d == idx ? frame_29 : _GEN_28; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_30 = 6'h1e == idx ? frame_30 : _GEN_29; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_31 = 6'h1f == idx ? frame_31 : _GEN_30; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_32 = 6'h20 == idx ? frame_32 : _GEN_31; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_33 = 6'h21 == idx ? frame_33 : _GEN_32; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_34 = 6'h22 == idx ? frame_34 : _GEN_33; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_35 = 6'h23 == idx ? frame_35 : _GEN_34; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_36 = 6'h24 == idx ? frame_36 : _GEN_35; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_37 = 6'h25 == idx ? frame_37 : _GEN_36; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_38 = 6'h26 == idx ? frame_38 : _GEN_37; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_39 = 6'h27 == idx ? frame_39 : _GEN_38; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_40 = 6'h28 == idx ? frame_40 : _GEN_39; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_41 = 6'h29 == idx ? frame_41 : _GEN_40; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_42 = 6'h2a == idx ? frame_42 : _GEN_41; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_43 = 6'h2b == idx ? frame_43 : _GEN_42; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_44 = 6'h2c == idx ? frame_44 : _GEN_43; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_45 = 6'h2d == idx ? frame_45 : _GEN_44; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_46 = 6'h2e == idx ? frame_46 : _GEN_45; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_47 = 6'h2f == idx ? frame_47 : _GEN_46; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_48 = 6'h30 == idx ? frame_48 : _GEN_47; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_49 = 6'h31 == idx ? frame_49 : _GEN_48; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_50 = 6'h32 == idx ? frame_50 : _GEN_49; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_51 = 6'h33 == idx ? frame_51 : _GEN_50; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_52 = 6'h34 == idx ? frame_52 : _GEN_51; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_53 = 6'h35 == idx ? frame_53 : _GEN_52; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_54 = 6'h36 == idx ? frame_54 : _GEN_53; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_55 = 6'h37 == idx ? frame_55 : _GEN_54; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_56 = 6'h38 == idx ? frame_56 : _GEN_55; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_57 = 6'h39 == idx ? frame_57 : _GEN_56; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_58 = 6'h3a == idx ? frame_58 : _GEN_57; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  wire [7:0] _GEN_59 = 6'h3b == idx ? frame_59 : _GEN_58; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
   wire [23:0] _timer_T_1 = timer + 24'h1; // @[src/main/scala/device/StatsUart.scala 32:20]
-  wire  _GEN_20 = timer == 24'h98967f | sending; // @[src/main/scala/device/StatsUart.scala 33:42 41:15 26:24]
-  wire [3:0] _idx_T_1 = idx + 4'h1; // @[src/main/scala/device/StatsUart.scala 46:18]
+  wire  _GEN_124 = timer == 24'h98967f | sending; // @[src/main/scala/device/StatsUart.scala 33:42 40:15 26:24]
+  wire [5:0] _idx_T_1 = idx + 6'h1; // @[src/main/scala/device/StatsUart.scala 45:18]
   BufferedTx tx ( // @[src/main/scala/device/StatsUart.scala 20:18]
     .clock(tx_clock),
     .reset(tx_reset),
@@ -4717,8 +9032,8 @@ module StatsUART(
   assign io_txd = tx_io_txd; // @[src/main/scala/device/StatsUart.scala 21:10]
   assign tx_clock = clock;
   assign tx_reset = reset;
-  assign tx_io_channel_valid = ~sending ? 1'h0 : 1'h1; // @[src/main/scala/device/StatsUart.scala 31:18 28:23 44:25]
-  assign tx_io_channel_bits = 4'h8 == idx ? frame_8 : _GEN_7; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
+  assign tx_io_channel_valid = ~sending ? 1'h0 : 1'h1; // @[src/main/scala/device/StatsUart.scala 31:18 28:23 43:25]
+  assign tx_io_channel_bits = 6'h3c == idx ? frame_60 : _GEN_59; // @[src/main/scala/device/StatsUart.scala 29:{22,22}]
   always @(posedge clock) begin
     if (reset) begin // @[src/main/scala/device/StatsUart.scala 23:22]
       timer <= 24'h0; // @[src/main/scala/device/StatsUart.scala 23:22]
@@ -4731,60 +9046,300 @@ module StatsUART(
     end
     if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        frame_1 <= io_hits[7:0]; // @[src/main/scala/device/StatsUart.scala 37:22]
+        frame_1 <= io_words_0[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
       end
     end
     if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        frame_2 <= io_hits[15:8]; // @[src/main/scala/device/StatsUart.scala 37:22]
+        frame_2 <= io_words_0[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
       end
     end
     if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        frame_3 <= io_hits[23:16]; // @[src/main/scala/device/StatsUart.scala 37:22]
+        frame_3 <= io_words_0[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
       end
     end
     if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        frame_4 <= io_hits[31:24]; // @[src/main/scala/device/StatsUart.scala 37:22]
+        frame_4 <= io_words_0[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
       end
     end
     if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        frame_5 <= io_misses[7:0]; // @[src/main/scala/device/StatsUart.scala 38:22]
+        frame_5 <= io_words_1[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
       end
     end
     if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        frame_6 <= io_misses[15:8]; // @[src/main/scala/device/StatsUart.scala 38:22]
+        frame_6 <= io_words_1[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
       end
     end
     if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        frame_7 <= io_misses[23:16]; // @[src/main/scala/device/StatsUart.scala 38:22]
+        frame_7 <= io_words_1[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
       end
     end
     if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        frame_8 <= io_misses[31:24]; // @[src/main/scala/device/StatsUart.scala 38:22]
+        frame_8 <= io_words_1[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_9 <= io_words_2[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_10 <= io_words_2[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_11 <= io_words_2[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_12 <= io_words_2[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_17 <= io_words_4[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_18 <= io_words_4[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_19 <= io_words_4[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_20 <= io_words_4[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_21 <= io_words_5[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_22 <= io_words_5[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_23 <= io_words_5[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_24 <= io_words_5[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_25 <= io_words_6[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_26 <= io_words_6[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_27 <= io_words_6[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_28 <= io_words_6[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_29 <= io_words_7[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_30 <= io_words_7[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_31 <= io_words_7[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_32 <= io_words_7[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_33 <= io_words_8[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_34 <= io_words_8[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_35 <= io_words_8[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_36 <= io_words_8[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_37 <= io_words_9[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_38 <= io_words_9[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_39 <= io_words_9[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_40 <= io_words_9[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_41 <= io_words_10[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_42 <= io_words_10[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_43 <= io_words_10[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_44 <= io_words_10[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_45 <= io_words_11[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_46 <= io_words_11[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_47 <= io_words_11[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_48 <= io_words_11[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_49 <= io_words_12[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_50 <= io_words_12[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_51 <= io_words_12[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_52 <= io_words_12[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_53 <= io_words_13[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_54 <= io_words_13[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_55 <= io_words_13[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_56 <= io_words_13[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_57 <= io_words_14[7:0]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_58 <= io_words_14[15:8]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_59 <= io_words_14[23:16]; // @[src/main/scala/device/StatsUart.scala 37:30]
+      end
+    end
+    if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
+      if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
+        frame_60 <= io_words_14[31:24]; // @[src/main/scala/device/StatsUart.scala 37:30]
       end
     end
     if (reset) begin // @[src/main/scala/device/StatsUart.scala 25:20]
-      idx <= 4'h0; // @[src/main/scala/device/StatsUart.scala 25:20]
+      idx <= 6'h0; // @[src/main/scala/device/StatsUart.scala 25:20]
     end else if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
       if (timer == 24'h98967f) begin // @[src/main/scala/device/StatsUart.scala 33:42]
-        idx <= 4'h0; // @[src/main/scala/device/StatsUart.scala 40:11]
+        idx <= 6'h0; // @[src/main/scala/device/StatsUart.scala 39:11]
       end
-    end else if (tx_io_channel_ready) begin // @[src/main/scala/device/StatsUart.scala 45:31]
-      idx <= _idx_T_1; // @[src/main/scala/device/StatsUart.scala 46:11]
+    end else if (tx_io_channel_ready) begin // @[src/main/scala/device/StatsUart.scala 44:31]
+      idx <= _idx_T_1; // @[src/main/scala/device/StatsUart.scala 45:11]
     end
     if (reset) begin // @[src/main/scala/device/StatsUart.scala 26:24]
       sending <= 1'h0; // @[src/main/scala/device/StatsUart.scala 26:24]
     end else if (~sending) begin // @[src/main/scala/device/StatsUart.scala 31:18]
-      sending <= _GEN_20;
-    end else if (tx_io_channel_ready) begin // @[src/main/scala/device/StatsUart.scala 45:31]
-      if (idx == 4'h8) begin // @[src/main/scala/device/StatsUart.scala 47:25]
-        sending <= 1'h0; // @[src/main/scala/device/StatsUart.scala 47:35]
+      sending <= _GEN_124;
+    end else if (tx_io_channel_ready) begin // @[src/main/scala/device/StatsUart.scala 44:31]
+      if (idx == 6'h3c) begin // @[src/main/scala/device/StatsUart.scala 46:38]
+        sending <= 1'h0; // @[src/main/scala/device/StatsUart.scala 47:17]
       end
     end
   end
@@ -4843,9 +9398,105 @@ initial begin
   _RAND_8 = {1{`RANDOM}};
   frame_8 = _RAND_8[7:0];
   _RAND_9 = {1{`RANDOM}};
-  idx = _RAND_9[3:0];
+  frame_9 = _RAND_9[7:0];
   _RAND_10 = {1{`RANDOM}};
-  sending = _RAND_10[0:0];
+  frame_10 = _RAND_10[7:0];
+  _RAND_11 = {1{`RANDOM}};
+  frame_11 = _RAND_11[7:0];
+  _RAND_12 = {1{`RANDOM}};
+  frame_12 = _RAND_12[7:0];
+  _RAND_13 = {1{`RANDOM}};
+  frame_17 = _RAND_13[7:0];
+  _RAND_14 = {1{`RANDOM}};
+  frame_18 = _RAND_14[7:0];
+  _RAND_15 = {1{`RANDOM}};
+  frame_19 = _RAND_15[7:0];
+  _RAND_16 = {1{`RANDOM}};
+  frame_20 = _RAND_16[7:0];
+  _RAND_17 = {1{`RANDOM}};
+  frame_21 = _RAND_17[7:0];
+  _RAND_18 = {1{`RANDOM}};
+  frame_22 = _RAND_18[7:0];
+  _RAND_19 = {1{`RANDOM}};
+  frame_23 = _RAND_19[7:0];
+  _RAND_20 = {1{`RANDOM}};
+  frame_24 = _RAND_20[7:0];
+  _RAND_21 = {1{`RANDOM}};
+  frame_25 = _RAND_21[7:0];
+  _RAND_22 = {1{`RANDOM}};
+  frame_26 = _RAND_22[7:0];
+  _RAND_23 = {1{`RANDOM}};
+  frame_27 = _RAND_23[7:0];
+  _RAND_24 = {1{`RANDOM}};
+  frame_28 = _RAND_24[7:0];
+  _RAND_25 = {1{`RANDOM}};
+  frame_29 = _RAND_25[7:0];
+  _RAND_26 = {1{`RANDOM}};
+  frame_30 = _RAND_26[7:0];
+  _RAND_27 = {1{`RANDOM}};
+  frame_31 = _RAND_27[7:0];
+  _RAND_28 = {1{`RANDOM}};
+  frame_32 = _RAND_28[7:0];
+  _RAND_29 = {1{`RANDOM}};
+  frame_33 = _RAND_29[7:0];
+  _RAND_30 = {1{`RANDOM}};
+  frame_34 = _RAND_30[7:0];
+  _RAND_31 = {1{`RANDOM}};
+  frame_35 = _RAND_31[7:0];
+  _RAND_32 = {1{`RANDOM}};
+  frame_36 = _RAND_32[7:0];
+  _RAND_33 = {1{`RANDOM}};
+  frame_37 = _RAND_33[7:0];
+  _RAND_34 = {1{`RANDOM}};
+  frame_38 = _RAND_34[7:0];
+  _RAND_35 = {1{`RANDOM}};
+  frame_39 = _RAND_35[7:0];
+  _RAND_36 = {1{`RANDOM}};
+  frame_40 = _RAND_36[7:0];
+  _RAND_37 = {1{`RANDOM}};
+  frame_41 = _RAND_37[7:0];
+  _RAND_38 = {1{`RANDOM}};
+  frame_42 = _RAND_38[7:0];
+  _RAND_39 = {1{`RANDOM}};
+  frame_43 = _RAND_39[7:0];
+  _RAND_40 = {1{`RANDOM}};
+  frame_44 = _RAND_40[7:0];
+  _RAND_41 = {1{`RANDOM}};
+  frame_45 = _RAND_41[7:0];
+  _RAND_42 = {1{`RANDOM}};
+  frame_46 = _RAND_42[7:0];
+  _RAND_43 = {1{`RANDOM}};
+  frame_47 = _RAND_43[7:0];
+  _RAND_44 = {1{`RANDOM}};
+  frame_48 = _RAND_44[7:0];
+  _RAND_45 = {1{`RANDOM}};
+  frame_49 = _RAND_45[7:0];
+  _RAND_46 = {1{`RANDOM}};
+  frame_50 = _RAND_46[7:0];
+  _RAND_47 = {1{`RANDOM}};
+  frame_51 = _RAND_47[7:0];
+  _RAND_48 = {1{`RANDOM}};
+  frame_52 = _RAND_48[7:0];
+  _RAND_49 = {1{`RANDOM}};
+  frame_53 = _RAND_49[7:0];
+  _RAND_50 = {1{`RANDOM}};
+  frame_54 = _RAND_50[7:0];
+  _RAND_51 = {1{`RANDOM}};
+  frame_55 = _RAND_51[7:0];
+  _RAND_52 = {1{`RANDOM}};
+  frame_56 = _RAND_52[7:0];
+  _RAND_53 = {1{`RANDOM}};
+  frame_57 = _RAND_53[7:0];
+  _RAND_54 = {1{`RANDOM}};
+  frame_58 = _RAND_54[7:0];
+  _RAND_55 = {1{`RANDOM}};
+  frame_59 = _RAND_55[7:0];
+  _RAND_56 = {1{`RANDOM}};
+  frame_60 = _RAND_56[7:0];
+  _RAND_57 = {1{`RANDOM}};
+  idx = _RAND_57[5:0];
+  _RAND_58 = {1{`RANDOM}};
+  sending = _RAND_58[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -4869,6 +9520,7 @@ module LittleCat(
   reg [31:0] _RAND_1;
   reg [31:0] _RAND_2;
   reg [31:0] _RAND_3;
+  reg [31:0] _RAND_4;
 `endif // RANDOMIZE_REG_INIT
   wire  cpu_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 26:19]
   wire  cpu_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 26:19]
@@ -4903,45 +9555,84 @@ module LittleCat(
   wire [31:0] cacheAdapter_mem_port_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 32:28]
   wire [3:0] cacheAdapter_mem_port_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 32:28]
   wire  cacheAdapter_mem_port_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 32:28]
+  wire [2:0] cacheAdapter_debug_state; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 32:28]
   wire  cacheAdapter_debug_hit; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 32:28]
   wire  cacheAdapter_debug_miss; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 32:28]
-  wire  dmem_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire  dmem_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire [31:0] dmem_cpuPort_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire  dmem_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire  dmem_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire [31:0] dmem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire [31:0] dmem_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire [3:0] dmem_cpuPort_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire  dmem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
-  wire  ioDevice_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire  ioDevice_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire  ioDevice_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire  ioDevice_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire [31:0] ioDevice_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire [31:0] ioDevice_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire  ioDevice_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire [15:0] ioDevice_io_out; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire [1:0] ioDevice_io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
-  wire  statsUART_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:25]
-  wire  statsUART_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:25]
-  wire [31:0] statsUART_io_hits; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:25]
-  wire [31:0] statsUART_io_misses; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:25]
-  wire  statsUART_io_txd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:25]
+  wire  cacheAdapter_debug_writeback_wb; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 32:28]
+  wire  dmem_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire  dmem_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire [31:0] dmem_cpuPort_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire  dmem_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire  dmem_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire [31:0] dmem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire [31:0] dmem_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire [3:0] dmem_cpuPort_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire  dmem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
+  wire  ioDevice_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire  ioDevice_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire  ioDevice_cpuPort_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire  ioDevice_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire [31:0] ioDevice_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire [31:0] ioDevice_cpuPort_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire  ioDevice_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire [15:0] ioDevice_io_out; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire [1:0] ioDevice_io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
+  wire  perf_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire  perf_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire  perf_io_hit; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire  perf_io_miss; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire  perf_io_writeback_wb; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [2:0] perf_io_state; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire  perf_io_reqStart; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire  perf_io_reqIsWrite; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire  perf_io_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_2; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_4; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_5; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_6; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_7; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_8; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_9; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_10; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_11; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_12; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_13; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire [31:0] perf_io_words_14; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+  wire  statsUART_clock; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire  statsUART_reset; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_2; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_4; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_5; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_6; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_7; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_8; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_9; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_10; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_11; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_12; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_13; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire [31:0] statsUART_io_words_14; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
+  wire  statsUART_io_txd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
   wire  csMem = cpu_io_dmem_address[31:28] == 4'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 33:43]
-  reg [31:0] memAddressReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 55:32]
-  wire  csIO = cpu_io_dmem_address[31:28] == 4'hf; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:42]
-  wire  csIOReg = memAddressReg[31:28] == 4'hf; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:39]
-  wire  csIODev = csIO & cpu_io_dmem_address[19:16] == 4'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 58:22]
-  wire  muxIODev = csIOReg & memAddressReg[19:16] == 4'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:26]
-  reg [26:0] heartbeat; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 72:26]
-  wire [26:0] _heartbeat_T_1 = heartbeat + 27'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 73:26]
-  reg [31:0] hitCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 75:25]
-  reg [31:0] missCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 76:26]
-  wire [31:0] _hitCount_T_1 = hitCount + 32'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:55]
-  wire [31:0] _missCount_T_1 = missCount + 32'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 78:58]
-  wire [14:0] stats = {missCount[6:0],hitCount[7:0]}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:18]
-  wire [14:0] _io_out_T_3 = io_in[0] ? stats : ioDevice_io_out[14:0]; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 82:35]
+  reg [31:0] memAddressReg; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:32]
+  wire  csIO = cpu_io_dmem_address[31:28] == 4'hf; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 57:42]
+  wire  csIOReg = memAddressReg[31:28] == 4'hf; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 58:39]
+  wire  csIODev = csIO & cpu_io_dmem_address[19:16] == 4'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 59:22]
+  wire  muxIODev = csIOReg & memAddressReg[19:16] == 4'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 60:26]
+  reg [26:0] heartbeat; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 73:26]
+  wire [26:0] _heartbeat_T_1 = heartbeat + 27'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 74:26]
+  reg [31:0] hitCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 76:25]
+  reg [31:0] missCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:26]
+  wire [31:0] _hitCount_T_1 = hitCount + 32'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 78:55]
+  wire [31:0] _missCount_T_1 = missCount + 32'h1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 79:58]
+  reg  reqBusy; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 87:24]
+  wire  _GEN_4 = perf_io_reqStart | reqBusy; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 87:24 91:{26,36}]
+  wire [14:0] stats = {missCount[6:0],hitCount[7:0]}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 95:18]
+  wire [14:0] _io_out_T_3 = io_in[0] ? stats : ioDevice_io_out[14:0]; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 96:35]
   ThreeCats cpu ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 26:19]
     .clock(cpu_clock),
     .reset(cpu_reset),
@@ -4980,10 +9671,12 @@ module LittleCat(
     .mem_port_wrData(cacheAdapter_mem_port_wrData),
     .mem_port_wrMask(cacheAdapter_mem_port_wrMask),
     .mem_port_ack(cacheAdapter_mem_port_ack),
+    .debug_state(cacheAdapter_debug_state),
     .debug_hit(cacheAdapter_debug_hit),
-    .debug_miss(cacheAdapter_debug_miss)
+    .debug_miss(cacheAdapter_debug_miss),
+    .debug_writeback_wb(cacheAdapter_debug_writeback_wb)
   );
-  ScratchPadMem dmem ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 40:20]
+  DelayedMem dmem ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:20]
     .clock(dmem_clock),
     .reset(dmem_reset),
     .cpuPort_address(dmem_cpuPort_address),
@@ -4994,7 +9687,7 @@ module LittleCat(
     .cpuPort_wrMask(dmem_cpuPort_wrMask),
     .cpuPort_ack(dmem_cpuPort_ack)
   );
-  IODevice ioDevice ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 61:24]
+  IODevice ioDevice ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:24]
     .clock(ioDevice_clock),
     .reset(ioDevice_reset),
     .cpuPort_rd(ioDevice_cpuPort_rd),
@@ -5005,22 +9698,59 @@ module LittleCat(
     .io_out(ioDevice_io_out),
     .io_in(ioDevice_io_in)
   );
-  StatsUART statsUART ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:25]
+  PerfCounters perf ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 81:20]
+    .clock(perf_clock),
+    .reset(perf_reset),
+    .io_hit(perf_io_hit),
+    .io_miss(perf_io_miss),
+    .io_writeback_wb(perf_io_writeback_wb),
+    .io_state(perf_io_state),
+    .io_reqStart(perf_io_reqStart),
+    .io_reqIsWrite(perf_io_reqIsWrite),
+    .io_ack(perf_io_ack),
+    .io_words_0(perf_io_words_0),
+    .io_words_1(perf_io_words_1),
+    .io_words_2(perf_io_words_2),
+    .io_words_4(perf_io_words_4),
+    .io_words_5(perf_io_words_5),
+    .io_words_6(perf_io_words_6),
+    .io_words_7(perf_io_words_7),
+    .io_words_8(perf_io_words_8),
+    .io_words_9(perf_io_words_9),
+    .io_words_10(perf_io_words_10),
+    .io_words_11(perf_io_words_11),
+    .io_words_12(perf_io_words_12),
+    .io_words_13(perf_io_words_13),
+    .io_words_14(perf_io_words_14)
+  );
+  StatsUART statsUART ( // @[src/main/scala/wildcat/pipeline/LittleCat.scala 98:25]
     .clock(statsUART_clock),
     .reset(statsUART_reset),
-    .io_hits(statsUART_io_hits),
-    .io_misses(statsUART_io_misses),
+    .io_words_0(statsUART_io_words_0),
+    .io_words_1(statsUART_io_words_1),
+    .io_words_2(statsUART_io_words_2),
+    .io_words_4(statsUART_io_words_4),
+    .io_words_5(statsUART_io_words_5),
+    .io_words_6(statsUART_io_words_6),
+    .io_words_7(statsUART_io_words_7),
+    .io_words_8(statsUART_io_words_8),
+    .io_words_9(statsUART_io_words_9),
+    .io_words_10(statsUART_io_words_10),
+    .io_words_11(statsUART_io_words_11),
+    .io_words_12(statsUART_io_words_12),
+    .io_words_13(statsUART_io_words_13),
+    .io_words_14(statsUART_io_words_14),
     .io_txd(statsUART_io_txd)
   );
-  assign io_out = {heartbeat[26],_io_out_T_3}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 82:16]
-  assign io_tx = statsUART_io_txd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 87:9]
+  assign io_out = {heartbeat[26],_io_out_T_3}; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 96:16]
+  assign io_tx = statsUART_io_txd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 102:9]
   assign io_txConf = 1'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 22:13]
   assign cpu_clock = clock;
   assign cpu_reset = reset;
   assign cpu_io_imem_rdData = imem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 29:15]
   assign cpu_io_imem_ack = imem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 29:15]
-  assign cpu_io_dmem_rdData = muxIODev ? ioDevice_cpuPort_rdData : cacheAdapter_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 68:18 67:22 68:39]
-  assign cpu_io_dmem_ack = cacheAdapter_cpuPort_ack | ioDevice_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 69:47]
+  assign cpu_io_dmem_rdData = muxIODev ? ioDevice_cpuPort_rdData : cacheAdapter_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 69:18 68:22 69:39]
+  assign cpu_io_dmem_ack = cacheAdapter_cpuPort_ack | ioDevice_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 70:47]
   assign imem_clock = clock;
   assign imem_reset = reset;
   assign imem_cpuPort_address = cpu_io_imem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 29:15]
@@ -5031,45 +9761,73 @@ module LittleCat(
   assign cacheAdapter_cpuPort_wr = csMem & cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 38:36]
   assign cacheAdapter_cpuPort_wrData = cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 35:31]
   assign cacheAdapter_cpuPort_wrMask = cpu_io_dmem_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 36:31]
-  assign cacheAdapter_mem_port_rdData = dmem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:16]
-  assign cacheAdapter_mem_port_ack = dmem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:16]
+  assign cacheAdapter_mem_port_rdData = dmem_cpuPort_rdData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:16]
+  assign cacheAdapter_mem_port_ack = dmem_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:16]
   assign dmem_clock = clock;
   assign dmem_reset = reset;
-  assign dmem_cpuPort_address = cacheAdapter_mem_port_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:16]
-  assign dmem_cpuPort_rd = cacheAdapter_mem_port_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:16]
-  assign dmem_cpuPort_wr = cacheAdapter_mem_port_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:16]
-  assign dmem_cpuPort_wrData = cacheAdapter_mem_port_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:16]
-  assign dmem_cpuPort_wrMask = cacheAdapter_mem_port_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 41:16]
+  assign dmem_cpuPort_address = cacheAdapter_mem_port_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:16]
+  assign dmem_cpuPort_rd = cacheAdapter_mem_port_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:16]
+  assign dmem_cpuPort_wr = cacheAdapter_mem_port_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:16]
+  assign dmem_cpuPort_wrData = cacheAdapter_mem_port_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:16]
+  assign dmem_cpuPort_wrMask = cacheAdapter_mem_port_wrMask; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 42:16]
   assign ioDevice_clock = clock;
   assign ioDevice_reset = reset;
-  assign ioDevice_cpuPort_rd = csIODev & cpu_io_dmem_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 64:34]
-  assign ioDevice_cpuPort_wr = csIODev & cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 65:34]
-  assign ioDevice_cpuPort_wrData = cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 63:20]
-  assign ioDevice_io_in = io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 62:18]
+  assign ioDevice_cpuPort_rd = csIODev & cpu_io_dmem_rd; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 65:34]
+  assign ioDevice_cpuPort_wr = csIODev & cpu_io_dmem_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 66:34]
+  assign ioDevice_cpuPort_wrData = cpu_io_dmem_wrData; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 64:20]
+  assign ioDevice_io_in = io_in; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 63:18]
+  assign perf_clock = clock;
+  assign perf_reset = reset;
+  assign perf_io_hit = cacheAdapter_debug_hit; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 82:15]
+  assign perf_io_miss = cacheAdapter_debug_miss; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 83:16]
+  assign perf_io_writeback_wb = cacheAdapter_debug_writeback_wb; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 84:24]
+  assign perf_io_state = cacheAdapter_debug_state; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 86:17]
+  assign perf_io_reqStart = ~reqBusy & (cacheAdapter_cpuPort_rd | cacheAdapter_cpuPort_wr); // @[src/main/scala/wildcat/pipeline/LittleCat.scala 88:32]
+  assign perf_io_reqIsWrite = cacheAdapter_cpuPort_wr; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 89:22]
+  assign perf_io_ack = cacheAdapter_cpuPort_ack; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 90:15]
   assign statsUART_clock = clock;
   assign statsUART_reset = reset;
-  assign statsUART_io_hits = hitCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 85:21]
-  assign statsUART_io_misses = missCount; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 86:23]
+  assign statsUART_io_words_0 = perf_io_words_0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_1 = perf_io_words_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_2 = perf_io_words_2; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_4 = perf_io_words_4; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_5 = perf_io_words_5; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_6 = perf_io_words_6; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_7 = perf_io_words_7; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_8 = perf_io_words_8; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_9 = perf_io_words_9; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_10 = perf_io_words_10; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_11 = perf_io_words_11; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_12 = perf_io_words_12; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_13 = perf_io_words_13; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
+  assign statsUART_io_words_14 = perf_io_words_14; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 101:22]
   always @(posedge clock) begin
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 55:32]
-      memAddressReg <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 55:32]
-    end else if (cpu_io_dmem_rd) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 55:32]
-      memAddressReg <= cpu_io_dmem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 55:32]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:32]
+      memAddressReg <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:32]
+    end else if (cpu_io_dmem_rd) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:32]
+      memAddressReg <= cpu_io_dmem_address; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 56:32]
     end
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 72:26]
-      heartbeat <= 27'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 72:26]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 73:26]
+      heartbeat <= 27'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 73:26]
     end else begin
-      heartbeat <= _heartbeat_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 73:13]
+      heartbeat <= _heartbeat_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 74:13]
     end
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 75:25]
-      hitCount <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 75:25]
-    end else if (cacheAdapter_debug_hit) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:32]
-      hitCount <= _hitCount_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:43]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 76:25]
+      hitCount <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 76:25]
+    end else if (cacheAdapter_debug_hit) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 78:32]
+      hitCount <= _hitCount_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 78:43]
     end
-    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 76:26]
-      missCount <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 76:26]
-    end else if (cacheAdapter_debug_miss) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 78:33]
-      missCount <= _missCount_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 78:45]
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:26]
+      missCount <= 32'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 77:26]
+    end else if (cacheAdapter_debug_miss) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 79:33]
+      missCount <= _missCount_T_1; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 79:45]
+    end
+    if (reset) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 87:24]
+      reqBusy <= 1'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 87:24]
+    end else if (cacheAdapter_cpuPort_ack) begin // @[src/main/scala/wildcat/pipeline/LittleCat.scala 92:34]
+      reqBusy <= 1'h0; // @[src/main/scala/wildcat/pipeline/LittleCat.scala 92:44]
+    end else begin
+      reqBusy <= _GEN_4;
     end
   end
 // Register and memory initialization
@@ -5116,6 +9874,8 @@ initial begin
   hitCount = _RAND_2[31:0];
   _RAND_3 = {1{`RANDOM}};
   missCount = _RAND_3[31:0];
+  _RAND_4 = {1{`RANDOM}};
+  reqBusy = _RAND_4[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial

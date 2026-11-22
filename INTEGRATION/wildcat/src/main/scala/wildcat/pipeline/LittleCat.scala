@@ -10,7 +10,7 @@ import adapter._
 
 import device._
 
-class LittleCat(file: String, cfg: CacheConfig = CacheConfig(), frequency: Int = 100000000, baudRate: Int = 115200) extends Module {
+class LittleCat(file: String, cfg: CacheConfig = CacheConfig(), frequency: Int = 100000000, baudRate: Int = 115200, mmlatency: Int = 0, nrBytes: Int = 16384) extends Module {
   val io = IO(new Bundle {
     val out = Output(UInt(16.W))   // 16 LEDs
     val in = Input(UInt(2.W))
@@ -37,7 +37,8 @@ class LittleCat(file: String, cfg: CacheConfig = CacheConfig(), frequency: Int =
   cacheAdapter.cpuPort.rd := csMem && cpu.io.dmem.rd
   cacheAdapter.cpuPort.wr := csMem && cpu.io.dmem.wr
 
-  val dmem = Module(new ScratchPadMem(Array.fill(16)(0), 16384))
+  // val dmem = Module(new ScratchPadMem(Array.fill(16)(0), 16384))
+  val dmem = Module(new DelayedMem(mmlatency, nrBytes))
   dmem.cpuPort <> cacheAdapter.mem_port
 
   // ---- LED device at 0xF0010000 ----
@@ -77,13 +78,27 @@ class LittleCat(file: String, cfg: CacheConfig = CacheConfig(), frequency: Int =
   when(cacheAdapter.debug_hit) { hitCount := hitCount + 1.U }
   when(cacheAdapter.debug_miss) { missCount := missCount + 1.U }
 
+  val perf = Module(new PerfCounters(CacheState.all.length))
+  perf.io.hit := cacheAdapter.debug_hit
+  perf.io.miss := cacheAdapter.debug_miss
+  perf.io.writeback_wb := cacheAdapter.debug_writeback_wb
+  perf.io.write_wt := cacheAdapter.debug_write_wt
+  perf.io.state := cacheAdapter.debug_state
+  val reqBusy = RegInit(false.B)
+  perf.io.reqStart := !reqBusy && (cacheAdapter.cpuPort.rd || cacheAdapter.cpuPort.wr)
+  perf.io.reqIsWrite := cacheAdapter.cpuPort.wr
+  perf.io.ack := cacheAdapter.cpuPort.ack
+  when(perf.io.reqStart) { reqBusy := true.B }
+  when(cacheAdapter.cpuPort.ack) { reqBusy := false.B }
+
   // SW0 down: LED0-14 = software counter.  SW0 up: LED0-7 = hits, LED8-14 = misses.
   val stats = Cat(missCount(6,0), hitCount(7,0))
   io.out := Cat(heartbeat(26), Mux(io.in(0), stats, ioDevice.io.out(14, 0)))
 
-  val statsUART = Module(new StatsUART(frequency, baudRate, frequency / 10))
-  statsUART.io.hits := hitCount
-  statsUART.io.misses := missCount
+  val statsUART = Module(new StatsUART(frequency, baudRate, frequency / 10, perf.io.words.length))
+  // statsUART.io.hits := hitCount
+  // statsUART.io.misses := missCount
+  statsUART.io.words := perf.io.words
   io.tx := statsUART.io.txd
 }
 
@@ -95,6 +110,10 @@ object LittleCat extends App {
 
   val ways = if (args.length > 4) args(4).toInt else 1
 
+  val seed = if (args.length > 6) BigInt(args(6)) else BigInt(1)
+  val mmlatency = if (args.length > 7) args(7).toInt else 0
+  val mmBytes = if (args.length > 8) args(8).toInt else 16384
+
   val cfg = CacheConfig(
     writePolicy = policy match {
       case "wt" => WriteThrough
@@ -104,8 +123,10 @@ object LittleCat extends App {
     capacityBytes = capacity,
     lineBytes = linesize,
     numWays = ways,
-    replacementPolicy = if (args.length > 5) ReplacementPolicy.parse(args(5)) else RoundRobin
+    replacementPolicy = if (args.length > 5) ReplacementPolicy.parse(args(5)) else RoundRobin,
+    lfsrSeed = seed
   )
+
   println(s"LittleCat: Program=$file | cache=$policy | capacity=$capacity | linesize=$linesize | ways=$ways | replacement=${cfg.replacementPolicy}")
   println(s"-------------------------------CACHE CONFIG----------------------------------")
   println(s"# LINES = ${capacity/linesize}")
@@ -129,5 +150,5 @@ object LittleCat extends App {
   println(s"--------------------------------DATA + OVERHEAD------------------------------")
   println(s"TOTAL BITS = $totalBits Bits")
   println(s"TOTAL BYTES = ${(totalBits + 7)/8} Bytes")
-  emitVerilog(new LittleCat(file, cfg), Array("--target-dir", "generated"))
+  emitVerilog(new LittleCat(file, cfg, mmlatency = mmlatency, nrBytes = mmBytes), Array("--target-dir", "generated"))
 }

@@ -23,7 +23,8 @@ class CacheAdapter(cfg: CacheConfig) extends PipeConDevice(32) {
 
   val debug_cpu_state = IO(Output(UInt(2.W)))
   val debug_mem_state = IO(Output(UInt(2.W)))
-
+  val debug_state = IO(Output(UInt(CacheState.getWidth.W)))
+  debug_state := cache.io.stat.state
 
   // ----- debug / statistics --------------------------
   val debug_hit = IO(Output(Bool()))

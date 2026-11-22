@@ -34,7 +34,8 @@ case class CacheConfig(
     memBeatBytes: Int = 4, // width of the memory-side data bus // one word of 32 bits at a time.
     writePolicy: WritePolicy = WriteBack,
     numWays: Int = 1,
-    replacementPolicy: ReplacementPolicy = RoundRobin
+    replacementPolicy: ReplacementPolicy = RoundRobin,
+    lfsrSeed: BigInt = 1
 ) {
   require(isPow2(capacityBytes), "capacityBytes must be a power of two")
   require(isPow2(lineBytes), "lineBytes must be a power of two")
@@ -43,6 +44,7 @@ case class CacheConfig(
   require(lineBytes >= wordBytes, "a line must hold at least one word")
   require(lineBytes >= memBeatBytes, "a line must hold at least one memory beat")
   require(capacityBytes >= 2 * lineBytes, "need at least two lines")
+  require(lfsrSeed != 0, "lfsr seed must be non-zero, an LFSR seed of 0 will never advance and will always produce 0s, which is not a valid random sequence")
 
   val isWb = writePolicy == WriteBack
   val isWt = writePolicy == WriteThrough
@@ -119,6 +121,7 @@ class CacheStats extends Bundle {
   val miss = Bool()
   val writeback_wb = Bool()
   val write_wt = Bool()
+  val state = UInt(CacheState.getWidth.W) // current state of the cache controller, for cycle-accurate profiling.
 }
 
 class CacheIO(cfg: CacheConfig) extends Bundle {

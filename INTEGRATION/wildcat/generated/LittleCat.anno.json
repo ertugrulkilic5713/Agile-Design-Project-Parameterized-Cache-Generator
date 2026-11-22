@@ -32,6 +32,11 @@
     "originalMemoryNameOpt":"MEM"
   },
   {
+    "class":"chisel3.experimental.EnumAnnotations$EnumComponentAnnotation",
+    "target":"LittleCat.SetAssociativeCache._state_T",
+    "enumTypeName":"cache.CacheState"
+  },
+  {
     "class":"chisel3.experimental.EnumAnnotations$EnumDefAnnotation",
     "typeName":"cache.CacheState",
     "definition":{
@@ -46,7 +51,7 @@
   },
   {
     "class":"chisel3.experimental.EnumAnnotations$EnumComponentAnnotation",
-    "target":"LittleCat.DirectMappedReadCache.state",
+    "target":"LittleCat.SetAssociativeCache.state",
     "enumTypeName":"cache.CacheState"
   },
   {
