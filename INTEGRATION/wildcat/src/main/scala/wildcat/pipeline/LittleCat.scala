@@ -121,6 +121,7 @@ object LittleCat extends App {
   val replacementBits = if (cfg.numWays == 1) 0 else cfg.replacementPolicy match {
     case RoundRobin => cfg.numSets * cfg.wayBits
     case RandomReplacement => math.max(16, cfg.wayBits + 1)
+    case TreePLRU => cfg.numSets * (cfg.numWays - 1)
   }
   val overheadBits = cfg.numLines * (cfg.tagBits + 2) + replacementBits
   val totalBits = cfg.capacityBytes * 8 + overheadBits

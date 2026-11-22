@@ -17,12 +17,14 @@ case object WriteBack extends WritePolicy
 sealed trait ReplacementPolicy
 case object RoundRobin extends ReplacementPolicy
 case object RandomReplacement extends ReplacementPolicy
+case object TreePLRU extends ReplacementPolicy
 
 object ReplacementPolicy {
   def parse(value: String): ReplacementPolicy = value match {
     case "rr" => RoundRobin
     case "random" => RandomReplacement
-    case other => throw new IllegalArgumentException(s"unknown replacement policy '$other'; use rr or random")
+    case "plru" => TreePLRU
+    case other => throw new IllegalArgumentException(s"unknown replacement policy '$other'; use rr, random or plru")
   }
 }
 

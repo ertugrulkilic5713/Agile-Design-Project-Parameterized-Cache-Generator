@@ -7,22 +7,30 @@ import org.scalatest.flatspec.AnyFlatSpec
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
-/** Tag-only reference for hit prediction under either replacement policy. */
+/** Tag-only reference for hit prediction under each replacement policy. */
 class RefCache(cfg: CacheConfig) {
   private val tags = Array.fill[Long](cfg.numSets, cfg.numWays)(-1L)
   private val next = Array.fill(cfg.numSets)(0)
+  private val plru = Array.fill(cfg.numSets, cfg.numWays - 1)(false)
   private var randomState = BigInt(1)
   private val randomWidth = math.max(16, cfg.wayBits + 1)
 
   def access(addr: Long): Boolean = {
     val index = ((addr >> cfg.offsetBits) & (cfg.numSets - 1)).toInt
     val tag = addr >> (cfg.offsetBits + cfg.indexBits)
-    val hit = tags(index).contains(tag)
+    var accessedWay = tags(index).indexOf(tag)
+    val hit = accessedWay >= 0
     if (!hit) {
       val invalid = tags(index).indexOf(-1L)
       val way = if (invalid >= 0) invalid else cfg.replacementPolicy match {
         case RoundRobin => next(index)
         case RandomReplacement => (randomState & (cfg.numWays - 1)).toInt
+        case TreePLRU =>
+          var node = 0
+          while (node < cfg.numWays - 1) {
+            node = 2 * node + 1 + (if (plru(index)(node)) 1 else 0)
+          }
+          node - (cfg.numWays - 1)
       }
       if (invalid < 0 && cfg.numWays > 1 && cfg.replacementPolicy == RandomReplacement) {
         val taps = chisel3.util.random.LFSR.tapsMaxPeriod(randomWidth).head
@@ -31,6 +39,17 @@ class RefCache(cfg: CacheConfig) {
       }
       tags(index)(way) = tag
       next(index) = (way + 1) % cfg.numWays
+      accessedWay = way
+    }
+    if (cfg.replacementPolicy == TreePLRU) {
+      // Walk up from the accessed leaf, pointing each ancestor away from it.
+      // This model uses Boolean arrays rather than the hardware's packed UInt.
+      var child = cfg.numWays - 1 + accessedWay
+      while (child > 0) {
+        val parent = (child - 1) / 2
+        plru(index)(parent) = child == 2 * parent + 1
+        child = parent
+      }
     }
     hit
   }

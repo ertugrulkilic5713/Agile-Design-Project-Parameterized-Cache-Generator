@@ -15,6 +15,9 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val dataMem = Seq.fill(cfg.numWays)(SyncReadMem(cfg.numSets, UInt(cfg.lineBits.W)))
   val nextVictim = if (cfg.numWays > 1 && cfg.replacementPolicy == RoundRobin)
     Some(RegInit(VecInit(Seq.fill(cfg.numSets)(0.U(cfg.wayBits.W))))) else None
+  private val plru = if (cfg.numWays > 1 && cfg.replacementPolicy == TreePLRU)
+    Some(new TreePLRULogic(cfg.numWays)) else None
+  val plruState = plru.map(tree => RegInit(VecInit(Seq.fill(cfg.numSets)(0.U(tree.stateBits.W)))))
   val victimWay = Reg(UInt(cfg.wayBits.W))
 
   // ---------------------------------------------------------------- state
@@ -36,6 +39,12 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val reqTag = cfg.tagOf(addrReg)
   val reqWord = cfg.wordIdxOf(addrReg)
 
+  def touchPlru(way: UInt): Unit = plru.foreach { tree =>
+    val sets = plruState.get
+    val bits = if (cfg.numSets == 1) sets(0) else sets(reqIdx)
+    bits := tree.touch(bits, way)
+  }
+
   // ---------------------------------------------------------------- tag/data lookup on accept
   // a.k.a. start any cache request from CPU in idle state.
   io.cpu.req.ready := state === sIdle
@@ -56,6 +65,9 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
     case RoundRobin =>
       val next = nextVictim.get
       if (cfg.numSets == 1) next(0) else next(reqIdx)
+    case TreePLRU =>
+      val sets = plruState.get
+      plru.get.victim(if (cfg.numSets == 1) sets(0) else sets(reqIdx))
     case RandomReplacement =>
       // Advance once per actual eviction, independent of memory/CPU stalls.
       val evict = state === sCompare && !hit && !invalid.asUInt.orR && (!writeReg || cfg.isWb.B)
@@ -167,6 +179,7 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
 
       // write hit.
       when(hit) {
+        touchPlru(hitWay)
         // Return hits immediately; latch the same response if the CPU stalls.
         when(!writeReg || cfg.isWb.B) {
           val hitData = Mux(writeReg, 0.U, selectWord(lineRd, reqWord))
@@ -294,6 +307,7 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
             val replacement = if (cfg.numSets == 1) next(0) else next(reqIdx)
             replacement := Mux(victimWay === (cfg.numWays - 1).U, 0.U, victimWay + 1.U)
           }
+          touchPlru(victimWay)
           // reset valid to 1 for the new line.
           wayBit(setValid, victimWay) := true.B
           if (cfg.isWb) {
