@@ -11,6 +11,7 @@ class RefCache(cfg: CacheConfig) {
   private val tags = Array.fill[Long](cfg.numSets, cfg.numWays)(-1L)
   private val next = Array.fill(cfg.numSets)(0)
   private val plru = Array.fill(cfg.numSets, cfg.numWays - 1)(false)
+  private var randomState = cfg.lfsrSeed
 
   def access(addr: Long, isWrite: Boolean = false): Boolean = {
     val index = ((addr >> cfg.offsetBits) & (cfg.numSets - 1)).toInt
@@ -21,12 +22,18 @@ class RefCache(cfg: CacheConfig) {
       val invalid = tags(index).indexOf(-1L)
       val way = if (invalid >= 0) invalid else cfg.replacementPolicy match {
         case RoundRobin => next(index)
+        case RandomReplacement => (randomState & (cfg.numWays - 1)).toInt
         case TreePLRU =>
           var node = 0
           while (node < cfg.numWays - 1) {
             node = 2 * node + 1 + (if (plru(index)(node)) 1 else 0)
           }
           node - (cfg.numWays - 1)
+      }
+      if (invalid < 0 && cfg.numWays > 1 && cfg.replacementPolicy == RandomReplacement) {
+        val taps = chisel3.util.random.LFSR.tapsMaxPeriod(cfg.randomBits).head
+        val feedback = taps.toSeq.map(t => ((randomState >> (t - 1)) & 1).toInt).reduce(_ ^ _)
+        randomState = ((randomState << 1) | feedback) & ((BigInt(1) << cfg.randomBits) - 1)
       }
       tags(index)(way) = tag
       next(index) = (way + 1) % cfg.numWays

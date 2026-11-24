@@ -16,6 +16,14 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
     assert(cfg.tagBits == cfg.addrWidth - cfg.offsetBits)
   }
 
+  it should "validate random seeds and parse all replacement policies" in {
+    assert(ReplacementPolicy.parse("random") == RandomReplacement)
+    for (seed <- Seq(BigInt(0), BigInt(-1), BigInt(1) << 16)) {
+      intercept[IllegalArgumentException] { CacheConfig(lfsrSeed = seed) }
+    }
+    assert(CacheConfig(lfsrSeed = 65535).lfsrSeed == 65535)
+  }
+
   it should "reject associative configurations through the legacy entry point" in {
     intercept[IllegalArgumentException] {
       test(new DirectMappedReadCache(CacheConfig(capacityBytes = 64, numWays = 2))) { _ => () }
@@ -131,10 +139,10 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
     CacheConfig(capacityBytes = 128, numWays = 8)
   )
   for ((base, i) <- geometries.zipWithIndex;
-       replacement <- Seq(RoundRobin, TreePLRU);
+       replacement <- Seq(RoundRobin, TreePLRU, RandomReplacement);
        policy <- (if (base.wordBytes == base.memBeatBytes) Seq(WriteBack, WriteThrough) else Seq(WriteBack))) {
     it should s"match the reference under mixed traffic for geometry $i, $policy and $replacement" in {
-      val cfg = base.copy(writePolicy = policy, replacementPolicy = replacement)
+      val cfg = base.copy(writePolicy = policy, replacementPolicy = replacement, lfsrSeed = 7)
       test(new SetAssociativeCache(cfg)) { dut =>
         val h = new CacheHarness(dut, cfg, memLatency = 1, writeReqStall = 1,
           writeBeatStall = 1, writeAckLatency = 2, readReqStall = 1, readBeatStall = 1)
@@ -152,4 +160,30 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
       }
     }
   }
+  // Preserve the integration branch's standalone read-geometry regressions.
+  val readGeometries = Seq(
+    CacheConfig(),
+    CacheConfig(memBeatBytes = 16),
+    CacheConfig(lineBytes = 32),
+    CacheConfig(capacityBytes = 64),
+    CacheConfig(wordBytes = 8, memBeatBytes = 8)
+  )
+  for ((cfg, i) <- readGeometries.zipWithIndex) {
+    it should s"preserve direct-mapped reads for migrated geometry $i" in {
+      test(new SetAssociativeCache(cfg)) { dut =>
+        val h = new CacheHarness(dut, cfg, memLatency = 1)
+        val ref = new RefCache(cfg)
+        val random = new Random(42)
+        for (_ <- 0 until 30) {
+          val addr = random.nextInt(4 * cfg.capacityBytes / cfg.wordBytes).toLong * cfg.wordBytes
+          val before = h.fetches.size
+          val expectedHit = ref.access(addr)
+          assert(h.read(addr, respStall = random.nextInt(3)).data == h.expectedWord(addr))
+          assert(h.hits.last == expectedHit)
+          assert(h.fetches.size - before == (if (expectedHit) 0 else 1))
+        }
+      }
+    }
+  }
+
 }

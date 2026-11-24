@@ -1,63 +1,131 @@
 # Parameterized Cache Generator
 
-This branch contains a reusable, parameterized set-associative cache written in Chisel.
-The cache supports elaboration-time selection of write-back or write-through policy,
-byte-masked stores, configurable line and bus widths, and decoupled CPU and memory
-interfaces. Associativity is selected at elaboration with `CacheConfig(numWays = 4)`;
-`numWays = 1` remains the direct-mapped default. Total capacity stays fixed:
-`numLines = capacityBytes / lineBytes` and `numSets = numLines / numWays`.
-Ways must be a positive power of two and cannot exceed the number of lines.
-A single set is supported (fully associative at that capacity).
+The repository has one canonical cache implementation and a Wildcat integration
+that depends on it:
 
-Instantiate `new SetAssociativeCache(cfg)` for any supported associativity.
-`DirectMappedReadCache` remains a compatibility entry point for one-way configurations.
-Each way has synchronous tag/data storage, read in parallel to preserve two-counted-cycle
-hits. A miss fills the lowest invalid way first; full sets use a per-set round-robin
-pointer. Installing a line advances the pointer to the following way. Hits and
-write-through store misses do not advance it. Write-back stores allocate on a miss;
-write-through stores do not. CPU/memory interfaces and statistics are unchanged.
+- `cache-generator/`: reusable Chisel cache, public interfaces, replacement logic,
+  standalone hardware generator, and cache tests.
+- `integration/wildcat/`: Wildcat CPU, PipeCon adapter, memory models, profiling,
+  hardware configuration, and integration tests.
+- `integration/UART_TB/`: host telemetry reader and frame-layout test.
 
-## Tests and continuous integration
+Develop both projects on `main` through short-lived feature branches; a separate
+long-lived integration branch is not needed for this layout.
 
-Run the standalone cache suite from the repository root:
+There is no cache source copy inside Wildcat. Its SBT build references
+`../../cache-generator`. Both projects use Scala 2.13.16, Chisel 6.7.0,
+ChiselTest 6.0.0, and SBT 1.10.7; CI uses Java 17.
 
-```bash
-cd cache-generator
+## Cache behavior and interfaces
+
+`SetAssociativeCache(CacheConfig(...))` supports power-of-two associativity,
+including a single fully associative set. Total data capacity is fixed:
+`numLines = capacityBytes / lineBytes`, `numSets = numLines / numWays`.
+`DirectMappedReadCache` is a compatibility entry point requiring one way.
+
+Write-back stores allocate and dirty lines; write-through stores update hits
+but do not allocate misses. Stores support byte masks and acknowledge with zero.
+Requests are blocking; read and write-back store hits respond during compare.
+
+Replacement is selected at elaboration: `RoundRobin` (default), `TreePLRU`, or
+`RandomReplacement`. Invalid ways fill first. Round-robin advances on refills;
+PLRU updates on hits and refills. Random replacement uses one seeded LFSR,
+advancing only on full-set evictions. The seed must be nonzero and fit in
+`max(16, wayBits + 1)` bits. One-way caches omit replacement hardware.
+
+The public interface has CPU `req/resp`, memory `memReq/memResp`, and separate
+`memWriteReq/memWriteData/memWriteResp` channels. Transfers occur on
+`valid && ready`. Refill responses contain exactly `beatsPerLine` ordered beats.
+Write-back sends a base address and a full line; write-through sends a word
+address and one masked beat. Accepting write data is separate from completing
+a write: memory must return `memWriteResp(ack = true)` after the write finishes.
+Dirty evictions finish before refills begin. Statistics expose event pulses and
+the current controller state; the cache has no PipeCon, UART, or CPU dependency.
+
+## Verification
+
+From `cache-generator/`:
+
+```sh
 sbt -batch test
 ```
 
-Integration code, system-level tests, and CI are maintained on the `testing`
-branch so consumers of this branch can take the cache module independently.
+From `integration/wildcat/`:
 
-On `testing`, run the self-contained Wildcat integration suites with:
-
-```bash
-cd wildcat
-sbt -batch "testOnly adapter.CacheAdapterSpec wildcat.RegisterFileTest wildcat.DataMemoryStallTest"
+```sh
+sbt -batch "testOnly adapter.* memory.DelayedMemSpec device.* wildcat.RegisterFileTest wildcat.DataMemoryStallTest wildcat.CachedProgramSpec"
 ```
 
-Generate LittleCat hardware for a benchmark and selected cache policy with:
+From `integration/UART_TB/`:
 
-```bash
-cd wildcat
-make APP=asm/bench/wcheck.s CACHE=wb hw-asic
-make APP=asm/bench/wcheck.s CACHE=wt hw-asic
-make APP=asm/bench/wcheck.s CACHE=wb WAYS=4 hw-asic
+```sh
+python3 -m unittest discover -v
 ```
 
-`CACHE` accepts `wb` or `wt` and defaults to `wb`; `WAYS` defaults to `1`.
-The equivalent entry point is `runMain wildcat.pipeline.LittleCat a.out wb 4`.
-For standalone hardware, run `sbt -batch "runMain cache.GenerateCache 4"` inside
-`cache-generator/`. Omitting ways preserves the direct-mapped generation default.
-Both entry points accept an optional final output directory (default `generated`).
-Checked-in generated hardware snapshots are not automatically refreshed by tests;
-regenerate them for the configuration being synthesized. CI runs only on pushes to
-`testing`, pull requests targeting `testing`, and manual dispatches.
+CI runs these suites on every push and pull request. The cache suite checks
+replacement, masked reads/stores, stalls, and write completion ordering.
+Integration tests cover the adapter, zero/nonzero memory latency, telemetry,
+and a ThreeCats program that stores, evicts, and reloads under both write policies.
+Tests requiring external RISC-V suites are not part of this self-contained job.
+Dependency projects' tests are not automatically run by SBT, so both jobs matter.
 
-<p align="center">
-  <img src="images/FSM/CH_CONTROLLER_FSM_V1.drawio.svg" width="600" alt="Cache Controller High-Level FSM Diagram."
-</p>
+## Hardware generation
 
-<p align="center">
-  <img src="images/ASM/CH_CONTROLLER_ASM_V1.drawio.svg" width="600" alt="Cache Controller High-Level ASM Diagram."
-</p>
+From `cache-generator/`:
+
+```sh
+sbt -batch "runMain cache.GenerateCache 4 generated plru"
+sbt -batch "runMain cache.GenerateCache 4 generated random 7"
+```
+
+Arguments are `[ways] [output-directory] [rr|plru|random] [seed]`, with defaults
+`1 generated rr 1`. Cache geometry follows the standalone generator configuration.
+
+From `integration/wildcat/` (requires RISC-V binutils):
+
+```sh
+make APP=asm/bench/wcheck.s POLICY=wb WAYS=4 REPLACEMENT=plru hw-asic
+make APP=asm/bench/wcheck.s POLICY=wt WAYS=2 REPLACEMENT=random SEED=7 MEMLATENCY=3 hw-asic
+```
+
+Make variables also include `CAPACITY=4096`, `LINESIZE=16`,
+`MEMBYTES=16384`, and `OUTDIR=generated`. `CACHE` remains an alias for the
+default `POLICY`. The equivalent LittleCat arguments are:
+
+```text
+program [wb|wt] [capacity] [line-size] [ways] [rr|plru|random] [seed] [memory-latency] [memory-bytes] [output-directory]
+```
+
+For example:
+
+```sh
+sbt -batch "runMain wildcat.pipeline.LittleCat a.out wb 4096 16 4 plru 1 0 16384 generated"
+```
+
+This replaces main's previous `program policy ways output-directory` argument
+order. The adapter uses the canonical split write protocol, holds PipeCon
+requests until acknowledgement, and reports completion after all beats finish.
+`DelayedMem` adds the configured latency to synchronous scratchpad timing.
+
+Generated hardware is a configuration-specific artifact. Regenerate before
+synthesis; old snapshots do not establish equivalence or timing closure.
+The existing physical-design scripts remain board/PDK-specific.
+
+## Telemetry
+
+The UART sends `0xAA` followed by 19 little-endian 32-bit words (77 bytes total):
+hits, misses, writebacks, write-throughs, stores, hit-latency total,
+miss-latency total, elapsed cycles, then one counter per canonical state:
+
+```text
+sIdle, sCompare, sWritebackReq, sWritebackSend, sWritebackWait,
+sWriteThroughReq, sWriteThroughSend, sWriteThroughWait,
+sRefillReq, sRefillWait, sRespond
+```
+
+Use `python3 integration/UART_TB/stats.py --port /dev/ttyUSB1 --csv results.csv`
+with pyserial installed. The decoder reports interval hit rate, latency,
+AMAT, and state occupancy, handling 32-bit counter wraparound.
+This frame replaces the old two-counter and seven-state formats; update the
+FPGA image and reader together. The decoder test checks state order against
+the canonical enum.

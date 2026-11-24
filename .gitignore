@@ -8,7 +8,13 @@ cache-generator/project/*
 cache-generator/.bloop
 target/
 test_run_dir/
-wildcat
 cache.json
 cache.svg
 *.sv
+
+.bsp/
+.bloop/
+__pycache__/
+*.pyc
+generated/
+build/
