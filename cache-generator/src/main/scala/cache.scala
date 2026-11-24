@@ -69,6 +69,12 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   io.stat.writeThrough := false.B
   io.stat.state := state.asUInt
 
+  // init for cache visualizer
+  io.stat.way := 0.U
+  io.stat.evict := false.B
+  io.stat.evictDirty := false.B
+  io.stat.evictAddr := 0.U
+
   io.req.ready := state === sIdle
   val readIdx = cfg.indexOf(io.req.bits.addr)
   val tagsRd = VecInit(tagMem.map(_.read(readIdx, io.req.fire)))
@@ -141,6 +147,24 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
     is(sCompare) {
       io.stat.hit := hit
       io.stat.miss := !hit
+
+      // for cache visualizer
+      io.stat.way := Mux(hit, hitWay, selectedVictim)
+
+      io.stat.evict := !hit && wayBit(setValid, selectedVictim)
+
+      io.stat.evictDirty :=
+        !hit &&
+        wayBit(setValid, selectedVictim) &&
+        wayBit(setDirty, selectedVictim)
+
+      io.stat.evictAddr :=
+        (if (cfg.indexBits == 0)
+          Cat(tagRd, 0.U(cfg.offsetBits.W))
+        else
+          Cat(tagRd, reqIdx, 0.U(cfg.offsetBits.W)))
+
+
       when(hit) {
         touchPlru(hitWay)
         val hitData = Mux(isWriteReg, 0.U, selectWord(lineRd, reqWord))

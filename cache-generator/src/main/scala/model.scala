@@ -131,15 +131,20 @@ class CacheIO(cfg: CacheConfig) extends Bundle {
   val memWriteReq = Decoupled(new MemWriteReq(cfg))
   val memWriteData = Decoupled(new MemWriteData(cfg))
   val memWriteResp = Flipped(Decoupled(new MemWriteResp(cfg)))
-  val stat = Output(new CacheStats)
+  val stat = Output(new CacheStats(cfg))
 }
 
-class CacheStats extends Bundle {
+class CacheStats(cfg: CacheConfig) extends Bundle {
   val hit = Bool()
   val miss = Bool()
   val writeback = Bool()
   val writeThrough = Bool()
   val state = UInt(CacheState.getWidth.W)
+  // extended to support visualizer
+  val way = UInt(cfg.wayBits.W)
+  val evict = Bool()
+  val evictDirty = Bool()
+  val evictAddr = UInt(cfg.addrWidth.W)
 }
 
 object CacheState extends ChiselEnum {

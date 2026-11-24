@@ -2,6 +2,9 @@
 .metals
 .vscode
 .scala-build
+.bloop
+.bsp
+project
 cache-generator/.bsp
 cache-generator/project/*
 !cache-generator/project/build.properties
@@ -10,6 +13,7 @@ target/
 test_run_dir/
 cache.json
 cache.svg
+<<<<<<< HEAD
 *.sv
 
 .bsp/
@@ -20,6 +24,5 @@ generated/
 build/
 
 # for cache simulator
-cache-simulator/build
-cache-simulator/imgui.ini
-cache-simulator/compile_flags.txt 
+cache-visualizer/compile_flags.txt
+cache-visualizer/imgui.ini
