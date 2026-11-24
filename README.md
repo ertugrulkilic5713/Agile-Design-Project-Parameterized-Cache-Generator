@@ -94,18 +94,18 @@ make APP=asm/bench/wcheck.s POLICY=wt WAYS=2 REPLACEMENT=random SEED=7 MEMLATENC
 
 `hw-asic` generates the LittleCat RTL used by the FPGA synthesis target too. It first builds `APP`, then writes `generated/LittleCat.sv` by default. `make dump` disassembles `a.out`.
 
-| Make variable   | Default        | Meaning                                       |
-| --------------- | -------------- | --------------------------------------------- |
-| `APP`         | `asm/play.s` | Assembly benchmark program to build                    |
-| `POLICY`      | `wb`         | `wb` (write-back) or `wt` (write-through) |
-| `CAPACITY`    | `4096`       | Total cache data capacity in bytes            |
-| `LINESIZE`    | `16`         | Bytes per cache line                          |
-| `WAYS`        | `1`          | Ways per set                                  |
-| `REPLACEMENT` | `rr`         | `rr`, `plru`, or `random`               |
-| `SEED`        | `1`          | Nonzero random replacement seed               |
-| `MEMLATENCY`  | `0`          | Extra delay per backing-memory transaction in cycles   |
-| `MEMBYTES`    | `16384`      | Main memory data size in bytes             |
-| `OUTDIR`      | `generated`  | RTL output directory                          |
+| Make variable   | Default        | Meaning                                              |
+| --------------- | -------------- | ---------------------------------------------------- |
+| `APP`         | `asm/play.s` | Assembly benchmark program to build                  |
+| `POLICY`      | `wb`         | `wb` (write-back) or `wt` (write-through)        |
+| `CAPACITY`    | `4096`       | Total cache data capacity in bytes                   |
+| `LINESIZE`    | `16`         | Bytes per cache line                                 |
+| `WAYS`        | `1`          | Ways per set                                         |
+| `REPLACEMENT` | `rr`         | `rr`, `plru`, or `random`                      |
+| `SEED`        | `1`          | Nonzero random replacement seed                      |
+| `MEMLATENCY`  | `0`          | Extra delay per backing-memory transaction in cycles |
+| `MEMBYTES`    | `16384`      | Main memory data size in bytes                       |
+| `OUTDIR`      | `generated`  | RTL output directory                                 |
 
 For an already built program, invoke the generator directly:
 
@@ -390,13 +390,15 @@ sRefillReq, sRefillWait, sRespond
 The [host decoder](integration/UART_TB/stats.py) computes differences between snapshots and handles 32-bit counter wraparound. Its test checks state order against the canonical cache enum. Keep the FPGA image and decoder on the same frame format when changing telemetry.
 
 # Cache Visualizer
+
 The visualizer provides an interactive environment for simulating and analysing
 cache behavior under different configurations. It supports loading benchmark
-datasets, stepping through individual memory accesses to visualize independent 
-response and request transactions, and comparing cache performance across 
+datasets, stepping through individual memory accesses to visualize independent
+response and request transactions, and comparing cache performance across
 different workloads.
 
 ## Setup
+
 ```bash
 cd cache-generator && sbt clean compile publishLocal
 cd ../cache-visualizer
@@ -409,33 +411,35 @@ All dependencies are vendored!
 
 GUI is subdivided into two main areas:
 
-- **Configuration and COntrols(left):** configure the cache, select worloads, 
-and control simulation execution.
+- **Configuration and COntrols(left):** configure the cache, select worloads,
+  and control simulation execution.
 - **Cache Table and Comparison (right):** Inspect the internal cache state or
-compare simulation results.
+  compare simulation results.
 
 ## Cache Configuration
 
 Supports cache config:
 
-| `CacheConfig` field | Default | Purpose |
-| --- | --- | --- |
-| `capacityBytes` | `4096` | Data capacity, excluding tags and metadata |
-| `addrWidth` | `32` | Address width in bits |
-| `lineBytes` | `16` | Bytes per line |
-| `wordBytes` | `4` | CPU word width in bytes |
-| `memBeatBytes` | `4` | Memory transfer width in bytes |
-| `writePolicy` | `WriteBack` | Store and allocation behavior |
-| `numWays` | `1` | Associativity |
-| `replacementPolicy` | `RoundRobin` | Victim-selection policy |
-| `lfsrSeed` | `1` | Seed for random replacement |
+| `CacheConfig` field | Default        | Purpose                                    |
+| --------------------- | -------------- | ------------------------------------------ |
+| `capacityBytes`     | `4096`       | Data capacity, excluding tags and metadata |
+| `addrWidth`         | `32`         | Address width in bits                      |
+| `lineBytes`         | `16`         | Bytes per line                             |
+| `wordBytes`         | `4`          | CPU word width in bytes                    |
+| `memBeatBytes`      | `4`          | Memory transfer width in bytes             |
+| `writePolicy`       | `WriteBack`  | Store and allocation behavior              |
+| `numWays`           | `1`          | Associativity                              |
+| `replacementPolicy` | `RoundRobin` | Victim-selection policy                    |
+| `lfsrSeed`          | `1`          | Seed for random replacement                |
 
 Configuration can be loaded to a locally hosted virtual simulated environment
-that occupies port 9000. Any issues, please: 
+that occupies port 9000. Any issues, please:
+
 ```bash
 lsof -i :9000
 kill <pid>
 ```
+
 To free port for cache utilization.
 
 **FPGA hardware implementation pending due to uart communication**.
@@ -446,10 +450,10 @@ The visualizer supports three workloads:
 
 - **Builtin:** all testbenches that can be run on the cache
 - **Current Test:** preview of last current loaded set, provides saving/overwriting
-of trace file
-- **Trace File:** allows the user to load prexisting trace files that 
-share the results from a builtin testbench. Can be used to compare already
-processed testbenches.
+  of trace file
+- **Trace File:** allows the user to load prexisting trace files that
+  share the results from a builtin testbench. Can be used to compare already
+  processed testbenches.
 
 ## Simulation Controls
 
@@ -472,27 +476,22 @@ the current running test, including:
 Provides a live view of cache's internal state.
 
 It displays:
+
 - Valid and dirty bits
 - Stored words among N-ways
 - Cache hit or misses(red and green)
 
 ## Comparison
 
-
-
-
 ## Repository layout
 
-
-| Path | Contents |
-| --- | --- |
-| [cache-generator/src/main/scala](cache-generator/src/main/scala) | Reusable cache, configuration, interfaces, replacement logic, RTL entry point |
-| [cache-generator/src/test/scala](cache-generator/src/test/scala) | Standalone cache and replacement tests |
-| [integration/wildcat](integration/wildcat) | CPU, PipeCon adapter, memory models, devices, synthesis configuration, integration tests |
-| [integration/UART_TB](integration/UART_TB) | Python telemetry reader and frame-layout test |
-| [images](images) | Architecture and controller diagrams |
-| [.github/workflows/test.yml](.github/workflows/test.yml) | Cache, integration, and telemetry CI checks |
-| [cache-visualizer/data_sets](cache-visualizer/data_sets) | Cache benchmarks |
-| [cache-visualizer/hardware](cache-visualizer/hardware) | Cache wrapper for virtual session |
-
-Develop both projects on `main` through short-lived feature branches; this layout does not require a separate long-lived integration branch.
+| Path                                                            | Contents                                                                                 |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [cache-generator/src/main/scala](cache-generator/src/main/scala) | Reusable cache, configuration, interfaces, replacement logic, RTL entry point            |
+| [cache-generator/src/test/scala](cache-generator/src/test/scala) | Standalone cache and replacement tests                                                   |
+| [integration/wildcat](integration/wildcat)                       | CPU, PipeCon adapter, memory models, devices, synthesis configuration, integration tests |
+| [integration/UART_TB](integration/UART_TB)                       | Python telemetry reader and frame-layout test                                            |
+| [images](images)                                                 | Architecture and controller diagrams                                                     |
+| [.github/workflows/test.yml](.github/workflows/test.yml)         | Cache, integration, and telemetry CI checks                                              |
+| [cache-visualizer/data_sets](cache-visualizer/data_sets)         | Cache benchmarks                                                                         |
+| [cache-visualizer/hardware](cache-visualizer/hardware)           | Cache wrapper for virtual session                                                        |
