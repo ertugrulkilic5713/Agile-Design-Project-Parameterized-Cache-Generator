@@ -1,0 +1,168 @@
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:01:26 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Tue Nov 17 10:54:42 2026
+# Process ID         : 591117
+# Current directory  : /home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/PROJECT/REPO/Agile-Design-Project-Parameterized-Cache-Generator
+# Command line       : vivado
+# Log file           : /home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/PROJECT/REPO/Agile-Design-Project-Parameterized-Cache-Generator/vivado.log
+# Journal file       : /home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/PROJECT/REPO/Agile-Design-Project-Parameterized-Cache-Generator/vivado.jou
+# Running On         : ubuntu
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.5 LTS
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
+# CPU Frequency      : 3998.168 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 16553 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20848 MB
+# Available Virtual  : 8580 MB
+#-----------------------------------------------------------
+start_gui
+open_project /home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+create_dataflow_design
+current_design synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+report_utilization -hierarchical_min_primitive_count 50 -name utilization_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw_manager
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+close_design
+open_run synth_1 -name synth_1
+create_dataflow_design
+current_design synth_1
+report_utilization -hierarchical_min_primitive_count 50 -name utilization_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw_manager
+close_design
+open_run synth_1 -name synth_1
+report_utilization -hierarchical_min_primitive_count 50 -name utilization_1
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+close_design
+open_run synth_1 -name synth_1
+report_utilization -hierarchical_min_primitive_count 50 -name utilization_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw_manager
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_utilization -hierarchical_min_primitive_count 50 -name utilization_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw_manager
+close_design
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw_manager
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {/home/ertugrul/Documents/DTU/AGILE_HARDWARE_DESIGN/SYNTHESIZE_PROJECT/cache_controller_with_core.runs/impl_1/LittleCat.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw_manager
