@@ -16,7 +16,11 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val dirtyBits = RegInit(VecInit(Seq.fill(cfg.numSets)(VecInit(Seq.fill(cfg.numWays)(false.B)))))
   val tagMem = Seq.fill(cfg.numWays)(SyncReadMem(cfg.numSets, UInt(cfg.tagBits.W)))
   val dataMem = Seq.fill(cfg.numWays)(SyncReadMem(cfg.numSets, UInt(cfg.lineBits.W)))
-  val nextVictim = RegInit(VecInit(Seq.fill(cfg.numSets)(0.U(cfg.wayBits.W))))
+  val nextVictim = if (cfg.numWays > 1 && cfg.replacementPolicy == RoundRobin)
+    Some(RegInit(VecInit(Seq.fill(cfg.numSets)(0.U(cfg.wayBits.W))))) else None
+  private val plru = if (cfg.numWays > 1 && cfg.replacementPolicy == TreePLRU)
+    Some(new TreePLRULogic(cfg.numWays)) else None
+  val plruState = plru.map(tree => RegInit(VecInit(Seq.fill(cfg.numSets)(0.U(tree.stateBits.W)))))
   val victimWay = Reg(UInt(cfg.wayBits.W))
 
   // ---------------------------------------------------------------- state
@@ -35,6 +39,12 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val reqIdx = cfg.indexOf(addrReg)
   val reqTag = cfg.tagOf(addrReg)
   val reqWord = cfg.wordIdxOf(addrReg)
+
+  def touchPlru(way: UInt): Unit = plru.foreach { tree =>
+    val sets = plruState.get
+    val bits = if (cfg.numSets == 1) sets(0) else sets(reqIdx)
+    bits := tree.touch(bits, way)
+  }
 
   // ---------------------------------------------------------------- defaults
   io.req.ready := false.B
@@ -63,7 +73,6 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val linesRd = VecInit(dataMem.map(_.read(readIdx, io.req.fire)))
   val setValid = if (cfg.numSets == 1) validBits(0) else validBits(reqIdx)
   val setDirty = if (cfg.numSets == 1) dirtyBits(0) else dirtyBits(reqIdx)
-  val replacement = if (cfg.numSets == 1) nextVictim(0) else nextVictim(reqIdx)
   def wayBit(bits: Vec[Bool], way: UInt): Bool =
     if (cfg.numWays == 1) bits(0) else bits(way)
 
@@ -72,6 +81,14 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   val hitWay = if (cfg.numWays == 1) 0.U else PriorityEncoder(hits)
   val invalid = VecInit(setValid.map(v => !v))
   val invalidWay = if (cfg.numWays == 1) 0.U else PriorityEncoder(invalid)
+  val replacement = if (cfg.numWays == 1) 0.U else cfg.replacementPolicy match {
+    case RoundRobin =>
+      val next = nextVictim.get
+      if (cfg.numSets == 1) next(0) else next(reqIdx)
+    case TreePLRU =>
+      val sets = plruState.get
+      plru.get.victim(if (cfg.numSets == 1) sets(0) else sets(reqIdx))
+  }
   val selectedVictim = Mux(invalid.asUInt.orR, invalidWay, replacement)
   val lookupWay = Mux(hit, hitWay, selectedVictim)
   val tagRd = if (cfg.numWays == 1) tagsRd(0) else tagsRd(lookupWay)
@@ -119,6 +136,7 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
       io.stat.hit := hit
       io.stat.miss := !hit
       when(hit) {
+        touchPlru(hitWay)
         val hitData = Mux(isWriteReg, 0.U, selectWord(lineRd, reqWord))
         io.resp.valid := (if (cfg.isWriteThrough) !isWriteReg else true.B)
         io.resp.bits.data := hitData
@@ -250,8 +268,11 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
           }
           wayBit(setValid, victimWay) := true.B
           wayBit(setDirty, victimWay) := isWriteReg && cfg.isWriteBack.B
-          replacement := (if (cfg.numWays == 1) 0.U else
-            Mux(victimWay === (cfg.numWays - 1).U, 0.U, victimWay + 1.U))
+          nextVictim.foreach { next =>
+            val replacement = if (cfg.numSets == 1) next(0) else next(reqIdx)
+            replacement := Mux(victimWay === (cfg.numWays - 1).U, 0.U, victimWay + 1.U)
+          }
+          touchPlru(victimWay)
 
           respData := Mux(isWriteReg, 0.U, selectWord(newLine, reqWord))
           state := sRespond
@@ -279,7 +300,8 @@ object GenerateCache extends App {
     lineBytes = 4,
     wordBytes = 4,
     memBeatBytes = 4,
-    numWays = if (args.nonEmpty) args(0).toInt else 1
+    numWays = if (args.nonEmpty) args(0).toInt else 1,
+    replacementPolicy = if (args.length > 2) ReplacementPolicy.parse(args(2)) else RoundRobin
   )
   val targetDir = if (args.length > 1) args(1) else "generated"
   emitVerilog(if (cfg.numWays == 1) new DirectMappedReadCache(cfg) else new SetAssociativeCache(cfg),

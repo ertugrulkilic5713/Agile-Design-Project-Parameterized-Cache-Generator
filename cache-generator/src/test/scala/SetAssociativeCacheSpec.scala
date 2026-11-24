@@ -131,9 +131,10 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
     CacheConfig(capacityBytes = 128, numWays = 8)
   )
   for ((base, i) <- geometries.zipWithIndex;
+       replacement <- Seq(RoundRobin, TreePLRU);
        policy <- (if (base.wordBytes == base.memBeatBytes) Seq(WriteBack, WriteThrough) else Seq(WriteBack))) {
-    it should s"match the reference under mixed traffic for geometry $i and $policy" in {
-      val cfg = base.copy(writePolicy = policy)
+    it should s"match the reference under mixed traffic for geometry $i, $policy and $replacement" in {
+      val cfg = base.copy(writePolicy = policy, replacementPolicy = replacement)
       test(new SetAssociativeCache(cfg)) { dut =>
         val h = new CacheHarness(dut, cfg, memLatency = 1, writeReqStall = 1,
           writeBeatStall = 1, writeAckLatency = 2, readReqStall = 1, readBeatStall = 1)

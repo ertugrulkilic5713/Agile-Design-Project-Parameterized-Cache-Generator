@@ -6,20 +6,40 @@ import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.collection.mutable.{ArrayBuffer, Map}
 
-/** Tag-only reference for hit prediction and per-set round-robin replacement. */
+/** Tag-only reference for hit prediction and per-set replacement. */
 class RefCache(cfg: CacheConfig) {
   private val tags = Array.fill[Long](cfg.numSets, cfg.numWays)(-1L)
   private val next = Array.fill(cfg.numSets)(0)
+  private val plru = Array.fill(cfg.numSets, cfg.numWays - 1)(false)
 
   def access(addr: Long, isWrite: Boolean = false): Boolean = {
     val index = ((addr >> cfg.offsetBits) & (cfg.numSets - 1)).toInt
     val tag = addr >> (cfg.offsetBits + cfg.indexBits)
-    val hit = tags(index).contains(tag)
+    var accessedWay = tags(index).indexOf(tag)
+    val hit = accessedWay >= 0
     if (!hit && !(isWrite && cfg.isWriteThrough)) {
       val invalid = tags(index).indexOf(-1L)
-      val way = if (invalid >= 0) invalid else next(index)
+      val way = if (invalid >= 0) invalid else cfg.replacementPolicy match {
+        case RoundRobin => next(index)
+        case TreePLRU =>
+          var node = 0
+          while (node < cfg.numWays - 1) {
+            node = 2 * node + 1 + (if (plru(index)(node)) 1 else 0)
+          }
+          node - (cfg.numWays - 1)
+      }
       tags(index)(way) = tag
       next(index) = (way + 1) % cfg.numWays
+      accessedWay = way
+    }
+    if (cfg.replacementPolicy == TreePLRU && accessedWay >= 0) {
+      // Walk up from the accessed leaf, pointing each ancestor away from it.
+      var child = cfg.numWays - 1 + accessedWay
+      while (child > 0) {
+        val parent = (child - 1) / 2
+        plru(index)(parent) = child == 2 * parent + 1
+        child = parent
+      }
     }
     hit
   }
