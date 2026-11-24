@@ -16,7 +16,6 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
     assert(cfg.tagBits == cfg.addrWidth - cfg.offsetBits)
   }
 
-<<<<<<< HEAD
   it should "validate random seeds and parse all replacement policies" in {
     assert(ReplacementPolicy.parse("random") == RandomReplacement)
     for (seed <- Seq(BigInt(0), BigInt(-1), BigInt(1) << 16)) {
@@ -25,8 +24,6 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
     assert(CacheConfig(lfsrSeed = 65535).lfsrSeed == 65535)
   }
 
-=======
->>>>>>> 42cb4f8 (feat: set associative)
   it should "reject associative configurations through the legacy entry point" in {
     intercept[IllegalArgumentException] {
       test(new DirectMappedReadCache(CacheConfig(capacityBytes = 64, numWays = 2))) { _ => () }
@@ -142,16 +139,10 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
     CacheConfig(capacityBytes = 128, numWays = 8)
   )
   for ((base, i) <- geometries.zipWithIndex;
-<<<<<<< HEAD
        replacement <- Seq(RoundRobin, TreePLRU, RandomReplacement);
        policy <- (if (base.wordBytes == base.memBeatBytes) Seq(WriteBack, WriteThrough) else Seq(WriteBack))) {
     it should s"match the reference under mixed traffic for geometry $i, $policy and $replacement" in {
       val cfg = base.copy(writePolicy = policy, replacementPolicy = replacement, lfsrSeed = 7)
-=======
-       policy <- (if (base.wordBytes == base.memBeatBytes) Seq(WriteBack, WriteThrough) else Seq(WriteBack))) {
-    it should s"match the reference under mixed traffic for geometry $i and $policy" in {
-      val cfg = base.copy(writePolicy = policy)
->>>>>>> 42cb4f8 (feat: set associative)
       test(new SetAssociativeCache(cfg)) { dut =>
         val h = new CacheHarness(dut, cfg, memLatency = 1, writeReqStall = 1,
           writeBeatStall = 1, writeAckLatency = 2, readReqStall = 1, readBeatStall = 1)
@@ -169,7 +160,6 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
       }
     }
   }
-<<<<<<< HEAD
   // Preserve the integration branch's standalone read-geometry regressions.
   val readGeometries = Seq(
     CacheConfig(),
@@ -195,7 +185,4 @@ class SetAssociativeCacheSpec extends AnyFlatSpec with ChiselScalatestTester {
       }
     }
   }
-
-=======
->>>>>>> 42cb4f8 (feat: set associative)
 }
