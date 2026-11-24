@@ -194,6 +194,72 @@ The cache accepts one CPU request at a time. Each way has synchronous tag and da
 
 This organization keeps miss handling sequential: select a victim, complete any dirty write-back, refill the entire line, and respond. There are no overlapping misses or early responses before a refill completes. Store hits and refills share one data-memory write port per way.
 
+### Controller finite-state machine
+
+The controller is defined in [cache.scala](cache-generator/src/main/scala/cache.scala), with the eleven canonical states declared in [model.scala](cache-generator/src/main/scala/model.scala). Reset enters `sIdle` and clears valid bits, dirty bits, and replacement metadata to their configured initial values. Tag and data memories do not need a reset because a line cannot hit until its valid bit is set.
+
+```mermaid
+stateDiagram-v2
+    [*] --> sIdle
+    sIdle --> sCompare: CPU request accepted
+    sCompare --> sIdle: Read or WB store hit, response accepted
+    sCompare --> sRespond: Read or WB store hit, response stalled
+    sCompare --> sWriteThroughReq: WT store, hit or miss
+    sCompare --> sWritebackReq: WB miss, valid dirty victim
+    sCompare --> sRefillReq: Allocating miss, no dirty write-back
+    sWritebackReq --> sWritebackSend: Write address accepted
+    sWritebackSend --> sWritebackWait: Final write beat accepted
+    sWritebackWait --> sRefillReq: Write completion accepted
+    sWriteThroughReq --> sWriteThroughSend: Write address accepted
+    sWriteThroughSend --> sWriteThroughWait: Masked word accepted
+    sWriteThroughWait --> sRespond: Write completion accepted
+    sRefillReq --> sRefillWait: Read address accepted
+    sRefillWait --> sRespond: Final refill beat accepted, line installed
+    sRespond --> sIdle: CPU response accepted
+```
+
+Here, an **allocating miss** is any load miss or a write-back store miss. A write-through store miss follows the write-through path without refilling. The diagram omits self-loops: request and completion states wait for their channel handshake; beat-transfer states stay active until the final beat transfers.
+
+| State | Hardware action | Condition to leave |
+| --- | --- | --- |
+| `sIdle` | Assert CPU `req.ready`; on acceptance, latch address, operation, store data, and mask, and read every way's tag/data at the selected set | `req.fire` |
+| `sCompare` | Compare valid tags in parallel, select the hit or victim way, update a store hit, and choose the hit/miss path | Always leaves after this comparison cycle |
+| `sWritebackReq` | Present the captured dirty victim's line-base address on `memWriteReq` | Write-address handshake |
+| `sWritebackSend` | Stream the captured victim line with all byte-mask bits set; advance the beat counter only on acceptance | Final write-data handshake |
+| `sWritebackWait` | Accept explicit write completion, require `ack = true`, clear the victim's dirty bit, and pulse `stat.writeback` | Write-completion handshake |
+| `sWriteThroughReq` | Present the stored CPU request's word-aligned address on `memWriteReq` | Write-address handshake |
+| `sWriteThroughSend` | Send one word with the original CPU byte mask | Write-data handshake |
+| `sWriteThroughWait` | Accept explicit write completion, require `ack = true`, prepare a zero response, and pulse `stat.writeThrough` | Write-completion handshake |
+| `sRefillReq` | Present the requested line-base address on `memReq`; reset the refill beat counter when accepted | Read-address handshake |
+| `sRefillWait` | Collect ordered beats; on the last beat, install data/tag, set valid/dirty metadata, update replacement state, and prepare the response | Final read-data handshake |
+| `sRespond` | Hold response data and `resp.valid` until the CPU accepts it | `resp.fire` |
+
+`fire` means `valid && ready`. The cache asserts `req.ready` only in `sIdle`, so it cannot accept another request during a miss, memory write, or stalled CPU response. `stat.hit` or `stat.miss` pulses during `sCompare`, once per lookup, rather than once per waiting cycle.
+
+For a hit, the synchronous lookup begins when the request is accepted; the response can transfer in the following compare cycle. A miss adds address handshakes, data beats, any memory stalls, and a final response cycle. The dirty-eviction and refill paths execute sequentially. These core timings exclude the Wildcat adapter and CPU stalls.
+
+### Storage and datapath hardware
+
+Each way contains one `SyncReadMem(numSets, tagBits)` for tags and one `SyncReadMem(numSets, lineBits)` for whole cache lines. All ways read the same set in parallel. One tag comparator per way produces a hit vector; an OR reduction detects a hit and a priority encoder selects the hit way. Another priority encoder selects the lowest-index invalid way before the configured replacement policy is consulted.
+
+The selected way feeds tag and line multiplexers. A word multiplexer selects the CPU response word from the line. For a store, byte-level multiplexers merge `writeData` into that word according to `writeMask`, then reassemble the line. Store hits and refills use the same write port in each way, with the write enable selecting only the target way. Tags are written when a refill installs a line.
+
+The controller also owns request registers, a response-data register, a victim-way register, a beat counter, a full-line eviction register, and a full-line refill buffer. Capturing the dirty victim's address and line in `sCompare` preserves the synchronous-memory outputs throughout a stalled write-back. On the final refill beat, the installation logic combines the buffered beats with the incoming beat directly, so it does not read an old value from the buffer register.
+
+For the common **4 KiB, 16-byte line, four-way, 32-bit address** configuration:
+
+| Hardware structure | Logical size |
+| --- | --- |
+| Sets / total lines | 64 sets / 256 lines |
+| Tag / index / offset | 22 / 6 / 4 bits |
+| Data arrays | Four memories, each 64 entries × 128 bits; 32,768 data bits total |
+| Tag arrays | Four memories, each 64 entries × 22 bits; 5,632 tag bits total |
+| Valid / dirty metadata | 256 bits each in the source design |
+| Eviction register / refill buffer | 128 bits each |
+| Memory beats per line | Four 32-bit beats |
+
+These are logical storage sizes, excluding request/control registers and combinational logic. `SyncReadMem` describes synchronous storage; the synthesis flow determines its physical mapping. Actual RAM blocks, SRAM macros, flip-flops, area, and timing must be read from the generated design's synthesis reports. For write-through, dirty bits remain false and synthesis may remove unused write-back storage and logic.
+
 ### Write policies
 
 | Policy | Store hit | Store miss | CPU store completion |
@@ -204,6 +270,36 @@ This organization keeps miss handling sequential: select a victim, complete any 
 Loads allocate on misses under both policies. Stores acknowledge with response data zero. Byte masks select the bytes to update.
 
 Write-back defers memory traffic until a dirty line is evicted. Write-through sends every store to memory and avoids allocating lines on store misses. Dirty evictions finish before the corresponding refill starts.
+
+#### Write-back hardware
+
+Write-back uses one dirty bit per line. A hit store merges the masked bytes into the selected data-memory line and sets its dirty bit in `sCompare`. It can acknowledge there without a backing-memory transaction. On a store miss, the cache first obtains the whole line, merges the store into the refill data, and installs it as valid and dirty. This refill also happens for a full-word store, preserving the other words in the line.
+
+If the selected victim is valid and dirty, its old tag and set index reconstruct the write-back address. The controller captures that address and the full victim line, then uses `beatCnt` to select successive `memBeatBytes` slices. Every byte of the line is written, even if only one byte was originally modified. Only after explicit memory completion does the controller clear the dirty bit and request the new line. A clean or invalid victim skips this write-back sequence.
+
+For a dirty load miss with four beats per line, the path is:
+
+```text
+sIdle → sCompare → sWritebackReq → sWritebackSend (4 transfers)
+      → sWritebackWait → sRefillReq → sRefillWait (4 transfers)
+      → sRespond → sIdle
+```
+
+Each transfer can stall independently. A write-back store miss follows the same path but merges its pending store before installing the refill and returns zero.
+
+#### Write-through hardware
+
+Write-through uses the same byte-merge datapath on a store hit, but does not mark the line dirty. Both store hits and misses send the CPU's word-aligned address, store word, and byte mask through `sWriteThroughReq`, `sWriteThroughSend`, and `sWriteThroughWait`. A store miss does not modify cache data, install a tag, or update replacement state.
+
+There is no independent store buffer: the controller waits for memory completion before acknowledging the CPU and accepting another request. The memory data beat and CPU word must have equal widths, which is why this policy requires `memBeatBytes == wordBytes`. Load misses still refill a line, but never need a dirty eviction in a write-through configuration.
+
+```text
+WT store hit or miss:
+sIdle → sCompare → sWriteThroughReq → sWriteThroughSend
+      → sWriteThroughWait → sRespond → sIdle
+```
+
+The write policy is a Scala configuration value resolved during elaboration. Chisel generates the selected control paths; the resulting cache has no run-time policy-switch input. The canonical state enum still names both write-policy sequences for consistent debug and telemetry decoding.
 
 ### Replacement policies
 
@@ -218,6 +314,44 @@ Invalid ways always fill first. Once a set is full:
 Round-robin is the default and needs little state. Tree pseudo-LRU tracks recent accesses without maintaining an exact LRU ordering. Random provides a repeatable alternative for experiments. One-way configurations omit replacement hardware.
 
 The random seed must be nonzero and fit in `max(16, wayBits + 1)` bits, where `wayBits = max(1, log2Ceil(numWays))`.
+
+#### Round-robin hardware
+
+For more than one way, `nextVictim` is a reset-to-zero register vector with one `wayBits` pointer per set. Selecting a victim reads the addressed set's pointer. After a refill into way `w`, that pointer becomes `(w + 1) mod numWays`; hits leave it unchanged. This also applies when the refill used an invalid way.
+
+Because the number of ways is a power of two, this needs a small increment/wrap datapath, with no per-access recency tracking. With 64 sets and four ways, the pointers occupy **64 × 2 = 128 bits**.
+
+#### Tree pseudo-LRU hardware
+
+[TreePLRULogic.scala](cache-generator/src/main/scala/TreePLRULogic.scala) builds a binary tree with ways as leaves and `numWays - 1` preference bits per set. A bit of zero points toward the left subtree for eviction; one points right. Victim selection follows those bits through a combinational mux tree.
+
+For four ways, the three stored bits correspond to these internal nodes:
+
+```text
+                    node 0
+                   /      \
+              node 1      node 2
+              /   \        /   \
+           way 0 way 1  way 2 way 3
+```
+
+Touching a way changes only its ancestor bits, pointing each one away from the accessed subtree. For example, after a hit or refill in way 0, node 0 becomes 1 (prefer the right half) and node 1 becomes 1 (prefer way 1); node 2 keeps its previous value. Starting from all zeros, this produces packed state `011`, where the printed bit order is `[node2 node1 node0]`, and the next victim is way 2.
+
+The cache stores the per-set bits in `plruState`; the helper itself contains combinational logic and no registers. Its Scala recursion constructs the hardware at elaboration, so walking the tree does not add one clock cycle per level. The victim path has `log2(numWays)` mux levels. Updates occur on every hit, including store hits, and on refills. With 64 sets and four ways, the metadata occupies **64 × 3 = 192 bits**.
+
+This records which subtree was used more recently at each node. It approximates LRU without keeping a complete ordering of all ways.
+
+#### Random replacement hardware
+
+Random replacement instantiates a single Chisel `LFSR` shared by all sets. Its register width is `randomBits = max(16, wayBits + 1)`. The low `wayBits` bits select a way; since associativity is a power of two, no modulo divider is needed.
+
+The LFSR advances only when `sCompare` sees a miss in a full set that will allocate a line: a load miss under either write policy, or a write-back store miss. Hits, invalid-way fills, and write-through store misses leave it unchanged. The selected victim is latched for the ongoing miss, so memory stalls do not change that decision.
+
+For four ways, this uses **one 16-bit LFSR for the whole cache**, rather than state per set. A fixed seed reproduces the replacement sequence for the same sequence of allocating full-set misses; it is a pseudorandom hardware sequence.
+
+#### Hardware selected at elaboration
+
+The replacement-policy match is evaluated when generating hardware. Only the selected policy's metadata and logic are instantiated: round-robin pointers, PLRU state and tree logic, or the LFSR. A one-way configuration bypasses all three and selects way zero directly. Increasing associativity adds parallel tag comparisons and wider way-selection muxes even when total data capacity stays constant.
 
 ### Memory protocol
 
