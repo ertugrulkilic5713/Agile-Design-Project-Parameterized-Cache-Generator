@@ -38,7 +38,6 @@ jobs:
           name: cache-test-reports
           path: cache-generator/target/test-reports/
           if-no-files-found: ignore
-
   wildcat:
     name: Wildcat and adapter
     runs-on: ubuntu-latest
