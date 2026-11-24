@@ -11,12 +11,14 @@ case object WriteBack extends WritePolicy
 sealed trait ReplacementPolicy
 case object RoundRobin extends ReplacementPolicy
 case object TreePLRU extends ReplacementPolicy
+case object RandomReplacement extends ReplacementPolicy
 
 object ReplacementPolicy {
   def parse(value: String): ReplacementPolicy = value match {
     case "rr" => RoundRobin
     case "plru" => TreePLRU
-    case other => throw new IllegalArgumentException(s"unknown replacement policy '$other'; use rr or plru")
+    case "random" => RandomReplacement
+    case other => throw new IllegalArgumentException(s"unknown replacement policy '$other'; use rr, plru or random")
   }
 }
 
@@ -28,7 +30,8 @@ case class CacheConfig(
     memBeatBytes: Int = 4, // width of the memory-side data bus
     writePolicy: WritePolicy = WriteBack,
     numWays: Int = 1,
-    replacementPolicy: ReplacementPolicy = RoundRobin
+    replacementPolicy: ReplacementPolicy = RoundRobin,
+    lfsrSeed: BigInt = 1
 ) {
   require(isPow2(capacityBytes), "capacityBytes must be a power of two")
   require(isPow2(lineBytes), "lineBytes must be a power of two")
@@ -48,6 +51,9 @@ case class CacheConfig(
   require(numWays <= numLines, "numWays cannot exceed the total number of lines")
   val numSets = numLines / numWays
   val wayBits = math.max(1, log2Ceil(numWays))
+  val randomBits = math.max(16, wayBits + 1)
+  require(lfsrSeed > 0 && lfsrSeed < (BigInt(1) << randomBits),
+    s"lfsrSeed must fit in $randomBits bits and be non-zero")
   val wordsPerLine = lineBytes / wordBytes
   val beatsPerLine = lineBytes / memBeatBytes
 
@@ -90,12 +96,16 @@ class MemReq(cfg: CacheConfig) extends Bundle {
   val addr = UInt(cfg.addrWidth.W)
 }
 
-/** Memory write request: block-aligned evict address, accepted before its data. */
+/** Write base address: line-aligned for write-back, word-aligned for write-through.
+  * Accepted before its data; completion follows separately on memWriteResp.
+  */
 class MemWriteReq(cfg: CacheConfig) extends Bundle {
   val addr = UInt(cfg.addrWidth.W)
 }
 
-/** Exactly beatsPerLine beats per request, starting at the lowest line address. */
+/** Write-back sends beatsPerLine beats; write-through sends one word beat.
+  * Addresses start at the request address and increase by memBeatBytes.
+  */
 class MemWriteData(cfg: CacheConfig) extends Bundle {
   val data = UInt(cfg.beatBits.W)
   val mask = UInt(cfg.memBeatBytes.W)
@@ -129,6 +139,7 @@ class CacheStats extends Bundle {
   val miss = Bool()
   val writeback = Bool()
   val writeThrough = Bool()
+  val state = UInt(CacheState.getWidth.W)
 }
 
 object CacheState extends ChiselEnum {

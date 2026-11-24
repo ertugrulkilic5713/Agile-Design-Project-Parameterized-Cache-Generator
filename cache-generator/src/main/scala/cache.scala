@@ -2,6 +2,7 @@ package cache
 
 import chisel3._
 import chisel3.util._
+import chisel3.util.random.LFSR
 
 /** Blocking, set-associative cache with selectable write-back or write-through policy.
   * Write-back stores allocate on a miss. Write-through stores do not.
@@ -66,6 +67,7 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
   io.stat.miss := false.B
   io.stat.writeback := false.B
   io.stat.writeThrough := false.B
+  io.stat.state := state.asUInt
 
   io.req.ready := state === sIdle
   val readIdx = cfg.indexOf(io.req.bits.addr)
@@ -88,6 +90,10 @@ class SetAssociativeCache(cfg: CacheConfig) extends Module {
     case TreePLRU =>
       val sets = plruState.get
       plru.get.victim(if (cfg.numSets == 1) sets(0) else sets(reqIdx))
+    case RandomReplacement =>
+      val evict = state === sCompare && !hit && !invalid.asUInt.orR &&
+        (!isWriteReg || cfg.isWriteBack.B)
+      LFSR(cfg.randomBits, increment = evict, seed = Some(cfg.lfsrSeed))(cfg.wayBits - 1, 0)
   }
   val selectedVictim = Mux(invalid.asUInt.orR, invalidWay, replacement)
   val lookupWay = Mux(hit, hitWay, selectedVictim)
@@ -301,7 +307,8 @@ object GenerateCache extends App {
     wordBytes = 4,
     memBeatBytes = 4,
     numWays = if (args.nonEmpty) args(0).toInt else 1,
-    replacementPolicy = if (args.length > 2) ReplacementPolicy.parse(args(2)) else RoundRobin
+    replacementPolicy = if (args.length > 2) ReplacementPolicy.parse(args(2)) else RoundRobin,
+    lfsrSeed = if (args.length > 3) BigInt(args(3)) else 1
   )
   val targetDir = if (args.length > 1) args(1) else "generated"
   emitVerilog(if (cfg.numWays == 1) new DirectMappedReadCache(cfg) else new SetAssociativeCache(cfg),
