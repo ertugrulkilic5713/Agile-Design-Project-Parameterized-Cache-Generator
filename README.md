@@ -1,6 +1,6 @@
 # Parameterized Cache Generator
 
-A reusable, parameterized cache written in Chisel for the DTU 02201 Agile Hardware Design project. The generator supports direct-mapped, set-associative, and fully associative configurations, two write policies, and three replacement policies. A Wildcat RISC-V integration provides a complete system for running programs and measuring cache behavior over UART.
+A reusable, parameterized data cache written in Chisel for the DTU 02201 Agile Hardware Design project. The generator supports direct-mapped, set-associative, and fully associative configurations, two write policies, and three replacement policies. A Wildcat RISC-V integration provides a complete system for running programs and measuring cache behavior over UART.
 
 The cache lives in `cache-generator/`; Wildcat depends directly on that project through SBT. There is one shared cache implementation.
 
