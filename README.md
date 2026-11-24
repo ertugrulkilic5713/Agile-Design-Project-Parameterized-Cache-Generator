@@ -1,6 +1,6 @@
 # Parameterized Cache Generator
 
-A reusable, parameterized cache written in Chisel for the DTU **02201 Agile Hardware Design** project. The generator supports direct-mapped, set-associative, and fully associative configurations, two write policies, and three replacement policies. A Wildcat RISC-V integration provides a complete system for running programs and measuring cache behavior over UART.
+A reusable, parameterized cache written in Chisel for the DTU 02201 Agile Hardware Design project. The generator supports direct-mapped, set-associative, and fully associative configurations, two write policies, and three replacement policies. A Wildcat RISC-V integration provides a complete system for running programs and measuring cache behavior over UART.
 
 The cache lives in `cache-generator/`; Wildcat depends directly on that project through SBT. There is one shared cache implementation.
 
@@ -8,10 +8,9 @@ The cache lives in `cache-generator/`; Wildcat depends directly on that project 
 
 ### Prerequisites
 
-- **Java 17 and SBT 1.10.7** for the Scala/Chisel builds and tests. Both projects use Scala 2.13.16, Chisel 6.7.0, and ChiselTest 6.0.0.
-- **Python 3** for the telemetry decoder tests; **pyserial** to read a connected board.
-- **RISC-V binutils** to assemble programs for Wildcat. The Makefile defaults to `riscv64-elf-` on macOS and `riscv64-unknown-elf-` elsewhere. Override with `CROSS=...` if needed.
-- **Vivado** for the Nexys A7 FPGA flow; **OpenOCD** to program the board. The optional ASIC flow requires **LibreLane**, its PDK, and SRAM macro files.
+- Java 17 and SBT 1.10.7 for the Scala/Chisel builds and tests. Both projects use Scala 2.13.16, Chisel 6.7.0, and ChiselTest 6.0.0.
+- Python 3 for the telemetry decoder tests; **pyserial** to read a connected board.
+- RISC-V binutils to assemble programs for Wildcat. The Makefile defaults to `riscv64-elf-` on macOS and `riscv64-unknown-elf-` elsewhere.
 
 Commands below state their working directory. Hardware generation, synthesis, and programming are separate steps.
 
@@ -43,8 +42,6 @@ python3 -m unittest discover -s integration/UART_TB -v
 ```
 
 [CI](.github/workflows/test.yml) runs these checks on pushes and pull requests. Cache tests cover replacement, masked stores, backpressure, and write completion ordering. Integration tests cover the adapter, memory latency, telemetry, and a ThreeCats program that stores, evicts, and reloads under both write policies.
-
-SBT does not automatically run a dependency project's tests, so run both Scala projects. Wildcat's broader `make test` target also clones and builds an external RISC-V test suite; it is separate from the self-contained checks above.
 
 ### Generate a standalone cache
 
@@ -97,18 +94,18 @@ make APP=asm/bench/wcheck.s POLICY=wt WAYS=2 REPLACEMENT=random SEED=7 MEMLATENC
 
 `hw-asic` generates the LittleCat RTL used by the FPGA synthesis target too. It first builds `APP`, then writes `generated/LittleCat.sv` by default. `make dump` disassembles `a.out`.
 
-| Make variable | Default | Meaning |
-| --- | --- | --- |
-| `APP` | `asm/play.s` | Assembly program to build |
-| `POLICY` | `wb` | `wb` (write-back) or `wt` (write-through); `CACHE` is an alias when `POLICY` is unset |
-| `CAPACITY` | `4096` | Total cache data capacity in bytes |
-| `LINESIZE` | `16` | Bytes per cache line |
-| `WAYS` | `1` | Ways per set |
-| `REPLACEMENT` | `rr` | `rr`, `plru`, or `random` |
-| `SEED` | `1` | Nonzero random replacement seed |
-| `MEMLATENCY` | `0` | Extra delay per backing-memory transaction |
-| `MEMBYTES` | `16384` | Backing data-memory size in bytes |
-| `OUTDIR` | `generated` | RTL output directory |
+| Make variable   | Default        | Meaning                                       |
+| --------------- | -------------- | --------------------------------------------- |
+| `APP`         | `asm/play.s` | Assembly program to build                     |
+| `POLICY`      | `wb`         | `wb` (write-back) or `wt` (write-through) |
+| `CAPACITY`    | `4096`       | Total cache data capacity in bytes            |
+| `LINESIZE`    | `16`         | Bytes per cache line                          |
+| `WAYS`        | `1`          | Ways per set                                  |
+| `REPLACEMENT` | `rr`         | `rr`, `plru`, or `random`               |
+| `SEED`        | `1`          | Nonzero random replacement seed               |
+| `MEMLATENCY`  | `0`          | Extra delay per backing-memory transaction    |
+| `MEMBYTES`    | `16384`      | Backing data-memory size in bytes             |
+| `OUTDIR`      | `generated`  | RTL output directory                          |
 
 For an already built program, invoke the generator directly:
 
@@ -156,17 +153,17 @@ val cache = Module(new SetAssociativeCache(CacheConfig(
 )))
 ```
 
-| `CacheConfig` field | Default | Purpose |
-| --- | --- | --- |
-| `capacityBytes` | `4096` | Data capacity, excluding tags and metadata |
-| `addrWidth` | `32` | Address width in bits |
-| `lineBytes` | `16` | Bytes per line |
-| `wordBytes` | `4` | CPU word width in bytes |
-| `memBeatBytes` | `4` | Memory transfer width in bytes |
-| `writePolicy` | `WriteBack` | Store and allocation behavior |
-| `numWays` | `1` | Associativity |
-| `replacementPolicy` | `RoundRobin` | Victim-selection policy |
-| `lfsrSeed` | `1` | Seed for random replacement |
+| `CacheConfig` field | Default        | Purpose                                    |
+| --------------------- | -------------- | ------------------------------------------ |
+| `capacityBytes`     | `4096`       | Data capacity, excluding tags and metadata |
+| `addrWidth`         | `32`         | Address width in bits                      |
+| `lineBytes`         | `16`         | Bytes per line                             |
+| `wordBytes`         | `4`          | CPU word width in bytes                    |
+| `memBeatBytes`      | `4`          | Memory transfer width in bytes             |
+| `writePolicy`       | `WriteBack`  | Store and allocation behavior              |
+| `numWays`           | `1`          | Associativity                              |
+| `replacementPolicy` | `RoundRobin` | Victim-selection policy                    |
+| `lfsrSeed`          | `1`          | Seed for random replacement                |
 
 These are the **library defaults**; the standalone CLI uses the smaller geometry described above.
 
@@ -220,19 +217,19 @@ stateDiagram-v2
 
 Here, an **allocating miss** is any load miss or a write-back store miss. A write-through store miss follows the write-through path without refilling. The diagram omits self-loops: request and completion states wait for their channel handshake; beat-transfer states stay active until the final beat transfers.
 
-| State | Hardware action | Condition to leave |
-| --- | --- | --- |
-| `sIdle` | Assert CPU `req.ready`; on acceptance, latch address, operation, store data, and mask, and read every way's tag/data at the selected set | `req.fire` |
-| `sCompare` | Compare valid tags in parallel, select the hit or victim way, update a store hit, and choose the hit/miss path | Always leaves after this comparison cycle |
-| `sWritebackReq` | Present the captured dirty victim's line-base address on `memWriteReq` | Write-address handshake |
-| `sWritebackSend` | Stream the captured victim line with all byte-mask bits set; advance the beat counter only on acceptance | Final write-data handshake |
-| `sWritebackWait` | Accept explicit write completion, require `ack = true`, clear the victim's dirty bit, and pulse `stat.writeback` | Write-completion handshake |
-| `sWriteThroughReq` | Present the stored CPU request's word-aligned address on `memWriteReq` | Write-address handshake |
-| `sWriteThroughSend` | Send one word with the original CPU byte mask | Write-data handshake |
-| `sWriteThroughWait` | Accept explicit write completion, require `ack = true`, prepare a zero response, and pulse `stat.writeThrough` | Write-completion handshake |
-| `sRefillReq` | Present the requested line-base address on `memReq`; reset the refill beat counter when accepted | Read-address handshake |
-| `sRefillWait` | Collect ordered beats; on the last beat, install data/tag, set valid/dirty metadata, update replacement state, and prepare the response | Final read-data handshake |
-| `sRespond` | Hold response data and `resp.valid` until the CPU accepts it | `resp.fire` |
+| State                 | Hardware action                                                                                                                            | Condition to leave                        |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
+| `sIdle`             | Assert CPU `req.ready`; on acceptance, latch address, operation, store data, and mask, and read every way's tag/data at the selected set | `req.fire`                              |
+| `sCompare`          | Compare valid tags in parallel, select the hit or victim way, update a store hit, and choose the hit/miss path                             | Always leaves after this comparison cycle |
+| `sWritebackReq`     | Present the captured dirty victim's line-base address on `memWriteReq`                                                                   | Write-address handshake                   |
+| `sWritebackSend`    | Stream the captured victim line with all byte-mask bits set; advance the beat counter only on acceptance                                   | Final write-data handshake                |
+| `sWritebackWait`    | Accept explicit write completion, require `ack = true`, clear the victim's dirty bit, and pulse `stat.writeback`                       | Write-completion handshake                |
+| `sWriteThroughReq`  | Present the stored CPU request's word-aligned address on `memWriteReq`                                                                   | Write-address handshake                   |
+| `sWriteThroughSend` | Send one word with the original CPU byte mask                                                                                              | Write-data handshake                      |
+| `sWriteThroughWait` | Accept explicit write completion, require `ack = true`, prepare a zero response, and pulse `stat.writeThrough`                         | Write-completion handshake                |
+| `sRefillReq`        | Present the requested line-base address on `memReq`; reset the refill beat counter when accepted                                         | Read-address handshake                    |
+| `sRefillWait`       | Collect ordered beats; on the last beat, install data/tag, set valid/dirty metadata, update replacement state, and prepare the response    | Final read-data handshake                 |
+| `sRespond`          | Hold response data and `resp.valid` until the CPU accepts it                                                                             | `resp.fire`                             |
 
 `fire` means `valid && ready`. The cache asserts `req.ready` only in `sIdle`, so it cannot accept another request during a miss, memory write, or stalled CPU response. `stat.hit` or `stat.miss` pulses during `sCompare`, once per lookup, rather than once per waiting cycle.
 
@@ -248,24 +245,24 @@ The controller also owns request registers, a response-data register, a victim-w
 
 For the common **4 KiB, 16-byte line, four-way, 32-bit address** configuration:
 
-| Hardware structure | Logical size |
-| --- | --- |
-| Sets / total lines | 64 sets / 256 lines |
-| Tag / index / offset | 22 / 6 / 4 bits |
-| Data arrays | Four memories, each 64 entries × 128 bits; 32,768 data bits total |
-| Tag arrays | Four memories, each 64 entries × 22 bits; 5,632 tag bits total |
-| Valid / dirty metadata | 256 bits each in the source design |
-| Eviction register / refill buffer | 128 bits each |
-| Memory beats per line | Four 32-bit beats |
+| Hardware structure                | Logical size                                                       |
+| --------------------------------- | ------------------------------------------------------------------ |
+| Sets / total lines                | 64 sets / 256 lines                                                |
+| Tag / index / offset              | 22 / 6 / 4 bits                                                    |
+| Data arrays                       | Four memories, each 64 entries × 128 bits; 32,768 data bits total |
+| Tag arrays                        | Four memories, each 64 entries × 22 bits; 5,632 tag bits total    |
+| Valid / dirty metadata            | 256 bits each in the source design                                 |
+| Eviction register / refill buffer | 128 bits each                                                      |
+| Memory beats per line             | Four 32-bit beats                                                  |
 
 These are logical storage sizes, excluding request/control registers and combinational logic. `SyncReadMem` describes synchronous storage; the synthesis flow determines its physical mapping. Actual RAM blocks, SRAM macros, flip-flops, area, and timing must be read from the generated design's synthesis reports. For write-through, dirty bits remain false and synthesis may remove unused write-back storage and logic.
 
 ### Write policies
 
-| Policy | Store hit | Store miss | CPU store completion |
-| --- | --- | --- | --- |
-| Write-back (`wb`) | Merge masked bytes and mark dirty | Allocate a line, merge the store, mark dirty | Once the cache has accepted the update |
-| Write-through (`wt`) | Merge masked bytes and write to memory | Write to memory without allocating | After memory acknowledges the write |
+| Policy                 | Store hit                              | Store miss                                   | CPU store completion                   |
+| ---------------------- | -------------------------------------- | -------------------------------------------- | -------------------------------------- |
+| Write-back (`wb`)    | Merge masked bytes and mark dirty      | Allocate a line, merge the store, mark dirty | Once the cache has accepted the update |
+| Write-through (`wt`) | Merge masked bytes and write to memory | Write to memory without allocating           | After memory acknowledges the write    |
 
 Loads allocate on misses under both policies. Stores acknowledge with response data zero. Byte masks select the bytes to update.
 
@@ -305,11 +302,11 @@ The write policy is a Scala configuration value resolved during elaboration. Chi
 
 Invalid ways always fill first. Once a set is full:
 
-| Policy | State | Update behavior |
-| --- | --- | --- |
-| Round-robin (`rr`) | One next-victim pointer per set | Advances after a refill |
-| Tree pseudo-LRU (`plru`) | `numWays - 1` bits per set | Updates on hits and refills |
-| Random (`random`) | One shared seeded LFSR | Advances only on full-set evictions |
+| Policy                     | State                           | Update behavior                     |
+| -------------------------- | ------------------------------- | ----------------------------------- |
+| Round-robin (`rr`)       | One next-victim pointer per set | Advances after a refill             |
+| Tree pseudo-LRU (`plru`) | `numWays - 1` bits per set    | Updates on hits and refills         |
+| Random (`random`)        | One shared seeded LFSR          | Advances only on full-set evictions |
 
 Round-robin is the default and needs little state. Tree pseudo-LRU tracks recent accesses without maintaining an exact LRU ordering. Random provides a repeatable alternative for experiments. One-way configurations omit replacement hardware.
 
@@ -357,15 +354,15 @@ The replacement-policy match is evaluated when generating hardware. Only the sel
 
 All public channels use `valid`/`ready`; a transfer occurs only when both are high.
 
-| Channel | Direction relative to cache | Payload |
-| --- | --- | --- |
-| `req` | Input | Address, read/write flag, store data, byte mask |
-| `resp` | Output | Read word or zero-valued store acknowledgement |
-| `memReq` | Output | Line-aligned refill address |
-| `memResp` | Input | Exactly `beatsPerLine` ordered data beats |
-| `memWriteReq` | Output | Line-aligned write-back or word-aligned write-through address |
-| `memWriteData` | Output | Data beat and byte mask |
-| `memWriteResp` | Input | Explicit write completion with `ack = true` |
+| Channel          | Direction relative to cache | Payload                                                       |
+| ---------------- | --------------------------- | ------------------------------------------------------------- |
+| `req`          | Input                       | Address, read/write flag, store data, byte mask               |
+| `resp`         | Output                      | Read word or zero-valued store acknowledgement                |
+| `memReq`       | Output                      | Line-aligned refill address                                   |
+| `memResp`      | Input                       | Exactly `beatsPerLine` ordered data beats                   |
+| `memWriteReq`  | Output                      | Line-aligned write-back or word-aligned write-through address |
+| `memWriteData` | Output                      | Data beat and byte mask                                       |
+| `memWriteResp` | Input                       | Explicit write completion with `ack = true`                 |
 
 A write address is accepted before its data. Write-back sends a whole line; write-through sends one masked word beat. Accepting the last data beat does not complete a write: memory must return `memWriteResp` after the write finishes. The adapter waits for all PipeCon beat acknowledgements before producing that completion.
 
@@ -394,13 +391,13 @@ The [host decoder](integration/UART_TB/stats.py) computes differences between sn
 
 ## Repository layout
 
-| Path | Contents |
-| --- | --- |
-| [cache-generator/src/main/scala](cache-generator/src/main/scala) | Reusable cache, configuration, interfaces, replacement logic, RTL entry point |
-| [cache-generator/src/test/scala](cache-generator/src/test/scala) | Standalone cache and replacement tests |
-| [integration/wildcat](integration/wildcat) | CPU, PipeCon adapter, memory models, devices, synthesis configuration, integration tests |
-| [integration/UART_TB](integration/UART_TB) | Python telemetry reader and frame-layout test |
-| [images](images) | Architecture and controller diagrams |
-| [.github/workflows/test.yml](.github/workflows/test.yml) | Cache, integration, and telemetry CI checks |
+| Path                                                            | Contents                                                                                 |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [cache-generator/src/main/scala](cache-generator/src/main/scala) | Reusable cache, configuration, interfaces, replacement logic, RTL entry point            |
+| [cache-generator/src/test/scala](cache-generator/src/test/scala) | Standalone cache and replacement tests                                                   |
+| [integration/wildcat](integration/wildcat)                       | CPU, PipeCon adapter, memory models, devices, synthesis configuration, integration tests |
+| [integration/UART_TB](integration/UART_TB)                       | Python telemetry reader and frame-layout test                                            |
+| [images](images)                                                 | Architecture and controller diagrams                                                     |
+| [.github/workflows/test.yml](.github/workflows/test.yml)         | Cache, integration, and telemetry CI checks                                              |
 
 Develop both projects on `main` through short-lived feature branches; this layout does not require a separate long-lived integration branch.
