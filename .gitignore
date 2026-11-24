@@ -26,3 +26,5 @@ build/
 # for cache simulator
 cache-visualizer/compile_flags.txt
 cache-visualizer/imgui.ini
+cache-visualizer/vendor
+cache-visualizer/src/implot

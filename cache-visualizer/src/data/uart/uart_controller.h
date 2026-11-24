@@ -1,7 +1,6 @@
 #pragma once
 
 #include "serial_port.h"
-#include "protocol.h"
 #include "../cache_config.h"
 
 #include <thread>

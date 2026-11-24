@@ -35,6 +35,9 @@ void Application::update_control_panel() {
 		running_test_case_ = false;
 		current_running_transaction_ = 0;
 		cache_visual_.reset();
+
+		// yes im lazy
+		cache_visual_.configure(cache_config_.get_config());
 	}
 	if (e.pause) {
 		running_test_case_ = false;

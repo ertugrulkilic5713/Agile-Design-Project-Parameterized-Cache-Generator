@@ -6,6 +6,14 @@
 #include <string>
 #include "../test_case_ds.h"
 
+// struct SavedTest {
+//     std::string name;
+//     std::string description;
+//
+//     CacheConfig config;
+//     TestCase test;
+// };
+
 class WorkloadPanel {
 public:
 	void render();
