@@ -96,15 +96,15 @@ make APP=asm/bench/wcheck.s POLICY=wt WAYS=2 REPLACEMENT=random SEED=7 MEMLATENC
 
 | Make variable   | Default        | Meaning                                       |
 | --------------- | -------------- | --------------------------------------------- |
-| `APP`         | `asm/play.s` | Assembly program to build                     |
+| `APP`         | `asm/play.s` | Assembly benchmark program to build                    |
 | `POLICY`      | `wb`         | `wb` (write-back) or `wt` (write-through) |
 | `CAPACITY`    | `4096`       | Total cache data capacity in bytes            |
 | `LINESIZE`    | `16`         | Bytes per cache line                          |
 | `WAYS`        | `1`          | Ways per set                                  |
 | `REPLACEMENT` | `rr`         | `rr`, `plru`, or `random`               |
 | `SEED`        | `1`          | Nonzero random replacement seed               |
-| `MEMLATENCY`  | `0`          | Extra delay per backing-memory transaction    |
-| `MEMBYTES`    | `16384`      | Backing data-memory size in bytes             |
+| `MEMLATENCY`  | `0`          | Extra delay per backing-memory transaction in cycles   |
+| `MEMBYTES`    | `16384`      | Main memory data size in bytes             |
 | `OUTDIR`      | `generated`  | RTL output directory                          |
 
 For an already built program, invoke the generator directly:
