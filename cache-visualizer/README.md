@@ -1,9 +1,3 @@
-# Visualizer
-Interactive UI that shows what happens internally with the cache.
-
-Unstable build, different interactions will crash the program, proof of 
-concept currently
-
 # Architecture
 Request: `[ Address (4B) ][ Data (4B) ][ Mask (1B) ][ Operation (1B) ]`
 - Operation is 0 = Read, 1 = Write
@@ -20,12 +14,10 @@ Response: `[ Status (1B) ][ Way (1B) ][ Data (4B) ][ Latency (2B) ][ Timestamp (
 | Evict         | `0b00100000` | `0x20` |
 | Evict Dirty   | `0b01000000` | `0x40` |
 
-
 # Build
 ```bash
 make run
 ```
-
 
 # Fixes
 ## Server Dont connect
