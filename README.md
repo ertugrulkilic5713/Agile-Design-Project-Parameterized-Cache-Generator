@@ -389,6 +389,28 @@ sRefillReq, sRefillWait, sRespond
 
 The [host decoder](integration/UART_TB/stats.py) computes differences between snapshots and handles 32-bit counter wraparound. Its test checks state order against the canonical cache enum. Keep the FPGA image and decoder on the same frame format when changing telemetry.
 
+## Cache Adapter
+CacheAdapter connects standalone cache to Wildcat's PipeCon bus, utilizing 
+it same interface with a wraper that "wires" memory requests to our cache.
+
+![Cache adapter block diagram](images/adapter.svg)
+
+The adapter has two sides, CPU and Memory side which are controlled by an FSM.
+
+The CPU side toggles between two states, `cpuIdle` and `cpuWait`. In idle,
+PipeCon can send `rd` or `wr` to the adapter, which then is forwarded to the
+cache. This then goes to the wait state. From here, it stays in state until 
+the cache responds with an `ack` pulse, which means that the request has been 
+digested and the adapter responds with that.
+
+In the Memory FSM, it starts in `memIdle` which handles write requests before
+refills, so dirty lines are updated in memory before it is changed. This goes
+through `refillWait` whcih reada a beat from memory, and `refillSend`, which passes
+it ot the cache, until the whole line is in. A write loops through `writeData`,
+which takes a beat from the cache, and `writeWait`, which writes it to memory.
+A write back sends a full line and a write-through sends one word. It then finishes
+in `writeAck`, which tells the cache the write is complete.
+
 # Cache Visualizer
 
 The visualizer provides an interactive environment for simulating and analysing
@@ -396,6 +418,7 @@ cache behavior under different configurations. It supports loading benchmark
 datasets, stepping through individual memory accesses to visualize independent
 response and request transactions, and comparing cache performance across
 different workloads.
+
 
 ## Setup
 
@@ -406,6 +429,17 @@ make run
 ```
 
 All dependencies are vendored!
+- GLFW
+- ImGui
+- ImPlot
+
+Configuration can be loaded to a locally hosted virtual simulated environment
+that occupies port 9000. Any issues, please: 
+
+```bash
+lsof -i :9000
+kill <pid>
+```
 
 ## Interface
 
@@ -420,27 +454,16 @@ GUI is subdivided into two main areas:
 
 Supports cache config:
 
-| `CacheConfig` field | Default        | Purpose                                    |
-| --------------------- | -------------- | ------------------------------------------ |
-| `capacityBytes`     | `4096`       | Data capacity, excluding tags and metadata |
-| `addrWidth`         | `32`         | Address width in bits                      |
-| `lineBytes`         | `16`         | Bytes per line                             |
-| `wordBytes`         | `4`          | CPU word width in bytes                    |
-| `memBeatBytes`      | `4`          | Memory transfer width in bytes             |
-| `writePolicy`       | `WriteBack`  | Store and allocation behavior              |
-| `numWays`           | `1`          | Associativity                              |
-| `replacementPolicy` | `RoundRobin` | Victim-selection policy                    |
-| `lfsrSeed`          | `1`          | Seed for random replacement                |
-
-Configuration can be loaded to a locally hosted virtual simulated environment
-that occupies port 9000. Any issues, please:
-
-```bash
-lsof -i :9000
-kill <pid>
-```
-
-To free port for cache utilization.
+| `CacheConfig` field | Default | Available values |
+| --- | --- | --- |
+| `capacityBytes` | `4096` | `{1024, 2048, 4096, 8192, 16384, 32768, 65536}` |
+| `addrWidth` | `32` | `{16, 32, 64}` |
+| `lineBytes` | `16` | `{4, 8, 16, 32, 64, 128}` |
+| `wordBytes` | `4` | `{1, 2, 4, 8}` |
+| `memBeatBytes` | `4` | `{1, 2, 4, 8, 16}` |
+| `writePolicy` | `WriteBack` | `WriteThrough`, `WriteBack` |
+| `numWays` | `1` | `{1, 2, 4, 8, 16}` |
+| `replacementPolicy` | `RoundRobin` | `PLRU`, `LRU` |
 
 **FPGA hardware implementation pending due to uart communication**.
 
@@ -454,6 +477,8 @@ The visualizer supports three workloads:
 - **Trace File:** allows the user to load prexisting trace files that
   share the results from a builtin testbench. Can be used to compare already
   processed testbenches.
+
+All files are held in [data_set](data_set)
 
 ## Simulation Controls
 
@@ -482,6 +507,22 @@ It displays:
 - Cache hit or misses(red and green)
 
 ## Comparison
+Compare statistics from several configs. Internally graphs and compares
+runs with the same config but with different testbenches.
+
+Graphs hit rate and latency over time metrics. Also notes average latency,
+average hit rate, and total time to complete each testbench.
+
+## AI Utilization for Visualizer
+AI was uses to create the [cache-visualizer/data_sets/testbench_requests](cache-visualizer/data_sets/testbench_requests)
+under specific guidelines regarding what problems they should tackle within the 
+cache. AI was also used to create the [cache-visualizer/Makefile](cache-visualizer/Makefile)
+as there are particular ways to vendor glfw for different platforms. It was 
+also used to architect the architecture around which the locally hosted 
+cache server was made with, to both facilitate request and response transactions
+while maintaining steady connection - additionally some optimizations were
+hinted towards by AI as even 1-2 requests could take a second to recieve a response.
+
 
 ## Repository layout
 

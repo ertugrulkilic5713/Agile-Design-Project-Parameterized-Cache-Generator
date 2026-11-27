@@ -63,23 +63,11 @@ class CacheServer(
 
         val request = Protocol.decodeRequest(requestBytes)
 
-        println(
-          f"[Server] ${request.operation}%d " +
-          f"addr=0x${request.addr}%08X " +
-          f"data=0x${request.data}%08X"
-        )
-
         val response = simulator.process(request)
 
         output.write(Protocol.encodeResponse(response))
         output.flush()
 
-        println(
-          f"[Server] status=0x${response.status}%02X " +
-          f"way=${response.way}%d " +
-          f"data=0x${response.data}%08X " +
-          f"latency=${response.latency}%d"
-        )
       }
 
     } catch {

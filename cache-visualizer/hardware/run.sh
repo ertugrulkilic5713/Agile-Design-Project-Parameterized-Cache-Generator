@@ -3,9 +3,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-echo "[Debug] Script directory: $SCRIPT_DIR"
 cd "$SCRIPT_DIR"
-echo "[Build] Working directory: $(pwd)"
 
 # default configuration
 PORT=9000
@@ -38,17 +36,6 @@ done
 
 echo "[Build] Compiling..."
 sbt compile
-
-echo "[Run] Starting simulator..."
-echo "  Port:          $PORT"
-echo "  Cache size:    $CACHE_SIZE"
-echo "  Address width: $ADDR_WIDTH"
-echo "  Line bytes:    $LINE_BYTES"
-echo "  Word bytes:    $WORD_BYTES"
-echo "  Memory beat:   $MEM_BEAT_BYTES"
-echo "  Associativity: $ASSOCIATIVITY"
-echo "  Replacement:   $REPLACEMENT"
-echo "  Write policy:  $WRITE_POLICY"
 
 exec sbt "runMain visualizer.Main \
     --port $PORT \
