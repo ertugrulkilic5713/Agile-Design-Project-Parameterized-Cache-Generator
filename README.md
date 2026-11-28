@@ -102,7 +102,7 @@ make APP=asm/bench/wcheck.s POLICY=wt WAYS=2 REPLACEMENT=random SEED=7 MEMLATENC
 | `LINESIZE`    | `16`         | Bytes per cache line                                 |
 | `WAYS`        | `1`          | Ways per set                                         |
 | `REPLACEMENT` | `rr`         | `rr`, `plru`, or `random`                      |
-| `SEED`        | `1`          | Nonzero random replacement seed for the 16 bit LFSR                      |
+| `SEED`        | `1`          | Nonzero random replacement seed for the 16 bit LFSR of the pLRU                      |
 | `MEMLATENCY`  | `0`          | Extra delay per backing-memory transaction in cycles |
 | `MEMBYTES`    | `16384`      | Main memory data size in bytes                       |
 | `OUTDIR`      | `generated`  | RTL output directory                                 |
