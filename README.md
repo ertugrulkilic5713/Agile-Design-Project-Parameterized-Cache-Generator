@@ -453,6 +453,7 @@ GUI is subdivided into two main areas:
 ## Cache Configuration
 
 Supports cache config:
+**Any numerical argument value as shown in the table are valid as long as it is a power of two.
 
 | `CacheConfig` field | Default | Available values |
 | --- | --- | --- |
